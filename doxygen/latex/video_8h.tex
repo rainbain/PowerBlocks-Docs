@@ -1,0 +1,206 @@
+\doxysection{powerblocks/core/graphics/video.h File Reference}
+\hypertarget{video_8h}{}\label{video_8h}\index{powerblocks/core/graphics/video.h@{powerblocks/core/graphics/video.h}}
+
+
+Manages the video output of the system.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}powerblocks/core/graphics/framebuffer.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structvideo__profile__t}{video\+\_\+profile\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{video_8h_a851275ee0afabfab5612287edc8838c1}{video\+\_\+retrace\+\_\+callback\+\_\+t}}) ()
+\begin{DoxyCompactList}\small\item\em Called at the begining of the video retrace. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{video_8h_a5dcb31caf97086512398a3cd6bcfdc2f}{video\+\_\+mode\+\_\+t}} \{ \newline
+{\bfseries VIDEO\+\_\+\+MODE\+\_\+\+UNINITIALIZED}
+, {\bfseries VIDEO\+\_\+\+MODE\+\_\+640\+X480\+\_\+\+NTSC\+\_\+\+INTERLACED}
+, {\bfseries VIDEO\+\_\+\+MODE\+\_\+640\+X480\+\_\+\+NTSC\+\_\+\+PROGRESSIVE}
+, {\bfseries VIDEO\+\_\+\+MODE\+\_\+640\+X480\+\_\+\+PAL50}
+, \newline
+{\bfseries VIDEO\+\_\+\+MODE\+\_\+640\+X480\+\_\+\+PAL60}
+ \}
+\begin{DoxyCompactList}\small\item\em Supported modes for the video interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{video_8h_a5dcb31caf97086512398a3cd6bcfdc2f}{video\+\_\+mode\+\_\+t}} \mbox{\hyperlink{video_8h_ade18e311a9e5a5d7d9649814106dd5e9}{video\+\_\+system\+\_\+default\+\_\+video\+\_\+mode}} ()
+\begin{DoxyCompactList}\small\item\em Gets the video mode of the console. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{structvideo__profile__t}{video\+\_\+profile\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{video_8h_a9a0aec380b964a99d0e1104e191b759f}{video\+\_\+get\+\_\+profile}} (\mbox{\hyperlink{video_8h_a5dcb31caf97086512398a3cd6bcfdc2f}{video\+\_\+mode\+\_\+t}} mode)
+\begin{DoxyCompactList}\small\item\em Gets a video profile from a video mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{video_8h_a40efe144f286abf18f2b6b53deef2252}{video\+\_\+initialize}} (\mbox{\hyperlink{video_8h_a5dcb31caf97086512398a3cd6bcfdc2f}{video\+\_\+mode\+\_\+t}} mode)
+\begin{DoxyCompactList}\small\item\em Initializes the video output. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{video_8h_a54e41000669c8748987ef3a6756fffbc}{video\+\_\+set\+\_\+framebuffer}} (const \mbox{\hyperlink{structframebuffer__t}{framebuffer\+\_\+t}} \texorpdfstring{$\ast$}{*}framebuffer)
+\begin{DoxyCompactList}\small\item\em Sets the frame buffer presented to the screen. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structframebuffer__t}{framebuffer\+\_\+t}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{video_8h_ab24210d5efc5afab4b85de98e10eaed2}{video\+\_\+get\+\_\+framebuffer}} ()
+\begin{DoxyCompactList}\small\item\em Gets the frame buffer currently displayed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{video_8h_a12f17a1add49d94ad98ce8b6de9d6a9f}{video\+\_\+wait\+\_\+vsync}} ()
+\begin{DoxyCompactList}\small\item\em Waits for the next vsync with interrupts. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{video_8h_a69b4a42eedac9c01315883ca349ad3a6}{video\+\_\+wait\+\_\+vsync\+\_\+int}} ()
+\begin{DoxyCompactList}\small\item\em Waits for the next vsync without interrupts. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{video_8h_ad82986c155e5a324254c8447670a71a7}{video\+\_\+set\+\_\+retrace\+\_\+callback}} (\mbox{\hyperlink{video_8h_a851275ee0afabfab5612287edc8838c1}{video\+\_\+retrace\+\_\+callback\+\_\+t}} callback)
+\begin{DoxyCompactList}\small\item\em Sets the retrace callback. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages the video output of the system. 
+
+Interacts and initializes the video interface. Has functions for working with VSync, creating and using framebuffers.
+
+\begin{DoxyAuthor}{Author}
+Samuel Fitzsimons (rainbain) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 @license MIT (see LICENSE file) 
+\end{DoxyDate}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{video_8h_a851275ee0afabfab5612287edc8838c1}\index{video.h@{video.h}!video\_retrace\_callback\_t@{video\_retrace\_callback\_t}}
+\index{video\_retrace\_callback\_t@{video\_retrace\_callback\_t}!video.h@{video.h}}
+\doxysubsubsection{\texorpdfstring{video\_retrace\_callback\_t}{video\_retrace\_callback\_t}}
+{\footnotesize\ttfamily \label{video_8h_a851275ee0afabfab5612287edc8838c1} 
+typedef void(\texorpdfstring{$\ast$}{*} video\+\_\+retrace\+\_\+callback\+\_\+t) ()}
+
+
+
+Called at the begining of the video retrace. 
+
+Usually used to set off a pixel engine copy into the frame buffer so that you dont get artifacts while copying. 
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{video_8h_a5dcb31caf97086512398a3cd6bcfdc2f}\index{video.h@{video.h}!video\_mode\_t@{video\_mode\_t}}
+\index{video\_mode\_t@{video\_mode\_t}!video.h@{video.h}}
+\doxysubsubsection{\texorpdfstring{video\_mode\_t}{video\_mode\_t}}
+{\footnotesize\ttfamily \label{video_8h_a5dcb31caf97086512398a3cd6bcfdc2f} 
+enum \mbox{\hyperlink{video_8h_a5dcb31caf97086512398a3cd6bcfdc2f}{video\+\_\+mode\+\_\+t}}}
+
+
+
+Supported modes for the video interface. 
+
+This enum is used to selected between the diffent video modes supported by the video interface. More could be supported, but these are the ones programmed into the system. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{video_8h_ab24210d5efc5afab4b85de98e10eaed2}\index{video.h@{video.h}!video\_get\_framebuffer@{video\_get\_framebuffer}}
+\index{video\_get\_framebuffer@{video\_get\_framebuffer}!video.h@{video.h}}
+\doxysubsubsection{\texorpdfstring{video\_get\_framebuffer()}{video\_get\_framebuffer()}}
+{\footnotesize\ttfamily \label{video_8h_ab24210d5efc5afab4b85de98e10eaed2} 
+\mbox{\hyperlink{structframebuffer__t}{framebuffer\+\_\+t}} \texorpdfstring{$\ast$}{*} video\+\_\+get\+\_\+framebuffer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Gets the frame buffer currently displayed. 
+
+Gets the frame buffer currently displayed. Can be used for some interesting functionality. \Hypertarget{video_8h_a9a0aec380b964a99d0e1104e191b759f}\index{video.h@{video.h}!video\_get\_profile@{video\_get\_profile}}
+\index{video\_get\_profile@{video\_get\_profile}!video.h@{video.h}}
+\doxysubsubsection{\texorpdfstring{video\_get\_profile()}{video\_get\_profile()}}
+{\footnotesize\ttfamily \label{video_8h_a9a0aec380b964a99d0e1104e191b759f} 
+const \mbox{\hyperlink{structvideo__profile__t}{video\+\_\+profile\+\_\+t}} \texorpdfstring{$\ast$}{*} video\+\_\+get\+\_\+profile (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{video_8h_a5dcb31caf97086512398a3cd6bcfdc2f}{video\+\_\+mode\+\_\+t}}}]{mode}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Gets a video profile from a video mode. 
+
+Get a video profile from a video mode. 
+\begin{DoxyParams}{Parameters}
+{\em profile} & Mode to set into. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{video_8h_a40efe144f286abf18f2b6b53deef2252}\index{video.h@{video.h}!video\_initialize@{video\_initialize}}
+\index{video\_initialize@{video\_initialize}!video.h@{video.h}}
+\doxysubsubsection{\texorpdfstring{video\_initialize()}{video\_initialize()}}
+{\footnotesize\ttfamily \label{video_8h_a40efe144f286abf18f2b6b53deef2252} 
+void video\+\_\+initialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{video_8h_a5dcb31caf97086512398a3cd6bcfdc2f}{video\+\_\+mode\+\_\+t}}}]{mode}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Initializes the video output. 
+
+Initializes the video interface with a given video mode. 
+\begin{DoxyParams}{Parameters}
+{\em mode} & Mode for the video interface. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{video_8h_a54e41000669c8748987ef3a6756fffbc}\index{video.h@{video.h}!video\_set\_framebuffer@{video\_set\_framebuffer}}
+\index{video\_set\_framebuffer@{video\_set\_framebuffer}!video.h@{video.h}}
+\doxysubsubsection{\texorpdfstring{video\_set\_framebuffer()}{video\_set\_framebuffer()}}
+{\footnotesize\ttfamily \label{video_8h_a54e41000669c8748987ef3a6756fffbc} 
+void video\+\_\+set\+\_\+framebuffer (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structframebuffer__t}{framebuffer\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{framebuffer}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the frame buffer presented to the screen. 
+
+Sets the frame buffer presented to the screen.
+
+
+\begin{DoxyParams}{Parameters}
+{\em framebuffer} & Framebuffer to put to the screen. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{video_8h_ad82986c155e5a324254c8447670a71a7}\index{video.h@{video.h}!video\_set\_retrace\_callback@{video\_set\_retrace\_callback}}
+\index{video\_set\_retrace\_callback@{video\_set\_retrace\_callback}!video.h@{video.h}}
+\doxysubsubsection{\texorpdfstring{video\_set\_retrace\_callback()}{video\_set\_retrace\_callback()}}
+{\footnotesize\ttfamily \label{video_8h_ad82986c155e5a324254c8447670a71a7} 
+void video\+\_\+set\+\_\+retrace\+\_\+callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{video_8h_a851275ee0afabfab5612287edc8838c1}{video\+\_\+retrace\+\_\+callback\+\_\+t}}}]{callback}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the retrace callback. 
+
+This is called from the interrupt handler for the retrace from the video interface. Make sure to handle code coming from an interrupter appropriately.
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & Function pointer to call on retrace. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{video_8h_ade18e311a9e5a5d7d9649814106dd5e9}\index{video.h@{video.h}!video\_system\_default\_video\_mode@{video\_system\_default\_video\_mode}}
+\index{video\_system\_default\_video\_mode@{video\_system\_default\_video\_mode}!video.h@{video.h}}
+\doxysubsubsection{\texorpdfstring{video\_system\_default\_video\_mode()}{video\_system\_default\_video\_mode()}}
+{\footnotesize\ttfamily \label{video_8h_ade18e311a9e5a5d7d9649814106dd5e9} 
+\mbox{\hyperlink{video_8h_a5dcb31caf97086512398a3cd6bcfdc2f}{video\+\_\+mode\+\_\+t}} video\+\_\+system\+\_\+default\+\_\+video\+\_\+mode (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Gets the video mode of the console. 
+
+Looks at the system settings to get the system video mode.
+
+Must be called AFTER ios\+\_\+initialize.
+
+This function is unfinished. I need dumps of the other video modes. \begin{DoxyReturn}{Returns}
+Default video mode. 
+\end{DoxyReturn}
+\Hypertarget{video_8h_a12f17a1add49d94ad98ce8b6de9d6a9f}\index{video.h@{video.h}!video\_wait\_vsync@{video\_wait\_vsync}}
+\index{video\_wait\_vsync@{video\_wait\_vsync}!video.h@{video.h}}
+\doxysubsubsection{\texorpdfstring{video\_wait\_vsync()}{video\_wait\_vsync()}}
+{\footnotesize\ttfamily \label{video_8h_a12f17a1add49d94ad98ce8b6de9d6a9f} 
+void video\+\_\+wait\+\_\+vsync (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Waits for the next vsync with interrupts. 
+
+Waits for the next vsync, waits for the next display interrupt to measure when the display goes into retrace. \Hypertarget{video_8h_a69b4a42eedac9c01315883ca349ad3a6}\index{video.h@{video.h}!video\_wait\_vsync\_int@{video\_wait\_vsync\_int}}
+\index{video\_wait\_vsync\_int@{video\_wait\_vsync\_int}!video.h@{video.h}}
+\doxysubsubsection{\texorpdfstring{video\_wait\_vsync\_int()}{video\_wait\_vsync\_int()}}
+{\footnotesize\ttfamily \label{video_8h_a69b4a42eedac9c01315883ca349ad3a6} 
+void video\+\_\+wait\+\_\+vsync\+\_\+int (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Waits for the next vsync without interrupts. 
+
+Waits for the next vsync, in a interrupt handler safe way. It does by just waiting till the vertical position is in range.
+
+This function seems to have some issues, make sure it actually works. May or may not be an emulator thing. 

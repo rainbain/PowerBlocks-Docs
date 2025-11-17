@@ -1,0 +1,59 @@
+\doxysection{wiimote\+\_\+sys.\+h}
+\hypertarget{wiimote__sys_8h_source}{}\label{wiimote__sys_8h_source}\index{powerblocks/input/wiimote/wiimote\_sys.h@{powerblocks/input/wiimote/wiimote\_sys.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{system_8h}{powerblocks/core/system/system.h}}"{}}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ Data\ structure\ describing\ the\ system\ config\ of\ wiimotes.}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ Changes\ to\ these\ WILL\ NOT\ be\ written\ back\ and\ reflected\ on\ the\ NAND\ as\ of\ currently\ for\ safety.}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ Documentation\ of\ these\ settings\ on\ https://wiibrew.org/wiki//shared2/sys/SYSCONF.}}
+\DoxyCodeLine{00025\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00026\ \ \ \ \ uint8\_t\ sensor\_bar\_position;\ \textcolor{comment}{//\ Sensor\ bar\ on\ bottom\ =\ 0,\ or\ top\ =\ 1,\ of\ wii.}}
+\DoxyCodeLine{00027\ \ \ \ \ uint8\_t\ motor\_enabled;\ \textcolor{comment}{//\ Is\ the\ Motors\ globally\ enabled?}}
+\DoxyCodeLine{00028\ \ \ \ \ uint32\_t\ ir\_sensitivity;\ \textcolor{comment}{//\ IR\ Sensor\ sensitivity\ setting.\ 0-\/4}}
+\DoxyCodeLine{00029\ \ \ \ \ uint8\_t\ speaker\_volume;\ \textcolor{comment}{//\ Volume\ of\ the\ speaker\ in\ the\ wiimote}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//\ Stores\ wiimotes\ connected\ to\ the\ wii\ while\ running\ via\ the\ "{}1"{}\ "{}2"{}\ button\ combo.}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ uint8\_t\ count;\ \textcolor{comment}{//\ Number\ of\ guest\ wiimotes.}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ mac\_address[6];\ \textcolor{comment}{//\ Stored\ backwards,\ wii\ cool\ like\ that}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ name[64];}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ link\_key[16];}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \}\ entrys[6]\ PACKED;}
+\DoxyCodeLine{00039\ \ \ \ \ \}\ guest\_wiimotes\ PACKED;}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{comment}{//\ Stores\ registered\ and\ active\ wiimotes.}}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ uint8\_t\ count;\ \textcolor{comment}{//\ Number\ of\ registered\ wiimotes.}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ mac\_address[6];\ \textcolor{comment}{//\ Stored\ backwards,\ wii\ cool\ like\ that}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ name[64];}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}\ registered\_entrys[10];}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Runtime\ active\ wiimote}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ mac\_address[6];\ \textcolor{comment}{//\ Stored\ backwards,\ wii\ cool\ like\ that}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ name[64];}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \}\ active\_wiimotes[6];}
+\DoxyCodeLine{00056\ \ \ \ \ \}\ wiimotes\ PACKED;}
+\DoxyCodeLine{00057\ \}\ \mbox{\hyperlink{structwiimote__sys__config__t}{wiimote\_sys\_config\_t}};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structwiimote__sys__config__t}{wiimote\_sys\_config\_t}}\ wiimote\_sys\_config;}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{comment}{//\ Phrases\ the\ wiimote\ settings\ from\ SYSCONFIG}}
+\DoxyCodeLine{00062\ \textcolor{comment}{//\ If\ this\ fails,\ config\ will\ load\ to\ defaults}}
+\DoxyCodeLine{00063\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ wiimote\_sys\_phrase\_settings();}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{comment}{//\ Attempt\ adding\ registered\ wiimotes}}
+\DoxyCodeLine{00066\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ wiimote\_connect\_registered();}
+
+\end{DoxyCode}

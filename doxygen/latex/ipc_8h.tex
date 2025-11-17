@@ -1,0 +1,78 @@
+\doxysection{powerblocks/core/system/ipc.h File Reference}
+\hypertarget{ipc_8h}{}\label{ipc_8h}\index{powerblocks/core/system/ipc.h@{powerblocks/core/system/ipc.h}}
+
+
+Inter Processor Communications.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structipc__message}{ipc\+\_\+message}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{ipc_8h_a06bed74d53369ae538785b848cacc1cb}\label{ipc_8h_a06bed74d53369ae538785b848cacc1cb} 
+typedef void(\texorpdfstring{$\ast$}{*} {\bfseries ipc\+\_\+async\+\_\+handler\+\_\+t}) (void \texorpdfstring{$\ast$}{*}param, int return\+\_\+value)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ipc_8h_a1990848fdee907712ae616cbee77300e}{ipc\+\_\+initialize}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the IPC Interface. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{ipc_8h_ae8e083bfe7208c3a646e69b9af93474e}{ipc\+\_\+request}} (\mbox{\hyperlink{structipc__message}{ipc\+\_\+message}} \texorpdfstring{$\ast$}{*}message, ipc\+\_\+async\+\_\+handler\+\_\+t handler, void \texorpdfstring{$\ast$}{*}params)
+\begin{DoxyCompactList}\small\item\em Puts a request in and gets the response. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Inter Processor Communications. 
+
+IPC interface between Broadway and Starlet. Designed to implement IOS\textquotesingle{}s protocol.
+
+\begin{DoxyAuthor}{Author}
+Samuel Fitzsimons (rainbain) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 @license MIT (see LICENSE file) 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{ipc_8h_a1990848fdee907712ae616cbee77300e}\index{ipc.h@{ipc.h}!ipc\_initialize@{ipc\_initialize}}
+\index{ipc\_initialize@{ipc\_initialize}!ipc.h@{ipc.h}}
+\doxysubsubsection{\texorpdfstring{ipc\_initialize()}{ipc\_initialize()}}
+{\footnotesize\ttfamily \label{ipc_8h_a1990848fdee907712ae616cbee77300e} 
+void ipc\+\_\+initialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Initializes the IPC Interface. 
+
+Usually called through ios\+\_\+initialize
+
+Initializes the IPC interface. Setups the Free\+RTOS Mutexes and data structures for communications. \Hypertarget{ipc_8h_ae8e083bfe7208c3a646e69b9af93474e}\index{ipc.h@{ipc.h}!ipc\_request@{ipc\_request}}
+\index{ipc\_request@{ipc\_request}!ipc.h@{ipc.h}}
+\doxysubsubsection{\texorpdfstring{ipc\_request()}{ipc\_request()}}
+{\footnotesize\ttfamily \label{ipc_8h_ae8e083bfe7208c3a646e69b9af93474e} 
+int ipc\+\_\+request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structipc__message}{ipc\+\_\+message}} \texorpdfstring{$\ast$}{*}}]{message}{, }\item[{ipc\+\_\+async\+\_\+handler\+\_\+t}]{handler}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{params}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Puts a request in and gets the response. 
+
+Puts a request into the IPC interface. Then after its completion, the handler will be called from the interrupt service.
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Data structure to the message to send to Starlet. \\
+\hline
+{\em handler} & Handler called from interrupt service upon compilation. \\
+\hline
+{\em params} & Pointer passed to the handler. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Result as int, negative if error. 
+\end{DoxyReturn}

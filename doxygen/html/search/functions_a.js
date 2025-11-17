@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['sd_5fclose_0',['sd_close',['../sd_8c.html#a9326ba4099af119ac43d3dcd84134903',1,'sd_close():&#160;sd.c'],['../sd_8h.html#a9326ba4099af119ac43d3dcd84134903',1,'sd_close():&#160;sd.c']]],
+  ['sd_5fdisk_5finitialize_1',['sd_disk_initialize',['../sd_8c.html#a93bdd155c27c12f32be2357ec3e018e5',1,'sd_disk_initialize():&#160;sd.c'],['../sd_8h.html#a93bdd155c27c12f32be2357ec3e018e5',1,'sd_disk_initialize():&#160;sd.c']]],
+  ['sd_5fdisk_5fioctl_2',['sd_disk_ioctl',['../sd_8c.html#a4cda77d91fd22163d39719dcad8b4d0e',1,'sd_disk_ioctl(BYTE cmd, void *buff):&#160;sd.c'],['../sd_8h.html#a4cda77d91fd22163d39719dcad8b4d0e',1,'sd_disk_ioctl(BYTE cmd, void *buff):&#160;sd.c']]],
+  ['sd_5fdisk_5fread_3',['sd_disk_read',['../sd_8c.html#ab544dfc97dd84dedcaa98fa006e82af3',1,'sd_disk_read(BYTE *buff, LBA_t sector, UINT count):&#160;sd.c'],['../sd_8h.html#ab544dfc97dd84dedcaa98fa006e82af3',1,'sd_disk_read(BYTE *buff, LBA_t sector, UINT count):&#160;sd.c']]],
+  ['sd_5fdisk_5fstatus_4',['sd_disk_status',['../sd_8c.html#a7353e68bd326d0f4bf267fac8a4cda63',1,'sd_disk_status():&#160;sd.c'],['../sd_8h.html#a7353e68bd326d0f4bf267fac8a4cda63',1,'sd_disk_status():&#160;sd.c']]],
+  ['sd_5fdisk_5fwrite_5',['sd_disk_write',['../sd_8c.html#a4ffce2baebb67d498568bffc9e4524d6',1,'sd_disk_write(const BYTE *buff, LBA_t sector, UINT count):&#160;sd.c'],['../sd_8h.html#a4ffce2baebb67d498568bffc9e4524d6',1,'sd_disk_write(const BYTE *buff, LBA_t sector, UINT count):&#160;sd.c']]],
+  ['sd_5finitialize_6',['sd_initialize',['../sd_8c.html#a5f7cd5fab9e6f35e3300950dca325ea1',1,'sd_initialize():&#160;sd.c'],['../sd_8h.html#a5f7cd5fab9e6f35e3300950dca325ea1',1,'sd_initialize():&#160;sd.c']]],
+  ['sdio_5fclose_7',['sdio_close',['../sdio_8h.html#a3e63f71992d785b689af734b53bca246',1,'sdio.c']]],
+  ['sdio_5fget_5fdevice_5fstatus_8',['sdio_get_device_status',['../sdio_8h.html#a07a2de59fcb0ab95500131549d6af1a7',1,'sdio.c']]],
+  ['sdio_5finitialize_9',['sdio_initialize',['../sdio_8h.html#ab11a099348fcbbdace5b9b2420d0aa6e',1,'sdio.c']]],
+  ['sdio_5fread_5fhc_5fregister_10',['sdio_read_hc_register',['../sdio_8h.html#ae0c4828f466b6977465cc244ea988494',1,'sdio.c']]],
+  ['sdio_5fread_5foc_5fregister_11',['sdio_read_oc_register',['../sdio_8h.html#a6cd91990353c05aebbdd1f98fc4a3459',1,'sdio.c']]],
+  ['sdio_5freset_5fdevice_12',['sdio_reset_device',['../sdio_8h.html#a6c5f3ac2d6fc36ae2480fcc13a2de63b',1,'sdio.c']]],
+  ['sdio_5fsend_5fcmd_13',['sdio_send_cmd',['../sdio_8h.html#a4aaac3d9e2b1666ea9d2bbaa53f4696f',1,'sdio.c']]],
+  ['sdio_5fset_5fclock_14',['sdio_set_clock',['../sdio_8h.html#ab5fadbbea5df9a3e07141eeb7f5018a4',1,'sdio.c']]],
+  ['sdio_5fset_5fhc_5fregister_15',['sdio_set_hc_register',['../sdio_8h.html#ab09d7d1f8a9ccf225331e03b8851b684',1,'sdio.c']]],
+  ['system_5faligned_5ffree_16',['system_aligned_free',['../system_8c.html#a9c68883bc316dd322bbda387d0321c4b',1,'system_aligned_free(void *ptr):&#160;system.c'],['../system_8h.html#a9c68883bc316dd322bbda387d0321c4b',1,'system_aligned_free(void *ptr):&#160;system.c']]],
+  ['system_5faligned_5fmalloc_17',['system_aligned_malloc',['../system_8c.html#a7c5e9e16601a437cad52677f15cc49f6',1,'system_aligned_malloc(uint32_t bytes, uint32_t alignment):&#160;system.c'],['../system_8h.html#a7c5e9e16601a437cad52677f15cc49f6',1,'system_aligned_malloc(uint32_t bytes, uint32_t alignment):&#160;system.c']]],
+  ['system_5fdelay_5fint_18',['system_delay_int',['../system_8c.html#ae25ed0d22d925d0b45ad6143ea9a75fd',1,'system_delay_int(uint64_t ticks):&#160;system.c'],['../system_8h.html#ae25ed0d22d925d0b45ad6143ea9a75fd',1,'system_delay_int(uint64_t ticks):&#160;system.c']]],
+  ['system_5fflush_5fdcache_19',['system_flush_dcache',['../system_8h.html#affe880ad4a8e5b17651d806747fdc906',1,'system.h']]],
+  ['system_5fget_5fboot_5fpath_20',['system_get_boot_path',['../system_8c.html#ad4df50c1cd712e41557442f42c42563f',1,'system_get_boot_path(const char *device, char *buffer, size_t length):&#160;system.c'],['../system_8h.html#ad4df50c1cd712e41557442f42c42563f',1,'system_get_boot_path(const char *device, char *buffer, size_t length):&#160;system.c']]],
+  ['system_5fget_5ftime_5fbase_5fint_21',['system_get_time_base_int',['../system_8h.html#a5d2d66460da56496cafedc46ee77b0e0',1,'system.h']]],
+  ['system_5finitialize_22',['system_initialize',['../system_8c.html#a2e1b0877a1df13187c6aadf8f554d877',1,'system_initialize():&#160;system.c'],['../system_8h.html#a2e1b0877a1df13187c6aadf8f554d877',1,'system_initialize():&#160;system.c']]],
+  ['system_5finvalidate_5fdcache_23',['system_invalidate_dcache',['../system_8h.html#ad848eb53c91a2faa645227889eff19ec',1,'system.h']]],
+  ['system_5finvalidate_5ficache_24',['system_invalidate_icache',['../system_8h.html#a50a5e1a0d6ecb7730e80e304729abe86',1,'system.h']]]
+];

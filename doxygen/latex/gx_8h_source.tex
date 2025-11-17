@@ -1,0 +1,383 @@
+\doxysection{gx.\+h}
+\hypertarget{gx_8h_source}{}\label{gx_8h_source}\index{powerblocks/core/graphics/gx.h@{powerblocks/core/graphics/gx.h}}
+\mbox{\hyperlink{gx_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{framebuffer_8h}{framebuffer.h}}"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{video_8h}{video.h}}"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}FreeRTOS.h"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}task.h"{}}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ GX\_WPAR\_ADDRESS\ 0xCC008000}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ The\ write\ gather\ pipeline\ will\ collect\ writes\ to\ these\ and}}
+\DoxyCodeLine{00027\ \textcolor{comment}{//\ put\ them\ into\ the\ GX\ FIFO}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ GX\_WPAR\_U8\ \ (*(volatile\ uint8\_t*)GX\_WPAR\_ADDRESS)}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ GX\_WPAR\_U16\ (*(volatile\ uint16\_t*)GX\_WPAR\_ADDRESS)}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ GX\_WPAR\_U32\ (*(volatile\ uint32\_t*)GX\_WPAR\_ADDRESS)}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ GX\_WPAR\_S8\ \ (*(volatile\ int8\_t*)GX\_WPAR\_ADDRESS)}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ GX\_WPAR\_S16\ (*(volatile\ int16\_t*)GX\_WPAR\_ADDRESS)}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ GX\_WPAR\_S32\ (*(volatile\ int32\_t*)GX\_WPAR\_ADDRESS)}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ GX\_WPAR\_F32\ (*(volatile\ float*)GX\_WPAR\_ADDRESS)}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{comment}{//\ Some\ useful\ defines\ regarding\ GX\ FIFO\ Spec}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ GX\_FIFO\_MINIMUM\_SIZE\ (64\ *\ 1024)\ }\textcolor{comment}{//\ Standard\ small\ fifo\ size}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ GX\_FIFO\_WATERMARK\ (16\ *\ 1024)\ }\textcolor{comment}{//\ How\ many\ bytes\ to\ too\ full\ and\ too\ low\ level}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{gx__xf_8h}{gx\_xf.h}}"{}}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{gx__tev_8h}{gx\_tev.h}}"{}}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{gx__immediate_8h}{gx\_immediate.h}}"{}}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{comment}{//\ Vertex\ Data\ Type}}
+\DoxyCodeLine{00045\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ GX\_VTXATTR\_DATA\_DISABLED,}
+\DoxyCodeLine{00047\ \ \ \ \ GX\_VTXATTR\_DATA\_DIRECT,}
+\DoxyCodeLine{00048\ \ \ \ \ GX\_VTXATTR\_DATA\_INDEX8,}
+\DoxyCodeLine{00049\ \ \ \ \ GX\_VTXATTR\_DATA\_INDEX16}
+\DoxyCodeLine{00050\ \}\ gx\_vtxattr\_data\_t;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ GX\_VTXDESC\_POSNORM\_INDEX,}
+\DoxyCodeLine{00054\ \ \ \ \ GX\_VTXDESC\_TEXCOORDMTX0,}
+\DoxyCodeLine{00055\ \ \ \ \ GX\_VTXDESC\_TEXCOORDMTX1,}
+\DoxyCodeLine{00056\ \ \ \ \ GX\_VTXDESC\_TEXCOORDMTX2,}
+\DoxyCodeLine{00057\ \ \ \ \ GX\_VTXDESC\_TEXCOORDMTX3,}
+\DoxyCodeLine{00058\ \ \ \ \ GX\_VTXDESC\_TEXCOORDMTX4,}
+\DoxyCodeLine{00059\ \ \ \ \ GX\_VTXDESC\_TEXCOORDMTX5,}
+\DoxyCodeLine{00060\ \ \ \ \ GX\_VTXDESC\_TEXCOORDMTX6,}
+\DoxyCodeLine{00061\ \ \ \ \ GX\_VTXDESC\_TEXCOORDMTX7,}
+\DoxyCodeLine{00062\ \ \ \ \ GX\_VTXDESC\_POSITION,}
+\DoxyCodeLine{00063\ \ \ \ \ GX\_VTXDESC\_NORMAL,}
+\DoxyCodeLine{00064\ \ \ \ \ GX\_VTXDESC\_NORMAL\_NBT,}
+\DoxyCodeLine{00065\ \ \ \ \ GX\_VTXDESC\_COLOR0,}
+\DoxyCodeLine{00066\ \ \ \ \ GX\_VTXDESC\_COLOR1,}
+\DoxyCodeLine{00067\ \ \ \ \ GX\_VTXDESC\_TEXCOORD0,}
+\DoxyCodeLine{00068\ \ \ \ \ GX\_VTXDESC\_TEXCOORD1,}
+\DoxyCodeLine{00069\ \ \ \ \ GX\_VTXDESC\_TEXCOORD2,}
+\DoxyCodeLine{00070\ \ \ \ \ GX\_VTXDESC\_TEXCOORD3,}
+\DoxyCodeLine{00071\ \ \ \ \ GX\_VTXDESC\_TEXCOORD4,}
+\DoxyCodeLine{00072\ \ \ \ \ GX\_VTXDESC\_TEXCOORD5,}
+\DoxyCodeLine{00073\ \ \ \ \ GX\_VTXDESC\_TEXCOORD6,}
+\DoxyCodeLine{00074\ \ \ \ \ GX\_VTXDESC\_TEXCOORD7}
+\DoxyCodeLine{00075\ \}\ gx\_vtxdesc\_t;}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00078\ \ \ \ \ GX\_VTXATTR\_POS\_XY\ =\ 0,}
+\DoxyCodeLine{00079\ \ \ \ \ GX\_VTXATTR\_POS\_XYZ\ =\ 1,}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ GX\_VTXATTR\_RGB\ =\ 0,}
+\DoxyCodeLine{00082\ \ \ \ \ GX\_VTXATTR\_RGBA\ =\ 1,}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ GX\_VTXATTR\_NRM\_XYZ\ =\ 0,}
+\DoxyCodeLine{00085\ \ \ \ \ GX\_VTXATTR\_NRM\_NBT\ =\ 1,}
+\DoxyCodeLine{00086\ \ \ \ \ GX\_VTXATTR\_NRM\_NBT3\ =\ 3,}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ GX\_VTXATTR\_TEX\_S\ =\ 0,}
+\DoxyCodeLine{00089\ \ \ \ \ GX\_VTXATTR\_TEX\_ST\ =\ 1}
+\DoxyCodeLine{00090\ \}\ gx\_vtxattr\_component\_t;}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00093\ \ \ \ \ GX\_VTXATTR\_U8\ =\ 0,}
+\DoxyCodeLine{00094\ \ \ \ \ GX\_VTXATTR\_S8,}
+\DoxyCodeLine{00095\ \ \ \ \ GX\_VTXATTR\_U16,}
+\DoxyCodeLine{00096\ \ \ \ \ GX\_VTXATTR\_S16,}
+\DoxyCodeLine{00097\ \ \ \ \ GX\_VTXATTR\_F32,}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ GX\_VTXATTR\_RGB565\ =\ 0,}
+\DoxyCodeLine{00100\ \ \ \ \ GX\_VTXATTR\_RGB8,}
+\DoxyCodeLine{00101\ \ \ \ \ GX\_VTXATTR\_RGBX8,}
+\DoxyCodeLine{00102\ \ \ \ \ GX\_VTXATTR\_RGBA4,}
+\DoxyCodeLine{00103\ \ \ \ \ GX\_VTXATTR\_RGBA6,}
+\DoxyCodeLine{00104\ \ \ \ \ GX\_VTXATTR\_RGBA8}
+\DoxyCodeLine{00105\ \}\ gx\_vtxattr\_component\_format\_t;}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00108\ \ \ \ \ GX\_LINES\ =\ 0xA8,}
+\DoxyCodeLine{00109\ \ \ \ \ GX\_LINESTRIP\ =\ 0xB0,}
+\DoxyCodeLine{00110\ \ \ \ \ GX\_POINTS\ =\ 0xB8,}
+\DoxyCodeLine{00111\ \ \ \ \ GX\_QUADS\ =\ 0x80,}
+\DoxyCodeLine{00112\ \ \ \ \ GX\_TRIANGLE\_FAN\ =\ 0xA0,}
+\DoxyCodeLine{00113\ \ \ \ \ GX\_TRIANGLES\ =\ 0x90,}
+\DoxyCodeLine{00114\ \ \ \ \ GX\_TRIANGLE\_STRIP\ =\ 0x98}
+\DoxyCodeLine{00115\ \}\ gx\_primitive\_t;}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00118\ \ \ \ \ GX\_COMPARE\_NEVER,}
+\DoxyCodeLine{00119\ \ \ \ \ GX\_COMPARE\_LESS,}
+\DoxyCodeLine{00120\ \ \ \ \ GX\_COMPARE\_EQUAL,}
+\DoxyCodeLine{00121\ \ \ \ \ GX\_COMPARE\_LESS\_EQUAL,}
+\DoxyCodeLine{00122\ \ \ \ \ GX\_COMPARE\_GREATER,}
+\DoxyCodeLine{00123\ \ \ \ \ GX\_COMPARE\_NOT\_EQUAL,}
+\DoxyCodeLine{00124\ \ \ \ \ GX\_COMPARE\_GREATER\_EQUAL,}
+\DoxyCodeLine{00125\ \ \ \ \ GX\_COMPARE\_ALWAYS}
+\DoxyCodeLine{00126\ \}\ gx\_compare\_t;}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00129\ \ \ \ \ GX\_PIXEL\_FORMAT\_RGB8\_Z24,}
+\DoxyCodeLine{00130\ \ \ \ \ GX\_PIXEL\_FORMAT\_RGBA6\_Z24,}
+\DoxyCodeLine{00131\ \ \ \ \ GX\_PIXEL\_FORMAT\_RGB565\_Z16,}
+\DoxyCodeLine{00132\ \ \ \ \ GX\_PIXEL\_FORMAT\_Z24,}
+\DoxyCodeLine{00133\ \ \ \ \ GX\_PIXEL\_FORMAT\_Y8,}
+\DoxyCodeLine{00134\ \ \ \ \ GX\_PIXEL\_FORMAT\_U8,}
+\DoxyCodeLine{00135\ \ \ \ \ GX\_PIXEL\_FORMAT\_V8,}
+\DoxyCodeLine{00136\ \ \ \ \ GX\_PIXEL\_FORMAT\_YUV420}
+\DoxyCodeLine{00137\ \}\ gx\_pixel\_format\_t;}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00140\ \ \ \ \ GX\_Z\_FORMAT\_LINEAR,}
+\DoxyCodeLine{00141\ \ \ \ \ GX\_Z\_FORMAT\_NEAR,}
+\DoxyCodeLine{00142\ \ \ \ \ GX\_Z\_FORMAT\_MID,}
+\DoxyCodeLine{00143\ \ \ \ \ GX\_Z\_FORMAT\_FAR}
+\DoxyCodeLine{00144\ \}\ gx\_z\_format\_t;}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00147\ \ \ \ \ GX\_CLAMP\_MODE\_NONE,}
+\DoxyCodeLine{00148\ \ \ \ \ GX\_CLAMP\_MODE\_TOP,}
+\DoxyCodeLine{00149\ \ \ \ \ GX\_CLAMP\_MODE\_BOTTOM,}
+\DoxyCodeLine{00150\ \ \ \ \ GX\_CLAMP\_MODE\_TOP\_BOTTOM,}
+\DoxyCodeLine{00151\ \}\ gx\_clamp\_mode\_t;}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00154\ \ \ \ \ GX\_GAMMA\_1\_0,\ \textcolor{comment}{//\ 1.0}}
+\DoxyCodeLine{00155\ \ \ \ \ GX\_GAMMA\_1\_7,\ \textcolor{comment}{//\ 1.7}}
+\DoxyCodeLine{00156\ \ \ \ \ GX\_GAMMA\_2\_2\ \textcolor{comment}{//\ 2.2}}
+\DoxyCodeLine{00157\ \}\ gx\_gamma\_t;}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00160\ \ \ \ \ GX\_LINE\_MODE\_PROGRESSIVE,}
+\DoxyCodeLine{00161\ \ \ \ \ GX\_LINE\_MODE\_EVEN\ =\ 2,}
+\DoxyCodeLine{00162\ \ \ \ \ GX\_LINE\_MODE\_ODD,}
+\DoxyCodeLine{00163\ \}\ gx\_line\_mode\_t;}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \textcolor{comment}{//\ So\ in\ actual\ hardware,\ the\ first\ 4,\ and\ last\ 4\ textures\ are\ in}}
+\DoxyCodeLine{00166\ \textcolor{comment}{//\ separated\ memory\ addresses.\ I\ kept\ the\ enum\ simple\ though\ since}}
+\DoxyCodeLine{00167\ \textcolor{comment}{//\ I\ did\ not\ want\ it\ messing\ with\ things.}}
+\DoxyCodeLine{00168\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00169\ \ \ \ \ GX\_TEXTURE\_ID\_0,}
+\DoxyCodeLine{00170\ \ \ \ \ GX\_TEXTURE\_ID\_1,}
+\DoxyCodeLine{00171\ \ \ \ \ GX\_TEXTURE\_ID\_2,}
+\DoxyCodeLine{00172\ \ \ \ \ GX\_TEXTURE\_ID\_3,}
+\DoxyCodeLine{00173\ \ \ \ \ GX\_TEXTURE\_ID\_4,}
+\DoxyCodeLine{00174\ \ \ \ \ GX\_TEXTURE\_ID\_5,}
+\DoxyCodeLine{00175\ \ \ \ \ GX\_TEXTURE\_ID\_6,}
+\DoxyCodeLine{00176\ \ \ \ \ GX\_TEXTURE\_ID\_7}
+\DoxyCodeLine{00177\ \}\ gx\_texture\_id\_t;}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \textcolor{preprocessor}{\#define\ GX\_WPAR\_OPCODE\_LOAD\_CP\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x08}}
+\DoxyCodeLine{00180\ \textcolor{preprocessor}{\#define\ GX\_WPAR\_OPCODE\_LOAD\_XF\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x10}}
+\DoxyCodeLine{00181\ \textcolor{preprocessor}{\#define\ GX\_WPAR\_OPCODE\_LOAD\_BP\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x61}}
+\DoxyCodeLine{00182\ \textcolor{preprocessor}{\#define\ GX\_WPAR\_OPCODE\_PRIMITIVE(type,\ format)\ (((uint8\_t)type)\ |\ format)}}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \textcolor{preprocessor}{\#define\ GX\_XF\_MEMORY\_POSTEX\_MTX\_0\ \ \ \ \ 0x0000}}
+\DoxyCodeLine{00185\ \textcolor{preprocessor}{\#define\ GX\_XF\_MEMORY\_NORMAL\_MTX\_0\ \ \ \ \ 0x0400}}
+\DoxyCodeLine{00186\ \textcolor{preprocessor}{\#define\ GX\_XF\_MEMORY\_DUALTEX\_MTX\_0\ \ \ \ 0x0500}}
+\DoxyCodeLine{00187\ \textcolor{preprocessor}{\#define\ GX\_XF\_MEMORY\_LIGHT0\ \ \ \ \ \ \ \ \ \ \ 0x0600}}
+\DoxyCodeLine{00188\ \textcolor{preprocessor}{\#define\ GX\_XF\_REGISTER\_VERTEX\_STATS\ \ \ 0x1008}}
+\DoxyCodeLine{00189\ \textcolor{preprocessor}{\#define\ GX\_XF\_REGISTER\_COLOR\_COUNT\ \ \ \ 0x1009}}
+\DoxyCodeLine{00190\ \textcolor{preprocessor}{\#define\ GX\_XF\_REGISTER\_COLOR\_CONTROL\ \ 0x100E}}
+\DoxyCodeLine{00191\ \textcolor{preprocessor}{\#define\ GX\_XF\_REGISTER\_DUALTEXTRANS\ \ \ 0x1012}}
+\DoxyCodeLine{00192\ \textcolor{preprocessor}{\#define\ GX\_XF\_REGISTER\_MTXIDX\_A\ \ \ \ \ \ \ 0x1018}}
+\DoxyCodeLine{00193\ \textcolor{preprocessor}{\#define\ GX\_XF\_REGISTER\_MTXIDX\_B\ \ \ \ \ \ \ 0x1019}}
+\DoxyCodeLine{00194\ \textcolor{preprocessor}{\#define\ GX\_XF\_REGISTER\_VIEWPORT\ \ \ \ \ \ \ 0x101A}}
+\DoxyCodeLine{00195\ \textcolor{preprocessor}{\#define\ GX\_XF\_REGISTER\_PROJECTION\ \ \ \ \ 0x1020}}
+\DoxyCodeLine{00196\ \textcolor{preprocessor}{\#define\ GX\_XF\_REGISTER\_TEXCOORD\_COUNT\ 0x103F}}
+\DoxyCodeLine{00197\ \textcolor{preprocessor}{\#define\ GX\_XF\_REGISTER\_TEX0\ \ \ \ \ \ \ \ \ \ \ 0x1040}}
+\DoxyCodeLine{00198\ \textcolor{preprocessor}{\#define\ GX\_XF\_REGISTER\_DUALTEX0\ \ \ \ \ \ \ 0x1050}}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00200\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_GENMODE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0x00\ <<\ 24)}}
+\DoxyCodeLine{00201\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_COPY\_FILTER\_POS\_A\ \ \ \ \ \ \ \ \ \ \ \ (0x01\ <<\ 24)}}
+\DoxyCodeLine{00202\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_COPY\_FILTER\_POS\_B\ \ \ \ \ \ \ \ \ \ \ \ (0x02\ <<\ 24)}}
+\DoxyCodeLine{00203\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_COPY\_FILTER\_POS\_C\ \ \ \ \ \ \ \ \ \ \ \ (0x03\ <<\ 24)}}
+\DoxyCodeLine{00204\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_COPY\_FILTER\_POS\_D\ \ \ \ \ \ \ \ \ \ \ \ (0x04\ <<\ 24)}}
+\DoxyCodeLine{00205\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_SCISSOR\_TL\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0x20\ <<\ 24)}}
+\DoxyCodeLine{00206\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_SCISSOR\_BR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0x21\ <<\ 24)}}
+\DoxyCodeLine{00207\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_SSIZE0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0x30\ <<\ 24)}}
+\DoxyCodeLine{00208\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_TSIZE0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0x31\ <<\ 24)}}
+\DoxyCodeLine{00209\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_Z\_MODE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0x40\ <<\ 24)}}
+\DoxyCodeLine{00210\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_CMODE\_0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0x41\ <<\ 24)}}
+\DoxyCodeLine{00211\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_CMODE\_1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0x42\ <<\ 24)}}
+\DoxyCodeLine{00212\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_PE\_CONTROL\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0X43\ <<\ 24)}}
+\DoxyCodeLine{00213\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_PE\_DONE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0x45\ <<\ 24)}}
+\DoxyCodeLine{00214\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_EFB\_SOURCE\_TOP\_LEFT\ \ \ \ \ \ \ \ \ \ (0x49\ <<\ 24)}}
+\DoxyCodeLine{00215\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_EFB\_SOURCE\_WIDTH\_HEIGHT\ \ \ \ \ \ (0x4A\ <<\ 24)}}
+\DoxyCodeLine{00216\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_XFB\_TARGET\_ADDRESS\ \ \ \ \ \ \ \ \ \ \ (0x4B\ <<\ 24)}}
+\DoxyCodeLine{00217\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_EFB\_DESTINATION\_WIDTH\ \ \ \ \ \ \ \ (0x4D\ <<\ 24)}}
+\DoxyCodeLine{00218\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_Y\_SCALE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0x4E\ <<\ 24)}}
+\DoxyCodeLine{00219\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_PE\_COPY\_CLEAR\_AR\ \ \ \ \ \ \ \ \ \ \ \ \ (0x4F\ <<\ 24)}}
+\DoxyCodeLine{00220\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_PE\_COPY\_CLEAR\_GB\ \ \ \ \ \ \ \ \ \ \ \ \ (0x50\ <<\ 24)}}
+\DoxyCodeLine{00221\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_PE\_COPY\_CLEAR\_Z\ \ \ \ \ \ \ \ \ \ \ \ \ \ (0x51\ <<\ 24)}}
+\DoxyCodeLine{00222\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_PE\_COPY\_EXECUTE\ \ \ \ \ \ \ \ \ \ \ \ \ \ (0x52\ <<\ 24)}}
+\DoxyCodeLine{00223\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_COPY\_FILTER\_COEFF\_A\ \ \ \ \ \ \ \ \ \ (0x53\ <<\ 24)}}
+\DoxyCodeLine{00224\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_COPY\_FILTER\_COEFF\_B\ \ \ \ \ \ \ \ \ \ (0x54\ <<\ 24)}}
+\DoxyCodeLine{00225\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_SCISSOR\_OFFSET\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0x59\ <<\ 24)}}
+\DoxyCodeLine{00226\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_TX\_SETMODE0\_I0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0x80\ <<\ 24)\ }\textcolor{comment}{//\ 0-\/3\ HERE,\ 4-\/7\ AT\ 0XA0}}
+\DoxyCodeLine{00227\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_TX\_SETMODE1\_I0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0x84\ <<\ 24)\ }\textcolor{comment}{//\ 0-\/3\ HERE,\ 4-\/7\ AT\ 0XA4}}
+\DoxyCodeLine{00228\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_TX\_SETIMAGE0\_I0\ \ \ \ \ \ \ \ \ \ \ \ \ \ (0x88\ <<\ 24)\ }\textcolor{comment}{//\ 0-\/3\ HERE,\ 4-\/7\ AT\ 0XA8}}
+\DoxyCodeLine{00229\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_TX\_SETIMAGE1\_I0\ \ \ \ \ \ \ \ \ \ \ \ \ \ (0x8C\ <<\ 24)\ }\textcolor{comment}{//\ 0-\/3\ HERE,\ 4-\/7\ AT\ 0XAC}}
+\DoxyCodeLine{00230\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_TX\_SETIMAGE2\_I0\ \ \ \ \ \ \ \ \ \ \ \ \ \ (0x90\ <<\ 24)\ }\textcolor{comment}{//\ 0-\/3\ HERE,\ 4-\/7\ AT\ 0XB0}}
+\DoxyCodeLine{00231\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_TX\_SETIMAGE3\_I0\ \ \ \ \ \ \ \ \ \ \ \ \ \ (0x94\ <<\ 24)\ }\textcolor{comment}{//\ 0-\/3\ HERE,\ 4-\/7\ AT\ 0XB4}}
+\DoxyCodeLine{00232\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_TX\_SETTLUT\_0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0x98\ <<\ 24)\ }\textcolor{comment}{//\ 0-\/3\ HERE,\ 4-\/7\ AT\ 0XB8}}
+\DoxyCodeLine{00233\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_TEV0\_COLOR\_ENV\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0xC0\ <<\ 24)}}
+\DoxyCodeLine{00234\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_TEV0\_ALPHA\_ENV\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0xC1\ <<\ 24)}}
+\DoxyCodeLine{00235\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_TEV\_REGISTERL\_0\ \ \ \ \ \ \ \ \ \ \ \ \ \ (0xE0\ <<\ 24)}}
+\DoxyCodeLine{00236\ \textcolor{preprocessor}{\#define\ GX\_BP\_REGISTERS\_TEV\_REGISTERH\_0\ \ \ \ \ \ \ \ \ \ \ \ \ \ (0xE1\ <<\ 24)}}
+\DoxyCodeLine{00237\ }
+\DoxyCodeLine{00238\ \textcolor{preprocessor}{\#define\ GX\_CP\_REGISTERS\_MTXIDX\_A\ 0x30}}
+\DoxyCodeLine{00239\ \textcolor{preprocessor}{\#define\ GX\_CP\_REGISTERS\_MTXIDX\_B\ 0x40}}
+\DoxyCodeLine{00240\ \textcolor{preprocessor}{\#define\ GX\_CP\_REGISTER\_VCD\_LOW\ \ \ 0x50}}
+\DoxyCodeLine{00241\ \textcolor{preprocessor}{\#define\ GX\_CP\_REGISTER\_VCD\_HIGH\ \ 0x60}}
+\DoxyCodeLine{00242\ \textcolor{preprocessor}{\#define\ GX\_CP\_REGISTER\_VAT\_A\ \ \ \ \ 0x70}}
+\DoxyCodeLine{00243\ \textcolor{preprocessor}{\#define\ GX\_CP\_REGISTER\_VAT\_B\ \ \ \ \ 0x80}}
+\DoxyCodeLine{00244\ \textcolor{preprocessor}{\#define\ GX\_CP\_REGISTER\_VAT\_C\ \ \ \ \ 0x90}}
+\DoxyCodeLine{00245\ }
+\DoxyCodeLine{00246\ \textcolor{comment}{//\ Load\ a\ 32\ bit\ value\ into\ the\ command\ processor}}
+\DoxyCodeLine{00247\ \textcolor{comment}{//\ through\ the\ pipeline.}}
+\DoxyCodeLine{00248\ \textcolor{preprocessor}{\#define\ GX\_WPAR\_CP\_LOAD(address,\ value)\ \(\backslash\)}}
+\DoxyCodeLine{00249\ \textcolor{preprocessor}{\ \ \ \ GX\_WPAR\_U8\ =\ GX\_WPAR\_OPCODE\_LOAD\_CP;\ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ Load\ CP\ Command\ */}\textcolor{preprocessor}{\ \(\backslash\)}}
+\DoxyCodeLine{00250\ \textcolor{preprocessor}{\ \ \ \ GX\_WPAR\_U8\ =\ address;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ Register\ Address\ */}\textcolor{preprocessor}{\ \(\backslash\)}}
+\DoxyCodeLine{00251\ \textcolor{preprocessor}{\ \ \ \ GX\_WPAR\_U32\ =\ value;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ Register\ Value\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00253\ \textcolor{comment}{//\ Load\ some\ amount\ of\ 32\ bit\ values\ onto\ the\ XF}}
+\DoxyCodeLine{00254\ \textcolor{comment}{//\ To\ be\ followed\ with\ each\ value\ on\ the\ WPAR.}}
+\DoxyCodeLine{00255\ \textcolor{preprocessor}{\#define\ GX\_WPAR\_XF\_LOAD(address,\ words)\ \(\backslash\)}}
+\DoxyCodeLine{00256\ \textcolor{preprocessor}{\ \ \ \ GX\_WPAR\_U8\ =\ GX\_WPAR\_OPCODE\_LOAD\_XF;\ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ Load\ XF\ Command\ */}\textcolor{preprocessor}{\ \(\backslash\)}}
+\DoxyCodeLine{00257\ \textcolor{preprocessor}{\ \ \ \ GX\_WPAR\_U16\ =\ (words)\ -\/\ 1;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ Load\ N-\/1\ 32\ bit\ values\ */}\textcolor{preprocessor}{\ \(\backslash\)}}
+\DoxyCodeLine{00258\ \textcolor{preprocessor}{\ \ \ \ GX\_WPAR\_U16\ =\ address;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ Register\ Address\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00259\ }
+\DoxyCodeLine{00260\ \textcolor{comment}{//\ Loads\ a\ BP\ register.\ The\ upper\ 8\ bits\ are\ the\ register\ address}}
+\DoxyCodeLine{00261\ \textcolor{comment}{//\ The\ lower\ 24\ are\ the\ value.\ We\ have\ just\ combined\ them\ here\ due\ to\ avoid\ dealing\ with\ 24\ bit\ imm}}
+\DoxyCodeLine{00262\ \textcolor{preprocessor}{\#define\ GX\_WPAR\_BP\_LOAD(value)\ \(\backslash\)}}
+\DoxyCodeLine{00263\ \textcolor{preprocessor}{\ \ \ \ GX\_WPAR\_U8\ =\ GX\_WPAR\_OPCODE\_LOAD\_BP;\ }\textcolor{comment}{/*\ Load\ BP\ Command\ */}\textcolor{preprocessor}{\ \(\backslash\)}}
+\DoxyCodeLine{00264\ \textcolor{preprocessor}{\ \ \ \ GX\_WPAR\_U32\ =\ value;\ }\textcolor{comment}{/*\ Combined\ 8\ bit\ address\ and\ 24\ bit\ value.\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00275\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00276\ \ \ \ \ uint32\_t\ base\_address;}
+\DoxyCodeLine{00277\ \ \ \ \ uint32\_t\ end\_address;}
+\DoxyCodeLine{00278\ \ \ \ \ uint32\_t\ high\_watermark;}
+\DoxyCodeLine{00279\ \ \ \ \ uint32\_t\ low\_watermark;}
+\DoxyCodeLine{00280\ \ \ \ \ uint32\_t\ distance;}
+\DoxyCodeLine{00281\ \ \ \ \ uint32\_t\ write\_head;}
+\DoxyCodeLine{00282\ \ \ \ \ uint32\_t\ read\_head;}
+\DoxyCodeLine{00283\ \ \ \ \ uint32\_t\ breakpoint;}
+\DoxyCodeLine{00284\ \}\ \mbox{\hyperlink{structgx__fifo__t}{gx\_fifo\_t}};}
+\DoxyCodeLine{00285\ }
+\DoxyCodeLine{00289\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00290\ \ \ \ \ \textcolor{comment}{//\ Texture\ Control\ Registers}}
+\DoxyCodeLine{00291\ \ \ \ \ uint32\_t\ mode0;\ \textcolor{comment}{//\ lookup\ and\ filtering\ register}}
+\DoxyCodeLine{00292\ \ \ \ \ uint32\_t\ mode1;\ \textcolor{comment}{//\ LOD\ data}}
+\DoxyCodeLine{00293\ \ \ \ \ uint32\_t\ image0;\ \textcolor{comment}{//\ Width,\ hight,\ format}}
+\DoxyCodeLine{00294\ \ \ \ \ uint32\_t\ image1;\ \textcolor{comment}{//\ even\ LOD\ address\ in\ TMEM}}
+\DoxyCodeLine{00295\ \ \ \ \ uint32\_t\ image2;\ \textcolor{comment}{//\ odd\ LOD\ address\ in\ TMEM}}
+\DoxyCodeLine{00296\ \ \ \ \ uint32\_t\ image3;\ \textcolor{comment}{//\ Address\ in\ main\ memory}}
+\DoxyCodeLine{00297\ \ \ \ \ uint32\_t\ lut;\ \textcolor{comment}{//\ offset\ +\ format}}
+\DoxyCodeLine{00298\ \}\ \mbox{\hyperlink{structgx__texture__t}{gx\_texture\_t}};}
+\DoxyCodeLine{00299\ }
+\DoxyCodeLine{00300\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00301\ \ \ \ \ GX\_TEXTURE\_FORMAT\_I4,\ \ \ \ \ \ \textcolor{comment}{//\ 4\ Ininstty/Brightness\ Bits}}
+\DoxyCodeLine{00302\ \ \ \ \ GX\_TEXTURE\_FORMAT\_I8,\ \ \ \ \ \ \textcolor{comment}{//\ 8\ Ininstty/Brightness\ Bits}}
+\DoxyCodeLine{00303\ \ \ \ \ GX\_TEXTURE\_FORMAT\_IA4,\ \ \ \ \ \textcolor{comment}{//\ 4\ Intensity\ +\ 4\ Alpha}}
+\DoxyCodeLine{00304\ \ \ \ \ GX\_TEXTURE\_FORMAT\_IA8,\ \ \ \ \ \textcolor{comment}{//\ 8\ Intensity\ +\ 8\ Alpha}}
+\DoxyCodeLine{00305\ \ \ \ \ GX\_TEXTURE\_FORMAT\_RGB565,\ \ \textcolor{comment}{//\ 5\ Red\ +\ 6\ Green\ +\ 5\ Blue}}
+\DoxyCodeLine{00306\ \ \ \ \ GX\_TEXTURE\_FORMAT\_RGB5A3,\ \ \textcolor{comment}{//\ 5\ bits\ each\ for\ R,\ G,\ and\ B,\ then\ 3\ for\ alpha}}
+\DoxyCodeLine{00307\ \ \ \ \ GX\_TEXTURE\_FORMAT\_RGBA8,\ \ \ \textcolor{comment}{//\ 8\ bits\ for\ each\ R,\ G,\ B,\ and\ A}}
+\DoxyCodeLine{00308\ \ \ \ \ GX\_TEXTURE\_FORMAT\_C4\ =\ 8,\ \ \textcolor{comment}{//\ 4\ bit\ color\ indexing}}
+\DoxyCodeLine{00309\ \ \ \ \ GX\_TEXTURE\_FORMAT\_C8,\ \ \ \ \ \ \textcolor{comment}{//\ 8\ bit\ color\ indexing}}
+\DoxyCodeLine{00310\ \ \ \ \ GX\_TEXTURE\_FORMAT\_C14X2,\ \ \ \textcolor{comment}{//\ 14\ bit\ indexing\ +\ 2\ alignment\ bits?}}
+\DoxyCodeLine{00311\ \ \ \ \ GX\_TEXTURE\_FORMAT\_CMP\ =\ 14\ \textcolor{comment}{//\ Compressed}}
+\DoxyCodeLine{00312\ \}\ gx\_texture\_format\_t;}
+\DoxyCodeLine{00313\ }
+\DoxyCodeLine{00314\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00315\ \ \ \ \ GX\_WRAP\_CLAMP,}
+\DoxyCodeLine{00316\ \ \ \ \ GX\_WRAP\_REPEAT,}
+\DoxyCodeLine{00317\ \ \ \ \ GX\_WRAP\_MIRROR}
+\DoxyCodeLine{00318\ \}\ gx\_texture\_wrap\_t;}
+\DoxyCodeLine{00319\ }
+\DoxyCodeLine{00320\ \textcolor{comment}{//\ This\ is\ used\ internally\ when\ decoding\ texture\ formats}}
+\DoxyCodeLine{00321\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00322\ \ \ \ \ GX\_TEXTURE\_MIN\_FILTER\_NEAR,}
+\DoxyCodeLine{00323\ \ \ \ \ GX\_TEXTURE\_MIN\_FILTER\_NEAR\_MIP,}
+\DoxyCodeLine{00324\ \ \ \ \ GX\_TEXTURE\_MIN\_FILTER\_NEAR\_MIP\_LINEAR,}
+\DoxyCodeLine{00325\ \ \ \ \ GX\_TEXTURE\_MIN\_FILTER\_LINEAR\ =\ 4,}
+\DoxyCodeLine{00326\ \ \ \ \ GX\_TEXTURE\_MIN\_FILTER\_LINEAR\_MIP\_NEAR,}
+\DoxyCodeLine{00327\ \ \ \ \ GX\_TEXTURE\_MIN\_FILTER\_LINEAR\_MIP\_LINEAR,}
+\DoxyCodeLine{00328\ \}\ gx\_texture\_min\_filter;}
+\DoxyCodeLine{00329\ }
+\DoxyCodeLine{00342\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_ab7cf89d57623be7504ee1f7242d35b90}{gx\_initialize}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structgx__fifo__t}{gx\_fifo\_t}}*\ fifo,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structvideo__profile__t}{video\_profile\_t}}*\ video\_profile);}
+\DoxyCodeLine{00343\ }
+\DoxyCodeLine{00355\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_a2a5058ae21e95f5ad54b68b1617c45cd}{gx\_initialize\_state}}();}
+\DoxyCodeLine{00356\ }
+\DoxyCodeLine{00363\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_a89be21419da6d49b9a28ca14a6a82b74}{gx\_initialize\_video}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structvideo__profile__t}{video\_profile\_t}}*\ video\_profile);}
+\DoxyCodeLine{00364\ }
+\DoxyCodeLine{00374\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_a9579ae6ea0b4a45fe8121bc4a4c11987}{gx\_fifo\_initialize}}(\mbox{\hyperlink{structgx__fifo__t}{gx\_fifo\_t}}*\ fifo,\ \textcolor{keywordtype}{void}*\ fifo\_buffer,\ uint32\_t\ fifo\_buffer\_size);}
+\DoxyCodeLine{00375\ }
+\DoxyCodeLine{00386\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_a143e757d166e75ef432f00061ab98aa0}{gx\_fifo\_set}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structgx__fifo__t}{gx\_fifo\_t}}*\ fifo);}
+\DoxyCodeLine{00387\ }
+\DoxyCodeLine{00396\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_ac2e19052d48cdf4e6c27d35b22ccc440}{gx\_fifo\_get}}(\mbox{\hyperlink{structgx__fifo__t}{gx\_fifo\_t}}*\ fifo);}
+\DoxyCodeLine{00397\ }
+\DoxyCodeLine{00408\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_a057f79c2d628b38a88ce515aabd7352a}{gx\_flush}}();}
+\DoxyCodeLine{00409\ }
+\DoxyCodeLine{00419\ \textcolor{keyword}{extern}\ uint32\_t\ \mbox{\hyperlink{gx_8h_a181de4a028f74fe9983b1db0d88609e6}{gx\_efb\_peak}}(uint32\_t\ x,\ uint32\_t\ y);}
+\DoxyCodeLine{00420\ }
+\DoxyCodeLine{00430\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_a9579ae6ea0b4a45fe8121bc4a4c11987}{gx\_fifo\_initialize}}(\mbox{\hyperlink{structgx__fifo__t}{gx\_fifo\_t}}*\ fifo,\ \textcolor{keywordtype}{void}*\ fifo\_buffer,\ uint32\_t\ fifo\_buffer\_size);}
+\DoxyCodeLine{00431\ }
+\DoxyCodeLine{00443\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_aae5769fef8c35d3e49471962b9c8a764}{gx\_vtxdesc\_clear}}();}
+\DoxyCodeLine{00444\ }
+\DoxyCodeLine{00460\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_ac1ba1a11d89c7f1a581d95f5634464d3}{gx\_vtxdesc\_set}}(gx\_vtxdesc\_t\ desc,\ gx\_vtxattr\_data\_t\ type);}
+\DoxyCodeLine{00461\ }
+\DoxyCodeLine{00475\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_aa017c4b05620b3d2e539500da91eadaf}{gx\_vtxfmtattr\_clear}}(uint8\_t\ attribute\_index);}
+\DoxyCodeLine{00476\ }
+\DoxyCodeLine{00489\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_a075fcfcf4a2e946f3cb762b4a3ff7c91}{gx\_vtxfmtattr\_set}}(uint8\_t\ attribute\_index,\ gx\_vtxdesc\_t\ attribute,\ gx\_vtxattr\_component\_t\ component,\ gx\_vtxattr\_component\_format\_t\ fmt,\ uint8\_t\ fraction);}
+\DoxyCodeLine{00490\ }
+\DoxyCodeLine{00501\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_a18d4be023fe0977e85e139033e41e74d}{gx\_begin}}(gx\_primitive\_t\ primitive,\ uint8\_t\ attribute,\ uint16\_t\ count);}
+\DoxyCodeLine{00502\ }
+\DoxyCodeLine{00511\ \textcolor{preprocessor}{\#define\ gx\_end()}}
+\DoxyCodeLine{00512\ }
+\DoxyCodeLine{00519\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_abc2cad4be8d87b26ca990d3af4c2305c}{gx\_draw\_done}}();}
+\DoxyCodeLine{00520\ }
+\DoxyCodeLine{00535\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_a1207625929b1f53b28c581a6e24681e8}{gx\_set\_render\_thread}}(TaskHandle\_t\ task);}
+\DoxyCodeLine{00536\ }
+\DoxyCodeLine{00548\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_a5ff18e5c57174dfae838eb640bc8f909}{gx\_set\_clear\_color}}(uint8\_t\ r,\ uint8\_t\ g,\ uint8\_t\ b,\ uint8\_t\ a);}
+\DoxyCodeLine{00549\ }
+\DoxyCodeLine{00557\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_a80f3c17e2726b502455f31e299da1e6d}{gx\_set\_clear\_z}}(uint32\_t\ z);}
+\DoxyCodeLine{00558\ }
+\DoxyCodeLine{00566\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_ab5d06e239fd9c3abb604e46f613dea10}{gx\_set\_copy\_y\_scale}}(\textcolor{keywordtype}{float}\ y\_scale);}
+\DoxyCodeLine{00567\ }
+\DoxyCodeLine{00583\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_a2171fa4101a1179a5cddbadc4a8483f4}{gx\_set\_scissor\_rectangle}}(uint32\_t\ x,\ uint32\_t\ y,\ uint32\_t\ width,\ uint32\_t\ height);}
+\DoxyCodeLine{00584\ }
+\DoxyCodeLine{00595\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_a6f93e707c815d237d1156705d2ae2caa}{gx\_set\_scissor\_offset}}(int32\_t\ x,\ int32\_t\ y);}
+\DoxyCodeLine{00596\ }
+\DoxyCodeLine{00608\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_a0805a9a1afbe0681df01d40b9778d3a4}{gx\_set\_copy\_window}}(uint32\_t\ x,\ uint32\_t\ y,\ uint32\_t\ width,\ uint32\_t\ height,\ uint32\_t\ xfb\_width);}
+\DoxyCodeLine{00609\ }
+\DoxyCodeLine{00617\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_ae1310ae483f2f3d4c5d00d479b06375f}{gx\_set\_clamp\_mode}}(gx\_clamp\_mode\_t\ mode);}
+\DoxyCodeLine{00618\ }
+\DoxyCodeLine{00626\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_a22f0920782c4dc85756c604703cc71ff}{gx\_set\_gamma}}(gx\_gamma\_t\ gamma);}
+\DoxyCodeLine{00627\ }
+\DoxyCodeLine{00636\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_a73e7ed3b56d4c11ac37cf83d390332e6}{gx\_set\_line\_mode}}(gx\_line\_mode\_t\ line\_mode);}
+\DoxyCodeLine{00637\ }
+\DoxyCodeLine{00663\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_ab173642a8a45b2973c3423919e27c75d}{gx\_set\_copy\_filter}}(\textcolor{keyword}{const}\ uint8\_t\ pattern[12][2],\ \textcolor{keyword}{const}\ uint8\_t\ filter[7]);}
+\DoxyCodeLine{00664\ }
+\DoxyCodeLine{00672\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_a52ebb3aeece811b48858338f304bed97}{gx\_set\_z\_mode}}(\textcolor{keywordtype}{bool}\ enable\_compare,\ gx\_compare\_t\ compare,\ \textcolor{keywordtype}{bool}\ enable\_update);}
+\DoxyCodeLine{00673\ }
+\DoxyCodeLine{00680\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_af920503fb82feabcf097a75bb757f116}{gx\_set\_color\_update}}(\textcolor{keywordtype}{bool}\ update\_color,\ \textcolor{keywordtype}{bool}\ update\_alpha);}
+\DoxyCodeLine{00681\ }
+\DoxyCodeLine{00696\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_a85ed029a7400a1836297d6249df01344}{gx\_enable\_z\_precheck}}(\textcolor{keywordtype}{bool}\ enable);}
+\DoxyCodeLine{00697\ }
+\DoxyCodeLine{00707\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_a30f574c877960778f77020faa006fe83}{gx\_set\_pixel\_format}}(gx\_pixel\_format\_t\ pixels\_format,\ gx\_z\_format\_t\ z\_format);}
+\DoxyCodeLine{00708\ }
+\DoxyCodeLine{00719\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_a20aba150386bc88d082020bbcbb7c241}{gx\_copy\_framebuffer}}(\mbox{\hyperlink{structframebuffer__t}{framebuffer\_t}}*\ framebuffer,\ \textcolor{keywordtype}{bool}\ clear);}
+\DoxyCodeLine{00720\ }
+\DoxyCodeLine{00721\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Textures-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00738\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_ae19dcaf8b4c23bd2e49ef6485d6bb524}{gx\_initialize\_texture}}(\mbox{\hyperlink{structgx__texture__t}{gx\_texture\_t}}*\ texture,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ data,\ gx\_texture\_format\_t\ format,\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height,}
+\DoxyCodeLine{00739\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gx\_texture\_wrap\_t\ s\_wrap,\ gx\_texture\_wrap\_t\ t\_wrap,\ \textcolor{keywordtype}{bool}\ mipmap);}
+\DoxyCodeLine{00740\ }
+\DoxyCodeLine{00752\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gx_8h_a842c44a67035c4dbe2766a6c2c190925}{gx\_flash\_texture}}(gx\_texture\_map\_t\ map,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structgx__texture__t}{gx\_texture\_t}}*\ texture);}
+
+\end{DoxyCode}

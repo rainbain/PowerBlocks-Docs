@@ -1,0 +1,108 @@
+\doxysection{wiimote.\+h}
+\hypertarget{wiimote_8h_source}{}\label{wiimote_8h_source}\index{powerblocks/input/wiimote/wiimote.h@{powerblocks/input/wiimote/wiimote.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{vec3_8h}{powerblocks/core/utils/math/vec3.h}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{vec2_8h}{powerblocks/core/utils/math/vec2.h}}"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{wiimote__extension_8h}{powerblocks/input/wiimote/wiimote\_extension.h}}"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ Flags\ of\ the\ present\ byte\ that\ show\ what}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ WiiMote\ data\ is\ present\ in\ the\ state.}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ Non\ present\ data\ will\ just\ hold\ its\ previous\ state.}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ WIIMOTE\_PRESENT\_BUTTONS\ \ \ \ \ \ \ (1<<0)}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ WIIMOTE\_PRESENT\_ACCELEROMETER\ (1<<1)}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ WIIMOTE\_PRESENT\_IR\ \ \ \ \ \ \ \ \ \ \ \ (1<<2)}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ WIIMOTE\_PRESENT\_IR\_EXTENDED\ \ \ (1<<3)}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ WIIMOTE\_PRESENT\_IR\_FULL\ \ \ \ \ \ \ (1<<4)}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ WIIMOTE\_PRESENT\_EXTENSION\ \ \ \ \ (1<<5)}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ WIIMOTE\_PRESENT\_INTERLACED\ \ \ \ (1<<6)\ }\textcolor{comment}{//\ This\ signals\ the\ data\ was\ collected\ using\ interlaced\ input\ packets}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ WIIMOTE\_BUTTONS\_DPAD\_LEFT\ \ (1<<0)}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ WIIMOTE\_BUTTONS\_DPAD\_RIGHT\ (1<<1)}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ WIIMOTE\_BUTTONS\_DPAD\_DOWN\ \ (1<<2)}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ WIIMOTE\_BUTTONS\_DPAD\_UP\ \ \ \ (1<<3)}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ WIIMOTE\_BUTTONS\_PLUS\ \ \ \ \ \ \ (1<<4)}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ WIIMOTE\_BUTTONS\_TWO\ \ \ \ \ \ \ \ (1<<8)}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ WIIMOTE\_BUTTONS\_ONE\ \ \ \ \ \ \ \ (1<<9)}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ WIIMOTE\_BUTTONS\_B\ \ \ \ \ \ \ \ \ \ (1<<10)}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ WIIMOTE\_BUTTONS\_A\ \ \ \ \ \ \ \ \ \ (1<<11)}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ WIIMOTE\_BUTTONS\_MINUS\ \ \ \ \ \ (1<<12)}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ WIIMOTE\_BUTTONS\_HOME\ \ \ \ \ \ \ (1<<15)}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{comment}{//\ Max\ remotes\ that\ can\ be\ connected.}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ WIIMOTE\_MAX\_REMOTES\ 4}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{comment}{//\ True\ if\ this\ wiimote\ has\ been\ connected.}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ *driver;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{//\ Holds\ what\ kind\ of\ data\ is\ present.}}
+\DoxyCodeLine{00053\ \ \ \ \ uint32\_t\ present;}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{comment}{//\ Include\ the\ "{}Core\ Buttons"{}\ of\ the\ wiimote.\ The\ ones\ on\ the\ remote\ itself}}
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{structwiimote__buttons}{wiimote\_buttons}}\ buttons;}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{comment}{//\ Accelerometer\ Data\ +\ rotation.\ Updated\ if\ accelerometer\ is\ enabled.}}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvec3}{vec3}}\ rectangular;\ \textcolor{comment}{//\ X,\ Y,\ Z\ values\ of\ acceleration}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvec3}{vec3}}\ spherical;\ \ \ \textcolor{comment}{//\ p,\ theta,\ phi\ of\ acceleration.\ Similar\ to\ magnitude,}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvec3}{vec3}}\ orientation;\ \textcolor{comment}{//\ Like\ spherical,\ but\ only\ updated\ when\ the\ force\ is\ \string~1\ G,\ i.e.\ last\ usable\ oriantation\ before\ accelerating.}}
+\DoxyCodeLine{00063\ \ \ \ \ \}\ accelerometer;}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{//\ IR\ Data}}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{comment}{//\ Up\ to\ 4\ IR\ points\ tracked.\ If\ more\ than\ 4\ it\ will\ switch\ between\ them.}}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Included\ in\ all\ IR\ modes,\ 10\ bit\ unsigned}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ visible;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ side;\ \textcolor{comment}{//\ Side\ of\ the\ sensor\ bar\ it\ is\ on.\ 0=left,\ 1=right}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvec2i}{vec2i}}\ position;}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Included\ in\ extended\ and\ full\ mode.\ Size\ 0-\/15}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ size;}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Bounding\ Box,\ and\ intensity\ of\ point.\ Included\ only\ in\ full\ mode.}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvec2i}{vec2i}}\ bbox\_top\_left;}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvec2i}{vec2i}}\ bbox\_bottom\_right;}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ uint8\_t\ intensity;}
+\DoxyCodeLine{00080\ \ \ \ \ \}\ ir\_tracking[4];}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{comment}{//\ Cursor\ position,\ calculated\ from\ IR\ tracking\ if\ enabled.}}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{comment}{//\ Pixel\ position\ on\ screen.\ Can\ extend\ off\ screen.}}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvec2i}{vec2i}}\ pos;}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ distance;\ \textcolor{comment}{//\ distance\ from\ dot\ to\ dot}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ z;\ \textcolor{comment}{//\ Similar\ to\ the\ wiiuse\ one.\ Just\ 1023\ -\/\ distance}}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ yaw;}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ known\_dots;\ \textcolor{comment}{//\ Dots\ seen\ up\ until\ loosing\ tracking.}}
+\DoxyCodeLine{00091\ \ \ \ \ \}\ cursor;}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \mbox{\hyperlink{structwiimote__extension__data__t}{wiimote\_extension\_data\_t}}\ extensions;}
+\DoxyCodeLine{00094\ \}\ \mbox{\hyperlink{structwiimote__t}{wiimote\_t}};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structwiimote__t}{wiimote\_t}}\ WIIMOTES[WIIMOTE\_MAX\_REMOTES];}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \textcolor{comment}{//\ Initializes\ motes\ and\ registers\ drivers.}}
+\DoxyCodeLine{00099\ \textcolor{comment}{//\ Bluetooth\ must\ be\ initialized}}
+\DoxyCodeLine{00100\ \textcolor{comment}{//\ IOS\ Settings\ must\ be\ initialized}}
+\DoxyCodeLine{00101\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ wiimotes\_initialize();}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ wiimote\_poll();}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \textcolor{comment}{//\ Get\ the\ next\ empty\ slot}}
+\DoxyCodeLine{00106\ \textcolor{comment}{//\ -\/1\ if\ not\ slot}}
+\DoxyCodeLine{00107\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ wiimote\_find\_empty\_slot();}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \textcolor{comment}{//\ Sets\ what\ data\ the\ wiimote\ will\ report}}
+\DoxyCodeLine{00110\ \textcolor{comment}{//\ Same\ thing\ as\ the\ "{}present"{}\ stuff}}
+\DoxyCodeLine{00111\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ wiimote\_set\_reporting(\mbox{\hyperlink{structwiimote__t}{wiimote\_t}}*\ wiimote,\ \textcolor{keywordtype}{int}\ present);}
+
+\end{DoxyCode}

@@ -1,0 +1,66 @@
+\doxysection{powerblocks/core/freertos\+\_\+port/port.c File Reference}
+\hypertarget{port_8c}{}\label{port_8c}\index{powerblocks/core/freertos\_port/port.c@{powerblocks/core/freertos\_port/port.c}}
+
+
+Free\+RTOS Power\+Blocks Port.  
+
+
+{\ttfamily \#include "{}Free\+RTOS.\+h"{}}\newline
+{\ttfamily \#include "{}task.\+h"{}}\newline
+{\ttfamily \#include "{}system/system.\+h"{}}\newline
+{\ttfamily \#include "{}system/syscall.\+h"{}}\newline
+{\ttfamily \#include "{}system/exceptions.\+h"{}}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include "{}utils/crash\+\_\+handler.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{port_8c_a1988aa923b19fa6f31c93afa7773f793}\label{port_8c_a1988aa923b19fa6f31c93afa7773f793} 
+void {\bfseries v\+Application\+Get\+Idle\+Task\+Memory} (Static\+Task\+\_\+t \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ppx\+Idle\+Task\+TCBBuffer, Stack\+Type\+\_\+t \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ppx\+Idle\+Task\+Stack\+Buffer, uint32\+\_\+t \texorpdfstring{$\ast$}{*}pul\+Idle\+Task\+Stack\+Size)
+\item 
+\Hypertarget{port_8c_a1e80ecbd3fc2d04f18d6409ffa893a86}\label{port_8c_a1e80ecbd3fc2d04f18d6409ffa893a86} 
+void {\bfseries v\+Application\+Get\+Timer\+Task\+Memory} (Static\+Task\+\_\+t \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ppx\+Timer\+Task\+TCBBuffer, Stack\+Type\+\_\+t \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ppx\+Timer\+Task\+Stack\+Buffer, uint32\+\_\+t \texorpdfstring{$\ast$}{*}pul\+Timer\+Task\+Stack\+Size)
+\item 
+\Hypertarget{port_8c_ade5a8c6666e7413a0355cc252029c5c6}\label{port_8c_ade5a8c6666e7413a0355cc252029c5c6} 
+Base\+Type\+\_\+t {\bfseries x\+Port\+Start\+Scheduler} (void)
+\item 
+\Hypertarget{port_8c_af76f3c0b44c5b5c06fc046a4ee1a6423}\label{port_8c_af76f3c0b44c5b5c06fc046a4ee1a6423} 
+void {\bfseries v\+Port\+End\+Scheduler} (void)
+\item 
+Stack\+Type\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{port_8c_aec89de59377079f7dc6a71dfbefd9a6f}{px\+Port\+Initialise\+Stack}} (Stack\+Type\+\_\+t \texorpdfstring{$\ast$}{*}px\+Top\+Of\+Stack, Task\+Function\+\_\+t px\+Code, void \texorpdfstring{$\ast$}{*}pv\+Parameters)
+\item 
+\Hypertarget{port_8c_add01c927fb689f7ec170e42d47d27927}\label{port_8c_add01c927fb689f7ec170e42d47d27927} 
+void {\bfseries v\+Port\+Yield} (void)
+\item 
+\Hypertarget{port_8c_a54b14b665d04a631991869b21065bf90}\label{port_8c_a54b14b665d04a631991869b21065bf90} 
+void {\bfseries v\+Application\+Stack\+Overflow\+Hook} (Task\+Handle\+\_\+t x\+Task, char \texorpdfstring{$\ast$}{*}pc\+Task\+Name)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{port_8c_ae113e291f4d21fbba54736a45beb2276}\label{port_8c_ae113e291f4d21fbba54736a45beb2276} 
+uint32\+\_\+t {\bfseries freertos\+\_\+isr\+\_\+enabled}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Free\+RTOS Power\+Blocks Port. 
+
+Free\+RTOS Power\+Blocks Port
+
+\begin{DoxyAuthor}{Author}
+Samuel Fitzsimons (rainbain) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{port_8c_aec89de59377079f7dc6a71dfbefd9a6f}\index{port.c@{port.c}!pxPortInitialiseStack@{pxPortInitialiseStack}}
+\index{pxPortInitialiseStack@{pxPortInitialiseStack}!port.c@{port.c}}
+\doxysubsubsection{\texorpdfstring{pxPortInitialiseStack()}{pxPortInitialiseStack()}}
+{\footnotesize\ttfamily \label{port_8c_aec89de59377079f7dc6a71dfbefd9a6f} 
+Stack\+Type\+\_\+t \texorpdfstring{$\ast$}{*} px\+Port\+Initialise\+Stack (\begin{DoxyParamCaption}\item[{Stack\+Type\+\_\+t \texorpdfstring{$\ast$}{*}}]{px\+Top\+Of\+Stack}{, }\item[{Task\+Function\+\_\+t}]{px\+Code}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{pv\+Parameters}{}\end{DoxyParamCaption})}
+
+BUGFIX\+:

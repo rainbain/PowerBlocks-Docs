@@ -1,0 +1,119 @@
+\doxysection{powerblocks/core/ios/ios\+\_\+settings.h File Reference}
+\hypertarget{ios__settings_8h}{}\label{ios__settings_8h}\index{powerblocks/core/ios/ios\_settings.h@{powerblocks/core/ios/ios\_settings.h}}
+
+
+Settings from IOS.  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ios__settings_8h_ade92ddd2d5d93109564ffa0213a048d5}{ios\+\_\+settings\+\_\+initialize}} ()
+\begin{DoxyCompactList}\small\item\em Pull all the settings through IOS. \end{DoxyCompactList}\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{ios__settings_8h_a07d0448803434d616d1efb58c31e3bb8}{ios\+\_\+settings\+\_\+get}} (const char \texorpdfstring{$\ast$}{*}key)
+\begin{DoxyCompactList}\small\item\em Get a feild from the settings file. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{ios__settings_8h_ab7a6a5ac1deaec8f0df0d4c09a7c97e0}{ios\+\_\+config\+\_\+get}} (const char \texorpdfstring{$\ast$}{*}key, void \texorpdfstring{$\ast$}{*}buffer, uint32\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em Get a feild from the config file. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{ios__settings_8h_a41320dbbcf68fb8d748718f8e20c4add}{ios\+\_\+config\+\_\+is\+\_\+progressive\+\_\+scan}} ()
+\begin{DoxyCompactList}\small\item\em Returns true if the default video mode is progressive scan. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{ios__settings_8h_a6595c44547027ee5f18a07a4cb1c1f9c}{ios\+\_\+config\+\_\+is\+\_\+eurgb60}} ()
+\begin{DoxyCompactList}\small\item\em Get a feild from the config file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Settings from IOS. 
+
+Uses the system settings from IOS to get useful system config.
+
+\begin{DoxyAuthor}{Author}
+Samuel Fitzsimons (rainbain) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 @license MIT (see LICENSE file) 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{ios__settings_8h_ab7a6a5ac1deaec8f0df0d4c09a7c97e0}\index{ios\_settings.h@{ios\_settings.h}!ios\_config\_get@{ios\_config\_get}}
+\index{ios\_config\_get@{ios\_config\_get}!ios\_settings.h@{ios\_settings.h}}
+\doxysubsubsection{\texorpdfstring{ios\_config\_get()}{ios\_config\_get()}}
+{\footnotesize\ttfamily \label{ios__settings_8h_ab7a6a5ac1deaec8f0df0d4c09a7c97e0} 
+uint32\+\_\+t ios\+\_\+config\+\_\+get (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{key}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{buffer}{, }\item[{uint32\+\_\+t}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Get a feild from the config file. 
+
+Get a feild from the config file. Returns the length of the value retrieved or zero if it could not be found.
+
+You can see the keys and format here\+: \href{https://wiibrew.org/wiki//shared2/sys/SYSCONF}{\texttt{ https\+://wiibrew.\+org/wiki//shared2/sys/\+SYSCONF}} 
+\begin{DoxyParams}{Parameters}
+{\em key} & The key for the feild. \\
+\hline
+{\em buffer} & Buffer to put the data into \\
+\hline
+{\em size} & Size of the buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value of the key in the setting file. 
+\end{DoxyReturn}
+\Hypertarget{ios__settings_8h_a6595c44547027ee5f18a07a4cb1c1f9c}\index{ios\_settings.h@{ios\_settings.h}!ios\_config\_is\_eurgb60@{ios\_config\_is\_eurgb60}}
+\index{ios\_config\_is\_eurgb60@{ios\_config\_is\_eurgb60}!ios\_settings.h@{ios\_settings.h}}
+\doxysubsubsection{\texorpdfstring{ios\_config\_is\_eurgb60()}{ios\_config\_is\_eurgb60()}}
+{\footnotesize\ttfamily \label{ios__settings_8h_a6595c44547027ee5f18a07a4cb1c1f9c} 
+bool ios\+\_\+config\+\_\+is\+\_\+eurgb60 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Get a feild from the config file. 
+
+Returns true if the default video mode is eurgb60 \begin{DoxyReturn}{Returns}
+\texorpdfstring{$>$}{>}0 = eurgb60 else 50hz 
+\end{DoxyReturn}
+\Hypertarget{ios__settings_8h_a41320dbbcf68fb8d748718f8e20c4add}\index{ios\_settings.h@{ios\_settings.h}!ios\_config\_is\_progressive\_scan@{ios\_config\_is\_progressive\_scan}}
+\index{ios\_config\_is\_progressive\_scan@{ios\_config\_is\_progressive\_scan}!ios\_settings.h@{ios\_settings.h}}
+\doxysubsubsection{\texorpdfstring{ios\_config\_is\_progressive\_scan()}{ios\_config\_is\_progressive\_scan()}}
+{\footnotesize\ttfamily \label{ios__settings_8h_a41320dbbcf68fb8d748718f8e20c4add} 
+bool ios\+\_\+config\+\_\+is\+\_\+progressive\+\_\+scan (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Returns true if the default video mode is progressive scan. 
+
+Returns true if the default video mode is progressive scan. \begin{DoxyReturn}{Returns}
+\texorpdfstring{$>$}{>}0 = Progressive Scan else Interlaced 
+\end{DoxyReturn}
+\Hypertarget{ios__settings_8h_a07d0448803434d616d1efb58c31e3bb8}\index{ios\_settings.h@{ios\_settings.h}!ios\_settings\_get@{ios\_settings\_get}}
+\index{ios\_settings\_get@{ios\_settings\_get}!ios\_settings.h@{ios\_settings.h}}
+\doxysubsubsection{\texorpdfstring{ios\_settings\_get()}{ios\_settings\_get()}}
+{\footnotesize\ttfamily \label{ios__settings_8h_a07d0448803434d616d1efb58c31e3bb8} 
+const char \texorpdfstring{$\ast$}{*} ios\+\_\+settings\+\_\+get (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{key}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Get a feild from the settings file. 
+
+Get a feild from the settings file. Returns NULL if the key is not found.
+
+You can see the keys here\+: \href{https://wiibrew.org/wiki//title/00000001/00000002/data/setting.txt}{\texttt{ https\+://wiibrew.\+org/wiki//title/00000001/00000002/data/setting.\+txt}} 
+\begin{DoxyParams}{Parameters}
+{\em key} & The key for the feild. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value of the key in the setting file. 
+\end{DoxyReturn}
+\Hypertarget{ios__settings_8h_ade92ddd2d5d93109564ffa0213a048d5}\index{ios\_settings.h@{ios\_settings.h}!ios\_settings\_initialize@{ios\_settings\_initialize}}
+\index{ios\_settings\_initialize@{ios\_settings\_initialize}!ios\_settings.h@{ios\_settings.h}}
+\doxysubsubsection{\texorpdfstring{ios\_settings\_initialize()}{ios\_settings\_initialize()}}
+{\footnotesize\ttfamily \label{ios__settings_8h_ade92ddd2d5d93109564ffa0213a048d5} 
+void ios\+\_\+settings\+\_\+initialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Pull all the settings through IOS. 
+
+Pull all the settings through IOS. Usually called by ios\+\_\+initialize. 

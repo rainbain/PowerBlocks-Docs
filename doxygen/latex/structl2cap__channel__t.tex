@@ -1,0 +1,58 @@
+\doxysection{l2cap\+\_\+channel\+\_\+t Struct Reference}
+\hypertarget{structl2cap__channel__t}{}\label{structl2cap__channel__t}\index{l2cap\_channel\_t@{l2cap\_channel\_t}}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structl2cap__channel__t_a78625f98e110a9538abf018d5f1b9dba}\label{structl2cap__channel__t_a78625f98e110a9538abf018d5f1b9dba} 
+void \texorpdfstring{$\ast$}{*} {\bfseries device}
+\item 
+\Hypertarget{structl2cap__channel__t_ad74e5e87cfa30a2d81bd5f12ea4b19d7}\label{structl2cap__channel__t_ad74e5e87cfa30a2d81bd5f12ea4b19d7} 
+uint16\+\_\+t {\bfseries sid}
+\item 
+\Hypertarget{structl2cap__channel__t_a414caae8657323c1124e1c8a854fe3e6}\label{structl2cap__channel__t_a414caae8657323c1124e1c8a854fe3e6} 
+uint16\+\_\+t {\bfseries did}
+\item 
+\Hypertarget{structl2cap__channel__t_a85e2c3b8235c3641a9f359a1b4954b75}\label{structl2cap__channel__t_a85e2c3b8235c3641a9f359a1b4954b75} 
+Semaphore\+Handle\+\_\+t {\bfseries on\+\_\+complete\+\_\+packet}
+\item 
+\Hypertarget{structl2cap__channel__t_a5386a67d6ad67a8ced003ea24ec31295}\label{structl2cap__channel__t_a5386a67d6ad67a8ced003ea24ec31295} 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} {\bfseries buffer}
+\item 
+\Hypertarget{structl2cap__channel__t_a44c2f124ad1a3bac07c73df7885ed14b}\label{structl2cap__channel__t_a44c2f124ad1a3bac07c73df7885ed14b} 
+int {\bfseries buffer\+\_\+length}
+\item 
+\Hypertarget{structl2cap__channel__t_a63677612a155ecd8811e3487f80eadf7}\label{structl2cap__channel__t_a63677612a155ecd8811e3487f80eadf7} 
+int {\bfseries fifo\+\_\+write\+\_\+head}
+\item 
+\Hypertarget{structl2cap__channel__t_a02253531433d51a2b6a05019e17385fb}\label{structl2cap__channel__t_a02253531433d51a2b6a05019e17385fb} 
+int {\bfseries fifo\+\_\+write\+\_\+head\+\_\+packet}
+\item 
+\Hypertarget{structl2cap__channel__t_a7cf5cc71abd76f28042e7405ac059cf7}\label{structl2cap__channel__t_a7cf5cc71abd76f28042e7405ac059cf7} 
+int {\bfseries fifo\+\_\+read\+\_\+head}
+\item 
+\Hypertarget{structl2cap__channel__t_ac65d6176adf47af793cd335f5b0d1863}\label{structl2cap__channel__t_ac65d6176adf47af793cd335f5b0d1863} 
+volatile \mbox{\hyperlink{structl2cap__signal__t}{l2cap\+\_\+signal\+\_\+t}} \texorpdfstring{$\ast$}{*} {\bfseries incoming\+\_\+signal}
+\item 
+\Hypertarget{structl2cap__channel__t_a93a9842ab04aca10674af9e986182cbc}\label{structl2cap__channel__t_a93a9842ab04aca10674af9e986182cbc} 
+volatile uint8\+\_\+t {\bfseries incoming\+\_\+id}
+\item 
+\Hypertarget{structl2cap__channel__t_ac343339d4a68a411868fca36245ab055}\label{structl2cap__channel__t_ac343339d4a68a411868fca36245ab055} 
+Semaphore\+Handle\+\_\+t {\bfseries signal\+\_\+waiter}
+\item 
+\Hypertarget{structl2cap__channel__t_a1f0d588c15dc6d44bc615307598f665e}\label{structl2cap__channel__t_a1f0d588c15dc6d44bc615307598f665e} 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>l2cap\_channel\_event\_t {\bfseries event}\\
+\>void \texorpdfstring{$\ast$}{*} {\bfseries data}\\
+\} {\bfseries event\_packet\_available}\\
+
+\end{tabbing}\item 
+\Hypertarget{structl2cap__channel__t_a73b5755e08466a2ab3c566b637eb8e51}\label{structl2cap__channel__t_a73b5755e08466a2ab3c566b637eb8e51} 
+Static\+Semaphore\+\_\+t {\bfseries semaphore\+\_\+data} \mbox{[}2\mbox{]}
+\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+powerblocks/core/bluetooth/\mbox{\hyperlink{l2cap_8h}{l2cap.\+h}}\end{DoxyCompactItemize}

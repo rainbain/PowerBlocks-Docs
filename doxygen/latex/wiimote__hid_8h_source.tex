@@ -1,0 +1,113 @@
+\doxysection{wiimote\+\_\+hid.\+h}
+\hypertarget{wiimote__hid_8h_source}{}\label{wiimote__hid_8h_source}\index{powerblocks/input/wiimote/wiimote\_hid.h@{powerblocks/input/wiimote/wiimote\_hid.h}}
+\mbox{\hyperlink{wiimote__hid_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{l2cap_8h}{powerblocks/core/bluetooth/l2cap.h}}"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{hci_8h}{powerblocks/core/bluetooth/hci.h}}"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}powerblocks/input/wiimote/wiimote.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{wiimote__extension_8h}{powerblocks/input/wiimote/wiimote\_extension.h}}"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}FreeRTOS.h"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}semphr.h"{}}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ WIIMOTE\_REPORT\_LEDS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x11\ }\textcolor{comment}{//\ Set\ the\ leds\ on\ the\ controller}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ WIIMOTE\_REPORT\_REPORT\_MODE\ \ \ \ \ \ \ \ \ \ \ \ \ 0x12\ }\textcolor{comment}{//\ Used\ to\ make/configure\ reports}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ WIIMOTE\_REPORT\_ENABLE\_CAMERA\_CLOCK\ \ \ \ \ 0x13\ }\textcolor{comment}{//\ Enables\ 24\ MHz\ clock\ to\ the\ internal\ camera}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ WIIMOTE\_REPORT\_STATUS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x15\ }\textcolor{comment}{//\ Request\ status\ information}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ WIIMOTE\_REPORT\_WRITE\_MEMORY\ \ \ \ \ \ \ \ \ \ \ \ 0x16\ }\textcolor{comment}{//\ Writes\ to\ the\ internal\ memory\ of\ the\ wiimote}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ WIIMOTE\_REPORT\_READ\_MEMORY\ \ \ \ \ \ \ \ \ \ \ \ \ 0x17\ }\textcolor{comment}{//\ Request\ to\ read\ memory\ data}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ WIIMOTE\_REPORT\_ENABLE\_CAMERA\ \ \ \ \ \ \ \ \ \ \ 0x1A\ }\textcolor{comment}{//\ Activates\ the\ camera\ enable\ line}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ WIIMOTE\_REPORT\_STATUS\_INFO\ \ \ \ \ \ \ \ \ \ \ \ \ 0x20\ }\textcolor{comment}{//\ Reply\ to\ status\ request,\ also\ when\ it\ changes\ states}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ WIIMOTE\_REPORT\_READ\_MEMORY\_DATA\ \ \ \ \ \ \ \ 0x21\ }\textcolor{comment}{//\ Reply\ to\ the\ read\ memory\ report.}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ WIIMOTE\_REPORT\_ACKNOWLEDGE\_OUTPUT\ \ \ \ \ \ 0x22\ }\textcolor{comment}{//\ Required\ acknowledgement\ to\ write\ memory\ report}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ WIIMOTE\_REPORT\_BUTTONS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x30\ }\textcolor{comment}{//\ Core\ buttons\ data}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ WIIMOTE\_REPORT\_BUTTONS\_ACCL\ \ \ \ \ \ \ \ \ \ \ \ 0x31\ }\textcolor{comment}{//\ Core\ Buttons\ +\ Accelerometer}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ WIIMOTE\_REPORT\_BUTTONS\_EXT8\ \ \ \ \ \ \ \ \ \ \ \ 0x32\ }\textcolor{comment}{//\ Core\ Buttons\ +\ 8\ Extension\ Bytes}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ WIIMOTE\_REPORT\_BUTTONS\_ACCL\_IR12\ \ \ \ \ \ \ 0X33\ }\textcolor{comment}{//\ Core\ Buttons\ +\ Accelerometer\ +\ 8\ Extension\ Bytes}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ WIIMOTE\_REPORT\_BUTTONS\_EXT19\ \ \ \ \ \ \ \ \ \ \ 0X34\ }\textcolor{comment}{//\ Core\ Buttons\ +\ 19\ Extension\ Bytes}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ WIIMOTE\_REPORT\_BUTTONS\_ACCL\_EXT16\ \ \ \ \ \ 0x35\ }\textcolor{comment}{//\ Core\ Buttons\ +\ Accelerometer\ +\ 16\ Extension\ Bytes}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ WIIMOTE\_REPORT\_BUTTONS\_IR10\_EXT9\ \ \ \ \ \ \ 0x36\ }\textcolor{comment}{//\ Core\ Buttons\ +\ 10\ IR\ Bytes\ +\ 9\ Extension\ Bytes}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ WIIMOTE\_REPORT\_BUTTONS\_ACCEL\_IR10\_EXT6\ 0x37\ }\textcolor{comment}{//\ Core\ Buttons\ +\ Accelerometer\ +\ 10\ IR\ Bytes\ +\ 6\ Extension\ Bytes}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ WIIMOTE\_REPORT\_EXT21\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x3D\ }\textcolor{comment}{//\ 21\ Extension\ Bytes}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ WIIMOTE\_REPORT\_INTERLEAVED\_A\ \ \ \ \ \ \ \ \ \ \ 0x3E\ }\textcolor{comment}{//\ Interleaved\ Buttons\ and\ Accelerometer\ with\ 36\ IR}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ WIIMOTE\_REPORT\_INTERLEAVED\_B\ \ \ \ \ \ \ \ \ \ \ 0x3F\ }\textcolor{comment}{//\ Other\ end\ of\ Interleaved\ Data}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ WIIMOTE\_FLAGS\_BATTERY\_NEAR\_EMPTY\ =\ 0X01,}
+\DoxyCodeLine{00046\ \ \ \ \ WIIMOTE\_FLAGS\_EXTENSION\_CONNECTED\ =\ 0X02,}
+\DoxyCodeLine{00047\ \ \ \ \ WIIMOTE\_FLAGS\_SPEAKER\_ENABLED\ =\ 0X04,}
+\DoxyCodeLine{00048\ \ \ \ \ WIIMOTE\_FLAGS\_IR\_CAMERA\_ENABLED\ =\ 0X08,}
+\DoxyCodeLine{00049\ \ \ \ \ WIIMOTE\_FLAGS\_LED1\ =\ 0X10,}
+\DoxyCodeLine{00050\ \ \ \ \ WIIMOTE\_FLAGS\_LED2\ =\ 0X20,}
+\DoxyCodeLine{00051\ \ \ \ \ WIIMOTE\_FLAGS\_LED3\ =\ 0X40,}
+\DoxyCodeLine{00052\ \ \ \ \ WIIMOTE\_FLAGS\_LEF4\ =\ 0X80}
+\DoxyCodeLine{00053\ \}\ wiimote\_flags\_t;}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{comment}{//\ This\ is\ the\ core\ data\ structure\ of\ the\ wiimote}}
+\DoxyCodeLine{00056\ \textcolor{comment}{//\ With\ all\ your\ wiimote\ information\ and\ status.}}
+\DoxyCodeLine{00057\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ uint16\_t\ core\_buttons;\ \textcolor{comment}{//\ The\ main\ buttons\ of\ the\ wiimote.\ Only\ updated\ during\ status\ reports.\ So\ don't\ use.}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ wiimote\_flags\_t\ flags;\ \textcolor{comment}{//\ Contains\ LED\ and\ state\ information}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ uint8\_t\ battery\_level;}
+\DoxyCodeLine{00062\ \ \ \ \ \}\ core\_state;}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ uint16\_t\ accel\_zero[3];}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ uint16\_t\ accel\_one[3];}
+\DoxyCodeLine{00067\ \ \ \ \ \}\ calibration;}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structwiimote__extension__mapper__t}{wiimote\_extension\_mapper\_t}}*\ ext\_mapper;}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ uint8\_t\ report\_type;}
+\DoxyCodeLine{00072\ \ \ \ \ uint8\_t\ data\_report[42];\ \textcolor{comment}{//\ Max\ report\ size\ is\ 21,\ but\ interleaved\ allows\ for\ 2\ to\ make\ 1}}
+\DoxyCodeLine{00073\ \}\ \mbox{\hyperlink{structwiimote__raw__t}{wiimote\_raw\_t}};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{int}\ slot;\ \textcolor{comment}{//\ Wiimote\ slot,\ or\ -\/1\ if\ there\ is\ not\ slot\ its\ been\ assigned\ to.}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \mbox{\hyperlink{structl2cap__device__t}{l2cap\_device\_t}}\ device;}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \mbox{\hyperlink{structl2cap__channel__t}{l2cap\_channel\_t}}\ control\_channel;}
+\DoxyCodeLine{00081\ \ \ \ \ \mbox{\hyperlink{structl2cap__channel__t}{l2cap\_channel\_t}}\ interrupt\_channel;}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ uint8\_t\ wiimote\_control\_channel\_buffer[16];\ \textcolor{comment}{//\ This\ channel\ is\ barely\ used\ if\ at\ all.}}
+\DoxyCodeLine{00084\ \ \ \ \ uint8\_t\ wiimote\_interrupt\_channel\_buffer[256];}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ uint8\_t\ set\_report\_mode;}
+\DoxyCodeLine{00087\ \ \ \ \ uint8\_t\ set\_ir\_mode;}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{comment}{//\ Internal\ state}}
+\DoxyCodeLine{00090\ \ \ \ \ SemaphoreHandle\_t\ internal\_state\_lock;}
+\DoxyCodeLine{00091\ \ \ \ \ \mbox{\hyperlink{structwiimote__raw__t}{wiimote\_raw\_t}}\ internal\_state;}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ StaticSemaphore\_t\ semaphore\_data[1];}
+\DoxyCodeLine{00094\ \}\ \mbox{\hyperlink{structwiimote__hid__t}{wiimote\_hid\_t}};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \textcolor{comment}{//\ Attempts\ to\ connect\ to\ the\ bluetooth\ device\ and\ setup\ everything}}
+\DoxyCodeLine{00097\ \textcolor{comment}{//\ Returns\ a\ bluetooth\ error\ code\ if\ failed}}
+\DoxyCodeLine{00098\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ wiimote\_hid\_initialize(\mbox{\hyperlink{structwiimote__hid__t}{wiimote\_hid\_t}}*\ wiimote,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structhci__discovered__device__info__t}{hci\_discovered\_device\_info\_t}}*\ discovery,\ \textcolor{keywordtype}{int}\ slot);}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \textcolor{comment}{//\ Closes\ a\ connection\ to\ a\ wiimote}}
+\DoxyCodeLine{00101\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ wiimote\_hid\_close(\mbox{\hyperlink{structwiimote__hid__t}{wiimote\_hid\_t}}*\ wiimote);}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \textcolor{comment}{//\ Sets\ what\ data\ is\ reported\ back}}
+\DoxyCodeLine{00104\ \textcolor{comment}{//\ You\ usually\ want\ to\ update\ the\ IR\ mode\ too.}}
+\DoxyCodeLine{00105\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ wiimote\_hid\_set\_report(\mbox{\hyperlink{structwiimote__hid__t}{wiimote\_hid\_t}}*\ wiimote,\ uint8\_t\ report\_type,\ \textcolor{keywordtype}{bool}\ update\_ir\_mode);}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \textcolor{comment}{//\ Driver\ filter\ callback}}
+\DoxyCodeLine{00108\ \textcolor{comment}{//\ Will\ allow\ connection\ if\ a\ valid\ wiimote\ and\ a\ slot\ is\ available.}}
+\DoxyCodeLine{00109\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ wiimote\_hid\_driver\_filter(\textcolor{keyword}{const}\ \mbox{\hyperlink{structhci__discovered__device__info__t}{hci\_discovered\_device\_info\_t}}*\ device,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ device\_name);}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \textcolor{comment}{//\ Called\ to\ initiate\ a\ driver}}
+\DoxyCodeLine{00112\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}*\ wiimote\_hid\_driver\_initialize(\textcolor{keyword}{const}\ \mbox{\hyperlink{structhci__discovered__device__info__t}{hci\_discovered\_device\_info\_t}}*\ device);}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \textcolor{comment}{//\ Called\ when\ the\ device\ needs\ to\ go}}
+\DoxyCodeLine{00115\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ wiimote\_hid\_driver\_free\_device(\textcolor{keywordtype}{void}*\ instance);}
+
+\end{DoxyCode}

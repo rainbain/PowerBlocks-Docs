@@ -1,0 +1,90 @@
+\doxysection{powerblocks/core/utils/math/matrix4.c File Reference}
+\hypertarget{matrix4_8c}{}\label{matrix4_8c}\index{powerblocks/core/utils/math/matrix4.c@{powerblocks/core/utils/math/matrix4.c}}
+
+
+4x4 Matrices  
+
+
+{\ttfamily \#include "{}matrix4.\+h"{}}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{matrix4_8c_adef2711b1a7bd2005c1c288d416b84cf}{matrix4\+\_\+perspective}} (matrix4 mtx, float fov, float aspect, float near, float far)
+\begin{DoxyCompactList}\small\item\em Generate a perspective projection matrix. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{matrix4_8c_ab112b76d2b4781e8674c545269adb438}{matrix4\+\_\+orthographic}} (matrix4 mtx, float left, float right, float bottom, float top, float near, float far)
+\begin{DoxyCompactList}\small\item\em Generate a orthographic projection matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+4x4 Matrices 
+
+Your standard column major 4x4 matrix you all know and love.
+
+\begin{DoxyAuthor}{Author}
+Samuel Fitzsimons (rainbain) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 @license MIT (see LICENSE file) 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{matrix4_8c_ab112b76d2b4781e8674c545269adb438}\index{matrix4.c@{matrix4.c}!matrix4\_orthographic@{matrix4\_orthographic}}
+\index{matrix4\_orthographic@{matrix4\_orthographic}!matrix4.c@{matrix4.c}}
+\doxysubsubsection{\texorpdfstring{matrix4\_orthographic()}{matrix4\_orthographic()}}
+{\footnotesize\ttfamily \label{matrix4_8c_ab112b76d2b4781e8674c545269adb438} 
+void matrix4\+\_\+orthographic (\begin{DoxyParamCaption}\item[{matrix4}]{mtx}{, }\item[{float}]{left}{, }\item[{float}]{right}{, }\item[{float}]{bottom}{, }\item[{float}]{top}{, }\item[{float}]{near}{, }\item[{float}]{far}{}\end{DoxyParamCaption})}
+
+
+
+Generate a orthographic projection matrix. 
+
+Transforms points to screen space with no perspective adjustment. So objects remain the same size no matter the Z. Z is treated like 2D layers.
+
+Each feild shows the corners of the 2D space that the points take place in, and will then be projected to the screen.
+
+Points outside are clipped.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mtx} & Matrix to save output into \\
+\hline
+{\em left} & Left most boundary. \\
+\hline
+{\em right} & Right most boundary. \\
+\hline
+{\em bottom} & Bottom most boundary. \\
+\hline
+{\em top} & top most boundary. \\
+\hline
+{\em near} & Near Z of the view area. Things outside of it will be clipped. \\
+\hline
+{\em far} & Far Z of the view area. Things outside of it will be clipped. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{matrix4_8c_adef2711b1a7bd2005c1c288d416b84cf}\index{matrix4.c@{matrix4.c}!matrix4\_perspective@{matrix4\_perspective}}
+\index{matrix4\_perspective@{matrix4\_perspective}!matrix4.c@{matrix4.c}}
+\doxysubsubsection{\texorpdfstring{matrix4\_perspective()}{matrix4\_perspective()}}
+{\footnotesize\ttfamily \label{matrix4_8c_adef2711b1a7bd2005c1c288d416b84cf} 
+void matrix4\+\_\+perspective (\begin{DoxyParamCaption}\item[{matrix4}]{mtx}{, }\item[{float}]{fov}{, }\item[{float}]{aspect}{, }\item[{float}]{near}{, }\item[{float}]{far}{}\end{DoxyParamCaption})}
+
+
+
+Generate a perspective projection matrix. 
+
+Used to setup a perspective projection matrix to transform points into screen space such that they appear farther as they go into (-\/Z) of the screen.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mtx} & Matrix to save output into \\
+\hline
+{\em fov} & Feild of view in radians. \\
+\hline
+{\em aspect} & Aspect ration of the screen. Width / Height \\
+\hline
+{\em near} & Near Z of the view area. Things outside of it will be clipped. \\
+\hline
+{\em far} & Far Z of the view area. Things outside of it will be clipped. \\
+\hline
+\end{DoxyParams}

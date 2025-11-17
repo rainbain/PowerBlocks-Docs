@@ -1,0 +1,127 @@
+\doxysection{powerblocks/core/system/system.c File Reference}
+\hypertarget{system_8c}{}\label{system_8c}\index{powerblocks/core/system/system.c@{powerblocks/core/system/system.c}}
+
+
+Access parts of the base system.  
+
+
+{\ttfamily \#include "{}system.\+h"{}}\newline
+{\ttfamily \#include "{}Free\+RTOS.\+h"{}}\newline
+{\ttfamily \#include "{}task.\+h"{}}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include "{}utils/log.\+h"{}}\newline
+{\ttfamily \#include "{}exceptions.\+h"{}}\newline
+{\ttfamily \#include "{}gpio.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{system_8c_acdef7a1fd863a6d3770c1268cb06add3}\label{system_8c_acdef7a1fd863a6d3770c1268cb06add3} 
+void {\bfseries main} ()
+\item 
+void \mbox{\hyperlink{system_8c_ae25ed0d22d925d0b45ad6143ea9a75fd}{system\+\_\+delay\+\_\+int}} (uint64\+\_\+t ticks)
+\begin{DoxyCompactList}\small\item\em Sleeps for a certain number of ticks. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{system_8c_a7c5e9e16601a437cad52677f15cc49f6}{system\+\_\+aligned\+\_\+malloc}} (uint32\+\_\+t bytes, uint32\+\_\+t alignment)
+\begin{DoxyCompactList}\small\item\em Allocate memory with alignment. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{system_8c_a9c68883bc316dd322bbda387d0321c4b}{system\+\_\+aligned\+\_\+free}} (void \texorpdfstring{$\ast$}{*}ptr)
+\begin{DoxyCompactList}\small\item\em Free allocated memory with alignment. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{system_8c_a2e1b0877a1df13187c6aadf8f554d877}{system\+\_\+initialize}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{system_8c_ad4df50c1cd712e41557442f42c42563f}{system\+\_\+get\+\_\+boot\+\_\+path}} (const char \texorpdfstring{$\ast$}{*}device, char \texorpdfstring{$\ast$}{*}buffer, size\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Looks in the argv command line for a specific boot path. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Access parts of the base system. 
+
+Access parts of the base system. Like time and such.
+
+\begin{DoxyAuthor}{Author}
+Samuel Fitzsimons (rainbain) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 @license MIT (see LICENSE file) 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{system_8c_a9c68883bc316dd322bbda387d0321c4b}\index{system.c@{system.c}!system\_aligned\_free@{system\_aligned\_free}}
+\index{system\_aligned\_free@{system\_aligned\_free}!system.c@{system.c}}
+\doxysubsubsection{\texorpdfstring{system\_aligned\_free()}{system\_aligned\_free()}}
+{\footnotesize\ttfamily \label{system_8c_a9c68883bc316dd322bbda387d0321c4b} 
+void system\+\_\+aligned\+\_\+free (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{ptr}{}\end{DoxyParamCaption})}
+
+
+
+Free allocated memory with alignment. 
+
+Free allocated memory with alignment. \Hypertarget{system_8c_a7c5e9e16601a437cad52677f15cc49f6}\index{system.c@{system.c}!system\_aligned\_malloc@{system\_aligned\_malloc}}
+\index{system\_aligned\_malloc@{system\_aligned\_malloc}!system.c@{system.c}}
+\doxysubsubsection{\texorpdfstring{system\_aligned\_malloc()}{system\_aligned\_malloc()}}
+{\footnotesize\ttfamily \label{system_8c_a7c5e9e16601a437cad52677f15cc49f6} 
+void \texorpdfstring{$\ast$}{*} system\+\_\+aligned\+\_\+malloc (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{bytes}{, }\item[{uint32\+\_\+t}]{alignment}{}\end{DoxyParamCaption})}
+
+
+
+Allocate memory with alignment. 
+
+Allocate memory aligned to a certain number of bytes. A lot of hardware requires aligned memory. Usually 32 bytes.
+
+Must be a power of 2.
+
+Offsets the pointer by the alignment and stores the original unaligned pointer before the pointer returned. \Hypertarget{system_8c_ae25ed0d22d925d0b45ad6143ea9a75fd}\index{system.c@{system.c}!system\_delay\_int@{system\_delay\_int}}
+\index{system\_delay\_int@{system\_delay\_int}!system.c@{system.c}}
+\doxysubsubsection{\texorpdfstring{system\_delay\_int()}{system\_delay\_int()}}
+{\footnotesize\ttfamily \label{system_8c_ae25ed0d22d925d0b45ad6143ea9a75fd} 
+void system\+\_\+delay\+\_\+int (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{ticks}{}\end{DoxyParamCaption})}
+
+
+
+Sleeps for a certain number of ticks. 
+
+Waits for a certain number of ticks to elapse.
+
+No interrupts version.
+
+Recommend using Free\+RTOS v\+Task\+Delay instead.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ticks} & Number of ticks to wait for \\
+\hline
+\end{DoxyParams}
+\Hypertarget{system_8c_ad4df50c1cd712e41557442f42c42563f}\index{system.c@{system.c}!system\_get\_boot\_path@{system\_get\_boot\_path}}
+\index{system\_get\_boot\_path@{system\_get\_boot\_path}!system.c@{system.c}}
+\doxysubsubsection{\texorpdfstring{system\_get\_boot\_path()}{system\_get\_boot\_path()}}
+{\footnotesize\ttfamily \label{system_8c_ad4df50c1cd712e41557442f42c42563f} 
+void system\+\_\+get\+\_\+boot\+\_\+path (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{device}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{buffer}{, }\item[{size\+\_\+t}]{length}{}\end{DoxyParamCaption})}
+
+
+
+Looks in the argv command line for a specific boot path. 
+
+When mounting a file system, this can be used to change the directory into the one the program was launched from if the file system is the one its running from.
+
+For example passing a device of "{}sd"{} into device, it will fill buffer with the {\ttfamily /apps/my\+\_\+app/} path if the game was launched from the sd. If not it will return {\ttfamily /} into it.
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Boot device \\
+\hline
+{\em buffer} & Outputted path buffer \\
+\hline
+{\em length} & Length of path buffer. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{system_8c_a2e1b0877a1df13187c6aadf8f554d877}\index{system.c@{system.c}!system\_initialize@{system\_initialize}}
+\index{system\_initialize@{system\_initialize}!system.c@{system.c}}
+\doxysubsubsection{\texorpdfstring{system\_initialize()}{system\_initialize()}}
+{\footnotesize\ttfamily \label{system_8c_a2e1b0877a1df13187c6aadf8f554d877} 
+void system\+\_\+initialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the system. 
+
+Initializes the system. Called from start.\+s, so this all happens before the C program starts running. 

@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['hci_2ec_0',['hci.c',['../hci_8c.html',1,'']]],
+  ['hci_2eh_1',['hci.h',['../hci_8h.html',1,'']]],
+  ['hci_5facl_5fpacket_5ft_2',['hci_acl_packet_t',['../structhci__acl__packet__t.html',1,'']]],
+  ['hci_5fbegin_5fdiscovery_3',['hci_begin_discovery',['../hci_8c.html#a32b40898ca4e5f0fa9e74632e1ade5c7',1,'hci_begin_discovery(uint32_t lap, uint8_t length, uint8_t responses, hci_discovered_device_handler on_discovered, hci_discovery_complete_handler on_complete, void *user_data):&#160;hci.c'],['../hci_8h.html#a32b40898ca4e5f0fa9e74632e1ade5c7',1,'hci_begin_discovery(uint32_t lap, uint8_t length, uint8_t responses, hci_discovered_device_handler on_discovered, hci_discovery_complete_handler on_complete, void *user_data):&#160;hci.c']]],
+  ['hci_5fbuffer_5fsizes_5ft_4',['hci_buffer_sizes_t',['../structhci__buffer__sizes__t.html',1,'']]],
+  ['hci_5fcancel_5fdiscovery_5',['hci_cancel_discovery',['../hci_8c.html#a553ec0ac78516890131a5986d5ae2a9d',1,'hci_cancel_discovery():&#160;hci.c'],['../hci_8h.html#a553ec0ac78516890131a5986d5ae2a9d',1,'hci_cancel_discovery():&#160;hci.c']]],
+  ['hci_5fclose_6',['hci_close',['../hci_8c.html#a4b16d7840a13fb4b45bf675a6ac467d9',1,'hci_close():&#160;hci.c'],['../hci_8h.html#a4b16d7840a13fb4b45bf675a6ac467d9',1,'hci_close():&#160;hci.c']]],
+  ['hci_5fcommand_5fbuffer_7',['hci_command_buffer',['../structhci__command__buffer.html',1,'']]],
+  ['hci_5fcommand_5frequest_8',['hci_command_request',['../structhci__command__request.html',1,'']]],
+  ['hci_5fcreate_5fconnection_9',['hci_create_connection',['../hci_8c.html#a64bb7fcb5fa4620ab6d7ae44815f6859',1,'hci_create_connection(const hci_discovered_device_info_t *device, uint16_t *handle):&#160;hci.c'],['../hci_8h.html#a64bb7fcb5fa4620ab6d7ae44815f6859',1,'hci_create_connection(const hci_discovered_device_info_t *device, uint16_t *handle):&#160;hci.c']]],
+  ['hci_5fdecode_5freceived_5facl_10',['hci_decode_received_acl',['../hci_8c.html#ab8356427c489c88d983e3029935b0c0d',1,'hci_decode_received_acl(uint16_t *handle, hci_acl_packet_boundary_flag_t *pb, hci_acl_packet_broadcast_flag_t *bc, uint16_t *length, const hci_acl_packet_t *acl_buffer):&#160;hci.c'],['../hci_8h.html#ab8356427c489c88d983e3029935b0c0d',1,'hci_decode_received_acl(uint16_t *handle, hci_acl_packet_boundary_flag_t *pb, hci_acl_packet_broadcast_flag_t *bc, uint16_t *length, const hci_acl_packet_t *acl_buffer):&#160;hci.c']]],
+  ['hci_5fdiscovered_5fdevice_5fhandler_11',['hci_discovered_device_handler',['../hci_8h.html#ad272cc1225ecc42e0df1a85037ae8512',1,'hci.h']]],
+  ['hci_5fdiscovered_5fdevice_5finfo_5ft_12',['hci_discovered_device_info_t',['../structhci__discovered__device__info__t.html',1,'']]],
+  ['hci_5fdiscovery_5fcomplete_5fhandler_13',['hci_discovery_complete_handler',['../hci_8h.html#a4d3d95b68d0997c3c937cec5b1eaf960',1,'hci.h']]],
+  ['hci_5fevent_14',['hci_event',['../structhci__event.html',1,'']]],
+  ['hci_5fget_5fremote_5fname_15',['hci_get_remote_name',['../hci_8c.html#aa306fd34fe4e74c3bf54b10403c088c6',1,'hci_get_remote_name(const hci_discovered_device_info_t *device, uint8_t *name):&#160;hci.c'],['../hci_8h.html#aa306fd34fe4e74c3bf54b10403c088c6',1,'hci_get_remote_name(const hci_discovered_device_info_t *device, uint8_t *name):&#160;hci.c']]],
+  ['hci_5finitialize_16',['hci_initialize',['../hci_8c.html#a9060d7f439b8630abb1c8b77d910ba25',1,'hci_initialize(const char *device):&#160;hci.c'],['../hci_8h.html#a9060d7f439b8630abb1c8b77d910ba25',1,'hci_initialize(const char *device):&#160;hci.c']]],
+  ['hci_5flocal_5fversion_5finformation_5ft_17',['hci_local_version_information_t',['../structhci__local__version__information__t.html',1,'']]],
+  ['hci_5freceive_5facl_5fasync_18',['hci_receive_acl_async',['../hci_8c.html#af3918df454b0d3aef8f99722f056f5f9',1,'hci_receive_acl_async(hci_acl_packet_t *acl_buffer, uint8_t *ipc_buffer, ipc_async_handler_t handler, void *params):&#160;hci.c'],['../hci_8h.html#af3918df454b0d3aef8f99722f056f5f9',1,'hci_receive_acl_async(hci_acl_packet_t *acl_buffer, uint8_t *ipc_buffer, ipc_async_handler_t handler, void *params):&#160;hci.c']]],
+  ['hci_5freset_19',['hci_reset',['../hci_8c.html#a03b5e03bc25d2bc2cb6a24397be097c3',1,'hci_reset():&#160;hci.c'],['../hci_8h.html#a03b5e03bc25d2bc2cb6a24397be097c3',1,'hci_reset():&#160;hci.c']]],
+  ['hci_5fsend_5facl_20',['hci_send_acl',['../hci_8c.html#a0237e9b843f7a2506862f0cd31f48133',1,'hci_send_acl(uint16_t handle, hci_acl_packet_boundary_flag_t pb, hci_acl_packet_broadcast_flag_t bc, uint16_t length):&#160;hci.c'],['../hci_8h.html#a0237e9b843f7a2506862f0cd31f48133',1,'hci_send_acl(uint16_t handle, hci_acl_packet_boundary_flag_t pb, hci_acl_packet_broadcast_flag_t bc, uint16_t length):&#160;hci.c']]]
+];

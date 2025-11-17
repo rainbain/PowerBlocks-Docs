@@ -1,0 +1,34 @@
+\doxysection{powerblocks/core/utils/log.c File Reference}
+\hypertarget{log_8c}{}\label{log_8c}\index{powerblocks/core/utils/log.c@{powerblocks/core/utils/log.c}}
+
+
+System logging functions.  
+
+
+{\ttfamily \#include "{}log.\+h"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdarg.\+h$>$}\newline
+{\ttfamily \#include "{}Free\+RTOS.\+h"{}}\newline
+{\ttfamily \#include "{}semphr.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{log_8c_aba01438ce60729c0e8140fab989ec7eb}\label{log_8c_aba01438ce60729c0e8140fab989ec7eb} 
+void {\bfseries log\+\_\+initialize} (void)
+\item 
+\Hypertarget{log_8c_af6d8030d6bf25822518954d224af1b34}\label{log_8c_af6d8030d6bf25822518954d224af1b34} 
+void {\bfseries log\+\_\+message} (const char \texorpdfstring{$\ast$}{*}level, const char \texorpdfstring{$\ast$}{*}tag, const char \texorpdfstring{$\ast$}{*}fmt,...)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+System logging functions. 
+
+Provides implementation of logging to control logging level and where the log goes.
+
+\begin{DoxyAuthor}{Author}
+Samuel Fitzsimons (rainbain) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 @license MIT (see LICENSE file) 
+\end{DoxyDate}

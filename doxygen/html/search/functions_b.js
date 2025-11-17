@@ -1,0 +1,11 @@
+var searchData=
+[
+  ['video_5fget_5fframebuffer_0',['video_get_framebuffer',['../video_8c.html#ab24210d5efc5afab4b85de98e10eaed2',1,'video_get_framebuffer():&#160;video.c'],['../video_8h.html#ab24210d5efc5afab4b85de98e10eaed2',1,'video_get_framebuffer():&#160;video.c']]],
+  ['video_5fget_5fprofile_1',['video_get_profile',['../video_8c.html#a9a0aec380b964a99d0e1104e191b759f',1,'video_get_profile(video_mode_t mode):&#160;video.c'],['../video_8h.html#a9a0aec380b964a99d0e1104e191b759f',1,'video_get_profile(video_mode_t mode):&#160;video.c']]],
+  ['video_5finitialize_2',['video_initialize',['../video_8c.html#a40efe144f286abf18f2b6b53deef2252',1,'video_initialize(video_mode_t mode):&#160;video.c'],['../video_8h.html#a40efe144f286abf18f2b6b53deef2252',1,'video_initialize(video_mode_t mode):&#160;video.c']]],
+  ['video_5fset_5fframebuffer_3',['video_set_framebuffer',['../video_8c.html#a54e41000669c8748987ef3a6756fffbc',1,'video_set_framebuffer(const framebuffer_t *framebuffer):&#160;video.c'],['../video_8h.html#a54e41000669c8748987ef3a6756fffbc',1,'video_set_framebuffer(const framebuffer_t *framebuffer):&#160;video.c']]],
+  ['video_5fset_5fretrace_5fcallback_4',['video_set_retrace_callback',['../video_8c.html#ad82986c155e5a324254c8447670a71a7',1,'video_set_retrace_callback(video_retrace_callback_t callback):&#160;video.c'],['../video_8h.html#ad82986c155e5a324254c8447670a71a7',1,'video_set_retrace_callback(video_retrace_callback_t callback):&#160;video.c']]],
+  ['video_5fsystem_5fdefault_5fvideo_5fmode_5',['video_system_default_video_mode',['../video_8c.html#ade18e311a9e5a5d7d9649814106dd5e9',1,'video_system_default_video_mode():&#160;video.c'],['../video_8h.html#ade18e311a9e5a5d7d9649814106dd5e9',1,'video_system_default_video_mode():&#160;video.c']]],
+  ['video_5fwait_5fvsync_6',['video_wait_vsync',['../video_8c.html#a12f17a1add49d94ad98ce8b6de9d6a9f',1,'video_wait_vsync():&#160;video.c'],['../video_8h.html#a12f17a1add49d94ad98ce8b6de9d6a9f',1,'video_wait_vsync():&#160;video.c']]],
+  ['video_5fwait_5fvsync_5fint_7',['video_wait_vsync_int',['../video_8c.html#a69b4a42eedac9c01315883ca349ad3a6',1,'video_wait_vsync_int():&#160;video.c'],['../video_8h.html#a69b4a42eedac9c01315883ca349ad3a6',1,'video_wait_vsync_int():&#160;video.c']]]
+];

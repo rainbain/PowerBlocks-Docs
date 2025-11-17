@@ -1,0 +1,110 @@
+\doxysection{powerblocks/core/system/gpio.h File Reference}
+\hypertarget{gpio_8h}{}\label{gpio_8h}\index{powerblocks/core/system/gpio.h@{powerblocks/core/system/gpio.h}}
+
+
+Wii GPIO.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{gpio_8h_aed4dd5614ad020f0ae2ee25c775de2aa}\label{gpio_8h_aed4dd5614ad020f0ae2ee25c775de2aa} 
+\#define {\bfseries GPIO\+\_\+\+SLOT\+\_\+\+LED}~0x000020
+\item 
+\Hypertarget{gpio_8h_af88e82e58dcb9a29f11a316c566d0a23}\label{gpio_8h_af88e82e58dcb9a29f11a316c566d0a23} 
+\#define {\bfseries GPIO\+\_\+\+SLOT\+\_\+\+IN}~0x000080
+\item 
+\Hypertarget{gpio_8h_aa933dd9528feb6e19d41a87b0b7bd51f}\label{gpio_8h_aa933dd9528feb6e19d41a87b0b7bd51f} 
+\#define {\bfseries GPIO\+\_\+\+SENSOR\+\_\+\+BAR}~0x000100
+\item 
+\Hypertarget{gpio_8h_a7ff5d5d782d2831c5ed24528959c686f}\label{gpio_8h_a7ff5d5d782d2831c5ed24528959c686f} 
+\#define {\bfseries GPIO\+\_\+\+EJECT}~0x000200
+\item 
+\Hypertarget{gpio_8h_aa37d9bf8b0b3fd63bd29bc77c0b56715}\label{gpio_8h_aa37d9bf8b0b3fd63bd29bc77c0b56715} 
+\#define {\bfseries GPIO\+\_\+\+AVE\+\_\+\+SCL}~0x004000
+\item 
+\Hypertarget{gpio_8h_aa2fdef33ddd09e183dcc72b92802d770}\label{gpio_8h_aa2fdef33ddd09e183dcc72b92802d770} 
+\#define {\bfseries GPIO\+\_\+\+AVE\+\_\+\+SDA}~0x008000
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{gpio_8h_a565b13bfa1542acead77cf0eecea08f5}{gpio\+\_\+write}} (uint32\+\_\+t bit, bool set)
+\begin{DoxyCompactList}\small\item\em Writes a GPIO output. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{gpio_8h_af1ccbfc72538851f396b5070f87ea0d2}{gpio\+\_\+read}} (uint32\+\_\+t bit)
+\begin{DoxyCompactList}\small\item\em Reads a GPIO Input. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gpio_8h_a46a457ad7a30b2519e5d1525cbf0a164}{gpio\+\_\+set\+\_\+direction}} (uint32\+\_\+t bit, bool direction)
+\begin{DoxyCompactList}\small\item\em Sets the direction of the GPIO. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Wii GPIO. 
+
+Control the GPIO controller on the Wii
+
+\begin{DoxyAuthor}{Author}
+Samuel Fitzsimons (rainbain) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 @license MIT (see LICENSE file) 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{gpio_8h_af1ccbfc72538851f396b5070f87ea0d2}\index{gpio.h@{gpio.h}!gpio\_read@{gpio\_read}}
+\index{gpio\_read@{gpio\_read}!gpio.h@{gpio.h}}
+\doxysubsubsection{\texorpdfstring{gpio\_read()}{gpio\_read()}}
+{\footnotesize\ttfamily \label{gpio_8h_af1ccbfc72538851f396b5070f87ea0d2} 
+bool gpio\+\_\+read (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{bit}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Reads a GPIO Input. 
+
+Reads the value of a GPIO Input
+
+
+\begin{DoxyParams}{Parameters}
+{\em bit} & Bit to read value of \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gpio_8h_a46a457ad7a30b2519e5d1525cbf0a164}\index{gpio.h@{gpio.h}!gpio\_set\_direction@{gpio\_set\_direction}}
+\index{gpio\_set\_direction@{gpio\_set\_direction}!gpio.h@{gpio.h}}
+\doxysubsubsection{\texorpdfstring{gpio\_set\_direction()}{gpio\_set\_direction()}}
+{\footnotesize\ttfamily \label{gpio_8h_a46a457ad7a30b2519e5d1525cbf0a164} 
+void gpio\+\_\+set\+\_\+direction (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{bit}{, }\item[{bool}]{direction}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the direction of the GPIO. 
+
+Sets the direction of a bit.
+
+This is set to the expected value before the game runs.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bit} & Bit to set \\
+\hline
+{\em Direction} & False = Input, True = Output \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gpio_8h_a565b13bfa1542acead77cf0eecea08f5}\index{gpio.h@{gpio.h}!gpio\_write@{gpio\_write}}
+\index{gpio\_write@{gpio\_write}!gpio.h@{gpio.h}}
+\doxysubsubsection{\texorpdfstring{gpio\_write()}{gpio\_write()}}
+{\footnotesize\ttfamily \label{gpio_8h_a565b13bfa1542acead77cf0eecea08f5} 
+void gpio\+\_\+write (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{bit}{, }\item[{bool}]{set}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Writes a GPIO output. 
+
+Writes the bit to the GPIO controller.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bit} & Bit to set/clear \\
+\hline
+\end{DoxyParams}

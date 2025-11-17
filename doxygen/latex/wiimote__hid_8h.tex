@@ -1,0 +1,136 @@
+\doxysection{powerblocks/input/wiimote/wiimote\+\_\+hid.h File Reference}
+\hypertarget{wiimote__hid_8h}{}\label{wiimote__hid_8h}\index{powerblocks/input/wiimote/wiimote\_hid.h@{powerblocks/input/wiimote/wiimote\_hid.h}}
+
+
+Bluetooth Instance / Protocol Of The Wii\+Mote.  
+
+
+{\ttfamily \#include "{}powerblocks/core/bluetooth/l2cap.\+h"{}}\newline
+{\ttfamily \#include "{}powerblocks/core/bluetooth/hci.\+h"{}}\newline
+{\ttfamily \#include "{}powerblocks/input/wiimote/wiimote.\+h"{}}\newline
+{\ttfamily \#include "{}powerblocks/input/wiimote/wiimote\+\_\+extension.\+h"{}}\newline
+{\ttfamily \#include "{}Free\+RTOS.\+h"{}}\newline
+{\ttfamily \#include "{}semphr.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structwiimote__raw__t}{wiimote\+\_\+raw\+\_\+t}}
+\item 
+struct \mbox{\hyperlink{structwiimote__hid__t}{wiimote\+\_\+hid\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{wiimote__hid_8h_af7dce16efecf4f2505d6097e6066b64b}\label{wiimote__hid_8h_af7dce16efecf4f2505d6097e6066b64b} 
+\#define {\bfseries WIIMOTE\+\_\+\+REPORT\+\_\+\+LEDS}~0x11
+\item 
+\Hypertarget{wiimote__hid_8h_a26938c775fa83997a1511d3278bfa3cf}\label{wiimote__hid_8h_a26938c775fa83997a1511d3278bfa3cf} 
+\#define {\bfseries WIIMOTE\+\_\+\+REPORT\+\_\+\+REPORT\+\_\+\+MODE}~0x12
+\item 
+\Hypertarget{wiimote__hid_8h_a5fd0ae59fc26735908fd2c3f595c1809}\label{wiimote__hid_8h_a5fd0ae59fc26735908fd2c3f595c1809} 
+\#define {\bfseries WIIMOTE\+\_\+\+REPORT\+\_\+\+ENABLE\+\_\+\+CAMERA\+\_\+\+CLOCK}~0x13
+\item 
+\Hypertarget{wiimote__hid_8h_ad1863796ed19ba622fb995ad3e35a7c5}\label{wiimote__hid_8h_ad1863796ed19ba622fb995ad3e35a7c5} 
+\#define {\bfseries WIIMOTE\+\_\+\+REPORT\+\_\+\+STATUS}~0x15
+\item 
+\Hypertarget{wiimote__hid_8h_a29559d82c2433917a4a74b3d1433a318}\label{wiimote__hid_8h_a29559d82c2433917a4a74b3d1433a318} 
+\#define {\bfseries WIIMOTE\+\_\+\+REPORT\+\_\+\+WRITE\+\_\+\+MEMORY}~0x16
+\item 
+\Hypertarget{wiimote__hid_8h_a094ec17e5f109c88f072ed69ff121322}\label{wiimote__hid_8h_a094ec17e5f109c88f072ed69ff121322} 
+\#define {\bfseries WIIMOTE\+\_\+\+REPORT\+\_\+\+READ\+\_\+\+MEMORY}~0x17
+\item 
+\Hypertarget{wiimote__hid_8h_a56a9cb90f7fff9ac9f42f71ff3addea4}\label{wiimote__hid_8h_a56a9cb90f7fff9ac9f42f71ff3addea4} 
+\#define {\bfseries WIIMOTE\+\_\+\+REPORT\+\_\+\+ENABLE\+\_\+\+CAMERA}~0x1A
+\item 
+\Hypertarget{wiimote__hid_8h_accda0835c4fb37ddb0f2da29299cc387}\label{wiimote__hid_8h_accda0835c4fb37ddb0f2da29299cc387} 
+\#define {\bfseries WIIMOTE\+\_\+\+REPORT\+\_\+\+STATUS\+\_\+\+INFO}~0x20
+\item 
+\Hypertarget{wiimote__hid_8h_aaba8f6cc2eb6431d5183e4cb92099f57}\label{wiimote__hid_8h_aaba8f6cc2eb6431d5183e4cb92099f57} 
+\#define {\bfseries WIIMOTE\+\_\+\+REPORT\+\_\+\+READ\+\_\+\+MEMORY\+\_\+\+DATA}~0x21
+\item 
+\Hypertarget{wiimote__hid_8h_a34f2daab89acd8eba217a84365ad74ff}\label{wiimote__hid_8h_a34f2daab89acd8eba217a84365ad74ff} 
+\#define {\bfseries WIIMOTE\+\_\+\+REPORT\+\_\+\+ACKNOWLEDGE\+\_\+\+OUTPUT}~0x22
+\item 
+\Hypertarget{wiimote__hid_8h_ac98b8c04592168939c17ea7794e0945e}\label{wiimote__hid_8h_ac98b8c04592168939c17ea7794e0945e} 
+\#define {\bfseries WIIMOTE\+\_\+\+REPORT\+\_\+\+BUTTONS}~0x30
+\item 
+\Hypertarget{wiimote__hid_8h_ad7198c70894c354d6b6eab4884d2509e}\label{wiimote__hid_8h_ad7198c70894c354d6b6eab4884d2509e} 
+\#define {\bfseries WIIMOTE\+\_\+\+REPORT\+\_\+\+BUTTONS\+\_\+\+ACCL}~0x31
+\item 
+\Hypertarget{wiimote__hid_8h_ae8a5973d61cbc361e9e14852e1229100}\label{wiimote__hid_8h_ae8a5973d61cbc361e9e14852e1229100} 
+\#define {\bfseries WIIMOTE\+\_\+\+REPORT\+\_\+\+BUTTONS\+\_\+\+EXT8}~0x32
+\item 
+\Hypertarget{wiimote__hid_8h_a2bf4604d0666d15f3503848eb51c5650}\label{wiimote__hid_8h_a2bf4604d0666d15f3503848eb51c5650} 
+\#define {\bfseries WIIMOTE\+\_\+\+REPORT\+\_\+\+BUTTONS\+\_\+\+ACCL\+\_\+\+IR12}~0\+X33
+\item 
+\Hypertarget{wiimote__hid_8h_a68b0674b0ce26eeff649dd65c7067bcf}\label{wiimote__hid_8h_a68b0674b0ce26eeff649dd65c7067bcf} 
+\#define {\bfseries WIIMOTE\+\_\+\+REPORT\+\_\+\+BUTTONS\+\_\+\+EXT19}~0\+X34
+\item 
+\Hypertarget{wiimote__hid_8h_a37980c899e97ad429e917adf1faef15b}\label{wiimote__hid_8h_a37980c899e97ad429e917adf1faef15b} 
+\#define {\bfseries WIIMOTE\+\_\+\+REPORT\+\_\+\+BUTTONS\+\_\+\+ACCL\+\_\+\+EXT16}~0x35
+\item 
+\Hypertarget{wiimote__hid_8h_a570bb1ca04fdde2f1d2d3ff5699b6eca}\label{wiimote__hid_8h_a570bb1ca04fdde2f1d2d3ff5699b6eca} 
+\#define {\bfseries WIIMOTE\+\_\+\+REPORT\+\_\+\+BUTTONS\+\_\+\+IR10\+\_\+\+EXT9}~0x36
+\item 
+\Hypertarget{wiimote__hid_8h_a8522d546b65fe897aa36a6b86e63a5b7}\label{wiimote__hid_8h_a8522d546b65fe897aa36a6b86e63a5b7} 
+\#define {\bfseries WIIMOTE\+\_\+\+REPORT\+\_\+\+BUTTONS\+\_\+\+ACCEL\+\_\+\+IR10\+\_\+\+EXT6}~0x37
+\item 
+\Hypertarget{wiimote__hid_8h_a4ece0a42f295766b41c71db72cc4ae95}\label{wiimote__hid_8h_a4ece0a42f295766b41c71db72cc4ae95} 
+\#define {\bfseries WIIMOTE\+\_\+\+REPORT\+\_\+\+EXT21}~0x3D
+\item 
+\Hypertarget{wiimote__hid_8h_acfe132a948e8bc812caada393e11babf}\label{wiimote__hid_8h_acfe132a948e8bc812caada393e11babf} 
+\#define {\bfseries WIIMOTE\+\_\+\+REPORT\+\_\+\+INTERLEAVED\+\_\+A}~0x3E
+\item 
+\Hypertarget{wiimote__hid_8h_ad91a5de8ddb692b785fe1d984eae1868}\label{wiimote__hid_8h_ad91a5de8ddb692b785fe1d984eae1868} 
+\#define {\bfseries WIIMOTE\+\_\+\+REPORT\+\_\+\+INTERLEAVED\+\_\+B}~0x3F
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{wiimote__hid_8h_ab5442c5ef6fee99ccce15c75c9d41cc2}\label{wiimote__hid_8h_ab5442c5ef6fee99ccce15c75c9d41cc2} 
+enum {\bfseries wiimote\+\_\+flags\+\_\+t} \{ \newline
+{\bfseries WIIMOTE\+\_\+\+FLAGS\+\_\+\+BATTERY\+\_\+\+NEAR\+\_\+\+EMPTY} = 0X01
+, {\bfseries WIIMOTE\+\_\+\+FLAGS\+\_\+\+EXTENSION\+\_\+\+CONNECTED} = 0X02
+, {\bfseries WIIMOTE\+\_\+\+FLAGS\+\_\+\+SPEAKER\+\_\+\+ENABLED} = 0X04
+, {\bfseries WIIMOTE\+\_\+\+FLAGS\+\_\+\+IR\+\_\+\+CAMERA\+\_\+\+ENABLED} = 0X08
+, \newline
+{\bfseries WIIMOTE\+\_\+\+FLAGS\+\_\+\+LED1} = 0X10
+, {\bfseries WIIMOTE\+\_\+\+FLAGS\+\_\+\+LED2} = 0X20
+, {\bfseries WIIMOTE\+\_\+\+FLAGS\+\_\+\+LED3} = 0X40
+, {\bfseries WIIMOTE\+\_\+\+FLAGS\+\_\+\+LEF4} = 0X80
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{wiimote__hid_8h_a063f988af9c85f296d9931b8b0d69860}\label{wiimote__hid_8h_a063f988af9c85f296d9931b8b0d69860} 
+int {\bfseries wiimote\+\_\+hid\+\_\+initialize} (\mbox{\hyperlink{structwiimote__hid__t}{wiimote\+\_\+hid\+\_\+t}} \texorpdfstring{$\ast$}{*}wiimote, const \mbox{\hyperlink{structhci__discovered__device__info__t}{hci\+\_\+discovered\+\_\+device\+\_\+info\+\_\+t}} \texorpdfstring{$\ast$}{*}discovery, int slot)
+\item 
+\Hypertarget{wiimote__hid_8h_a62379385a8b50afddad1a0e7a06c67f7}\label{wiimote__hid_8h_a62379385a8b50afddad1a0e7a06c67f7} 
+void {\bfseries wiimote\+\_\+hid\+\_\+close} (\mbox{\hyperlink{structwiimote__hid__t}{wiimote\+\_\+hid\+\_\+t}} \texorpdfstring{$\ast$}{*}wiimote)
+\item 
+\Hypertarget{wiimote__hid_8h_a2101226677f944ac58ad7f62442063e7}\label{wiimote__hid_8h_a2101226677f944ac58ad7f62442063e7} 
+int {\bfseries wiimote\+\_\+hid\+\_\+set\+\_\+report} (\mbox{\hyperlink{structwiimote__hid__t}{wiimote\+\_\+hid\+\_\+t}} \texorpdfstring{$\ast$}{*}wiimote, uint8\+\_\+t report\+\_\+type, bool update\+\_\+ir\+\_\+mode)
+\item 
+\Hypertarget{wiimote__hid_8h_a0d160f2fca1cf52a10203fd8a2ecc37f}\label{wiimote__hid_8h_a0d160f2fca1cf52a10203fd8a2ecc37f} 
+bool {\bfseries wiimote\+\_\+hid\+\_\+driver\+\_\+filter} (const \mbox{\hyperlink{structhci__discovered__device__info__t}{hci\+\_\+discovered\+\_\+device\+\_\+info\+\_\+t}} \texorpdfstring{$\ast$}{*}device, const char \texorpdfstring{$\ast$}{*}device\+\_\+name)
+\item 
+\Hypertarget{wiimote__hid_8h_af1da41ba7343b2dc35e4a1ae5e38529f}\label{wiimote__hid_8h_af1da41ba7343b2dc35e4a1ae5e38529f} 
+void \texorpdfstring{$\ast$}{*} {\bfseries wiimote\+\_\+hid\+\_\+driver\+\_\+initialize} (const \mbox{\hyperlink{structhci__discovered__device__info__t}{hci\+\_\+discovered\+\_\+device\+\_\+info\+\_\+t}} \texorpdfstring{$\ast$}{*}device)
+\item 
+\Hypertarget{wiimote__hid_8h_ae7863e06a35c55cc026c1047d7af8abc}\label{wiimote__hid_8h_ae7863e06a35c55cc026c1047d7af8abc} 
+void {\bfseries wiimote\+\_\+hid\+\_\+driver\+\_\+free\+\_\+device} (void \texorpdfstring{$\ast$}{*}instance)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Bluetooth Instance / Protocol Of The Wii\+Mote. 
+
+Contains the code to actually communicate with wiimotes.
+
+\begin{DoxyAuthor}{Author}
+Samuel Fitzsimons (rainbain) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}

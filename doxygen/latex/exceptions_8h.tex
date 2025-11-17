@@ -1,0 +1,207 @@
+\doxysection{powerblocks/core/system/exceptions.h File Reference}
+\hypertarget{exceptions_8h}{}\label{exceptions_8h}\index{powerblocks/core/system/exceptions.h@{powerblocks/core/system/exceptions.h}}
+
+
+Handles System Exceptions.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structexception__context__t}{exception\+\_\+context\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Pointer to the stack frame of the saved context during interrupts. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{exceptions_8h_a28b805f7df5122a80bd999564a34e6f8}{EXCEPTION\+\_\+\+IRQ\+\_\+\+COUNT}}~15
+\begin{DoxyCompactList}\small\item\em Number of IRQ bits on the system. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{exceptions_8h_a3bef71004cbb817873a487762fcb47e8}{EXCEPTION\+\_\+\+PPC\+\_\+\+IRQ}}~(\texorpdfstring{$\ast$}{*}(volatile uint32\+\_\+t\texorpdfstring{$\ast$}{*})0xcd000030)
+\begin{DoxyCompactList}\small\item\em Access to Holywoods Interrupt Controller Flags. \end{DoxyCompactList}\item 
+\Hypertarget{exceptions_8h_ac0819e1b709ac762b8259c0b65059874}\label{exceptions_8h_ac0819e1b709ac762b8259c0b65059874} 
+\#define {\bfseries EXCEPTION\+\_\+\+PPC\+\_\+\+IRQ\+\_\+\+MASK}~(\texorpdfstring{$\ast$}{*}(volatile uint32\+\_\+t\texorpdfstring{$\ast$}{*})0xcd000034)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{exceptions_8h_a4ebb1dbc774c54a28eb19eba0cba1319}{exception\+\_\+irq\+\_\+handler\+\_\+t}}) (\mbox{\hyperlink{exceptions_8h_aa7f8381532b17dd18ac2cff4c8cce846}{exception\+\_\+irq\+\_\+type\+\_\+t}} irq)
+\begin{DoxyCompactList}\small\item\em Function pointer to handle irq exceptions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{exceptions_8h_aa7f8381532b17dd18ac2cff4c8cce846}{exception\+\_\+irq\+\_\+type\+\_\+t}} \{ \newline
+{\bfseries EXCEPTION\+\_\+\+IRQ\+\_\+\+TYPE\+\_\+\+GP\+\_\+\+RUNTIME}
+, {\bfseries EXCEPTION\+\_\+\+IRQ\+\_\+\+TYPE\+\_\+\+RESET\+\_\+\+SWITCH}
+, {\bfseries EXCEPTION\+\_\+\+IRQ\+\_\+\+TYPE\+\_\+\+DVD}
+, {\bfseries EXCEPTION\+\_\+\+IRQ\+\_\+\+TYPE\+\_\+\+SERIAL}
+, \newline
+{\bfseries EXCEPTION\+\_\+\+IRQ\+\_\+\+TYPE\+\_\+\+EXI}
+, {\bfseries EXCEPTION\+\_\+\+IRQ\+\_\+\+TYPE\+\_\+\+STREAMING}
+, {\bfseries EXCEPTION\+\_\+\+IRQ\+\_\+\+TYPE\+\_\+\+DSP}
+, {\bfseries EXCEPTION\+\_\+\+IRQ\+\_\+\+TYPE\+\_\+\+MEMORY}
+, \newline
+{\bfseries EXCEPTION\+\_\+\+IRQ\+\_\+\+TYPE\+\_\+\+VIDEO}
+, {\bfseries EXCEPTION\+\_\+\+IRQ\+\_\+\+TYPE\+\_\+\+PE\+\_\+\+TOKEN}
+, {\bfseries EXCEPTION\+\_\+\+IRQ\+\_\+\+TYPE\+\_\+\+PE\+\_\+\+FINISH}
+, {\bfseries EXCEPTION\+\_\+\+IRQ\+\_\+\+TYPE\+\_\+\+FIFO}
+, \newline
+{\bfseries EXCEPTION\+\_\+\+IRQ\+\_\+\+TYPE\+\_\+\+DEBUGGER}
+, {\bfseries EXCEPTION\+\_\+\+IRQ\+\_\+\+TYPE\+\_\+\+HSP}
+, {\bfseries EXCEPTION\+\_\+\+IRQ\+\_\+\+TYPE\+\_\+\+IPC}
+ \}
+\begin{DoxyCompactList}\small\item\em Types of IRQs during external exceptions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{exceptions_8h_aeadadd6ff90677cb0613f6f3a33c8db5}{exceptions\+\_\+install\+\_\+vector}} ()
+\begin{DoxyCompactList}\small\item\em Installs the exception vector into the CPU. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{exceptions_8h_a1195a4bb44ec7d8ce1fb7cda0672cac6}{exceptions\+\_\+install\+\_\+irq}} (\mbox{\hyperlink{exceptions_8h_a4ebb1dbc774c54a28eb19eba0cba1319}{exception\+\_\+irq\+\_\+handler\+\_\+t}} handler, \mbox{\hyperlink{exceptions_8h_aa7f8381532b17dd18ac2cff4c8cce846}{exception\+\_\+irq\+\_\+type\+\_\+t}} type)
+\begin{DoxyCompactList}\small\item\em Registers an interrupt handler for an IRQ. \end{DoxyCompactList}\item 
+\Hypertarget{exceptions_8h_a0bf313ca186cdae7240e8caa9a736e96}\label{exceptions_8h_a0bf313ca186cdae7240e8caa9a736e96} 
+void {\bfseries exception\+\_\+reset} (\mbox{\hyperlink{structexception__context__t}{exception\+\_\+context\+\_\+t}} \texorpdfstring{$\ast$}{*}context)
+\item 
+\Hypertarget{exceptions_8h_acaeb4911796a579e000323c93ebe60f2}\label{exceptions_8h_acaeb4911796a579e000323c93ebe60f2} 
+void {\bfseries exception\+\_\+machine\+\_\+check} (\mbox{\hyperlink{structexception__context__t}{exception\+\_\+context\+\_\+t}} \texorpdfstring{$\ast$}{*}context)
+\item 
+\Hypertarget{exceptions_8h_a09633314160abd6ac8d0ecd7083b7ced}\label{exceptions_8h_a09633314160abd6ac8d0ecd7083b7ced} 
+void {\bfseries exception\+\_\+dsi} (\mbox{\hyperlink{structexception__context__t}{exception\+\_\+context\+\_\+t}} \texorpdfstring{$\ast$}{*}context)
+\item 
+\Hypertarget{exceptions_8h_a063fdea67c70259e265ba87a3ad512eb}\label{exceptions_8h_a063fdea67c70259e265ba87a3ad512eb} 
+void {\bfseries exception\+\_\+isi} (\mbox{\hyperlink{structexception__context__t}{exception\+\_\+context\+\_\+t}} \texorpdfstring{$\ast$}{*}context)
+\item 
+\Hypertarget{exceptions_8h_acc2cc2eb75d25398a394fd73f7418c19}\label{exceptions_8h_acc2cc2eb75d25398a394fd73f7418c19} 
+void {\bfseries exception\+\_\+external} (\mbox{\hyperlink{structexception__context__t}{exception\+\_\+context\+\_\+t}} \texorpdfstring{$\ast$}{*}context)
+\item 
+\Hypertarget{exceptions_8h_a04e6edda63224069ee7ce747cbbd25d5}\label{exceptions_8h_a04e6edda63224069ee7ce747cbbd25d5} 
+void {\bfseries exception\+\_\+alignment} (\mbox{\hyperlink{structexception__context__t}{exception\+\_\+context\+\_\+t}} \texorpdfstring{$\ast$}{*}context)
+\item 
+\Hypertarget{exceptions_8h_ac95c60a8373ea8be808f7be1d7e10aa7}\label{exceptions_8h_ac95c60a8373ea8be808f7be1d7e10aa7} 
+void {\bfseries exception\+\_\+program} (\mbox{\hyperlink{structexception__context__t}{exception\+\_\+context\+\_\+t}} \texorpdfstring{$\ast$}{*}context)
+\item 
+\Hypertarget{exceptions_8h_a39c9a6fc3fca3dac3490429ece746312}\label{exceptions_8h_a39c9a6fc3fca3dac3490429ece746312} 
+void {\bfseries exception\+\_\+fpu\+\_\+unavailable} (\mbox{\hyperlink{structexception__context__t}{exception\+\_\+context\+\_\+t}} \texorpdfstring{$\ast$}{*}context)
+\item 
+\Hypertarget{exceptions_8h_ad24301bb59f50d38fef9c2caac2c67e1}\label{exceptions_8h_ad24301bb59f50d38fef9c2caac2c67e1} 
+void {\bfseries exception\+\_\+decrementer} (\mbox{\hyperlink{structexception__context__t}{exception\+\_\+context\+\_\+t}} \texorpdfstring{$\ast$}{*}context)
+\item 
+\Hypertarget{exceptions_8h_a6fea977ff3a88c2fd9c915a45f29c5c7}\label{exceptions_8h_a6fea977ff3a88c2fd9c915a45f29c5c7} 
+void {\bfseries exception\+\_\+syscall} (\mbox{\hyperlink{structexception__context__t}{exception\+\_\+context\+\_\+t}} \texorpdfstring{$\ast$}{*}context)
+\item 
+\Hypertarget{exceptions_8h_a6e9fed5317ada53765778182e63e7dec}\label{exceptions_8h_a6e9fed5317ada53765778182e63e7dec} 
+void {\bfseries exceptions\+\_\+start\+\_\+first\+\_\+task} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int32\+\_\+t \mbox{\hyperlink{exceptions_8h_a6a6f3a9ebf4dff15a45c18914a9e0c5d}{exception\+\_\+isr\+\_\+context\+\_\+switch\+\_\+needed}}
+\begin{DoxyCompactList}\small\item\em Call the context switch at the end of the ISR if true. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Handles System Exceptions. 
+
+Handles system exceptions interrupt vector table. This includes interrupts. (asynchronous exceptions)
+
+\begin{DoxyAuthor}{Author}
+Samuel Fitzsimons (rainbain) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 @license MIT (see LICENSE file) 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{exceptions_8h_a28b805f7df5122a80bd999564a34e6f8}\index{exceptions.h@{exceptions.h}!EXCEPTION\_IRQ\_COUNT@{EXCEPTION\_IRQ\_COUNT}}
+\index{EXCEPTION\_IRQ\_COUNT@{EXCEPTION\_IRQ\_COUNT}!exceptions.h@{exceptions.h}}
+\doxysubsubsection{\texorpdfstring{EXCEPTION\_IRQ\_COUNT}{EXCEPTION\_IRQ\_COUNT}}
+{\footnotesize\ttfamily \label{exceptions_8h_a28b805f7df5122a80bd999564a34e6f8} 
+\#define EXCEPTION\+\_\+\+IRQ\+\_\+\+COUNT~15}
+
+
+
+Number of IRQ bits on the system. 
+
+Number of IRQ bits on the system. \Hypertarget{exceptions_8h_a3bef71004cbb817873a487762fcb47e8}\index{exceptions.h@{exceptions.h}!EXCEPTION\_PPC\_IRQ@{EXCEPTION\_PPC\_IRQ}}
+\index{EXCEPTION\_PPC\_IRQ@{EXCEPTION\_PPC\_IRQ}!exceptions.h@{exceptions.h}}
+\doxysubsubsection{\texorpdfstring{EXCEPTION\_PPC\_IRQ}{EXCEPTION\_PPC\_IRQ}}
+{\footnotesize\ttfamily \label{exceptions_8h_a3bef71004cbb817873a487762fcb47e8} 
+\#define EXCEPTION\+\_\+\+PPC\+\_\+\+IRQ~(\texorpdfstring{$\ast$}{*}(volatile uint32\+\_\+t\texorpdfstring{$\ast$}{*})0xcd000030)}
+
+
+
+Access to Holywoods Interrupt Controller Flags. 
+
+There appears to be another interrupt controller inside of hollywood added on the Wii.
+
+This is needed for acknowledging interrupts through it. 
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{exceptions_8h_a4ebb1dbc774c54a28eb19eba0cba1319}\index{exceptions.h@{exceptions.h}!exception\_irq\_handler\_t@{exception\_irq\_handler\_t}}
+\index{exception\_irq\_handler\_t@{exception\_irq\_handler\_t}!exceptions.h@{exceptions.h}}
+\doxysubsubsection{\texorpdfstring{exception\_irq\_handler\_t}{exception\_irq\_handler\_t}}
+{\footnotesize\ttfamily \label{exceptions_8h_a4ebb1dbc774c54a28eb19eba0cba1319} 
+typedef void(\texorpdfstring{$\ast$}{*} exception\+\_\+irq\+\_\+handler\+\_\+t) (\mbox{\hyperlink{exceptions_8h_aa7f8381532b17dd18ac2cff4c8cce846}{exception\+\_\+irq\+\_\+type\+\_\+t}} irq)}
+
+
+
+Function pointer to handle irq exceptions. 
+
+Function pointer to handle irq exceptions. Use exceptions\+\_\+install\+\_\+irq to set it.
+
+
+\begin{DoxyParams}{Parameters}
+{\em irq} & The IRQ type its handling. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{exceptions_8h_aa7f8381532b17dd18ac2cff4c8cce846}\index{exceptions.h@{exceptions.h}!exception\_irq\_type\_t@{exception\_irq\_type\_t}}
+\index{exception\_irq\_type\_t@{exception\_irq\_type\_t}!exceptions.h@{exceptions.h}}
+\doxysubsubsection{\texorpdfstring{exception\_irq\_type\_t}{exception\_irq\_type\_t}}
+{\footnotesize\ttfamily \label{exceptions_8h_aa7f8381532b17dd18ac2cff4c8cce846} 
+enum \mbox{\hyperlink{exceptions_8h_aa7f8381532b17dd18ac2cff4c8cce846}{exception\+\_\+irq\+\_\+type\+\_\+t}}}
+
+
+
+Types of IRQs during external exceptions. 
+
+Types of IRQs during external exceptions retrievd from the processor interface. Also used to enable/disable interrupts. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{exceptions_8h_a1195a4bb44ec7d8ce1fb7cda0672cac6}\index{exceptions.h@{exceptions.h}!exceptions\_install\_irq@{exceptions\_install\_irq}}
+\index{exceptions\_install\_irq@{exceptions\_install\_irq}!exceptions.h@{exceptions.h}}
+\doxysubsubsection{\texorpdfstring{exceptions\_install\_irq()}{exceptions\_install\_irq()}}
+{\footnotesize\ttfamily \label{exceptions_8h_a1195a4bb44ec7d8ce1fb7cda0672cac6} 
+void exceptions\+\_\+install\+\_\+irq (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{exceptions_8h_a4ebb1dbc774c54a28eb19eba0cba1319}{exception\+\_\+irq\+\_\+handler\+\_\+t}}}]{handler}{, }\item[{\mbox{\hyperlink{exceptions_8h_aa7f8381532b17dd18ac2cff4c8cce846}{exception\+\_\+irq\+\_\+type\+\_\+t}}}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Registers an interrupt handler for an IRQ. 
+
+Registers an interrupt handler using a IRQ type \Hypertarget{exceptions_8h_aeadadd6ff90677cb0613f6f3a33c8db5}\index{exceptions.h@{exceptions.h}!exceptions\_install\_vector@{exceptions\_install\_vector}}
+\index{exceptions\_install\_vector@{exceptions\_install\_vector}!exceptions.h@{exceptions.h}}
+\doxysubsubsection{\texorpdfstring{exceptions\_install\_vector()}{exceptions\_install\_vector()}}
+{\footnotesize\ttfamily \label{exceptions_8h_aeadadd6ff90677cb0613f6f3a33c8db5} 
+void exceptions\+\_\+install\+\_\+vector (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Installs the exception vector into the CPU. 
+
+Installs the exception vector into the CPU. Called during system\+\_\+initialize as part of start.\+s.
+
+Assumes interrupts to be disabled when you do this. 
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{exceptions_8h_a6a6f3a9ebf4dff15a45c18914a9e0c5d}\index{exceptions.h@{exceptions.h}!exception\_isr\_context\_switch\_needed@{exception\_isr\_context\_switch\_needed}}
+\index{exception\_isr\_context\_switch\_needed@{exception\_isr\_context\_switch\_needed}!exceptions.h@{exceptions.h}}
+\doxysubsubsection{\texorpdfstring{exception\_isr\_context\_switch\_needed}{exception\_isr\_context\_switch\_needed}}
+{\footnotesize\ttfamily \label{exceptions_8h_a6a6f3a9ebf4dff15a45c18914a9e0c5d} 
+int32\+\_\+t exception\+\_\+isr\+\_\+context\+\_\+switch\+\_\+needed\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Call the context switch at the end of the ISR if true. 
+
+Call the context switch at the end of the ISR if true. Usually used along side x\+Semaphore\+Give\+From\+ISR such that awoken task are switched into when a ISR wakes a task. 

@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['syscall_0',['SYSCALL',['../syscall_8h.html#ae5d030333eb68b392b3c1e3438e129ab',1,'syscall.h']]],
+  ['syscall_5fassert_1',['SYSCALL_ASSERT',['../syscall_8h.html#a2891396d44f932baaa0d21b153b792c5',1,'syscall.h']]],
+  ['syscall_5fyield_2',['SYSCALL_YIELD',['../syscall_8h.html#a2f093260853586002e2dfbe51f9c16ca',1,'syscall.h']]],
+  ['system_5fbus_5fclock_5fhz_3',['SYSTEM_BUS_CLOCK_HZ',['../system_8h.html#a26bd75db05b562b94cf2ceb32ab29226',1,'system.h']]],
+  ['system_5fcore_5fclock_5fhz_4',['SYSTEM_CORE_CLOCK_HZ',['../system_8h.html#a54d4ac736d91fc60ea09f932ee78e76e',1,'system.h']]],
+  ['system_5fdisable_5fisr_5',['SYSTEM_DISABLE_ISR',['../system_8h.html#a811c6e42bdbae15a5b12efb292ac64a5',1,'system.h']]],
+  ['system_5fenable_5fisr_6',['SYSTEM_ENABLE_ISR',['../system_8h.html#af8ff434cf98ebb961fd42b823be47424',1,'system.h']]],
+  ['system_5fget_5fdec_7',['SYSTEM_GET_DEC',['../system_8h.html#afad8f3a4254fc7b33da13e5de99d3781',1,'system.h']]],
+  ['system_5fget_5fmsr_8',['SYSTEM_GET_MSR',['../system_8h.html#a6533e66cd4f3c4002f62c268bda43458',1,'system.h']]],
+  ['system_5fisync_9',['SYSTEM_ISYNC',['../system_8h.html#ad8e678c746e60405a4630c8b330e2479',1,'system.h']]],
+  ['system_5fmain_5fstack_5fsize_10',['SYSTEM_MAIN_STACK_SIZE',['../system_8h.html#affdd0491a8b64ec98bdbc6e41691a855',1,'system.h']]],
+  ['system_5fmem_5fcached_11',['SYSTEM_MEM_CACHED',['../system_8h.html#ab9351d82229922d8b99ad916c03e1e65',1,'system.h']]],
+  ['system_5fmem_5fphysical_12',['SYSTEM_MEM_PHYSICAL',['../system_8h.html#a3e43bae5bc1e875f8fe18526906ec232',1,'system.h']]],
+  ['system_5fmem_5funcached_13',['SYSTEM_MEM_UNCACHED',['../system_8h.html#a3cbf0558b6cae21fcc714bb05a0b2097',1,'system.h']]],
+  ['system_5fms_5fto_5fticks_14',['SYSTEM_MS_TO_TICKS',['../system_8h.html#a59f6a0035cb06e3d66cd617981a455fd',1,'system.h']]],
+  ['system_5fs_5fto_5fticks_15',['SYSTEM_S_TO_TICKS',['../system_8h.html#afa76073f08e014f8b646ffe2f6bacbe5',1,'system.h']]],
+  ['system_5fset_5fdec_16',['SYSTEM_SET_DEC',['../system_8h.html#a1b8264889001353a61dabeaea0bce2bc',1,'system.h']]],
+  ['system_5fset_5fmsr_17',['SYSTEM_SET_MSR',['../system_8h.html#a3e7e6218a3dbd4a5a8672d67d6a6dd8c',1,'system.h']]],
+  ['system_5fswitch_5fsp_18',['SYSTEM_SWITCH_SP',['../system_8h.html#a7555ae309cdb58139d77744e6719d671',1,'system.h']]],
+  ['system_5fsync_19',['SYSTEM_SYNC',['../system_8h.html#a2825ef123e6c0ae126c13844298550b3',1,'system.h']]],
+  ['system_5ftb_5fclock_5fhz_20',['SYSTEM_TB_CLOCK_HZ',['../system_8h.html#a1fe94f7a3264607b053ef474c3685721',1,'system.h']]],
+  ['system_5fus_5fto_5fticks_21',['SYSTEM_US_TO_TICKS',['../system_8h.html#af19c7b9259e070db928836a4402e57c2',1,'system.h']]]
+];

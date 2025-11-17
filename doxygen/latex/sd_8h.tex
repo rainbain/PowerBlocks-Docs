@@ -1,0 +1,73 @@
+\doxysection{powerblocks/filesystem/sd.h File Reference}
+\hypertarget{sd_8h}{}\label{sd_8h}\index{powerblocks/filesystem/sd.h@{powerblocks/filesystem/sd.h}}
+
+
+SD Card System.  
+
+
+{\ttfamily \#include "{}diskio.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{sd_8h_a5f7cd5fab9e6f35e3300950dca325ea1}{sd\+\_\+initialize}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the sd card system. \end{DoxyCompactList}\item 
+\Hypertarget{sd_8h_a9326ba4099af119ac43d3dcd84134903}\label{sd_8h_a9326ba4099af119ac43d3dcd84134903} 
+void {\bfseries sd\+\_\+close} ()
+\begin{DoxyCompactList}\small\item\em Closes it out. \end{DoxyCompactList}\item 
+\Hypertarget{sd_8h_a7353e68bd326d0f4bf267fac8a4cda63}\label{sd_8h_a7353e68bd326d0f4bf267fac8a4cda63} 
+DSTATUS {\bfseries sd\+\_\+disk\+\_\+status} ()
+\begin{DoxyCompactList}\small\item\em Fat\+FS disk\+\_\+status implementation. \end{DoxyCompactList}\item 
+DSTATUS \mbox{\hyperlink{sd_8h_a93bdd155c27c12f32be2357ec3e018e5}{sd\+\_\+disk\+\_\+initialize}} ()
+\begin{DoxyCompactList}\small\item\em Fat\+FS disk\+\_\+initialize implementation. \end{DoxyCompactList}\item 
+\Hypertarget{sd_8h_ab544dfc97dd84dedcaa98fa006e82af3}\label{sd_8h_ab544dfc97dd84dedcaa98fa006e82af3} 
+DRESULT {\bfseries sd\+\_\+disk\+\_\+read} (BYTE \texorpdfstring{$\ast$}{*}buff, LBA\+\_\+t sector, UINT count)
+\begin{DoxyCompactList}\small\item\em Fat\+FS disk\+\_\+read implementation. \end{DoxyCompactList}\item 
+\Hypertarget{sd_8h_a4ffce2baebb67d498568bffc9e4524d6}\label{sd_8h_a4ffce2baebb67d498568bffc9e4524d6} 
+DRESULT {\bfseries sd\+\_\+disk\+\_\+write} (const BYTE \texorpdfstring{$\ast$}{*}buff, LBA\+\_\+t sector, UINT count)
+\begin{DoxyCompactList}\small\item\em Fat\+FS disk\+\_\+read implementation. \end{DoxyCompactList}\item 
+\Hypertarget{sd_8h_a4cda77d91fd22163d39719dcad8b4d0e}\label{sd_8h_a4cda77d91fd22163d39719dcad8b4d0e} 
+DRESULT {\bfseries sd\+\_\+disk\+\_\+ioctl} (BYTE cmd, void \texorpdfstring{$\ast$}{*}buff)
+\begin{DoxyCompactList}\small\item\em Fat\+FS disk\+\_\+ioctl implementation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+SD Card System. 
+
+Implements the Wii\textquotesingle{}s SD Card Slot
+
+\begin{DoxyAuthor}{Author}
+Samuel Fitzsimons (rainbain) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 @license MIT (see LICENSE file) 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{sd_8h_a93bdd155c27c12f32be2357ec3e018e5}\index{sd.h@{sd.h}!sd\_disk\_initialize@{sd\_disk\_initialize}}
+\index{sd\_disk\_initialize@{sd\_disk\_initialize}!sd.h@{sd.h}}
+\doxysubsubsection{\texorpdfstring{sd\_disk\_initialize()}{sd\_disk\_initialize()}}
+{\footnotesize\ttfamily \label{sd_8h_a93bdd155c27c12f32be2357ec3e018e5} 
+DSTATUS sd\+\_\+disk\+\_\+initialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Fat\+FS disk\+\_\+initialize implementation. 
+
+Called on mount after successful status reading. \Hypertarget{sd_8h_a5f7cd5fab9e6f35e3300950dca325ea1}\index{sd.h@{sd.h}!sd\_initialize@{sd\_initialize}}
+\index{sd\_initialize@{sd\_initialize}!sd.h@{sd.h}}
+\doxysubsubsection{\texorpdfstring{sd\_initialize()}{sd\_initialize()}}
+{\footnotesize\ttfamily \label{sd_8h_a5f7cd5fab9e6f35e3300950dca325ea1} 
+int sd\+\_\+initialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Initializes the sd card system. 
+
+Initializes the SD card system for use in the file system. Must be called before mounting the file system,
+
+but called only ever once, even if the sd card is removed.
+
+\begin{DoxyReturn}{Returns}
+Negative if error. 
+\end{DoxyReturn}

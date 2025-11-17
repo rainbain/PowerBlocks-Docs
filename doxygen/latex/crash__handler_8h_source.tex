@@ -1,0 +1,17 @@
+\doxysection{crash\+\_\+handler.\+h}
+\hypertarget{crash__handler_8h_source}{}\label{crash__handler_8h_source}\index{powerblocks/core/utils/crash\_handler.h@{powerblocks/core/utils/crash\_handler.h}}
+\mbox{\hyperlink{crash__handler_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{exceptions_8h}{powerblocks/core/system/exceptions.h}}"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{typedef}\ void\ (*\mbox{\hyperlink{crash__handler_8h_ab267b256a30d805769e52b2c9a0101f7}{crash\_handler\_t}})(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ cause,\ \mbox{\hyperlink{structexception__context__t}{exception\_context\_t}}*\ ctx);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{crash__handler_8h_aa19d5200886f461c949a00351cf1bfa0}{crash\_handler\_bug\_check}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ cause,\ \mbox{\hyperlink{structexception__context__t}{exception\_context\_t}}*\ ctx);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{crash__handler_8h_a1a476f34262bdda48b3c4c7109810bc3}{crash\_handler\_set}}(\mbox{\hyperlink{crash__handler_8h_ab267b256a30d805769e52b2c9a0101f7}{crash\_handler\_t}}\ handler);}
+
+\end{DoxyCode}

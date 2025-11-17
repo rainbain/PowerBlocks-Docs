@@ -1,0 +1,125 @@
+\doxysection{powerblocks/core/graphics/framebuffer.h File Reference}
+\hypertarget{framebuffer_8h}{}\label{framebuffer_8h}\index{powerblocks/core/graphics/framebuffer.h@{powerblocks/core/graphics/framebuffer.h}}
+
+
+Functions for managing and rendering framebuffers.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}powerblocks/core/utils/math/vec2.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structframebuffer__t}{framebuffer\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Data format for framebuffers. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structframebuffer__font__t}{framebuffer\+\_\+font\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Used to describe a font for the framebuffer to use. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{framebuffer_8h_aa4887fe2baec2a43eacbd4bdd58e0330}\label{framebuffer_8h_aa4887fe2baec2a43eacbd4bdd58e0330} 
+\#define {\bfseries VIDEO\+\_\+\+WIDTH}~640
+\item 
+\Hypertarget{framebuffer_8h_a4ad30f5e21957a142524fdcaf9b4e298}\label{framebuffer_8h_a4ad30f5e21957a142524fdcaf9b4e298} 
+\#define {\bfseries VIDEO\+\_\+\+HEIGHT}~480
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{framebuffer_8h_a26f10981ac2ba011d54ffc9821cdb7e5}{framebuffer\+\_\+copy\+\_\+rgba\+\_\+into}} (\mbox{\hyperlink{structframebuffer__t}{framebuffer\+\_\+t}} \texorpdfstring{$\ast$}{*}framebuffer, const uint32\+\_\+t \texorpdfstring{$\ast$}{*}rgba, \mbox{\hyperlink{structvec2i}{vec2i}} position, \mbox{\hyperlink{structvec2i}{vec2i}} size)
+\begin{DoxyCompactList}\small\item\em Copys RGBA8888 data into a frame buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{framebuffer_8h_a9039f4bc33c0ad3d8727ebbabfe898d6}{framebuffer\+\_\+fill\+\_\+rgba}} (\mbox{\hyperlink{structframebuffer__t}{framebuffer\+\_\+t}} \texorpdfstring{$\ast$}{*}framebuffer, uint32\+\_\+t rgba, \mbox{\hyperlink{structvec2i}{vec2i}} a, \mbox{\hyperlink{structvec2i}{vec2i}} b)
+\begin{DoxyCompactList}\small\item\em Fills a section of the frame buffer with RGBA8888 data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{framebuffer_8h_a4d46d1c71bef17ef100eb9005646c71a}{framebuffer\+\_\+put\+\_\+text}} (\mbox{\hyperlink{structframebuffer__t}{framebuffer\+\_\+t}} \texorpdfstring{$\ast$}{*}framebuffer, uint32\+\_\+t foreground, uint32\+\_\+t background, \mbox{\hyperlink{structvec2i}{vec2i}} position, const \mbox{\hyperlink{structframebuffer__font__t}{framebuffer\+\_\+font\+\_\+t}} \texorpdfstring{$\ast$}{*}font, const char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Renders a bitmap font to the framebuffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Functions for managing and rendering framebuffers. 
+
+Able to fill colors, copy data to and from, as well as render text into frame buffers.
+
+\begin{DoxyAuthor}{Author}
+Samuel Fitzsimons (rainbain) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 @license MIT (see LICENSE file) 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{framebuffer_8h_a26f10981ac2ba011d54ffc9821cdb7e5}\index{framebuffer.h@{framebuffer.h}!framebuffer\_copy\_rgba\_into@{framebuffer\_copy\_rgba\_into}}
+\index{framebuffer\_copy\_rgba\_into@{framebuffer\_copy\_rgba\_into}!framebuffer.h@{framebuffer.h}}
+\doxysubsubsection{\texorpdfstring{framebuffer\_copy\_rgba\_into()}{framebuffer\_copy\_rgba\_into()}}
+{\footnotesize\ttfamily \label{framebuffer_8h_a26f10981ac2ba011d54ffc9821cdb7e5} 
+void framebuffer\+\_\+copy\+\_\+rgba\+\_\+into (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structframebuffer__t}{framebuffer\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{framebuffer}{, }\item[{const uint32\+\_\+t \texorpdfstring{$\ast$}{*}}]{rgba}{, }\item[{\mbox{\hyperlink{structvec2i}{vec2i}}}]{position}{, }\item[{\mbox{\hyperlink{structvec2i}{vec2i}}}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Copys RGBA8888 data into a frame buffer. 
+
+Copys data into a position of the framebuffer. Converts into the YUY data of the framebuffer.
+
+Blends as it goes. Very nice
+
+
+\begin{DoxyParams}{Parameters}
+{\em framebuffer} & Framebuffer to render into. \\
+\hline
+{\em rgba} & RGBA8888 color data of width x height. \\
+\hline
+{\em x\+\_\+pos} & x position in the frame buffer. \\
+\hline
+{\em y\+\_\+pos} & y position in the frame buffer. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{framebuffer_8h_a9039f4bc33c0ad3d8727ebbabfe898d6}\index{framebuffer.h@{framebuffer.h}!framebuffer\_fill\_rgba@{framebuffer\_fill\_rgba}}
+\index{framebuffer\_fill\_rgba@{framebuffer\_fill\_rgba}!framebuffer.h@{framebuffer.h}}
+\doxysubsubsection{\texorpdfstring{framebuffer\_fill\_rgba()}{framebuffer\_fill\_rgba()}}
+{\footnotesize\ttfamily \label{framebuffer_8h_a9039f4bc33c0ad3d8727ebbabfe898d6} 
+void framebuffer\+\_\+fill\+\_\+rgba (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structframebuffer__t}{framebuffer\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{framebuffer}{, }\item[{uint32\+\_\+t}]{rgba}{, }\item[{\mbox{\hyperlink{structvec2i}{vec2i}}}]{a}{, }\item[{\mbox{\hyperlink{structvec2i}{vec2i}}}]{b}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Fills a section of the frame buffer with RGBA8888 data. 
+
+Fills the frame buffer with a color while doing blending as needed
+
+
+\begin{DoxyParams}{Parameters}
+{\em framebuffer} & Framebuffer to render into. \\
+\hline
+{\em rgba} & RGBA8888 color \\
+\hline
+{\em a} & -\/ Start position of the fill \\
+\hline
+{\em b} & -\/ Stop position of the fill \\
+\hline
+\end{DoxyParams}
+\Hypertarget{framebuffer_8h_a4d46d1c71bef17ef100eb9005646c71a}\index{framebuffer.h@{framebuffer.h}!framebuffer\_put\_text@{framebuffer\_put\_text}}
+\index{framebuffer\_put\_text@{framebuffer\_put\_text}!framebuffer.h@{framebuffer.h}}
+\doxysubsubsection{\texorpdfstring{framebuffer\_put\_text()}{framebuffer\_put\_text()}}
+{\footnotesize\ttfamily \label{framebuffer_8h_a4d46d1c71bef17ef100eb9005646c71a} 
+void framebuffer\+\_\+put\+\_\+text (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structframebuffer__t}{framebuffer\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{framebuffer}{, }\item[{uint32\+\_\+t}]{foreground}{, }\item[{uint32\+\_\+t}]{background}{, }\item[{\mbox{\hyperlink{structvec2i}{vec2i}}}]{position}{, }\item[{const \mbox{\hyperlink{structframebuffer__font__t}{framebuffer\+\_\+font\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{font}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Renders a bitmap font to the framebuffer. 
+
+Renders a bitmap font to the frame buffer using the specified font. Special characters are not supported. It will just render that slot in the font.
+
+
+\begin{DoxyParams}{Parameters}
+{\em framebuffer} & Framebuffer to render into. \\
+\hline
+{\em foreground} & RGBA8888 Color of the text itself \\
+\hline
+{\em background} & RGBA8888 Color of the background \\
+\hline
+{\em position} & Pixel position of the top left corner of the text. \\
+\hline
+{\em font} & Font to use \\
+\hline
+{\em str} & Zero terminated string to render \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,407 @@
+\doxysection{powerblocks/core/graphics/gx\+\_\+tev.h File Reference}
+\hypertarget{gx__tev_8h}{}\label{gx__tev_8h}\index{powerblocks/core/graphics/gx\_tev.h@{powerblocks/core/graphics/gx\_tev.h}}
+
+
+TEV definitions.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structgx__tev__stage__t}{gx\+\_\+tev\+\_\+stage\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{gx__tev_8h_ac072a94e3a22605282ac2dab23223d4a}\label{gx__tev_8h_ac072a94e3a22605282ac2dab23223d4a} 
+enum {\bfseries gx\+\_\+tev\+\_\+stage\+\_\+id} \{ \newline
+{\bfseries GX\+\_\+\+TEV\+\_\+\+STAGE\+\_\+0}
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+STAGE\+\_\+1}
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+STAGE\+\_\+2}
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+STAGE\+\_\+3}
+, \newline
+{\bfseries GX\+\_\+\+TEV\+\_\+\+STAGE\+\_\+4}
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+STAGE\+\_\+5}
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+STAGE\+\_\+6}
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+STAGE\+\_\+7}
+, \newline
+{\bfseries GX\+\_\+\+TEV\+\_\+\+STAGE\+\_\+8}
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+STAGE\+\_\+9}
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+STAGE\+\_\+10}
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+STAGE\+\_\+11}
+, \newline
+{\bfseries GX\+\_\+\+TEV\+\_\+\+STAGE\+\_\+12}
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+STAGE\+\_\+13}
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+STAGE\+\_\+14}
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+STAGE\+\_\+15}
+ \}
+\item 
+\Hypertarget{gx__tev_8h_a0ba0120f356833851a084db33f31c2c4}\label{gx__tev_8h_a0ba0120f356833851a084db33f31c2c4} 
+enum {\bfseries gx\+\_\+tev\+\_\+io\+\_\+t} \{ \newline
+{\bfseries GX\+\_\+\+TEV\+\_\+\+IO\+\_\+\+PREVIOUS} = 0x0
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+IO\+\_\+\+REGISTER\+\_\+0} = 0x2
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+IO\+\_\+\+REGISTER\+\_\+1} = 0x4
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+IO\+\_\+\+REGISTER\+\_\+2} = 0x6
+, \newline
+{\bfseries GX\+\_\+\+TEV\+\_\+\+IO\+\_\+\+TEXTURE} = 0x8
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+IO\+\_\+\+RASTERIZER} = 0xA
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+IO\+\_\+\+ONE} = 0xC
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+IO\+\_\+\+HALF} = 0xD
+, \newline
+{\bfseries GX\+\_\+\+TEV\+\_\+\+IO\+\_\+\+CONSTANT} = 0xE
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+IO\+\_\+\+ZERO} = 0xF
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+IO\+\_\+\+ALPHA} = 0x1
+ \}
+\item 
+\Hypertarget{gx__tev_8h_a522d2108853eb7f224de32d060d9e9c8}\label{gx__tev_8h_a522d2108853eb7f224de32d060d9e9c8} 
+enum {\bfseries gx\+\_\+tev\+\_\+scale\+\_\+t} \{ {\bfseries GX\+\_\+\+TEV\+\_\+\+SCALE\+\_\+1}
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+SCALE\+\_\+2}
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+SCALE\+\_\+4}
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+SCALE\+\_\+\+HALF}
+ \}
+\item 
+\Hypertarget{gx__tev_8h_ae6894873f2e84187e543cd8f40ed687e}\label{gx__tev_8h_ae6894873f2e84187e543cd8f40ed687e} 
+enum {\bfseries gx\+\_\+tev\+\_\+bias\+\_\+t} \{ {\bfseries GX\+\_\+\+TEV\+\_\+\+BIAS\+\_\+0}
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+BIAS\+\_\+\+ADD\+\_\+\+HALF}
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+BIAS\+\_\+\+SUB\+\_\+\+HALF}
+ \}
+\item 
+\Hypertarget{gx__tev_8h_ac55771ceb822d93309d314a2bdb01d6e}\label{gx__tev_8h_ac55771ceb822d93309d314a2bdb01d6e} 
+enum {\bfseries gx\+\_\+tev\+\_\+compare\+\_\+t} \{ \newline
+{\bfseries GX\+\_\+\+TEV\+\_\+\+COMPARE\+\_\+\+R8\+\_\+\+GREATER} = 0x0
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+COMPARE\+\_\+\+R8\+\_\+\+EQUAL} = 0x1
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+COMPARE\+\_\+\+GR16\+\_\+\+GREATER} = 0x2
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+COMPARE\+\_\+\+GR16\+\_\+\+EQUAL} = 0x3
+, \newline
+{\bfseries GX\+\_\+\+TEV\+\_\+\+COMPARE\+\_\+\+BGR24\+\_\+\+GREATER} = 0x4
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+COMPARE\+\_\+\+BGR24\+\_\+\+EQUAL} = 0x5
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+COMPARE\+\_\+\+RGB8\+\_\+\+GT} = 0x6
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+COMPARE\+\_\+\+RGB8\+\_\+\+EQ} = 0x7
+, \newline
+{\bfseries GX\+\_\+\+TEV\+\_\+\+COMPARE\+\_\+\+A8\+\_\+\+GREATER} = 0x6
+, {\bfseries GX\+\_\+\+TEV\+\_\+\+COMPARE\+\_\+\+A8\+\_\+\+EQUAL} = 0x7
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{gx__tev_8h_a2dfe5e092332d036a949bb7d9135f2e1}{gx\+\_\+set\+\_\+tev\+\_\+stages}} (int count)
+\begin{DoxyCompactList}\small\item\em Sets the number of tev stages. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx__tev_8h_a40b076c1ee72016fda4c0d3351310ecd}{gx\+\_\+initialize\+\_\+tev\+\_\+stage}} (\mbox{\hyperlink{structgx__tev__stage__t}{gx\+\_\+tev\+\_\+stage\+\_\+t}} \texorpdfstring{$\ast$}{*}tev)
+\begin{DoxyCompactList}\small\item\em Generates a empty TEV stage. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx__tev_8h_aef6cda919c8189ee4015f5ced5523233}{gx\+\_\+flash\+\_\+tev\+\_\+stage}} (gx\+\_\+tev\+\_\+stage\+\_\+id id, const \mbox{\hyperlink{structgx__tev__stage__t}{gx\+\_\+tev\+\_\+stage\+\_\+t}} \texorpdfstring{$\ast$}{*}tev)
+\begin{DoxyCompactList}\small\item\em Flashes a TEV stage onto the BP. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx__tev_8h_a73d11ad45b9b964431db01f09342dab1}{gx\+\_\+set\+\_\+tev\+\_\+stage\+\_\+color\+\_\+input}} (\mbox{\hyperlink{structgx__tev__stage__t}{gx\+\_\+tev\+\_\+stage\+\_\+t}} \texorpdfstring{$\ast$}{*}tev, gx\+\_\+tev\+\_\+io\+\_\+t a, gx\+\_\+tev\+\_\+io\+\_\+t b, gx\+\_\+tev\+\_\+io\+\_\+t c, gx\+\_\+tev\+\_\+io\+\_\+t d)
+\begin{DoxyCompactList}\small\item\em Sets the color inputs to a TEV stage. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx__tev_8h_aa1e53cebdd07b40dc8a54a3fa3080540}{gx\+\_\+set\+\_\+tev\+\_\+stage\+\_\+alpha\+\_\+input}} (\mbox{\hyperlink{structgx__tev__stage__t}{gx\+\_\+tev\+\_\+stage\+\_\+t}} \texorpdfstring{$\ast$}{*}tev, gx\+\_\+tev\+\_\+io\+\_\+t a, gx\+\_\+tev\+\_\+io\+\_\+t b, gx\+\_\+tev\+\_\+io\+\_\+t c, gx\+\_\+tev\+\_\+io\+\_\+t d)
+\begin{DoxyCompactList}\small\item\em Sets the color inputs to a TEV stage. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx__tev_8h_a2d4001e2043b18a0dfdb139918dc7727}{gx\+\_\+set\+\_\+tev\+\_\+stage\+\_\+color\+\_\+output}} (\mbox{\hyperlink{structgx__tev__stage__t}{gx\+\_\+tev\+\_\+stage\+\_\+t}} \texorpdfstring{$\ast$}{*}tev, gx\+\_\+tev\+\_\+io\+\_\+t out, bool clamp)
+\begin{DoxyCompactList}\small\item\em Sets the color output to a TEV stage. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx__tev_8h_a39e665f24c72d7343da484bc86b8e9b5}{gx\+\_\+set\+\_\+tev\+\_\+stage\+\_\+alpha\+\_\+output}} (\mbox{\hyperlink{structgx__tev__stage__t}{gx\+\_\+tev\+\_\+stage\+\_\+t}} \texorpdfstring{$\ast$}{*}tev, gx\+\_\+tev\+\_\+io\+\_\+t out, bool clamp)
+\begin{DoxyCompactList}\small\item\em Sets the alpha output to a TEV stage. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx__tev_8h_a886ae5563d0654180ab2269c7037e702}{gx\+\_\+set\+\_\+tev\+\_\+stage\+\_\+color\+\_\+biasing}} (\mbox{\hyperlink{structgx__tev__stage__t}{gx\+\_\+tev\+\_\+stage\+\_\+t}} \texorpdfstring{$\ast$}{*}tev, bool subtract, gx\+\_\+tev\+\_\+bias\+\_\+t bias, gx\+\_\+tev\+\_\+scale\+\_\+t scale)
+\begin{DoxyCompactList}\small\item\em Sets the TEV color stage into biasing mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx__tev_8h_a9c8fb964842664d2f18ef4045670a720}{gx\+\_\+set\+\_\+tev\+\_\+stage\+\_\+color\+\_\+comparison}} (\mbox{\hyperlink{structgx__tev__stage__t}{gx\+\_\+tev\+\_\+stage\+\_\+t}} \texorpdfstring{$\ast$}{*}tev, gx\+\_\+tev\+\_\+compare\+\_\+t comparison)
+\begin{DoxyCompactList}\small\item\em Sets the TEV color stage into comparison mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx__tev_8h_a4a8830958f16e02ed6cb538428dd7c94}{gx\+\_\+set\+\_\+tev\+\_\+stage\+\_\+alpha\+\_\+biasing}} (\mbox{\hyperlink{structgx__tev__stage__t}{gx\+\_\+tev\+\_\+stage\+\_\+t}} \texorpdfstring{$\ast$}{*}tev, bool subtract, gx\+\_\+tev\+\_\+bias\+\_\+t bias, gx\+\_\+tev\+\_\+scale\+\_\+t scale)
+\begin{DoxyCompactList}\small\item\em Sets the TEV alpha stage into biasing mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx__tev_8h_aa4395ae4fcf9df08b1576bcfd6970418}{gx\+\_\+set\+\_\+tev\+\_\+stage\+\_\+alpha\+\_\+comparison}} (\mbox{\hyperlink{structgx__tev__stage__t}{gx\+\_\+tev\+\_\+stage\+\_\+t}} \texorpdfstring{$\ast$}{*}tev, gx\+\_\+tev\+\_\+compare\+\_\+t comparison)
+\begin{DoxyCompactList}\small\item\em Sets the TEV alpha stage into comparison mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx__tev_8h_afe2f0ce25802d7f8e66413a07c931a27}{gx\+\_\+flash\+\_\+tev\+\_\+register\+\_\+color}} (gx\+\_\+tev\+\_\+io\+\_\+t reg, int r, int g, int b, int a)
+\begin{DoxyCompactList}\small\item\em Set the value of one of the TEVs internal registers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+TEV definitions. 
+
+Though the TEV is really part of the BP. The TEV registers have been made their own header. So that their functions are organized.
+
+Diagram of a TEV Stage\+:
+
+\begin{DoxyVerb}                                                                                    /|     +------------+
+                                                                                   / |>----| PREVIOUS   |
+\end{DoxyVerb}
+ +-\/-\/-\/-\/-\/-\/---+ 8 +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/---+ / \texorpdfstring{$\vert$}{|} +-\/-\/-\/-\/-\/-\/-\/-\/-\/---+ \texorpdfstring{$\vert$}{|} INPUT A \texorpdfstring{$\vert$}{|}\texorpdfstring{$>$}{>}-\//--\texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} / \texorpdfstring{$\vert$}{|} +-\/-\/-\/-\/-\/-\/---+ \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} +-\/-\/-\/-\/-\/-\/-\/-\/-\/---+ \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|}\texorpdfstring{$>$}{>}-\/---\texorpdfstring{$\vert$}{|} REGISTER 1 \texorpdfstring{$\vert$}{|} +-\/-\/-\/-\/-\/-\/---+ 8 \texorpdfstring{$\vert$}{|} COLOR MIXER \texorpdfstring{$\vert$}{|} +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/---+ +-\/-\/-\/-\/---+ 11 \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} +-\/-\/-\/-\/-\/-\/-\/-\/-\/---+ \texorpdfstring{$\vert$}{|} INPUT B \texorpdfstring{$\vert$}{|}\texorpdfstring{$>$}{>}-\//--\texorpdfstring{$\vert$}{|} mix(a, b, c) \texorpdfstring{$\vert$}{|}\texorpdfstring{$>$}{>}-\/---\texorpdfstring{$\vert$}{|} ADD \& SCALE \texorpdfstring{$\vert$}{|}\texorpdfstring{$>$}{>}-\/---\texorpdfstring{$\vert$}{|} CLAMP \texorpdfstring{$\vert$}{|}\texorpdfstring{$>$}{>}-\//--\texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} +-\/-\/-\/-\/-\/-\/---+ \texorpdfstring{$\vert$}{|} (a \texorpdfstring{$\ast$}{*} (1.\+0 -\/ c) + b \texorpdfstring{$\ast$}{*} c) \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} ((c+d+b) \texorpdfstring{$\ast$}{*} s) \texorpdfstring{$\vert$}{|} +-\/-\/-\/-\/---+ \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} +-\/-\/-\/-\/-\/-\/-\/-\/-\/---+ \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/---\texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|}\texorpdfstring{$>$}{>}-\/---\texorpdfstring{$\vert$}{|} REGISTER 2 \texorpdfstring{$\vert$}{|} +-\/-\/-\/-\/-\/-\/---+ 8 \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} +-\/-\/-\/-\/-\/-\/-\/-\/-\/---+ \texorpdfstring{$\vert$}{|} INPUT C \texorpdfstring{$\vert$}{|}\texorpdfstring{$>$}{>}-\//--\texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} \textbackslash{} \texorpdfstring{$\vert$}{|} +-\/-\/-\/-\/-\/-\/---+ +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/---+ \texorpdfstring{$\vert$}{|} \textbackslash{} \texorpdfstring{$\vert$}{|} +-\/-\/-\/-\/-\/-\/-\/-\/-\/---+ \texorpdfstring{$\vert$}{|} \textbackslash{} \texorpdfstring{$\vert$}{|}\texorpdfstring{$>$}{>}-\/---\texorpdfstring{$\vert$}{|} REGISTER 3 \texorpdfstring{$\vert$}{|} +-\/-\/-\/-\/-\/-\/---+ 11 \texorpdfstring{$\vert$}{|} $|$ +-\/-\/-\/-\/-\/-\/-\/-\/-\/---+ \texorpdfstring{$\vert$}{|} INPUT D \texorpdfstring{$\vert$}{|}---/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/---+ +-\/-\/-\/-\/-\/-\/---+
+
+Notes\+:
+\begin{DoxyItemize}
+\item Each of the inputs, A-\/D, are selectable.
+\item Inputs are truncated to 8 bits, except for D that is a signed 11 bits, \mbox{[}-\/1024, 1023\mbox{]}
+\item The addition is input D, additional bias, then scale is set to be 0.\+5, 1, 2, or 4
+\item If clamping is enabled, color values are capped \mbox{[}0, 255\mbox{]}, otherwise \mbox{[}-\/1024, 1023\mbox{]}
+\item You can save the output to 1 of 4 TEV registers, or just use the tev previous register.
+\item TEV previous becomes the pixels color at the end of the TEV pipeline.
+\item TEVs default mode is biasing mode, it can be in compare mode too. No mixing, It just says, if operation on input A and B is true, pass C, otherwise, 0. It still adds D as a bias.
+\end{DoxyItemize}
+
+\begin{DoxyAuthor}{Author}
+Samuel Fitzsimons (rainbain) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 @license MIT (see LICENSE file) 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{gx__tev_8h_afe2f0ce25802d7f8e66413a07c931a27}\index{gx\_tev.h@{gx\_tev.h}!gx\_flash\_tev\_register\_color@{gx\_flash\_tev\_register\_color}}
+\index{gx\_flash\_tev\_register\_color@{gx\_flash\_tev\_register\_color}!gx\_tev.h@{gx\_tev.h}}
+\doxysubsubsection{\texorpdfstring{gx\_flash\_tev\_register\_color()}{gx\_flash\_tev\_register\_color()}}
+{\footnotesize\ttfamily \label{gx__tev_8h_afe2f0ce25802d7f8e66413a07c931a27} 
+void gx\+\_\+flash\+\_\+tev\+\_\+register\+\_\+color (\begin{DoxyParamCaption}\item[{gx\+\_\+tev\+\_\+io\+\_\+t}]{reg}{, }\item[{int}]{r}{, }\item[{int}]{g}{, }\item[{int}]{b}{, }\item[{int}]{a}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Set the value of one of the TEVs internal registers. 
+
+The TEV\textquotesingle{}s internal registers can be used to store constant colors if wanted. Only GX\+\_\+\+TEV\+\_\+\+IO\+\_\+\+REGISTER\+\_\+0, GX\+\_\+\+TEV\+\_\+\+IO\+\_\+\+REGISTER\+\_\+1, and GX\+\_\+\+TEV\+\_\+\+IO\+\_\+\+REGISTER\+\_\+2 are valid.
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & Register to put it into. \\
+\hline
+{\em r} & Red value \mbox{[}0, 255\mbox{]}, or a signed 11 bit value \mbox{[}-\/1024, 1024\mbox{]} \\
+\hline
+{\em g} & Green value \mbox{[}0, 255\mbox{]}, or a signed 11 bit value \mbox{[}-\/1024, 1024\mbox{]} \\
+\hline
+{\em b} & Blue value \mbox{[}0, 255\mbox{]}, or a signed 11 bit value \mbox{[}-\/1024, 1024\mbox{]} \\
+\hline
+{\em a} & Alpha value \mbox{[}0, 255\mbox{]}, or a signed 11 bit value \mbox{[}-\/1024, 1024\mbox{]} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx__tev_8h_aef6cda919c8189ee4015f5ced5523233}\index{gx\_tev.h@{gx\_tev.h}!gx\_flash\_tev\_stage@{gx\_flash\_tev\_stage}}
+\index{gx\_flash\_tev\_stage@{gx\_flash\_tev\_stage}!gx\_tev.h@{gx\_tev.h}}
+\doxysubsubsection{\texorpdfstring{gx\_flash\_tev\_stage()}{gx\_flash\_tev\_stage()}}
+{\footnotesize\ttfamily \label{gx__tev_8h_aef6cda919c8189ee4015f5ced5523233} 
+void gx\+\_\+flash\+\_\+tev\+\_\+stage (\begin{DoxyParamCaption}\item[{gx\+\_\+tev\+\_\+stage\+\_\+id}]{id}{, }\item[{const \mbox{\hyperlink{structgx__tev__stage__t}{gx\+\_\+tev\+\_\+stage\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tev}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Flashes a TEV stage onto the BP. 
+
+Copys TEV stages onto the BP.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & TEV stage id. \\
+\hline
+{\em tev} & Pointer to TEV stage. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx__tev_8h_a40b076c1ee72016fda4c0d3351310ecd}\index{gx\_tev.h@{gx\_tev.h}!gx\_initialize\_tev\_stage@{gx\_initialize\_tev\_stage}}
+\index{gx\_initialize\_tev\_stage@{gx\_initialize\_tev\_stage}!gx\_tev.h@{gx\_tev.h}}
+\doxysubsubsection{\texorpdfstring{gx\_initialize\_tev\_stage()}{gx\_initialize\_tev\_stage()}}
+{\footnotesize\ttfamily \label{gx__tev_8h_a40b076c1ee72016fda4c0d3351310ecd} 
+void gx\+\_\+initialize\+\_\+tev\+\_\+stage (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgx__tev__stage__t}{gx\+\_\+tev\+\_\+stage\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tev}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Generates a empty TEV stage. 
+
+It will just pass rasterizer/color value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em tev} & TEV stage to set. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx__tev_8h_a4a8830958f16e02ed6cb538428dd7c94}\index{gx\_tev.h@{gx\_tev.h}!gx\_set\_tev\_stage\_alpha\_biasing@{gx\_set\_tev\_stage\_alpha\_biasing}}
+\index{gx\_set\_tev\_stage\_alpha\_biasing@{gx\_set\_tev\_stage\_alpha\_biasing}!gx\_tev.h@{gx\_tev.h}}
+\doxysubsubsection{\texorpdfstring{gx\_set\_tev\_stage\_alpha\_biasing()}{gx\_set\_tev\_stage\_alpha\_biasing()}}
+{\footnotesize\ttfamily \label{gx__tev_8h_a4a8830958f16e02ed6cb538428dd7c94} 
+void gx\+\_\+set\+\_\+tev\+\_\+stage\+\_\+alpha\+\_\+biasing (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgx__tev__stage__t}{gx\+\_\+tev\+\_\+stage\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tev}{, }\item[{bool}]{subtract}{, }\item[{gx\+\_\+tev\+\_\+bias\+\_\+t}]{bias}{, }\item[{gx\+\_\+tev\+\_\+scale\+\_\+t}]{scale}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the TEV alpha stage into biasing mode. 
+
+In biasing mode, the formula is like {\ttfamily (mix(a, b, c) +-\/ d + bias) \texorpdfstring{$\ast$}{*} scale} This in contrary to compare mode where the formula is {\ttfamily d + (a compare b ? c \+: 0)}
+
+
+\begin{DoxyParams}{Parameters}
+{\em tev} & TEV stage to modify. \\
+\hline
+{\em subtract} & If set, the d value will be subtracted \\
+\hline
+{\em bias} & Bias value, -\/0.\+5, 0, 0.\+5. \\
+\hline
+{\em scale} & Scale. 0.\+5, 1, 2, or 4 \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx__tev_8h_aa4395ae4fcf9df08b1576bcfd6970418}\index{gx\_tev.h@{gx\_tev.h}!gx\_set\_tev\_stage\_alpha\_comparison@{gx\_set\_tev\_stage\_alpha\_comparison}}
+\index{gx\_set\_tev\_stage\_alpha\_comparison@{gx\_set\_tev\_stage\_alpha\_comparison}!gx\_tev.h@{gx\_tev.h}}
+\doxysubsubsection{\texorpdfstring{gx\_set\_tev\_stage\_alpha\_comparison()}{gx\_set\_tev\_stage\_alpha\_comparison()}}
+{\footnotesize\ttfamily \label{gx__tev_8h_aa4395ae4fcf9df08b1576bcfd6970418} 
+void gx\+\_\+set\+\_\+tev\+\_\+stage\+\_\+alpha\+\_\+comparison (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgx__tev__stage__t}{gx\+\_\+tev\+\_\+stage\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tev}{, }\item[{gx\+\_\+tev\+\_\+compare\+\_\+t}]{comparison}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the TEV alpha stage into comparison mode. 
+
+In biasing mode, the formula is like {\ttfamily (mix(a, b, c) +-\/ d + bias) \texorpdfstring{$\ast$}{*} scale} This in contrary to compare mode where the formula is \`{}d + (a compare b ? c \+: 0)
+
+
+\begin{DoxyParams}{Parameters}
+{\em tev} & TEV stage to modify. \\
+\hline
+{\em comparison} & Comparison mode to use. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx__tev_8h_aa1e53cebdd07b40dc8a54a3fa3080540}\index{gx\_tev.h@{gx\_tev.h}!gx\_set\_tev\_stage\_alpha\_input@{gx\_set\_tev\_stage\_alpha\_input}}
+\index{gx\_set\_tev\_stage\_alpha\_input@{gx\_set\_tev\_stage\_alpha\_input}!gx\_tev.h@{gx\_tev.h}}
+\doxysubsubsection{\texorpdfstring{gx\_set\_tev\_stage\_alpha\_input()}{gx\_set\_tev\_stage\_alpha\_input()}}
+{\footnotesize\ttfamily \label{gx__tev_8h_aa1e53cebdd07b40dc8a54a3fa3080540} 
+void gx\+\_\+set\+\_\+tev\+\_\+stage\+\_\+alpha\+\_\+input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgx__tev__stage__t}{gx\+\_\+tev\+\_\+stage\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tev}{, }\item[{gx\+\_\+tev\+\_\+io\+\_\+t}]{a}{, }\item[{gx\+\_\+tev\+\_\+io\+\_\+t}]{b}{, }\item[{gx\+\_\+tev\+\_\+io\+\_\+t}]{c}{, }\item[{gx\+\_\+tev\+\_\+io\+\_\+t}]{d}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the color inputs to a TEV stage. 
+
+Sets the alpha inputs to a TEV stage
+
+In this you can not use GX\+\_\+\+TEV\+\_\+\+INPUT\+\_\+\+ONE and GX\+\_\+\+TEV\+\_\+\+INPUT\+\_\+\+HALF.
+
+GX\+\_\+\+TEV\+\_\+\+INPUT\+\_\+\+ALPHA will not do anything.
+
+
+\begin{DoxyParams}{Parameters}
+{\em tev} & TEV stage to modify. \\
+\hline
+{\em input\+\_\+a} & Input A\textquotesingle{}s alpha value \\
+\hline
+{\em input\+\_\+b} & Input B\textquotesingle{}s alpha value \\
+\hline
+{\em input\+\_\+c} & Input C\textquotesingle{}s alpha value \\
+\hline
+{\em input\+\_\+d} & Input D\textquotesingle{}s 11 bit signed value \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx__tev_8h_a39e665f24c72d7343da484bc86b8e9b5}\index{gx\_tev.h@{gx\_tev.h}!gx\_set\_tev\_stage\_alpha\_output@{gx\_set\_tev\_stage\_alpha\_output}}
+\index{gx\_set\_tev\_stage\_alpha\_output@{gx\_set\_tev\_stage\_alpha\_output}!gx\_tev.h@{gx\_tev.h}}
+\doxysubsubsection{\texorpdfstring{gx\_set\_tev\_stage\_alpha\_output()}{gx\_set\_tev\_stage\_alpha\_output()}}
+{\footnotesize\ttfamily \label{gx__tev_8h_a39e665f24c72d7343da484bc86b8e9b5} 
+void gx\+\_\+set\+\_\+tev\+\_\+stage\+\_\+alpha\+\_\+output (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgx__tev__stage__t}{gx\+\_\+tev\+\_\+stage\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tev}{, }\item[{gx\+\_\+tev\+\_\+io\+\_\+t}]{out}{, }\item[{bool}]{clamp}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the alpha output to a TEV stage. 
+
+Sets the alpha output to a TEV stage
+
+
+\begin{DoxyParams}{Parameters}
+{\em tev} & TEV stage to modify. \\
+\hline
+{\em out} & Output Destination \\
+\hline
+{\em clamp} & Clamp the output \mbox{[}0, 255\mbox{]} or else \mbox{[}-\/1024, 1023\mbox{]} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx__tev_8h_a886ae5563d0654180ab2269c7037e702}\index{gx\_tev.h@{gx\_tev.h}!gx\_set\_tev\_stage\_color\_biasing@{gx\_set\_tev\_stage\_color\_biasing}}
+\index{gx\_set\_tev\_stage\_color\_biasing@{gx\_set\_tev\_stage\_color\_biasing}!gx\_tev.h@{gx\_tev.h}}
+\doxysubsubsection{\texorpdfstring{gx\_set\_tev\_stage\_color\_biasing()}{gx\_set\_tev\_stage\_color\_biasing()}}
+{\footnotesize\ttfamily \label{gx__tev_8h_a886ae5563d0654180ab2269c7037e702} 
+void gx\+\_\+set\+\_\+tev\+\_\+stage\+\_\+color\+\_\+biasing (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgx__tev__stage__t}{gx\+\_\+tev\+\_\+stage\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tev}{, }\item[{bool}]{subtract}{, }\item[{gx\+\_\+tev\+\_\+bias\+\_\+t}]{bias}{, }\item[{gx\+\_\+tev\+\_\+scale\+\_\+t}]{scale}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the TEV color stage into biasing mode. 
+
+In biasing mode, the formula is like {\ttfamily (mix(a, b, c) +-\/ d + bias) \texorpdfstring{$\ast$}{*} scale} This in contrary to compare mode where the formula is {\ttfamily d + (a compare b ? c \+: 0)}
+
+
+\begin{DoxyParams}{Parameters}
+{\em tev} & TEV stage to modify. \\
+\hline
+{\em subtract} & If set, the d value will be subtracted \\
+\hline
+{\em bias} & Bias value, -\/0.\+5, 0, 0.\+5. \\
+\hline
+{\em scale} & Scale. 0.\+5, 1, 2, or 4 \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx__tev_8h_a9c8fb964842664d2f18ef4045670a720}\index{gx\_tev.h@{gx\_tev.h}!gx\_set\_tev\_stage\_color\_comparison@{gx\_set\_tev\_stage\_color\_comparison}}
+\index{gx\_set\_tev\_stage\_color\_comparison@{gx\_set\_tev\_stage\_color\_comparison}!gx\_tev.h@{gx\_tev.h}}
+\doxysubsubsection{\texorpdfstring{gx\_set\_tev\_stage\_color\_comparison()}{gx\_set\_tev\_stage\_color\_comparison()}}
+{\footnotesize\ttfamily \label{gx__tev_8h_a9c8fb964842664d2f18ef4045670a720} 
+void gx\+\_\+set\+\_\+tev\+\_\+stage\+\_\+color\+\_\+comparison (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgx__tev__stage__t}{gx\+\_\+tev\+\_\+stage\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tev}{, }\item[{gx\+\_\+tev\+\_\+compare\+\_\+t}]{comparison}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the TEV color stage into comparison mode. 
+
+In biasing mode, the formula is like {\ttfamily (mix(a, b, c) +-\/ d + bias) \texorpdfstring{$\ast$}{*} scale} This in contrary to compare mode where the formula is {\ttfamily d + (a compare b ? c \+: 0)}
+
+
+\begin{DoxyParams}{Parameters}
+{\em tev} & TEV stage to modify. \\
+\hline
+{\em comparison} & Comparison mode to use. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx__tev_8h_a73d11ad45b9b964431db01f09342dab1}\index{gx\_tev.h@{gx\_tev.h}!gx\_set\_tev\_stage\_color\_input@{gx\_set\_tev\_stage\_color\_input}}
+\index{gx\_set\_tev\_stage\_color\_input@{gx\_set\_tev\_stage\_color\_input}!gx\_tev.h@{gx\_tev.h}}
+\doxysubsubsection{\texorpdfstring{gx\_set\_tev\_stage\_color\_input()}{gx\_set\_tev\_stage\_color\_input()}}
+{\footnotesize\ttfamily \label{gx__tev_8h_a73d11ad45b9b964431db01f09342dab1} 
+void gx\+\_\+set\+\_\+tev\+\_\+stage\+\_\+color\+\_\+input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgx__tev__stage__t}{gx\+\_\+tev\+\_\+stage\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tev}{, }\item[{gx\+\_\+tev\+\_\+io\+\_\+t}]{a}{, }\item[{gx\+\_\+tev\+\_\+io\+\_\+t}]{b}{, }\item[{gx\+\_\+tev\+\_\+io\+\_\+t}]{c}{, }\item[{gx\+\_\+tev\+\_\+io\+\_\+t}]{d}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the color inputs to a TEV stage. 
+
+Sets the color inputs to a TEV stage
+
+Setting the GX\+\_\+\+TEV\+\_\+\+INPUT\+\_\+\+ALPHA bit on a input, will instead use the alpha channel for that input.
+
+
+\begin{DoxyParams}{Parameters}
+{\em tev} & TEV stage to modify. \\
+\hline
+{\em input\+\_\+a} & Input A\textquotesingle{}s RGB8 value \\
+\hline
+{\em input\+\_\+b} & Input B\textquotesingle{}s RGB8 value \\
+\hline
+{\em input\+\_\+c} & Input C\textquotesingle{}s RGB8 value \\
+\hline
+{\em input\+\_\+d} & Input D\textquotesingle{}s 11 bit signed value \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx__tev_8h_a2d4001e2043b18a0dfdb139918dc7727}\index{gx\_tev.h@{gx\_tev.h}!gx\_set\_tev\_stage\_color\_output@{gx\_set\_tev\_stage\_color\_output}}
+\index{gx\_set\_tev\_stage\_color\_output@{gx\_set\_tev\_stage\_color\_output}!gx\_tev.h@{gx\_tev.h}}
+\doxysubsubsection{\texorpdfstring{gx\_set\_tev\_stage\_color\_output()}{gx\_set\_tev\_stage\_color\_output()}}
+{\footnotesize\ttfamily \label{gx__tev_8h_a2d4001e2043b18a0dfdb139918dc7727} 
+void gx\+\_\+set\+\_\+tev\+\_\+stage\+\_\+color\+\_\+output (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgx__tev__stage__t}{gx\+\_\+tev\+\_\+stage\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tev}{, }\item[{gx\+\_\+tev\+\_\+io\+\_\+t}]{out}{, }\item[{bool}]{clamp}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the color output to a TEV stage. 
+
+Sets the color output to a TEV stage
+
+
+\begin{DoxyParams}{Parameters}
+{\em tev} & TEV stage to modify. \\
+\hline
+{\em out} & Output Destination \\
+\hline
+{\em clamp} & Clamp the output \mbox{[}0, 255\mbox{]} or else \mbox{[}-\/1024, 1023\mbox{]} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx__tev_8h_a2dfe5e092332d036a949bb7d9135f2e1}\index{gx\_tev.h@{gx\_tev.h}!gx\_set\_tev\_stages@{gx\_set\_tev\_stages}}
+\index{gx\_set\_tev\_stages@{gx\_set\_tev\_stages}!gx\_tev.h@{gx\_tev.h}}
+\doxysubsubsection{\texorpdfstring{gx\_set\_tev\_stages()}{gx\_set\_tev\_stages()}}
+{\footnotesize\ttfamily \label{gx__tev_8h_a2dfe5e092332d036a949bb7d9135f2e1} 
+void gx\+\_\+set\+\_\+tev\+\_\+stages (\begin{DoxyParamCaption}\item[{int}]{count}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the number of tev stages. 
+
+Sets the number of TEV stages the hardware will process.
+
+
+\begin{DoxyParams}{Parameters}
+{\em count} & TEV Stage count 1 to 16 \\
+\hline
+\end{DoxyParams}

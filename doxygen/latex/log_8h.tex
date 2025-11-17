@@ -1,0 +1,75 @@
+\doxysection{powerblocks/core/utils/log.h File Reference}
+\hypertarget{log_8h}{}\label{log_8h}\index{powerblocks/core/utils/log.h@{powerblocks/core/utils/log.h}}
+
+
+System logging functions.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{log_8h_a3c1e6b96bc0a6c2c6ab9598853e29063}{LOG\+\_\+\+DEBUG}}(tab, ...)
+\item 
+\#define \mbox{\hyperlink{log_8h_a405d7076063cc49721fc43bea7d58f46}{LOG\+\_\+\+INFO}}(tab, ...)
+\item 
+\#define \mbox{\hyperlink{log_8h_a8cc1e1e55dd7400fc3a9b7fb44d1044a}{LOG\+\_\+\+ERROR}}(tab, ...)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{log_8h_a4b032a44f238032c97047f9e1df6c090}\label{log_8h_a4b032a44f238032c97047f9e1df6c090} 
+void {\bfseries log\+\_\+initialize} ()
+\item 
+\Hypertarget{log_8h_af6d8030d6bf25822518954d224af1b34}\label{log_8h_af6d8030d6bf25822518954d224af1b34} 
+void {\bfseries log\+\_\+message} (const char \texorpdfstring{$\ast$}{*}level, const char \texorpdfstring{$\ast$}{*}tag, const char \texorpdfstring{$\ast$}{*}fmt,...)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+System logging functions. 
+
+Provides implementation of logging to control logging level and where the log goes.
+
+\begin{DoxyAuthor}{Author}
+Samuel Fitzsimons (rainbain) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 @license MIT (see LICENSE file) 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{log_8h_a3c1e6b96bc0a6c2c6ab9598853e29063}\index{log.h@{log.h}!LOG\_DEBUG@{LOG\_DEBUG}}
+\index{LOG\_DEBUG@{LOG\_DEBUG}!log.h@{log.h}}
+\doxysubsubsection{\texorpdfstring{LOG\_DEBUG}{LOG\_DEBUG}}
+{\footnotesize\ttfamily \label{log_8h_a3c1e6b96bc0a6c2c6ab9598853e29063} 
+\#define LOG\+\_\+\+DEBUG(\begin{DoxyParamCaption}\item[{}]{tab}{, }\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{log\_message(\textcolor{stringliteral}{"{}DEBUG"{}},\ tab,\ \#\#\_\_VA\_ARGS\_\_)}
+
+\end{DoxyCode}
+\Hypertarget{log_8h_a8cc1e1e55dd7400fc3a9b7fb44d1044a}\index{log.h@{log.h}!LOG\_ERROR@{LOG\_ERROR}}
+\index{LOG\_ERROR@{LOG\_ERROR}!log.h@{log.h}}
+\doxysubsubsection{\texorpdfstring{LOG\_ERROR}{LOG\_ERROR}}
+{\footnotesize\ttfamily \label{log_8h_a8cc1e1e55dd7400fc3a9b7fb44d1044a} 
+\#define LOG\+\_\+\+ERROR(\begin{DoxyParamCaption}\item[{}]{tab}{, }\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{log\_message(\textcolor{stringliteral}{"{}ERROR"{}},\ tab,\ \#\#\_\_VA\_ARGS\_\_)}
+
+\end{DoxyCode}
+\Hypertarget{log_8h_a405d7076063cc49721fc43bea7d58f46}\index{log.h@{log.h}!LOG\_INFO@{LOG\_INFO}}
+\index{LOG\_INFO@{LOG\_INFO}!log.h@{log.h}}
+\doxysubsubsection{\texorpdfstring{LOG\_INFO}{LOG\_INFO}}
+{\footnotesize\ttfamily \label{log_8h_a405d7076063cc49721fc43bea7d58f46} 
+\#define LOG\+\_\+\+INFO(\begin{DoxyParamCaption}\item[{}]{tab}{, }\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{log\_message(\textcolor{stringliteral}{"{}INFO"{}},\ tab,\ \#\#\_\_VA\_ARGS\_\_)}
+
+\end{DoxyCode}

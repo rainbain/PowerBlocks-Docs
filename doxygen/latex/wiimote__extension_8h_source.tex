@@ -1,0 +1,99 @@
+\doxysection{wiimote\+\_\+extension.\+h}
+\hypertarget{wiimote__extension_8h_source}{}\label{wiimote__extension_8h_source}\index{powerblocks/input/wiimote/wiimote\_extension.h@{powerblocks/input/wiimote/wiimote\_extension.h}}
+\mbox{\hyperlink{wiimote__extension_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{vec3_8h}{powerblocks/core/utils/math/vec3.h}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{vec2_8h}{powerblocks/core/utils/math/vec2.h}}"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ WIIMOTE\_EXTENSION\_NONE\ =\ 0,}
+\DoxyCodeLine{00021\ \ \ \ \ WIIMOTE\_EXTENSION\_NUNCHUK,}
+\DoxyCodeLine{00022\ \ \ \ \ WIIMOTE\_EXTENSION\_CLASSIC\_CONTROLLER,}
+\DoxyCodeLine{00023\ \ \ \ \ WIIMOTE\_EXTENSION\_CLASSIC\_CONTROLLER\_PRO,}
+\DoxyCodeLine{00024\ \ \ \ \ WIIMOTE\_EXTENSION\_DRAWSOME\_GRAPHICS\_TABLET,}
+\DoxyCodeLine{00025\ \ \ \ \ WIIMOTE\_EXTENSION\_GH\_GUITAR,}
+\DoxyCodeLine{00026\ \ \ \ \ WIIMOTE\_EXTENSION\_GH\_DRUMS,}
+\DoxyCodeLine{00027\ \ \ \ \ WIIMOTE\_EXTENSION\_DJ\_HERO\_TURNTABLE,}
+\DoxyCodeLine{00028\ \ \ \ \ WIIMOTE\_EXTENSION\_TAIKO\_DRUMS,}
+\DoxyCodeLine{00029\ \ \ \ \ WIIMOTE\_EXTENSION\_UDRAW\_GAME\_TABLET,}
+\DoxyCodeLine{00030\ \ \ \ \ WIIMOTE\_EXTENSION\_SHINKANSEN\_CONTROLLER,}
+\DoxyCodeLine{00031\ \ \ \ \ WIIMOTE\_EXTENSION\_BALANCE\_BOARD}
+\DoxyCodeLine{00032\ \}\ wiimote\_extension\_t;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ WIIMOTE\_EXTENSION\_NUNCHUCK\_BUTTONS\_Z\ (1<<0)}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ WIIMOTE\_EXTENSION\_NUNCHUCK\_BUTTONS\_C\ (1<<1)}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{comment}{//\ Works\ for\ classic\ controller\ pro\ too.}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ WIIMOTE\_EXTENSION\_CLASSIC\_CONTROLLER\_DPAD\_UP\ \ \ \ \ \ \ (1<<0)}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ WIIMOTE\_EXTENSION\_CLASSIC\_CONTROLLER\_DPAD\_LEFT\ \ \ \ \ (1<<1)}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ WIIMOTE\_EXTENSION\_CLASSIC\_CONTROLLER\_Z\_RIGHT\ \ \ \ \ \ \ (1<<2)}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ WIIMOTE\_EXTENSION\_CLASSIC\_CONTROLLER\_X\ \ \ \ \ \ \ \ \ \ \ \ \ (1<<3)}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ WIIMOTE\_EXTENSION\_CLASSIC\_CONTROLLER\_A\ \ \ \ \ \ \ \ \ \ \ \ \ (1<<4)}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ WIIMOTE\_EXTENSION\_CLASSIC\_CONTROLLER\_Y\ \ \ \ \ \ \ \ \ \ \ \ \ (1<<5)}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ WIIMOTE\_EXTENSION\_CLASSIC\_CONTROLLER\_B\ \ \ \ \ \ \ \ \ \ \ \ \ (1<<6)}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ WIIMOTE\_EXTENSION\_CLASSIC\_CONTROLLER\_Z\_LEFT\ \ \ \ \ \ \ \ (1<<7)}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ WIIMOTE\_EXTENSION\_CLASSIC\_CONTROLLER\_RIGHT\_TRIGGER\ (1<<9)}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ WIIMOTE\_EXTENSION\_CLASSIC\_CONTROLLER\_PLUS\ \ \ \ \ \ \ \ \ \ (1<<10)}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ WIIMOTE\_EXTENSION\_CLASSIC\_CONTROLLER\_HOME\ \ \ \ \ \ \ \ \ \ (1<<11)}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ WIIMOTE\_EXTENSION\_CLASSIC\_CONTROLLER\_MINUS\ \ \ \ \ \ \ \ \ (1<<12)}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ WIIMOTE\_EXTENSION\_CLASSIC\_CONTROLLER\_LEFT\_TRIGGER\ \ (1<<13)}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ WIIMOTE\_EXTENSION\_CLASSIC\_CONTROLLER\_DPAD\_DOWN\ \ \ \ \ (1<<14)}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ WIIMOTE\_EXTENSION\_CLASSIC\_CONTROLLER\_DPAD\_RIGHT\ \ \ \ (1<<15)}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ uint16\_t\ state;\ \textcolor{comment}{//\ Current\ frame\ of\ data.\ What\ ones\ are\ true\ and\ false}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ uint16\_t\ held;\ \textcolor{comment}{//\ Last\ frame\ of\ data.\ "{}Held"{}\ buttons}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ uint16\_t\ down;\ \textcolor{comment}{//\ True\ for\ 1\ poll\ when\ pushed\ down}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ uint16\_t\ up;\ \textcolor{comment}{//\ True\ for\ 1\ poll\ when\ up}}
+\DoxyCodeLine{00059\ \}\ \mbox{\hyperlink{structwiimote__buttons}{wiimote\_buttons}};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00062\ \ \ \ \ wiimote\_extension\_t\ type;}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{union\ }\{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structwiimote__buttons}{wiimote\_buttons}}\ buttons;}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvec2}{vec2}}\ stick;}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvec3}{vec3}}\ accelerometer;}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \}\ nunchuck;}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structwiimote__buttons}{wiimote\_buttons}}\ buttons;}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvec2}{vec2}}\ left\_stick;}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvec2}{vec2}}\ right\_stick;}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvec2}{vec2}}\ triggers;\ \textcolor{comment}{//\ \{left,\ right\}}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \}\ classic\_controller;}
+\DoxyCodeLine{00076\ \ \ \ \ \};}
+\DoxyCodeLine{00077\ \}\ \mbox{\hyperlink{structwiimote__extension__data__t}{wiimote\_extension\_data\_t}};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \textcolor{keyword}{typedef}\ int\ (*wiimote\_extension\_handle\_phrase)(\mbox{\hyperlink{structwiimote__extension__data__t}{wiimote\_extension\_data\_t}}*\ out,\ \textcolor{keyword}{const}\ uint8\_t*\ data,\ \textcolor{keywordtype}{size\_t}\ len);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00082\ \ \ \ \ wiimote\_extension\_t\ type;}
+\DoxyCodeLine{00083\ \ \ \ \ wiimote\_extension\_handle\_phrase\ phrase\_data;}
+\DoxyCodeLine{00084\ \}\ \mbox{\hyperlink{structwiimote__extension__mapper__t}{wiimote\_extension\_mapper\_t}};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \textcolor{comment}{//\ Attemps\ to\ phrase\ the\ wiimote\ extension\ data.}}
+\DoxyCodeLine{00087\ \textcolor{comment}{//\ NULL\ is\ acceptable\ for\ a\ mapper}}
+\DoxyCodeLine{00088\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ wiimote\_extension\_phrase\_data(\mbox{\hyperlink{structwiimote__extension__data__t}{wiimote\_extension\_data\_t}}*\ out,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structwiimote__extension__mapper__t}{wiimote\_extension\_mapper\_t}}*\ mapper,\ \textcolor{keyword}{const}\ uint8\_t*\ data,\ \textcolor{keywordtype}{size\_t}\ size);}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \textcolor{comment}{//\ Returns\ the\ wiimote\ extension\ type\ enum}}
+\DoxyCodeLine{00091\ \textcolor{comment}{//\ based\ on\ the\ 6\ byte\ code\ from\ 0x04A40000\ in\ the\ wiimote}}
+\DoxyCodeLine{00092\ \textcolor{keyword}{extern}\ wiimote\_extension\_t\ wiimote\_extension\_get\_type(\textcolor{keyword}{const}\ uint8\_t*\ byte\_code);}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{comment}{//\ Prints\ an\ error\ if\ an\ extension\ type\ is\ unsupported}}
+\DoxyCodeLine{00095\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ wiimote\_extension\_get\_name(wiimote\_extension\_t\ type);}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{comment}{//\ Gets\ the\ extension\ mapper\ for\ a\ controller,\ or\ NULL\ if\ unknown}}
+\DoxyCodeLine{00098\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structwiimote__extension__mapper__t}{wiimote\_extension\_mapper\_t}}*\ wiimote\_extension\_get\_mapper(wiimote\_extension\_t\ type);}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \textcolor{comment}{//\ Generic\ helper\ for\ settings\ buttons}}
+\DoxyCodeLine{00101\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ wiimote\_set\_button\_helper(\mbox{\hyperlink{structwiimote__buttons}{wiimote\_buttons}}*\ buttons,\ uint16\_t\ next\_state);}
+
+\end{DoxyCode}

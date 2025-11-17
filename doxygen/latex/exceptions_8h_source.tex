@@ -1,0 +1,78 @@
+\doxysection{exceptions.\+h}
+\hypertarget{exceptions_8h_source}{}\label{exceptions_8h_source}\index{powerblocks/core/system/exceptions.h@{powerblocks/core/system/exceptions.h}}
+\mbox{\hyperlink{exceptions_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ EXCEPTION\_IRQ\_COUNT\ 15}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ EXCEPTION\_PPC\_IRQ\ \ \ \ \ \ \ (*(volatile\ uint32\_t*)0xcd000030)}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ EXCEPTION\_PPC\_IRQ\_MASK\ \ (*(volatile\ uint32\_t*)0xcd000034)}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00044\ \ \ \ \ uint32\_t\ stack\_frame;}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//\ Stack\ pointer\ gets\ excluded}}
+\DoxyCodeLine{00047\ \ \ \ \ uint32\_t\ r0,\ r2,\ r3,\ r4,\ r5,\ r6,\ r7;}
+\DoxyCodeLine{00048\ \ \ \ \ uint32\_t\ r8,\ r9,\ r10,\ r11,\ r12,\ r13,\ r14,\ r15;}
+\DoxyCodeLine{00049\ \ \ \ \ uint32\_t\ r16,\ r17,\ r18,\ r19,\ r20,\ r21,\ r22,\ r23;}
+\DoxyCodeLine{00050\ \ \ \ \ uint32\_t\ r24,\ r25,\ r26,\ r27,\ r28,\ r29,\ r30,\ r31;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ uint32\_t\ sprg3;}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ uint32\_t\ cr,\ lr,\ ctr,\ xer,\ dar;}
+\DoxyCodeLine{00055\ \ \ \ \ uint32\_t\ srr1,\ srr0;}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ uint32\_t\ gqr0,\ gqr1,\ gqr2,\ gqr3;}
+\DoxyCodeLine{00058\ \ \ \ \ uint32\_t\ gqr4,\ gqr5,\ gqr6,\ gqr7;}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{double}\ f[32];}
+\DoxyCodeLine{00061\ \ \ \ \ uint64\_t\ ffs;}
+\DoxyCodeLine{00062\ \}\ \mbox{\hyperlink{structexception__context__t}{exception\_context\_t}};}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00071\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00072\ \ \ \ \ EXCEPTION\_IRQ\_TYPE\_GP\_RUNTIME,}
+\DoxyCodeLine{00073\ \ \ \ \ EXCEPTION\_IRQ\_TYPE\_RESET\_SWITCH,}
+\DoxyCodeLine{00074\ \ \ \ \ EXCEPTION\_IRQ\_TYPE\_DVD,}
+\DoxyCodeLine{00075\ \ \ \ \ EXCEPTION\_IRQ\_TYPE\_SERIAL,}
+\DoxyCodeLine{00076\ \ \ \ \ EXCEPTION\_IRQ\_TYPE\_EXI,}
+\DoxyCodeLine{00077\ \ \ \ \ EXCEPTION\_IRQ\_TYPE\_STREAMING,}
+\DoxyCodeLine{00078\ \ \ \ \ EXCEPTION\_IRQ\_TYPE\_DSP,}
+\DoxyCodeLine{00079\ \ \ \ \ EXCEPTION\_IRQ\_TYPE\_MEMORY,}
+\DoxyCodeLine{00080\ \ \ \ \ EXCEPTION\_IRQ\_TYPE\_VIDEO,}
+\DoxyCodeLine{00081\ \ \ \ \ EXCEPTION\_IRQ\_TYPE\_PE\_TOKEN,}
+\DoxyCodeLine{00082\ \ \ \ \ EXCEPTION\_IRQ\_TYPE\_PE\_FINISH,}
+\DoxyCodeLine{00083\ \ \ \ \ EXCEPTION\_IRQ\_TYPE\_FIFO,}
+\DoxyCodeLine{00084\ \ \ \ \ EXCEPTION\_IRQ\_TYPE\_DEBUGGER,}
+\DoxyCodeLine{00085\ \ \ \ \ EXCEPTION\_IRQ\_TYPE\_HSP,}
+\DoxyCodeLine{00086\ \ \ \ \ EXCEPTION\_IRQ\_TYPE\_IPC}
+\DoxyCodeLine{00087\ \}\ \mbox{\hyperlink{exceptions_8h_aa7f8381532b17dd18ac2cff4c8cce846}{exception\_irq\_type\_t}};}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00096\ \textcolor{keyword}{extern}\ int32\_t\ \mbox{\hyperlink{exceptions_8c_a6a6f3a9ebf4dff15a45c18914a9e0c5d}{exception\_isr\_context\_switch\_needed}};}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00107\ \textcolor{keyword}{typedef}\ void\ (*\mbox{\hyperlink{exceptions_8h_a4ebb1dbc774c54a28eb19eba0cba1319}{exception\_irq\_handler\_t}})(\mbox{\hyperlink{exceptions_8h_aa7f8381532b17dd18ac2cff4c8cce846}{exception\_irq\_type\_t}}\ irq);}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00117\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{exceptions_8h_aeadadd6ff90677cb0613f6f3a33c8db5}{exceptions\_install\_vector}}();}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00124\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{exceptions_8h_a1195a4bb44ec7d8ce1fb7cda0672cac6}{exceptions\_install\_irq}}(\mbox{\hyperlink{exceptions_8h_a4ebb1dbc774c54a28eb19eba0cba1319}{exception\_irq\_handler\_t}}\ handler,\ \mbox{\hyperlink{exceptions_8h_aa7f8381532b17dd18ac2cff4c8cce846}{exception\_irq\_type\_t}}\ type);}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \textcolor{comment}{//\ Exception\ handlers\ called\ from\ exceptions\_asm.s}}
+\DoxyCodeLine{00127\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ exception\_reset(\mbox{\hyperlink{structexception__context__t}{exception\_context\_t}}*\ context);}
+\DoxyCodeLine{00128\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ exception\_machine\_check(\mbox{\hyperlink{structexception__context__t}{exception\_context\_t}}*\ context);}
+\DoxyCodeLine{00129\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ exception\_dsi(\mbox{\hyperlink{structexception__context__t}{exception\_context\_t}}*\ context);}
+\DoxyCodeLine{00130\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ exception\_isi(\mbox{\hyperlink{structexception__context__t}{exception\_context\_t}}*\ context);}
+\DoxyCodeLine{00131\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ exception\_external(\mbox{\hyperlink{structexception__context__t}{exception\_context\_t}}*\ context);}
+\DoxyCodeLine{00132\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ exception\_alignment(\mbox{\hyperlink{structexception__context__t}{exception\_context\_t}}*\ context);}
+\DoxyCodeLine{00133\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ exception\_program(\mbox{\hyperlink{structexception__context__t}{exception\_context\_t}}*\ context);}
+\DoxyCodeLine{00134\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ exception\_fpu\_unavailable(\mbox{\hyperlink{structexception__context__t}{exception\_context\_t}}*\ context);}
+\DoxyCodeLine{00135\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ exception\_decrementer(\mbox{\hyperlink{structexception__context__t}{exception\_context\_t}}*\ context);}
+\DoxyCodeLine{00136\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ exception\_syscall(\mbox{\hyperlink{structexception__context__t}{exception\_context\_t}}*\ context);}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \textcolor{comment}{//\ Used\ as\ just\ the\ tail\ end\ of\ a\ exception\ for\ jumping\ to\ the\ first\ task}}
+\DoxyCodeLine{00139\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ exceptions\_start\_first\_task();}
+
+\end{DoxyCode}

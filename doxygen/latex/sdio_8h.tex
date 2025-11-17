@@ -1,0 +1,302 @@
+\doxysection{powerblocks/core/ios/sdio.h File Reference}
+\hypertarget{sdio_8h}{}\label{sdio_8h}\index{powerblocks/core/ios/sdio.h@{powerblocks/core/ios/sdio.h}}
+
+
+IOS SDIO Interface.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{sdio_8h_a4ecfe80e051f5c404052e0b48c2ee86f}\label{sdio_8h_a4ecfe80e051f5c404052e0b48c2ee86f} 
+\#define {\bfseries SDIO\+\_\+\+DEVICE\+\_\+\+STATUS\+\_\+\+CARD\+\_\+\+INSERTED}~(1$<$$<$0)
+\item 
+\Hypertarget{sdio_8h_a6d396db08aeb6cfcd68bb5894bb8fbe7}\label{sdio_8h_a6d396db08aeb6cfcd68bb5894bb8fbe7} 
+\#define {\bfseries SDIO\+\_\+\+DEVICE\+\_\+\+STATUS\+\_\+\+NOT\+\_\+\+INSERTED}~(1$<$$<$1)
+\item 
+\Hypertarget{sdio_8h_a9202233ad0208c655e902a41e178e042}\label{sdio_8h_a9202233ad0208c655e902a41e178e042} 
+\#define {\bfseries SDIO\+\_\+\+DEVICE\+\_\+\+STATUS\+\_\+\+WRITE\+\_\+\+PROTECT\+\_\+\+SWITCH}~(1$<$$<$2)
+\item 
+\Hypertarget{sdio_8h_a0c2df5215e8917e3b829a93f58bdd8fa}\label{sdio_8h_a0c2df5215e8917e3b829a93f58bdd8fa} 
+\#define {\bfseries SDIO\+\_\+\+DEVICE\+\_\+\+STATUS\+\_\+\+SD\+\_\+\+INITIALIZED}~(1$<$$<$16)
+\item 
+\Hypertarget{sdio_8h_a69fa0c7094adf3ca637c050bf87c3259}\label{sdio_8h_a69fa0c7094adf3ca637c050bf87c3259} 
+\#define {\bfseries SDIO\+\_\+\+DEVICE\+\_\+\+STATUS\+\_\+\+IS\+\_\+\+SDHC}~(1$<$$<$20)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{sdio_8h_ae06ac01a113854a942fc6698c933f4d5}{sdio\+\_\+cmd\+\_\+t}} \{ \newline
+{\bfseries SD\+\_\+\+CMD0\+\_\+\+GO\+\_\+\+IDLE\+\_\+\+STATE} = 0
+, {\bfseries SD\+\_\+\+CMD2\+\_\+\+ALL\+\_\+\+SEND\+\_\+\+CID} = 2
+, {\bfseries SD\+\_\+\+CMD3\+\_\+\+SEND\+\_\+\+RELATIVE\+\_\+\+ADDR} = 3
+, {\bfseries SD\+\_\+\+CMD7\+\_\+\+SELECT\+\_\+\+CARD} = 7
+, \newline
+{\bfseries SD\+\_\+\+CMD8\+\_\+\+SEND\+\_\+\+IF\+\_\+\+COND} = 8
+, {\bfseries SD\+\_\+\+CMD9\+\_\+\+SEND\+\_\+\+CSD} = 9
+, {\bfseries SD\+\_\+\+CMD12\+\_\+\+STOP\+\_\+\+TRANSMISSION} = 12
+, {\bfseries SD\+\_\+\+CMD16\+\_\+\+SET\+\_\+\+BLOCKLEN} = 16
+, \newline
+{\bfseries SD\+\_\+\+CMD17\+\_\+\+READ\+\_\+\+SINGLE\+\_\+\+BLOCK} = 17
+, {\bfseries SD\+\_\+\+CMD18\+\_\+\+READ\+\_\+\+MULTIPLE\+\_\+\+BLOCK} = 18
+, {\bfseries SD\+\_\+\+CMD24\+\_\+\+WRITE\+\_\+\+BLOCK} = 24
+, {\bfseries SD\+\_\+\+CMD25\+\_\+\+WRITE\+\_\+\+MULTIPLE\+\_\+\+BLOCK} = 25
+, \newline
+{\bfseries SD\+\_\+\+CMD55\+\_\+\+APP\+\_\+\+CMD} = 55
+, {\bfseries SD\+\_\+\+CMD56\+\_\+\+GEN\+\_\+\+CMD} = 56
+, {\bfseries SDIO\+\_\+\+CMD5\+\_\+\+IO\+\_\+\+SEND\+\_\+\+OP\+\_\+\+COND} = 5
+, {\bfseries SDIO\+\_\+\+CMD52\+\_\+\+IO\+\_\+\+RW\+\_\+\+DIRECT} = 52
+, \newline
+{\bfseries SDIO\+\_\+\+CMD53\+\_\+\+IO\+\_\+\+RW\+\_\+\+EXTENDED} = 53
+, {\bfseries SDIO\+\_\+\+ACMD6\+\_\+\+SET\+\_\+\+BUS\+\_\+\+WIDTH} = 6
+ \}
+\begin{DoxyCompactList}\small\item\em Standard SD Commands. \end{DoxyCompactList}\item 
+\Hypertarget{sdio_8h_a8a582d5a643a8cd9e47fccd92b20e998}\label{sdio_8h_a8a582d5a643a8cd9e47fccd92b20e998} 
+enum \mbox{\hyperlink{sdio_8h_a8a582d5a643a8cd9e47fccd92b20e998}{sdio\+\_\+cmdtype\+\_\+t}} \{ {\bfseries SD\+\_\+\+CMDTYPE\+\_\+\+BC} = 1
+, {\bfseries SD\+\_\+\+CMDTYPE\+\_\+\+BCR} = 2
+, {\bfseries SD\+\_\+\+CMDTYPE\+\_\+\+AC} = 3
+, {\bfseries SD\+\_\+\+CMDTYPE\+\_\+\+ADTC} = 4
+ \}
+\begin{DoxyCompactList}\small\item\em Standard SD Command Types. \end{DoxyCompactList}\item 
+\Hypertarget{sdio_8h_aa68d9761b8047a0186f73082d26f187d}\label{sdio_8h_aa68d9761b8047a0186f73082d26f187d} 
+enum \mbox{\hyperlink{sdio_8h_aa68d9761b8047a0186f73082d26f187d}{sdio\+\_\+resptype\+\_\+t}} \{ \newline
+{\bfseries SD\+\_\+\+RESP\+\_\+\+NONE} = 0
+, {\bfseries SD\+\_\+\+RESP\+\_\+\+R1}
+, {\bfseries SD\+\_\+\+RESP\+\_\+\+R1b}
+, {\bfseries SD\+\_\+\+RESP\+\_\+\+R2}
+, \newline
+{\bfseries SD\+\_\+\+RESP\+\_\+\+R3}
+, {\bfseries SD\+\_\+\+RESP\+\_\+\+R4}
+, {\bfseries SD\+\_\+\+RESP\+\_\+\+R5}
+, {\bfseries SD\+\_\+\+RESP\+\_\+\+R6}
+, \newline
+{\bfseries SD\+\_\+\+RESP\+\_\+\+R7}
+ \}
+\begin{DoxyCompactList}\small\item\em Standard SD Response Types. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{sdio_8h_ab11a099348fcbbdace5b9b2420d0aa6e}{sdio\+\_\+initialize}} (const char \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Opens the SDIO interface. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sdio_8h_a3e63f71992d785b689af734b53bca246}{sdio\+\_\+close}} ()
+\begin{DoxyCompactList}\small\item\em =Closes the driver. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sdio_8h_a07a2de59fcb0ab95500131549d6af1a7}{sdio\+\_\+get\+\_\+device\+\_\+status}} (uint32\+\_\+t \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Returns the status of the SD card slot. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sdio_8h_a6c5f3ac2d6fc36ae2480fcc13a2de63b}{sdio\+\_\+reset\+\_\+device}} (uint32\+\_\+t \texorpdfstring{$\ast$}{*}response)
+\begin{DoxyCompactList}\small\item\em Resets the SDIO device, and returns RCA. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sdio_8h_ab5fadbbea5df9a3e07141eeb7f5018a4}{sdio\+\_\+set\+\_\+clock}} (uint32\+\_\+t divider)
+\begin{DoxyCompactList}\small\item\em Sets the clock source for the SD card. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sdio_8h_a6cd91990353c05aebbdd1f98fc4a3459}{sdio\+\_\+read\+\_\+oc\+\_\+register}} (uint32\+\_\+t \texorpdfstring{$\ast$}{*}oc)
+\begin{DoxyCompactList}\small\item\em Reads the OC register Reads the value of the SD cards OC register. This contains a bit feild of operating conditions. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sdio_8h_ae0c4828f466b6977465cc244ea988494}{sdio\+\_\+read\+\_\+hc\+\_\+register}} (uint32\+\_\+t offset, uint32\+\_\+t \texorpdfstring{$\ast$}{*}value)
+\begin{DoxyCompactList}\small\item\em Reads a host controller register. The wii uses a standard SDIO host controller. You may read an arbitrary register of it using this. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sdio_8h_ab09d7d1f8a9ccf225331e03b8851b684}{sdio\+\_\+set\+\_\+hc\+\_\+register}} (uint32\+\_\+t offset, uint32\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em Sets a host controller register. The wii uses a standard SDIO host controller. You may set an arbitrary register of it using this. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{sdio_8h_a4aaac3d9e2b1666ea9d2bbaa53f4696f}{sdio\+\_\+send\+\_\+cmd}} (\mbox{\hyperlink{sdio_8h_ae06ac01a113854a942fc6698c933f4d5}{sdio\+\_\+cmd\+\_\+t}} cmd, \mbox{\hyperlink{sdio_8h_a8a582d5a643a8cd9e47fccd92b20e998}{sdio\+\_\+cmdtype\+\_\+t}} type, \mbox{\hyperlink{sdio_8h_aa68d9761b8047a0186f73082d26f187d}{sdio\+\_\+resptype\+\_\+t}} resptype, uint32\+\_\+t arg, void \texorpdfstring{$\ast$}{*}data, uint32\+\_\+t block\+\_\+count, uint32\+\_\+t sector\+\_\+size, void \texorpdfstring{$\ast$}{*}response, size\+\_\+t response\+\_\+length)
+\begin{DoxyCompactList}\small\item\em Sends a SD card command. Sends a command and returns a 16 byte response. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+IOS SDIO Interface. 
+
+The SD card slot on the wii goes to a SDIO interface accessible through IOS.
+
+This driver is to interface with it.
+
+\begin{DoxyAuthor}{Author}
+Samuel Fitzsimons (rainbain) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 @license MIT (see LICENSE file) 
+\end{DoxyDate}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{sdio_8h_ae06ac01a113854a942fc6698c933f4d5}\index{sdio.h@{sdio.h}!sdio\_cmd\_t@{sdio\_cmd\_t}}
+\index{sdio\_cmd\_t@{sdio\_cmd\_t}!sdio.h@{sdio.h}}
+\doxysubsubsection{\texorpdfstring{sdio\_cmd\_t}{sdio\_cmd\_t}}
+{\footnotesize\ttfamily \label{sdio_8h_ae06ac01a113854a942fc6698c933f4d5} 
+enum \mbox{\hyperlink{sdio_8h_ae06ac01a113854a942fc6698c933f4d5}{sdio\+\_\+cmd\+\_\+t}}}
+
+
+
+Standard SD Commands. 
+
+This list contains the standard SD commands + SDIO specific commands. This list does not contain all of them, just the common ones. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{sdio_8h_a3e63f71992d785b689af734b53bca246}\index{sdio.h@{sdio.h}!sdio\_close@{sdio\_close}}
+\index{sdio\_close@{sdio\_close}!sdio.h@{sdio.h}}
+\doxysubsubsection{\texorpdfstring{sdio\_close()}{sdio\_close()}}
+{\footnotesize\ttfamily \label{sdio_8h_a3e63f71992d785b689af734b53bca246} 
+void sdio\+\_\+close (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+=Closes the driver. 
+
+Closes the driver and assisted IOS file handle. \Hypertarget{sdio_8h_a07a2de59fcb0ab95500131549d6af1a7}\index{sdio.h@{sdio.h}!sdio\_get\_device\_status@{sdio\_get\_device\_status}}
+\index{sdio\_get\_device\_status@{sdio\_get\_device\_status}!sdio.h@{sdio.h}}
+\doxysubsubsection{\texorpdfstring{sdio\_get\_device\_status()}{sdio\_get\_device\_status()}}
+{\footnotesize\ttfamily \label{sdio_8h_a07a2de59fcb0ab95500131549d6af1a7} 
+int sdio\+\_\+get\+\_\+device\+\_\+status (\begin{DoxyParamCaption}\item[{uint32\+\_\+t \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Returns the status of the SD card slot. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Outputted uint32\+\_\+t state bitfield \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Negative if error. 
+\end{DoxyReturn}
+\Hypertarget{sdio_8h_ab11a099348fcbbdace5b9b2420d0aa6e}\index{sdio.h@{sdio.h}!sdio\_initialize@{sdio\_initialize}}
+\index{sdio\_initialize@{sdio\_initialize}!sdio.h@{sdio.h}}
+\doxysubsubsection{\texorpdfstring{sdio\_initialize()}{sdio\_initialize()}}
+{\footnotesize\ttfamily \label{sdio_8h_ab11a099348fcbbdace5b9b2420d0aa6e} 
+int sdio\+\_\+initialize (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{device}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Opens the SDIO interface. 
+
+Opens the SDIO interface on the wii.
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & SDIO device file to open, usually /dev/sdio/slot0 (front SD)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Negative if Error 
+\end{DoxyReturn}
+\Hypertarget{sdio_8h_ae0c4828f466b6977465cc244ea988494}\index{sdio.h@{sdio.h}!sdio\_read\_hc\_register@{sdio\_read\_hc\_register}}
+\index{sdio\_read\_hc\_register@{sdio\_read\_hc\_register}!sdio.h@{sdio.h}}
+\doxysubsubsection{\texorpdfstring{sdio\_read\_hc\_register()}{sdio\_read\_hc\_register()}}
+{\footnotesize\ttfamily \label{sdio_8h_ae0c4828f466b6977465cc244ea988494} 
+int sdio\+\_\+read\+\_\+hc\+\_\+register (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{offset}{, }\item[{uint32\+\_\+t \texorpdfstring{$\ast$}{*}}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Reads a host controller register. The wii uses a standard SDIO host controller. You may read an arbitrary register of it using this. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em offset} & Register offset. \\
+\hline
+{\em value} & Outputted register value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Negative if error. 
+\end{DoxyReturn}
+\Hypertarget{sdio_8h_a6cd91990353c05aebbdd1f98fc4a3459}\index{sdio.h@{sdio.h}!sdio\_read\_oc\_register@{sdio\_read\_oc\_register}}
+\index{sdio\_read\_oc\_register@{sdio\_read\_oc\_register}!sdio.h@{sdio.h}}
+\doxysubsubsection{\texorpdfstring{sdio\_read\_oc\_register()}{sdio\_read\_oc\_register()}}
+{\footnotesize\ttfamily \label{sdio_8h_a6cd91990353c05aebbdd1f98fc4a3459} 
+int sdio\+\_\+read\+\_\+oc\+\_\+register (\begin{DoxyParamCaption}\item[{uint32\+\_\+t \texorpdfstring{$\ast$}{*}}]{oc}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Reads the OC register Reads the value of the SD cards OC register. This contains a bit feild of operating conditions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em oc} & Outputted 32 bit bit feild \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Negative if error. 
+\end{DoxyReturn}
+\Hypertarget{sdio_8h_a6c5f3ac2d6fc36ae2480fcc13a2de63b}\index{sdio.h@{sdio.h}!sdio\_reset\_device@{sdio\_reset\_device}}
+\index{sdio\_reset\_device@{sdio\_reset\_device}!sdio.h@{sdio.h}}
+\doxysubsubsection{\texorpdfstring{sdio\_reset\_device()}{sdio\_reset\_device()}}
+{\footnotesize\ttfamily \label{sdio_8h_a6c5f3ac2d6fc36ae2480fcc13a2de63b} 
+int sdio\+\_\+reset\+\_\+device (\begin{DoxyParamCaption}\item[{uint32\+\_\+t \texorpdfstring{$\ast$}{*}}]{response}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Resets the SDIO device, and returns RCA. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em response} & First 16 bits are the RCA, next 16 bits are stuff bits. Following the SDIO CMD3. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Negative if error 
+\end{DoxyReturn}
+\Hypertarget{sdio_8h_a4aaac3d9e2b1666ea9d2bbaa53f4696f}\index{sdio.h@{sdio.h}!sdio\_send\_cmd@{sdio\_send\_cmd}}
+\index{sdio\_send\_cmd@{sdio\_send\_cmd}!sdio.h@{sdio.h}}
+\doxysubsubsection{\texorpdfstring{sdio\_send\_cmd()}{sdio\_send\_cmd()}}
+{\footnotesize\ttfamily \label{sdio_8h_a4aaac3d9e2b1666ea9d2bbaa53f4696f} 
+int sdio\+\_\+send\+\_\+cmd (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{sdio_8h_ae06ac01a113854a942fc6698c933f4d5}{sdio\+\_\+cmd\+\_\+t}}}]{cmd}{, }\item[{\mbox{\hyperlink{sdio_8h_a8a582d5a643a8cd9e47fccd92b20e998}{sdio\+\_\+cmdtype\+\_\+t}}}]{type}{, }\item[{\mbox{\hyperlink{sdio_8h_aa68d9761b8047a0186f73082d26f187d}{sdio\+\_\+resptype\+\_\+t}}}]{resptype}{, }\item[{uint32\+\_\+t}]{arg}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{uint32\+\_\+t}]{block\+\_\+count}{, }\item[{uint32\+\_\+t}]{sector\+\_\+size}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{response}{, }\item[{size\+\_\+t}]{response\+\_\+length}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sends a SD card command. Sends a command and returns a 16 byte response. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cmd} & What command for the card to carry out. \\
+\hline
+{\em cmd\+\_\+type} & What is contained within the command, what to do. \\
+\hline
+{\em resp\+\_\+type} & How to interpret the cards response? \\
+\hline
+{\em arg} & Argument specific to the command. \\
+\hline
+{\em data} & For commands with associated data, or NULL \\
+\hline
+{\em block\+\_\+count} & How many blocks in the data \\
+\hline
+{\em sector\+\_\+size} & Size of a block in \\
+\hline
+{\em response} & Pointer to put the SD response in \\
+\hline
+{\em response\+\_\+length} & Length of the response \\
+\hline
+\end{DoxyParams}
+\Hypertarget{sdio_8h_ab5fadbbea5df9a3e07141eeb7f5018a4}\index{sdio.h@{sdio.h}!sdio\_set\_clock@{sdio\_set\_clock}}
+\index{sdio\_set\_clock@{sdio\_set\_clock}!sdio.h@{sdio.h}}
+\doxysubsubsection{\texorpdfstring{sdio\_set\_clock()}{sdio\_set\_clock()}}
+{\footnotesize\ttfamily \label{sdio_8h_ab5fadbbea5df9a3e07141eeb7f5018a4} 
+int sdio\+\_\+set\+\_\+clock (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{divider}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the clock source for the SD card. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em divider} & Power of two, or zero, usually one. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Negative if error 
+\end{DoxyReturn}
+\Hypertarget{sdio_8h_ab09d7d1f8a9ccf225331e03b8851b684}\index{sdio.h@{sdio.h}!sdio\_set\_hc\_register@{sdio\_set\_hc\_register}}
+\index{sdio\_set\_hc\_register@{sdio\_set\_hc\_register}!sdio.h@{sdio.h}}
+\doxysubsubsection{\texorpdfstring{sdio\_set\_hc\_register()}{sdio\_set\_hc\_register()}}
+{\footnotesize\ttfamily \label{sdio_8h_ab09d7d1f8a9ccf225331e03b8851b684} 
+int sdio\+\_\+set\+\_\+hc\+\_\+register (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{offset}{, }\item[{uint32\+\_\+t}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets a host controller register. The wii uses a standard SDIO host controller. You may set an arbitrary register of it using this. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em offset} & Register offset. \\
+\hline
+{\em value} & Outputted register value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Negative if error. 
+\end{DoxyReturn}

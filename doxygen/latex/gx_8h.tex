@@ -1,0 +1,1206 @@
+\doxysection{powerblocks/core/graphics/gx.h File Reference}
+\hypertarget{gx_8h}{}\label{gx_8h}\index{powerblocks/core/graphics/gx.h@{powerblocks/core/graphics/gx.h}}
+
+
+Manages graphics on the system.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include "{}framebuffer.\+h"{}}\newline
+{\ttfamily \#include "{}video.\+h"{}}\newline
+{\ttfamily \#include "{}Free\+RTOS.\+h"{}}\newline
+{\ttfamily \#include "{}task.\+h"{}}\newline
+{\ttfamily \#include "{}gx\+\_\+xf.\+h"{}}\newline
+{\ttfamily \#include "{}gx\+\_\+tev.\+h"{}}\newline
+{\ttfamily \#include "{}gx\+\_\+immediate.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structgx__fifo__t}{gx\+\_\+fifo\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Represents the a fifo for the Command Processor. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structgx__texture__t}{gx\+\_\+texture\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Cool little texture object. Really just a copy of the registers that will be set onto the GPU when the texture is loaded. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{gx_8h_abe476ae466a86496dadbd98d6289aed3}\label{gx_8h_abe476ae466a86496dadbd98d6289aed3} 
+\#define {\bfseries GX\+\_\+\+WPAR\+\_\+\+ADDRESS}~0x\+CC008000
+\item 
+\Hypertarget{gx_8h_aaaafdfaaba881b221f045839b45775e5}\label{gx_8h_aaaafdfaaba881b221f045839b45775e5} 
+\#define {\bfseries GX\+\_\+\+WPAR\+\_\+\+U8}~(\texorpdfstring{$\ast$}{*}(volatile uint8\+\_\+t\texorpdfstring{$\ast$}{*})GX\+\_\+\+WPAR\+\_\+\+ADDRESS)
+\item 
+\Hypertarget{gx_8h_a3844d79bd6ec7b352165108151e0d518}\label{gx_8h_a3844d79bd6ec7b352165108151e0d518} 
+\#define {\bfseries GX\+\_\+\+WPAR\+\_\+\+U16}~(\texorpdfstring{$\ast$}{*}(volatile uint16\+\_\+t\texorpdfstring{$\ast$}{*})GX\+\_\+\+WPAR\+\_\+\+ADDRESS)
+\item 
+\Hypertarget{gx_8h_ae12e017184890fe0ec056f1c72f2a117}\label{gx_8h_ae12e017184890fe0ec056f1c72f2a117} 
+\#define {\bfseries GX\+\_\+\+WPAR\+\_\+\+U32}~(\texorpdfstring{$\ast$}{*}(volatile uint32\+\_\+t\texorpdfstring{$\ast$}{*})GX\+\_\+\+WPAR\+\_\+\+ADDRESS)
+\item 
+\Hypertarget{gx_8h_a5428b6d4122ff57ebc75bbcbab99c9eb}\label{gx_8h_a5428b6d4122ff57ebc75bbcbab99c9eb} 
+\#define {\bfseries GX\+\_\+\+WPAR\+\_\+\+S8}~(\texorpdfstring{$\ast$}{*}(volatile int8\+\_\+t\texorpdfstring{$\ast$}{*})GX\+\_\+\+WPAR\+\_\+\+ADDRESS)
+\item 
+\Hypertarget{gx_8h_a6819c28d2f385fe7116ee9fed3c59eb3}\label{gx_8h_a6819c28d2f385fe7116ee9fed3c59eb3} 
+\#define {\bfseries GX\+\_\+\+WPAR\+\_\+\+S16}~(\texorpdfstring{$\ast$}{*}(volatile int16\+\_\+t\texorpdfstring{$\ast$}{*})GX\+\_\+\+WPAR\+\_\+\+ADDRESS)
+\item 
+\Hypertarget{gx_8h_aa7659327371254a6b4ab12d3ee8fe1f1}\label{gx_8h_aa7659327371254a6b4ab12d3ee8fe1f1} 
+\#define {\bfseries GX\+\_\+\+WPAR\+\_\+\+S32}~(\texorpdfstring{$\ast$}{*}(volatile int32\+\_\+t\texorpdfstring{$\ast$}{*})GX\+\_\+\+WPAR\+\_\+\+ADDRESS)
+\item 
+\Hypertarget{gx_8h_a8111705917eea33cc173a6e3c460652e}\label{gx_8h_a8111705917eea33cc173a6e3c460652e} 
+\#define {\bfseries GX\+\_\+\+WPAR\+\_\+\+F32}~(\texorpdfstring{$\ast$}{*}(volatile float\texorpdfstring{$\ast$}{*})GX\+\_\+\+WPAR\+\_\+\+ADDRESS)
+\item 
+\Hypertarget{gx_8h_a03102ae54288aa63a622af767771696e}\label{gx_8h_a03102ae54288aa63a622af767771696e} 
+\#define {\bfseries GX\+\_\+\+FIFO\+\_\+\+MINIMUM\+\_\+\+SIZE}~(64 \texorpdfstring{$\ast$}{*} 1024)
+\item 
+\Hypertarget{gx_8h_ae7716d1e530864d67b0d6dd17247086a}\label{gx_8h_ae7716d1e530864d67b0d6dd17247086a} 
+\#define {\bfseries GX\+\_\+\+FIFO\+\_\+\+WATERMARK}~(16 \texorpdfstring{$\ast$}{*} 1024)
+\item 
+\Hypertarget{gx_8h_aebfb1a476dc4b3e1a05ead3e5aa85f9a}\label{gx_8h_aebfb1a476dc4b3e1a05ead3e5aa85f9a} 
+\#define {\bfseries GX\+\_\+\+WPAR\+\_\+\+OPCODE\+\_\+\+LOAD\+\_\+\+CP}~0x08
+\item 
+\Hypertarget{gx_8h_a28b6cf41350caa65a8920b111e8c4c9d}\label{gx_8h_a28b6cf41350caa65a8920b111e8c4c9d} 
+\#define {\bfseries GX\+\_\+\+WPAR\+\_\+\+OPCODE\+\_\+\+LOAD\+\_\+\+XF}~0x10
+\item 
+\Hypertarget{gx_8h_a529b3ae76de6e70c3aa645890cb7abd2}\label{gx_8h_a529b3ae76de6e70c3aa645890cb7abd2} 
+\#define {\bfseries GX\+\_\+\+WPAR\+\_\+\+OPCODE\+\_\+\+LOAD\+\_\+\+BP}~0x61
+\item 
+\#define \mbox{\hyperlink{gx_8h_a3bc513801c153ef4fadc29bec47c6895}{GX\+\_\+\+WPAR\+\_\+\+OPCODE\+\_\+\+PRIMITIVE}}(type,  format)
+\item 
+\Hypertarget{gx_8h_a7c3db187ec21b41c854f6b9aa771d7ab}\label{gx_8h_a7c3db187ec21b41c854f6b9aa771d7ab} 
+\#define {\bfseries GX\+\_\+\+XF\+\_\+\+MEMORY\+\_\+\+POSTEX\+\_\+\+MTX\+\_\+0}~0x0000
+\item 
+\Hypertarget{gx_8h_a369390305131aa6fbb139536e6107411}\label{gx_8h_a369390305131aa6fbb139536e6107411} 
+\#define {\bfseries GX\+\_\+\+XF\+\_\+\+MEMORY\+\_\+\+NORMAL\+\_\+\+MTX\+\_\+0}~0x0400
+\item 
+\Hypertarget{gx_8h_a6e88e4649f7244874d91a365d82d5f6a}\label{gx_8h_a6e88e4649f7244874d91a365d82d5f6a} 
+\#define {\bfseries GX\+\_\+\+XF\+\_\+\+MEMORY\+\_\+\+DUALTEX\+\_\+\+MTX\+\_\+0}~0x0500
+\item 
+\Hypertarget{gx_8h_a8dd10612a55960d557443ca0fb1a7673}\label{gx_8h_a8dd10612a55960d557443ca0fb1a7673} 
+\#define {\bfseries GX\+\_\+\+XF\+\_\+\+MEMORY\+\_\+\+LIGHT0}~0x0600
+\item 
+\Hypertarget{gx_8h_a35e7612de59873660ec30e046c2eb9b3}\label{gx_8h_a35e7612de59873660ec30e046c2eb9b3} 
+\#define {\bfseries GX\+\_\+\+XF\+\_\+\+REGISTER\+\_\+\+VERTEX\+\_\+\+STATS}~0x1008
+\item 
+\Hypertarget{gx_8h_aba8a0e9765ca04280fef12932dc1ed40}\label{gx_8h_aba8a0e9765ca04280fef12932dc1ed40} 
+\#define {\bfseries GX\+\_\+\+XF\+\_\+\+REGISTER\+\_\+\+COLOR\+\_\+\+COUNT}~0x1009
+\item 
+\Hypertarget{gx_8h_aa76928b9931f573b3086009c6fdd61b3}\label{gx_8h_aa76928b9931f573b3086009c6fdd61b3} 
+\#define {\bfseries GX\+\_\+\+XF\+\_\+\+REGISTER\+\_\+\+COLOR\+\_\+\+CONTROL}~0x100E
+\item 
+\Hypertarget{gx_8h_a3e5660eab5399043402f7ca35de41a8c}\label{gx_8h_a3e5660eab5399043402f7ca35de41a8c} 
+\#define {\bfseries GX\+\_\+\+XF\+\_\+\+REGISTER\+\_\+\+DUALTEXTRANS}~0x1012
+\item 
+\Hypertarget{gx_8h_a1cda1977dd6c0d60b96ec0566943fe7b}\label{gx_8h_a1cda1977dd6c0d60b96ec0566943fe7b} 
+\#define {\bfseries GX\+\_\+\+XF\+\_\+\+REGISTER\+\_\+\+MTXIDX\+\_\+A}~0x1018
+\item 
+\Hypertarget{gx_8h_a1bc3a9b271f5d4e10c3f3a36f00cd504}\label{gx_8h_a1bc3a9b271f5d4e10c3f3a36f00cd504} 
+\#define {\bfseries GX\+\_\+\+XF\+\_\+\+REGISTER\+\_\+\+MTXIDX\+\_\+B}~0x1019
+\item 
+\Hypertarget{gx_8h_ae14f8a6e545188af2d31bea7a5b7f881}\label{gx_8h_ae14f8a6e545188af2d31bea7a5b7f881} 
+\#define {\bfseries GX\+\_\+\+XF\+\_\+\+REGISTER\+\_\+\+VIEWPORT}~0x101A
+\item 
+\Hypertarget{gx_8h_a1f930728e1dc3348aa748f1e0ba4c56e}\label{gx_8h_a1f930728e1dc3348aa748f1e0ba4c56e} 
+\#define {\bfseries GX\+\_\+\+XF\+\_\+\+REGISTER\+\_\+\+PROJECTION}~0x1020
+\item 
+\Hypertarget{gx_8h_a0b31711992a6961661d21e64d0bd99d5}\label{gx_8h_a0b31711992a6961661d21e64d0bd99d5} 
+\#define {\bfseries GX\+\_\+\+XF\+\_\+\+REGISTER\+\_\+\+TEXCOORD\+\_\+\+COUNT}~0x103F
+\item 
+\Hypertarget{gx_8h_a379d61f064853c59fec264b6fae19ae8}\label{gx_8h_a379d61f064853c59fec264b6fae19ae8} 
+\#define {\bfseries GX\+\_\+\+XF\+\_\+\+REGISTER\+\_\+\+TEX0}~0x1040
+\item 
+\Hypertarget{gx_8h_a2898c57cb58a72b30dc23578ac34911f}\label{gx_8h_a2898c57cb58a72b30dc23578ac34911f} 
+\#define {\bfseries GX\+\_\+\+XF\+\_\+\+REGISTER\+\_\+\+DUALTEX0}~0x1050
+\item 
+\Hypertarget{gx_8h_adf955aa2666250742a0f45f02021d9a7}\label{gx_8h_adf955aa2666250742a0f45f02021d9a7} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+GENMODE}~(0x00 $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_a5d9119b052a99da7b586abe54b794fb9}\label{gx_8h_a5d9119b052a99da7b586abe54b794fb9} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+COPY\+\_\+\+FILTER\+\_\+\+POS\+\_\+A}~(0x01 $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_ab9fc5d513459e7a1d2faf12199c5f7d4}\label{gx_8h_ab9fc5d513459e7a1d2faf12199c5f7d4} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+COPY\+\_\+\+FILTER\+\_\+\+POS\+\_\+B}~(0x02 $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_ad167ccd639959ebe2bde5afb8577bbc3}\label{gx_8h_ad167ccd639959ebe2bde5afb8577bbc3} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+COPY\+\_\+\+FILTER\+\_\+\+POS\+\_\+C}~(0x03 $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_aefdbc7f0d5019c513151cd9e0eebeb44}\label{gx_8h_aefdbc7f0d5019c513151cd9e0eebeb44} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+COPY\+\_\+\+FILTER\+\_\+\+POS\+\_\+D}~(0x04 $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_a43ce81e39b83ac68d23c1d6efd0302cd}\label{gx_8h_a43ce81e39b83ac68d23c1d6efd0302cd} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+SCISSOR\+\_\+\+TL}~(0x20 $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_a8b6f2f53ed95d68589b6f848dfe2e3e4}\label{gx_8h_a8b6f2f53ed95d68589b6f848dfe2e3e4} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+SCISSOR\+\_\+\+BR}~(0x21 $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_a22ed8029cc7236b8fb334f2b78521ff3}\label{gx_8h_a22ed8029cc7236b8fb334f2b78521ff3} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+SSIZE0}~(0x30 $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_a6ca88ed4f7e1a32b73f68e75bcb31857}\label{gx_8h_a6ca88ed4f7e1a32b73f68e75bcb31857} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+TSIZE0}~(0x31 $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_a6321c2f95a35236133019483645bc435}\label{gx_8h_a6321c2f95a35236133019483645bc435} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+Z\+\_\+\+MODE}~(0x40 $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_a7aea819ec0460f3eda881ae885368103}\label{gx_8h_a7aea819ec0460f3eda881ae885368103} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+CMODE\+\_\+0}~(0x41 $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_ae01e0373facd45a76b4b8e543d296fc5}\label{gx_8h_ae01e0373facd45a76b4b8e543d296fc5} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+CMODE\+\_\+1}~(0x42 $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_ab67585043090ff260c59dfafdd8060bd}\label{gx_8h_ab67585043090ff260c59dfafdd8060bd} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+PE\+\_\+\+CONTROL}~(0\+X43 $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_af4f300bc96ccb7392784b7b47577da31}\label{gx_8h_af4f300bc96ccb7392784b7b47577da31} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+PE\+\_\+\+DONE}~(0x45 $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_af2ee4261892b7f3f035e8b8ed5790193}\label{gx_8h_af2ee4261892b7f3f035e8b8ed5790193} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+EFB\+\_\+\+SOURCE\+\_\+\+TOP\+\_\+\+LEFT}~(0x49 $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_afeb51b10aa2095666ccf997de4ba88e2}\label{gx_8h_afeb51b10aa2095666ccf997de4ba88e2} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+EFB\+\_\+\+SOURCE\+\_\+\+WIDTH\+\_\+\+HEIGHT}~(0x4A $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_a1cc5d23037cbcb8217e178ca594a099d}\label{gx_8h_a1cc5d23037cbcb8217e178ca594a099d} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+XFB\+\_\+\+TARGET\+\_\+\+ADDRESS}~(0x4B $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_a61599754754ac6e7a21b08e26538d1ec}\label{gx_8h_a61599754754ac6e7a21b08e26538d1ec} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+EFB\+\_\+\+DESTINATION\+\_\+\+WIDTH}~(0x4D $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_aa3502feafd6792ac6d205fb7f32faf61}\label{gx_8h_aa3502feafd6792ac6d205fb7f32faf61} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+Y\+\_\+\+SCALE}~(0x4E $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_a96cd21af2fa871146b20076d73794f9c}\label{gx_8h_a96cd21af2fa871146b20076d73794f9c} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+PE\+\_\+\+COPY\+\_\+\+CLEAR\+\_\+\+AR}~(0x4F $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_ac113c1799b14f469471362ebad08cab0}\label{gx_8h_ac113c1799b14f469471362ebad08cab0} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+PE\+\_\+\+COPY\+\_\+\+CLEAR\+\_\+\+GB}~(0x50 $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_aa5c4d611af8abd4f70d43c3db0a652b4}\label{gx_8h_aa5c4d611af8abd4f70d43c3db0a652b4} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+PE\+\_\+\+COPY\+\_\+\+CLEAR\+\_\+Z}~(0x51 $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_ab395691782242a9b39a366a8909a0184}\label{gx_8h_ab395691782242a9b39a366a8909a0184} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+PE\+\_\+\+COPY\+\_\+\+EXECUTE}~(0x52 $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_a3b2586f2fd419283b38a1c10e31ddca6}\label{gx_8h_a3b2586f2fd419283b38a1c10e31ddca6} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+COPY\+\_\+\+FILTER\+\_\+\+COEFF\+\_\+A}~(0x53 $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_aa31ca288a5156f8460b982711a18a8d1}\label{gx_8h_aa31ca288a5156f8460b982711a18a8d1} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+COPY\+\_\+\+FILTER\+\_\+\+COEFF\+\_\+B}~(0x54 $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_ac48f48467e9598e8cbb7c59cba96f0d1}\label{gx_8h_ac48f48467e9598e8cbb7c59cba96f0d1} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+SCISSOR\+\_\+\+OFFSET}~(0x59 $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_ad009775ff036f70d4b0871e2a8a00470}\label{gx_8h_ad009775ff036f70d4b0871e2a8a00470} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+TX\+\_\+\+SETMODE0\+\_\+\+I0}~(0x80 $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_aac00d4accce567b3f3dc425364d07cf6}\label{gx_8h_aac00d4accce567b3f3dc425364d07cf6} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+TX\+\_\+\+SETMODE1\+\_\+\+I0}~(0x84 $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_a9b0cafdc2ed0118c52eded5201f7710e}\label{gx_8h_a9b0cafdc2ed0118c52eded5201f7710e} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+TX\+\_\+\+SETIMAGE0\+\_\+\+I0}~(0x88 $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_aeae8c9d279e7dfeeff0c1a22838ce74c}\label{gx_8h_aeae8c9d279e7dfeeff0c1a22838ce74c} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+TX\+\_\+\+SETIMAGE1\+\_\+\+I0}~(0x8C $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_a5525303a615b843494766705e84bbd0f}\label{gx_8h_a5525303a615b843494766705e84bbd0f} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+TX\+\_\+\+SETIMAGE2\+\_\+\+I0}~(0x90 $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_a46140e6bfd7283f1ff551d3cccf76422}\label{gx_8h_a46140e6bfd7283f1ff551d3cccf76422} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+TX\+\_\+\+SETIMAGE3\+\_\+\+I0}~(0x94 $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_a9bdb413aa356ff2243e6ccc4c4b67006}\label{gx_8h_a9bdb413aa356ff2243e6ccc4c4b67006} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+TX\+\_\+\+SETTLUT\+\_\+0}~(0x98 $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_ad1f63179e8f1cc4a796e06b72efe8946}\label{gx_8h_ad1f63179e8f1cc4a796e06b72efe8946} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+TEV0\+\_\+\+COLOR\+\_\+\+ENV}~(0x\+C0 $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_a31262f348b99881e70d531f31a63ca07}\label{gx_8h_a31262f348b99881e70d531f31a63ca07} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+TEV0\+\_\+\+ALPHA\+\_\+\+ENV}~(0x\+C1 $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_a14a8fcb3a84dbf4620c934d03de1e2ee}\label{gx_8h_a14a8fcb3a84dbf4620c934d03de1e2ee} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+TEV\+\_\+\+REGISTERL\+\_\+0}~(0x\+E0 $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_ac29a1a6bd0669e82ca72592d92528451}\label{gx_8h_ac29a1a6bd0669e82ca72592d92528451} 
+\#define {\bfseries GX\+\_\+\+BP\+\_\+\+REGISTERS\+\_\+\+TEV\+\_\+\+REGISTERH\+\_\+0}~(0x\+E1 $<$$<$ 24)
+\item 
+\Hypertarget{gx_8h_ae99fc0f0114336a4173e1ccfe7b84c56}\label{gx_8h_ae99fc0f0114336a4173e1ccfe7b84c56} 
+\#define {\bfseries GX\+\_\+\+CP\+\_\+\+REGISTERS\+\_\+\+MTXIDX\+\_\+A}~0x30
+\item 
+\Hypertarget{gx_8h_a7c751b6645b5a3c9bce3cc742a01f1e2}\label{gx_8h_a7c751b6645b5a3c9bce3cc742a01f1e2} 
+\#define {\bfseries GX\+\_\+\+CP\+\_\+\+REGISTERS\+\_\+\+MTXIDX\+\_\+B}~0x40
+\item 
+\Hypertarget{gx_8h_afcedf986797965e6848d4efa3ad75297}\label{gx_8h_afcedf986797965e6848d4efa3ad75297} 
+\#define {\bfseries GX\+\_\+\+CP\+\_\+\+REGISTER\+\_\+\+VCD\+\_\+\+LOW}~0x50
+\item 
+\Hypertarget{gx_8h_a19dd89a049dff45df52e026404c2a7e9}\label{gx_8h_a19dd89a049dff45df52e026404c2a7e9} 
+\#define {\bfseries GX\+\_\+\+CP\+\_\+\+REGISTER\+\_\+\+VCD\+\_\+\+HIGH}~0x60
+\item 
+\Hypertarget{gx_8h_a80a7688a6512c8a79d42ea9c0ac13b9e}\label{gx_8h_a80a7688a6512c8a79d42ea9c0ac13b9e} 
+\#define {\bfseries GX\+\_\+\+CP\+\_\+\+REGISTER\+\_\+\+VAT\+\_\+A}~0x70
+\item 
+\Hypertarget{gx_8h_a2d25e113cf4a62b28317699ee65e19b0}\label{gx_8h_a2d25e113cf4a62b28317699ee65e19b0} 
+\#define {\bfseries GX\+\_\+\+CP\+\_\+\+REGISTER\+\_\+\+VAT\+\_\+B}~0x80
+\item 
+\Hypertarget{gx_8h_aec3cacbf4f4a41f80bebd034fed35e03}\label{gx_8h_aec3cacbf4f4a41f80bebd034fed35e03} 
+\#define {\bfseries GX\+\_\+\+CP\+\_\+\+REGISTER\+\_\+\+VAT\+\_\+C}~0x90
+\item 
+\#define \mbox{\hyperlink{gx_8h_a1bf9dffdba538acc3b4ba666b92ac7bd}{GX\+\_\+\+WPAR\+\_\+\+CP\+\_\+\+LOAD}}(address,  value)
+\item 
+\#define \mbox{\hyperlink{gx_8h_a7caf966fa4626fb7069f0419c98d56e3}{GX\+\_\+\+WPAR\+\_\+\+XF\+\_\+\+LOAD}}(address,  words)
+\item 
+\#define \mbox{\hyperlink{gx_8h_aaa75da7b7a972c93267b533bc0e7f860}{GX\+\_\+\+WPAR\+\_\+\+BP\+\_\+\+LOAD}}(value)
+\item 
+\#define \mbox{\hyperlink{gx_8h_aaefba7fcb1c772974953b79abde2ee50}{gx\+\_\+end}}()
+\begin{DoxyCompactList}\small\item\em End drawing primatives. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{gx_8h_abce8986537db4fa64b821efb46a2b956}\label{gx_8h_abce8986537db4fa64b821efb46a2b956} 
+enum {\bfseries gx\+\_\+vtxattr\+\_\+data\+\_\+t} \{ {\bfseries GX\+\_\+\+VTXATTR\+\_\+\+DATA\+\_\+\+DISABLED}
+, {\bfseries GX\+\_\+\+VTXATTR\+\_\+\+DATA\+\_\+\+DIRECT}
+, {\bfseries GX\+\_\+\+VTXATTR\+\_\+\+DATA\+\_\+\+INDEX8}
+, {\bfseries GX\+\_\+\+VTXATTR\+\_\+\+DATA\+\_\+\+INDEX16}
+ \}
+\item 
+\Hypertarget{gx_8h_a8772e0938bdb8b913e2b9aad57dece17}\label{gx_8h_a8772e0938bdb8b913e2b9aad57dece17} 
+enum {\bfseries gx\+\_\+vtxdesc\+\_\+t} \{ \newline
+{\bfseries GX\+\_\+\+VTXDESC\+\_\+\+POSNORM\+\_\+\+INDEX}
+, {\bfseries GX\+\_\+\+VTXDESC\+\_\+\+TEXCOORDMTX0}
+, {\bfseries GX\+\_\+\+VTXDESC\+\_\+\+TEXCOORDMTX1}
+, {\bfseries GX\+\_\+\+VTXDESC\+\_\+\+TEXCOORDMTX2}
+, \newline
+{\bfseries GX\+\_\+\+VTXDESC\+\_\+\+TEXCOORDMTX3}
+, {\bfseries GX\+\_\+\+VTXDESC\+\_\+\+TEXCOORDMTX4}
+, {\bfseries GX\+\_\+\+VTXDESC\+\_\+\+TEXCOORDMTX5}
+, {\bfseries GX\+\_\+\+VTXDESC\+\_\+\+TEXCOORDMTX6}
+, \newline
+{\bfseries GX\+\_\+\+VTXDESC\+\_\+\+TEXCOORDMTX7}
+, {\bfseries GX\+\_\+\+VTXDESC\+\_\+\+POSITION}
+, {\bfseries GX\+\_\+\+VTXDESC\+\_\+\+NORMAL}
+, {\bfseries GX\+\_\+\+VTXDESC\+\_\+\+NORMAL\+\_\+\+NBT}
+, \newline
+{\bfseries GX\+\_\+\+VTXDESC\+\_\+\+COLOR0}
+, {\bfseries GX\+\_\+\+VTXDESC\+\_\+\+COLOR1}
+, {\bfseries GX\+\_\+\+VTXDESC\+\_\+\+TEXCOORD0}
+, {\bfseries GX\+\_\+\+VTXDESC\+\_\+\+TEXCOORD1}
+, \newline
+{\bfseries GX\+\_\+\+VTXDESC\+\_\+\+TEXCOORD2}
+, {\bfseries GX\+\_\+\+VTXDESC\+\_\+\+TEXCOORD3}
+, {\bfseries GX\+\_\+\+VTXDESC\+\_\+\+TEXCOORD4}
+, {\bfseries GX\+\_\+\+VTXDESC\+\_\+\+TEXCOORD5}
+, \newline
+{\bfseries GX\+\_\+\+VTXDESC\+\_\+\+TEXCOORD6}
+, {\bfseries GX\+\_\+\+VTXDESC\+\_\+\+TEXCOORD7}
+ \}
+\item 
+\Hypertarget{gx_8h_a423b00e4e8b86e5e069ef04ca25dbee7}\label{gx_8h_a423b00e4e8b86e5e069ef04ca25dbee7} 
+enum {\bfseries gx\+\_\+vtxattr\+\_\+component\+\_\+t} \{ \newline
+{\bfseries GX\+\_\+\+VTXATTR\+\_\+\+POS\+\_\+\+XY} = 0
+, {\bfseries GX\+\_\+\+VTXATTR\+\_\+\+POS\+\_\+\+XYZ} = 1
+, {\bfseries GX\+\_\+\+VTXATTR\+\_\+\+RGB} = 0
+, {\bfseries GX\+\_\+\+VTXATTR\+\_\+\+RGBA} = 1
+, \newline
+{\bfseries GX\+\_\+\+VTXATTR\+\_\+\+NRM\+\_\+\+XYZ} = 0
+, {\bfseries GX\+\_\+\+VTXATTR\+\_\+\+NRM\+\_\+\+NBT} = 1
+, {\bfseries GX\+\_\+\+VTXATTR\+\_\+\+NRM\+\_\+\+NBT3} = 3
+, {\bfseries GX\+\_\+\+VTXATTR\+\_\+\+TEX\+\_\+S} = 0
+, \newline
+{\bfseries GX\+\_\+\+VTXATTR\+\_\+\+TEX\+\_\+\+ST} = 1
+ \}
+\item 
+\Hypertarget{gx_8h_aa9044246f10ded79d2b6383c509350fa}\label{gx_8h_aa9044246f10ded79d2b6383c509350fa} 
+enum {\bfseries gx\+\_\+vtxattr\+\_\+component\+\_\+format\+\_\+t} \{ \newline
+{\bfseries GX\+\_\+\+VTXATTR\+\_\+\+U8} = 0
+, {\bfseries GX\+\_\+\+VTXATTR\+\_\+\+S8}
+, {\bfseries GX\+\_\+\+VTXATTR\+\_\+\+U16}
+, {\bfseries GX\+\_\+\+VTXATTR\+\_\+\+S16}
+, \newline
+{\bfseries GX\+\_\+\+VTXATTR\+\_\+\+F32}
+, {\bfseries GX\+\_\+\+VTXATTR\+\_\+\+RGB565} = 0
+, {\bfseries GX\+\_\+\+VTXATTR\+\_\+\+RGB8}
+, {\bfseries GX\+\_\+\+VTXATTR\+\_\+\+RGBX8}
+, \newline
+{\bfseries GX\+\_\+\+VTXATTR\+\_\+\+RGBA4}
+, {\bfseries GX\+\_\+\+VTXATTR\+\_\+\+RGBA6}
+, {\bfseries GX\+\_\+\+VTXATTR\+\_\+\+RGBA8}
+ \}
+\item 
+\Hypertarget{gx_8h_a349c29667142a4185a50f9ad0fa5bb38}\label{gx_8h_a349c29667142a4185a50f9ad0fa5bb38} 
+enum {\bfseries gx\+\_\+primitive\+\_\+t} \{ \newline
+{\bfseries GX\+\_\+\+LINES} = 0x\+A8
+, {\bfseries GX\+\_\+\+LINESTRIP} = 0x\+B0
+, {\bfseries GX\+\_\+\+POINTS} = 0x\+B8
+, {\bfseries GX\+\_\+\+QUADS} = 0x80
+, \newline
+{\bfseries GX\+\_\+\+TRIANGLE\+\_\+\+FAN} = 0x\+A0
+, {\bfseries GX\+\_\+\+TRIANGLES} = 0x90
+, {\bfseries GX\+\_\+\+TRIANGLE\+\_\+\+STRIP} = 0x98
+ \}
+\item 
+\Hypertarget{gx_8h_a9bd822a995a75fdb71a70d95510715d8}\label{gx_8h_a9bd822a995a75fdb71a70d95510715d8} 
+enum {\bfseries gx\+\_\+compare\+\_\+t} \{ \newline
+{\bfseries GX\+\_\+\+COMPARE\+\_\+\+NEVER}
+, {\bfseries GX\+\_\+\+COMPARE\+\_\+\+LESS}
+, {\bfseries GX\+\_\+\+COMPARE\+\_\+\+EQUAL}
+, {\bfseries GX\+\_\+\+COMPARE\+\_\+\+LESS\+\_\+\+EQUAL}
+, \newline
+{\bfseries GX\+\_\+\+COMPARE\+\_\+\+GREATER}
+, {\bfseries GX\+\_\+\+COMPARE\+\_\+\+NOT\+\_\+\+EQUAL}
+, {\bfseries GX\+\_\+\+COMPARE\+\_\+\+GREATER\+\_\+\+EQUAL}
+, {\bfseries GX\+\_\+\+COMPARE\+\_\+\+ALWAYS}
+ \}
+\item 
+\Hypertarget{gx_8h_a52d605184c143627104d87f97991a889}\label{gx_8h_a52d605184c143627104d87f97991a889} 
+enum {\bfseries gx\+\_\+pixel\+\_\+format\+\_\+t} \{ \newline
+{\bfseries GX\+\_\+\+PIXEL\+\_\+\+FORMAT\+\_\+\+RGB8\+\_\+\+Z24}
+, {\bfseries GX\+\_\+\+PIXEL\+\_\+\+FORMAT\+\_\+\+RGBA6\+\_\+\+Z24}
+, {\bfseries GX\+\_\+\+PIXEL\+\_\+\+FORMAT\+\_\+\+RGB565\+\_\+\+Z16}
+, {\bfseries GX\+\_\+\+PIXEL\+\_\+\+FORMAT\+\_\+\+Z24}
+, \newline
+{\bfseries GX\+\_\+\+PIXEL\+\_\+\+FORMAT\+\_\+\+Y8}
+, {\bfseries GX\+\_\+\+PIXEL\+\_\+\+FORMAT\+\_\+\+U8}
+, {\bfseries GX\+\_\+\+PIXEL\+\_\+\+FORMAT\+\_\+\+V8}
+, {\bfseries GX\+\_\+\+PIXEL\+\_\+\+FORMAT\+\_\+\+YUV420}
+ \}
+\item 
+\Hypertarget{gx_8h_a448961636552888c09cfece29e686a9c}\label{gx_8h_a448961636552888c09cfece29e686a9c} 
+enum {\bfseries gx\+\_\+z\+\_\+format\+\_\+t} \{ {\bfseries GX\+\_\+\+Z\+\_\+\+FORMAT\+\_\+\+LINEAR}
+, {\bfseries GX\+\_\+\+Z\+\_\+\+FORMAT\+\_\+\+NEAR}
+, {\bfseries GX\+\_\+\+Z\+\_\+\+FORMAT\+\_\+\+MID}
+, {\bfseries GX\+\_\+\+Z\+\_\+\+FORMAT\+\_\+\+FAR}
+ \}
+\item 
+\Hypertarget{gx_8h_a960da837144f437a7e9a823909efd583}\label{gx_8h_a960da837144f437a7e9a823909efd583} 
+enum {\bfseries gx\+\_\+clamp\+\_\+mode\+\_\+t} \{ {\bfseries GX\+\_\+\+CLAMP\+\_\+\+MODE\+\_\+\+NONE}
+, {\bfseries GX\+\_\+\+CLAMP\+\_\+\+MODE\+\_\+\+TOP}
+, {\bfseries GX\+\_\+\+CLAMP\+\_\+\+MODE\+\_\+\+BOTTOM}
+, {\bfseries GX\+\_\+\+CLAMP\+\_\+\+MODE\+\_\+\+TOP\+\_\+\+BOTTOM}
+ \}
+\item 
+\Hypertarget{gx_8h_ad5f31d8ad39f78a33d8da43b3d5114da}\label{gx_8h_ad5f31d8ad39f78a33d8da43b3d5114da} 
+enum {\bfseries gx\+\_\+gamma\+\_\+t} \{ {\bfseries GX\+\_\+\+GAMMA\+\_\+1\+\_\+0}
+, {\bfseries GX\+\_\+\+GAMMA\+\_\+1\+\_\+7}
+, {\bfseries GX\+\_\+\+GAMMA\+\_\+2\+\_\+2}
+ \}
+\item 
+\Hypertarget{gx_8h_a4d0b1fa672ff3c311eda487a39dc871c}\label{gx_8h_a4d0b1fa672ff3c311eda487a39dc871c} 
+enum {\bfseries gx\+\_\+line\+\_\+mode\+\_\+t} \{ {\bfseries GX\+\_\+\+LINE\+\_\+\+MODE\+\_\+\+PROGRESSIVE}
+, {\bfseries GX\+\_\+\+LINE\+\_\+\+MODE\+\_\+\+EVEN} = 2
+, {\bfseries GX\+\_\+\+LINE\+\_\+\+MODE\+\_\+\+ODD}
+ \}
+\item 
+\Hypertarget{gx_8h_a64423d13c6d59066a6c4ad4681f4973e}\label{gx_8h_a64423d13c6d59066a6c4ad4681f4973e} 
+enum {\bfseries gx\+\_\+texture\+\_\+id\+\_\+t} \{ \newline
+{\bfseries GX\+\_\+\+TEXTURE\+\_\+\+ID\+\_\+0}
+, {\bfseries GX\+\_\+\+TEXTURE\+\_\+\+ID\+\_\+1}
+, {\bfseries GX\+\_\+\+TEXTURE\+\_\+\+ID\+\_\+2}
+, {\bfseries GX\+\_\+\+TEXTURE\+\_\+\+ID\+\_\+3}
+, \newline
+{\bfseries GX\+\_\+\+TEXTURE\+\_\+\+ID\+\_\+4}
+, {\bfseries GX\+\_\+\+TEXTURE\+\_\+\+ID\+\_\+5}
+, {\bfseries GX\+\_\+\+TEXTURE\+\_\+\+ID\+\_\+6}
+, {\bfseries GX\+\_\+\+TEXTURE\+\_\+\+ID\+\_\+7}
+ \}
+\item 
+\Hypertarget{gx_8h_aa0d2afba7f11802074edda6efd1c2baf}\label{gx_8h_aa0d2afba7f11802074edda6efd1c2baf} 
+enum {\bfseries gx\+\_\+texture\+\_\+format\+\_\+t} \{ \newline
+{\bfseries GX\+\_\+\+TEXTURE\+\_\+\+FORMAT\+\_\+\+I4}
+, {\bfseries GX\+\_\+\+TEXTURE\+\_\+\+FORMAT\+\_\+\+I8}
+, {\bfseries GX\+\_\+\+TEXTURE\+\_\+\+FORMAT\+\_\+\+IA4}
+, {\bfseries GX\+\_\+\+TEXTURE\+\_\+\+FORMAT\+\_\+\+IA8}
+, \newline
+{\bfseries GX\+\_\+\+TEXTURE\+\_\+\+FORMAT\+\_\+\+RGB565}
+, {\bfseries GX\+\_\+\+TEXTURE\+\_\+\+FORMAT\+\_\+\+RGB5\+A3}
+, {\bfseries GX\+\_\+\+TEXTURE\+\_\+\+FORMAT\+\_\+\+RGBA8}
+, {\bfseries GX\+\_\+\+TEXTURE\+\_\+\+FORMAT\+\_\+\+C4} = 8
+, \newline
+{\bfseries GX\+\_\+\+TEXTURE\+\_\+\+FORMAT\+\_\+\+C8}
+, {\bfseries GX\+\_\+\+TEXTURE\+\_\+\+FORMAT\+\_\+\+C14\+X2}
+, {\bfseries GX\+\_\+\+TEXTURE\+\_\+\+FORMAT\+\_\+\+CMP} = 14
+ \}
+\item 
+\Hypertarget{gx_8h_a69289bcdf96b1bef57e85cbe03b56a59}\label{gx_8h_a69289bcdf96b1bef57e85cbe03b56a59} 
+enum {\bfseries gx\+\_\+texture\+\_\+wrap\+\_\+t} \{ {\bfseries GX\+\_\+\+WRAP\+\_\+\+CLAMP}
+, {\bfseries GX\+\_\+\+WRAP\+\_\+\+REPEAT}
+, {\bfseries GX\+\_\+\+WRAP\+\_\+\+MIRROR}
+ \}
+\item 
+\Hypertarget{gx_8h_a63ca899aa282f0971dd6a09eb35b031d}\label{gx_8h_a63ca899aa282f0971dd6a09eb35b031d} 
+enum {\bfseries gx\+\_\+texture\+\_\+min\+\_\+filter} \{ \newline
+{\bfseries GX\+\_\+\+TEXTURE\+\_\+\+MIN\+\_\+\+FILTER\+\_\+\+NEAR}
+, {\bfseries GX\+\_\+\+TEXTURE\+\_\+\+MIN\+\_\+\+FILTER\+\_\+\+NEAR\+\_\+\+MIP}
+, {\bfseries GX\+\_\+\+TEXTURE\+\_\+\+MIN\+\_\+\+FILTER\+\_\+\+NEAR\+\_\+\+MIP\+\_\+\+LINEAR}
+, {\bfseries GX\+\_\+\+TEXTURE\+\_\+\+MIN\+\_\+\+FILTER\+\_\+\+LINEAR} = 4
+, \newline
+{\bfseries GX\+\_\+\+TEXTURE\+\_\+\+MIN\+\_\+\+FILTER\+\_\+\+LINEAR\+\_\+\+MIP\+\_\+\+NEAR}
+, {\bfseries GX\+\_\+\+TEXTURE\+\_\+\+MIN\+\_\+\+FILTER\+\_\+\+LINEAR\+\_\+\+MIP\+\_\+\+LINEAR}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{gx_8h_ab7cf89d57623be7504ee1f7242d35b90}{gx\+\_\+initialize}} (const \mbox{\hyperlink{structgx__fifo__t}{gx\+\_\+fifo\+\_\+t}} \texorpdfstring{$\ast$}{*}fifo, const \mbox{\hyperlink{structvideo__profile__t}{video\+\_\+profile\+\_\+t}} \texorpdfstring{$\ast$}{*}video\+\_\+profile)
+\begin{DoxyCompactList}\small\item\em Initializes the graphics. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx_8h_a2a5058ae21e95f5ad54b68b1617c45cd}{gx\+\_\+initialize\+\_\+state}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the graphics state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx_8h_a89be21419da6d49b9a28ca14a6a82b74}{gx\+\_\+initialize\+\_\+video}} (const \mbox{\hyperlink{structvideo__profile__t}{video\+\_\+profile\+\_\+t}} \texorpdfstring{$\ast$}{*}video\+\_\+profile)
+\begin{DoxyCompactList}\small\item\em Initializes all the video settings from a video profile. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx_8h_a9579ae6ea0b4a45fe8121bc4a4c11987}{gx\+\_\+fifo\+\_\+initialize}} (\mbox{\hyperlink{structgx__fifo__t}{gx\+\_\+fifo\+\_\+t}} \texorpdfstring{$\ast$}{*}fifo, void \texorpdfstring{$\ast$}{*}fifo\+\_\+buffer, uint32\+\_\+t fifo\+\_\+buffer\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Creates the fifo data structure. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx_8h_a143e757d166e75ef432f00061ab98aa0}{gx\+\_\+fifo\+\_\+set}} (const \mbox{\hyperlink{structgx__fifo__t}{gx\+\_\+fifo\+\_\+t}} \texorpdfstring{$\ast$}{*}fifo)
+\begin{DoxyCompactList}\small\item\em Sets the current FIFO. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx_8h_ac2e19052d48cdf4e6c27d35b22ccc440}{gx\+\_\+fifo\+\_\+get}} (\mbox{\hyperlink{structgx__fifo__t}{gx\+\_\+fifo\+\_\+t}} \texorpdfstring{$\ast$}{*}fifo)
+\begin{DoxyCompactList}\small\item\em Gets the current FIFO. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx_8h_a057f79c2d628b38a88ce515aabd7352a}{gx\+\_\+flush}} ()
+\begin{DoxyCompactList}\small\item\em Flushes all commands to the command processor. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{gx_8h_a181de4a028f74fe9983b1db0d88609e6}{gx\+\_\+efb\+\_\+peak}} (uint32\+\_\+t x, uint32\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Grabs a pixel from the embedded frame buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx_8h_aae5769fef8c35d3e49471962b9c8a764}{gx\+\_\+vtxdesc\+\_\+clear}} ()
+\begin{DoxyCompactList}\small\item\em Clears out all vertex descriptions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx_8h_ac1ba1a11d89c7f1a581d95f5634464d3}{gx\+\_\+vtxdesc\+\_\+set}} (gx\+\_\+vtxdesc\+\_\+t desc, gx\+\_\+vtxattr\+\_\+data\+\_\+t type)
+\begin{DoxyCompactList}\small\item\em Sets a vertex description. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx_8h_aa017c4b05620b3d2e539500da91eadaf}{gx\+\_\+vtxfmtattr\+\_\+clear}} (uint8\+\_\+t attribute\+\_\+index)
+\begin{DoxyCompactList}\small\item\em Clears out a vertex attribute format. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx_8h_a075fcfcf4a2e946f3cb762b4a3ff7c91}{gx\+\_\+vtxfmtattr\+\_\+set}} (uint8\+\_\+t attribute\+\_\+index, gx\+\_\+vtxdesc\+\_\+t attribute, gx\+\_\+vtxattr\+\_\+component\+\_\+t component, gx\+\_\+vtxattr\+\_\+component\+\_\+format\+\_\+t fmt, uint8\+\_\+t fraction)
+\begin{DoxyCompactList}\small\item\em Sets the format of a vertex attribute. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx_8h_a18d4be023fe0977e85e139033e41e74d}{gx\+\_\+begin}} (gx\+\_\+primitive\+\_\+t primitive, uint8\+\_\+t attribute, uint16\+\_\+t count)
+\begin{DoxyCompactList}\small\item\em Begin drawing primatives. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx_8h_abc2cad4be8d87b26ca990d3af4c2305c}{gx\+\_\+draw\+\_\+done}} ()
+\begin{DoxyCompactList}\small\item\em Call to send end current drawing session. Then wait. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx_8h_a1207625929b1f53b28c581a6e24681e8}{gx\+\_\+set\+\_\+render\+\_\+thread}} (Task\+Handle\+\_\+t task)
+\begin{DoxyCompactList}\small\item\em Sets the current render thread for suspension. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx_8h_a5ff18e5c57174dfae838eb640bc8f909}{gx\+\_\+set\+\_\+clear\+\_\+color}} (uint8\+\_\+t r, uint8\+\_\+t g, uint8\+\_\+t b, uint8\+\_\+t a)
+\begin{DoxyCompactList}\small\item\em Sets the background color when copying framebuffers. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx_8h_a80f3c17e2726b502455f31e299da1e6d}{gx\+\_\+set\+\_\+clear\+\_\+z}} (uint32\+\_\+t z)
+\begin{DoxyCompactList}\small\item\em Sets the z value the frame buffer is cleared with. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx_8h_ab5d06e239fd9c3abb604e46f613dea10}{gx\+\_\+set\+\_\+copy\+\_\+y\+\_\+scale}} (float y\+\_\+scale)
+\begin{DoxyCompactList}\small\item\em Sets the scale of the EFB to the XFB\textquotesingle{}s Y. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx_8h_a2171fa4101a1179a5cddbadc4a8483f4}{gx\+\_\+set\+\_\+scissor\+\_\+rectangle}} (uint32\+\_\+t x, uint32\+\_\+t y, uint32\+\_\+t width, uint32\+\_\+t height)
+\begin{DoxyCompactList}\small\item\em Sets the scissor rectangle. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx_8h_a6f93e707c815d237d1156705d2ae2caa}{gx\+\_\+set\+\_\+scissor\+\_\+offset}} (int32\+\_\+t x, int32\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Offsets the scissor rectangle. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx_8h_a0805a9a1afbe0681df01d40b9778d3a4}{gx\+\_\+set\+\_\+copy\+\_\+window}} (uint32\+\_\+t x, uint32\+\_\+t y, uint32\+\_\+t width, uint32\+\_\+t height, uint32\+\_\+t xfb\+\_\+width)
+\begin{DoxyCompactList}\small\item\em Sets the window to of the EFB into the XFB. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx_8h_ae1310ae483f2f3d4c5d00d479b06375f}{gx\+\_\+set\+\_\+clamp\+\_\+mode}} (gx\+\_\+clamp\+\_\+mode\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Set the clamp mode when copying from EFB to XFB. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx_8h_a22f0920782c4dc85756c604703cc71ff}{gx\+\_\+set\+\_\+gamma}} (gx\+\_\+gamma\+\_\+t gamma)
+\begin{DoxyCompactList}\small\item\em Sets the gamma value when copying from EFB to XFB. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx_8h_a73e7ed3b56d4c11ac37cf83d390332e6}{gx\+\_\+set\+\_\+line\+\_\+mode}} (gx\+\_\+line\+\_\+mode\+\_\+t line\+\_\+mode)
+\begin{DoxyCompactList}\small\item\em Sets the what lines are copied from EFB to XFB. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx_8h_ab173642a8a45b2973c3423919e27c75d}{gx\+\_\+set\+\_\+copy\+\_\+filter}} (const uint8\+\_\+t pattern\mbox{[}12\mbox{]}\mbox{[}2\mbox{]}, const uint8\+\_\+t filter\mbox{[}7\mbox{]})
+\begin{DoxyCompactList}\small\item\em Sets the interpolation filters used when copying the frame buffer into external frame buffers of differing resolutions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx_8h_a52ebb3aeece811b48858338f304bed97}{gx\+\_\+set\+\_\+z\+\_\+mode}} (bool enable\+\_\+compare, gx\+\_\+compare\+\_\+t compare, bool enable\+\_\+update)
+\begin{DoxyCompactList}\small\item\em Determins how Z values will be treated. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx_8h_af920503fb82feabcf097a75bb757f116}{gx\+\_\+set\+\_\+color\+\_\+update}} (bool update\+\_\+color, bool update\+\_\+alpha)
+\begin{DoxyCompactList}\small\item\em Enables updating the color when rendering into the EFB. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx_8h_a85ed029a7400a1836297d6249df01344}{gx\+\_\+enable\+\_\+z\+\_\+precheck}} (bool enable)
+\begin{DoxyCompactList}\small\item\em Enables / Disables checking Z before or after texturing. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx_8h_a30f574c877960778f77020faa006fe83}{gx\+\_\+set\+\_\+pixel\+\_\+format}} (gx\+\_\+pixel\+\_\+format\+\_\+t pixels\+\_\+format, gx\+\_\+z\+\_\+format\+\_\+t z\+\_\+format)
+\begin{DoxyCompactList}\small\item\em Sets the format of pixels in the EFB. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx_8h_a20aba150386bc88d082020bbcbb7c241}{gx\+\_\+copy\+\_\+framebuffer}} (\mbox{\hyperlink{structframebuffer__t}{framebuffer\+\_\+t}} \texorpdfstring{$\ast$}{*}framebuffer, bool clear)
+\begin{DoxyCompactList}\small\item\em Copys the internal framebuffer to the external frame buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx_8h_ae19dcaf8b4c23bd2e49ef6485d6bb524}{gx\+\_\+initialize\+\_\+texture}} (\mbox{\hyperlink{structgx__texture__t}{gx\+\_\+texture\+\_\+t}} \texorpdfstring{$\ast$}{*}texture, const void \texorpdfstring{$\ast$}{*}data, gx\+\_\+texture\+\_\+format\+\_\+t format, int width, int height, gx\+\_\+texture\+\_\+wrap\+\_\+t s\+\_\+wrap, gx\+\_\+texture\+\_\+wrap\+\_\+t t\+\_\+wrap, bool mipmap)
+\begin{DoxyCompactList}\small\item\em Initializes a texture object for use. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx_8h_a842c44a67035c4dbe2766a6c2c190925}{gx\+\_\+flash\+\_\+texture}} (gx\+\_\+texture\+\_\+map\+\_\+t map, const \mbox{\hyperlink{structgx__texture__t}{gx\+\_\+texture\+\_\+t}} \texorpdfstring{$\ast$}{*}texture)
+\begin{DoxyCompactList}\small\item\em Flashes a texture configuration onto the BP. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages graphics on the system. 
+
+Manages graphics on the system. Provides a interface to create and send commands to hardware, and configure the hardware for rendering.
+
+\begin{DoxyAuthor}{Author}
+Samuel Fitzsimons (rainbain) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 @license MIT (see LICENSE file) 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{gx_8h_aaefba7fcb1c772974953b79abde2ee50}\index{gx.h@{gx.h}!gx\_end@{gx\_end}}
+\index{gx\_end@{gx\_end}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_end}{gx\_end}}
+{\footnotesize\ttfamily \label{gx_8h_aaefba7fcb1c772974953b79abde2ee50} 
+\#define gx\+\_\+end(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+End drawing primatives. 
+
+This does nothing, its what you see in things like Open\+GL so its included for similarity to such implementations. Also means it can be expanded if it turns out to be needed at some point. \Hypertarget{gx_8h_aaa75da7b7a972c93267b533bc0e7f860}\index{gx.h@{gx.h}!GX\_WPAR\_BP\_LOAD@{GX\_WPAR\_BP\_LOAD}}
+\index{GX\_WPAR\_BP\_LOAD@{GX\_WPAR\_BP\_LOAD}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{GX\_WPAR\_BP\_LOAD}{GX\_WPAR\_BP\_LOAD}}
+{\footnotesize\ttfamily \label{gx_8h_aaa75da7b7a972c93267b533bc0e7f860} 
+\#define GX\+\_\+\+WPAR\+\_\+\+BP\+\_\+\+LOAD(\begin{DoxyParamCaption}\item[{}]{value}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ GX\_WPAR\_U8\ =\ GX\_WPAR\_OPCODE\_LOAD\_BP;\ \textcolor{comment}{/*\ Load\ BP\ Command\ */}\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ GX\_WPAR\_U32\ =\ value;\ \textcolor{comment}{/*\ Combined\ 8\ bit\ address\ and\ 24\ bit\ value.\ */}}
+
+\end{DoxyCode}
+\Hypertarget{gx_8h_a1bf9dffdba538acc3b4ba666b92ac7bd}\index{gx.h@{gx.h}!GX\_WPAR\_CP\_LOAD@{GX\_WPAR\_CP\_LOAD}}
+\index{GX\_WPAR\_CP\_LOAD@{GX\_WPAR\_CP\_LOAD}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{GX\_WPAR\_CP\_LOAD}{GX\_WPAR\_CP\_LOAD}}
+{\footnotesize\ttfamily \label{gx_8h_a1bf9dffdba538acc3b4ba666b92ac7bd} 
+\#define GX\+\_\+\+WPAR\+\_\+\+CP\+\_\+\+LOAD(\begin{DoxyParamCaption}\item[{}]{address}{, }\item[{}]{value}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ GX\_WPAR\_U8\ =\ GX\_WPAR\_OPCODE\_LOAD\_CP;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Load\ CP\ Command\ */}\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ GX\_WPAR\_U8\ =\ address;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Register\ Address\ */}\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ GX\_WPAR\_U32\ =\ value;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Register\ Value\ */}}
+
+\end{DoxyCode}
+\Hypertarget{gx_8h_a3bc513801c153ef4fadc29bec47c6895}\index{gx.h@{gx.h}!GX\_WPAR\_OPCODE\_PRIMITIVE@{GX\_WPAR\_OPCODE\_PRIMITIVE}}
+\index{GX\_WPAR\_OPCODE\_PRIMITIVE@{GX\_WPAR\_OPCODE\_PRIMITIVE}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{GX\_WPAR\_OPCODE\_PRIMITIVE}{GX\_WPAR\_OPCODE\_PRIMITIVE}}
+{\footnotesize\ttfamily \label{gx_8h_a3bc513801c153ef4fadc29bec47c6895} 
+\#define GX\+\_\+\+WPAR\+\_\+\+OPCODE\+\_\+\+PRIMITIVE(\begin{DoxyParamCaption}\item[{}]{type}{, }\item[{}]{format}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(((uint8\_t)type)\ |\ format)}
+
+\end{DoxyCode}
+\Hypertarget{gx_8h_a7caf966fa4626fb7069f0419c98d56e3}\index{gx.h@{gx.h}!GX\_WPAR\_XF\_LOAD@{GX\_WPAR\_XF\_LOAD}}
+\index{GX\_WPAR\_XF\_LOAD@{GX\_WPAR\_XF\_LOAD}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{GX\_WPAR\_XF\_LOAD}{GX\_WPAR\_XF\_LOAD}}
+{\footnotesize\ttfamily \label{gx_8h_a7caf966fa4626fb7069f0419c98d56e3} 
+\#define GX\+\_\+\+WPAR\+\_\+\+XF\+\_\+\+LOAD(\begin{DoxyParamCaption}\item[{}]{address}{, }\item[{}]{words}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ GX\_WPAR\_U8\ =\ GX\_WPAR\_OPCODE\_LOAD\_XF;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Load\ XF\ Command\ */}\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ GX\_WPAR\_U16\ =\ (words)\ -\/\ 1;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Load\ N-\/1\ 32\ bit\ values\ */}\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ GX\_WPAR\_U16\ =\ address;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Register\ Address\ */}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{gx_8h_a18d4be023fe0977e85e139033e41e74d}\index{gx.h@{gx.h}!gx\_begin@{gx\_begin}}
+\index{gx\_begin@{gx\_begin}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_begin()}{gx\_begin()}}
+{\footnotesize\ttfamily \label{gx_8h_a18d4be023fe0977e85e139033e41e74d} 
+void gx\+\_\+begin (\begin{DoxyParamCaption}\item[{gx\+\_\+primitive\+\_\+t}]{primitive}{, }\item[{uint8\+\_\+t}]{attribute}{, }\item[{uint16\+\_\+t}]{count}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Begin drawing primatives. 
+
+Signals to the GPU to expect primitive data in coming messages. Also flushes GPU state changes.
+
+
+\begin{DoxyParams}{Parameters}
+{\em primitive} & Type of 3D primitive to draw. \\
+\hline
+{\em attribute} & Vertex attribute to use, values 0-\/7. \\
+\hline
+{\em count} & Vertex count. Up to 65535 \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx_8h_a20aba150386bc88d082020bbcbb7c241}\index{gx.h@{gx.h}!gx\_copy\_framebuffer@{gx\_copy\_framebuffer}}
+\index{gx\_copy\_framebuffer@{gx\_copy\_framebuffer}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_copy\_framebuffer()}{gx\_copy\_framebuffer()}}
+{\footnotesize\ttfamily \label{gx_8h_a20aba150386bc88d082020bbcbb7c241} 
+void gx\+\_\+copy\+\_\+framebuffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structframebuffer__t}{framebuffer\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{framebuffer}{, }\item[{bool}]{clear}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Copys the internal framebuffer to the external frame buffer. 
+
+Copys the internal framebuffer to the external frame buffer. This is usually called during vblank to copy the frame buffer to display the next frame. vsync avoiding the need for double buffering.
+
+
+\begin{DoxyParams}{Parameters}
+{\em framebuffer} & Pointer to frame buffer. Needs to be 32 byte aligned. \\
+\hline
+{\em clear} & Clear the internal frame buffer during the copy. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx_8h_abc2cad4be8d87b26ca990d3af4c2305c}\index{gx.h@{gx.h}!gx\_draw\_done@{gx\_draw\_done}}
+\index{gx\_draw\_done@{gx\_draw\_done}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_draw\_done()}{gx\_draw\_done()}}
+{\footnotesize\ttfamily \label{gx_8h_abc2cad4be8d87b26ca990d3af4c2305c} 
+void gx\+\_\+draw\+\_\+done (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Call to send end current drawing session. Then wait. 
+
+This will signal to the BP that drawing is done, flush it, then sleep the current thread until its done \Hypertarget{gx_8h_a181de4a028f74fe9983b1db0d88609e6}\index{gx.h@{gx.h}!gx\_efb\_peak@{gx\_efb\_peak}}
+\index{gx\_efb\_peak@{gx\_efb\_peak}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_efb\_peak()}{gx\_efb\_peak()}}
+{\footnotesize\ttfamily \label{gx_8h_a181de4a028f74fe9983b1db0d88609e6} 
+uint32\+\_\+t gx\+\_\+efb\+\_\+peak (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{x}{, }\item[{uint32\+\_\+t}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Grabs a pixel from the embedded frame buffer. 
+
+Grabs a pixel from the embedded frame buffer. This is useful for debugging.
+
+I don\textquotesingle{}t recommend using it too much, the emulators do not like this. And it usually needs to be enabled for it to work in emulator. \Hypertarget{gx_8h_a85ed029a7400a1836297d6249df01344}\index{gx.h@{gx.h}!gx\_enable\_z\_precheck@{gx\_enable\_z\_precheck}}
+\index{gx\_enable\_z\_precheck@{gx\_enable\_z\_precheck}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_enable\_z\_precheck()}{gx\_enable\_z\_precheck()}}
+{\footnotesize\ttfamily \label{gx_8h_a85ed029a7400a1836297d6249df01344} 
+void gx\+\_\+enable\+\_\+z\+\_\+precheck (\begin{DoxyParamCaption}\item[{bool}]{enable}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Enables / Disables checking Z before or after texturing. 
+
+Used to turn off early checking of Z before texturing. Checking Z before texturing allows you to quickly discard the fragment and save bandwidth.
+
+But if the TEV stages or whatever discard the fragment, the Z buffer, during the compare, will be falsy updated when the fragment is discard.
+
+So if your scene contains these. You will need to disable this. Its on by default.
+
+
+\begin{DoxyParams}{Parameters}
+{\em enable} & If true, Z values are checked before texturing. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx_8h_ac2e19052d48cdf4e6c27d35b22ccc440}\index{gx.h@{gx.h}!gx\_fifo\_get@{gx\_fifo\_get}}
+\index{gx\_fifo\_get@{gx\_fifo\_get}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_fifo\_get()}{gx\_fifo\_get()}}
+{\footnotesize\ttfamily \label{gx_8h_ac2e19052d48cdf4e6c27d35b22ccc440} 
+void gx\+\_\+fifo\+\_\+get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgx__fifo__t}{gx\+\_\+fifo\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{fifo}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Gets the current FIFO. 
+
+Gets the current fifo from hardware. Useful to check up on the CP.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fifo} & Writes to fifo data into this. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx_8h_a9579ae6ea0b4a45fe8121bc4a4c11987}\index{gx.h@{gx.h}!gx\_fifo\_initialize@{gx\_fifo\_initialize}}
+\index{gx\_fifo\_initialize@{gx\_fifo\_initialize}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_fifo\_initialize()}{gx\_fifo\_initialize()}}
+{\footnotesize\ttfamily \label{gx_8h_a9579ae6ea0b4a45fe8121bc4a4c11987} 
+void gx\+\_\+fifo\+\_\+initialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgx__fifo__t}{gx\+\_\+fifo\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{fifo}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{fifo\+\_\+buffer}{, }\item[{uint32\+\_\+t}]{fifo\+\_\+buffer\+\_\+size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Creates the fifo data structure. 
+
+Creates an empty vertex descriptor.
+
+Creates a simple fifo data structure to set in the CP.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fifo} & The fifo to setup \\
+\hline
+{\em fifo\+\_\+buffer} & Buffer to put data into. 32 byte aligned \\
+\hline
+{\em fifo\+\_\+buffer\+\_\+size} & Size of the buffer. 32 byte aligned\\
+\hline
+\end{DoxyParams}
+Creates the fifo data structure.
+
+Creates a simple fifo data structure to set in the CP.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fifo} & The fifo to setup \\
+\hline
+{\em fifo\+\_\+buffer} & Buffer to put data into. 32 byte aligned \\
+\hline
+{\em fifo\+\_\+buffer\+\_\+size} & Size of the buffer. 32 byte aligned \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx_8h_a143e757d166e75ef432f00061ab98aa0}\index{gx.h@{gx.h}!gx\_fifo\_set@{gx\_fifo\_set}}
+\index{gx\_fifo\_set@{gx\_fifo\_set}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_fifo\_set()}{gx\_fifo\_set()}}
+{\footnotesize\ttfamily \label{gx_8h_a143e757d166e75ef432f00061ab98aa0} 
+void gx\+\_\+fifo\+\_\+set (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structgx__fifo__t}{gx\+\_\+fifo\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{fifo}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the current FIFO. 
+
+Sets the current FIFO the CP will read from. CP is hopefully disabled when you do this.
+
+gx\+\_\+initialize calls this
+
+
+\begin{DoxyParams}{Parameters}
+{\em fifo} & The fifo to set \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx_8h_a842c44a67035c4dbe2766a6c2c190925}\index{gx.h@{gx.h}!gx\_flash\_texture@{gx\_flash\_texture}}
+\index{gx\_flash\_texture@{gx\_flash\_texture}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_flash\_texture()}{gx\_flash\_texture()}}
+{\footnotesize\ttfamily \label{gx_8h_a842c44a67035c4dbe2766a6c2c190925} 
+void gx\+\_\+flash\+\_\+texture (\begin{DoxyParamCaption}\item[{gx\+\_\+texture\+\_\+map\+\_\+t}]{map}{, }\item[{const \mbox{\hyperlink{structgx__texture__t}{gx\+\_\+texture\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{texture}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Flashes a texture configuration onto the BP. 
+
+Sets up a texture for drawing by configuring the registers.
+
+Its data wont be loaded into memory at this point, just that future draws with it will begin loading this new data.
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & The texture channel to load into. 1-\/8 \\
+\hline
+{\em texture} & The texture register data. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx_8h_a057f79c2d628b38a88ce515aabd7352a}\index{gx.h@{gx.h}!gx\_flush@{gx\_flush}}
+\index{gx\_flush@{gx\_flush}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_flush()}{gx\_flush()}}
+{\footnotesize\ttfamily \label{gx_8h_a057f79c2d628b38a88ce515aabd7352a} 
+void gx\+\_\+flush (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Flushes all commands to the command processor. 
+
+This inserts 32 NOP commands into the write gather pipeline to make sure that any commands at the end of the FIFO or display list get sent, since it only reads them in 32 byte burst.
+
+This does not wait for command completion, it simply confirms commands before it will not be lost. \Hypertarget{gx_8h_ab7cf89d57623be7504ee1f7242d35b90}\index{gx.h@{gx.h}!gx\_initialize@{gx\_initialize}}
+\index{gx\_initialize@{gx\_initialize}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_initialize()}{gx\_initialize()}}
+{\footnotesize\ttfamily \label{gx_8h_ab7cf89d57623be7504ee1f7242d35b90} 
+void gx\+\_\+initialize (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structgx__fifo__t}{gx\+\_\+fifo\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{fifo}{, }\item[{const \mbox{\hyperlink{structvideo__profile__t}{video\+\_\+profile\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{video\+\_\+profile}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Initializes the graphics. 
+
+Puts the system graphics into a default state ready for rendering.
+
+Takes a 32 byte aligned FIFO to hold commands. Hardware automatically fills it and cycles back through it, but write commands too fast and its possible to overflow it. 
+\begin{DoxyParams}{Parameters}
+{\em fifo} & Fifo to use. \\
+\hline
+{\em video\+\_\+profile} & Video profile to use. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx_8h_a2a5058ae21e95f5ad54b68b1617c45cd}\index{gx.h@{gx.h}!gx\_initialize\_state@{gx\_initialize\_state}}
+\index{gx\_initialize\_state@{gx\_initialize\_state}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_initialize\_state()}{gx\_initialize\_state()}}
+{\footnotesize\ttfamily \label{gx_8h_a2a5058ae21e95f5ad54b68b1617c45cd} 
+void gx\+\_\+initialize\+\_\+state (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Initializes the graphics state. 
+
+This function, called by gx\+\_\+initialize, configures the hardware into GX\textquotesingle{}s default state. That includes all the TEV stages and stuff like that.
+
+It does not force the pipeline into a known state if somethings gone horribly wrong. Its just a bunch of calls to make the hardware into a pretty state.
+
+This does not initialize some of the video settings. Use initialize video for that. \Hypertarget{gx_8h_ae19dcaf8b4c23bd2e49ef6485d6bb524}\index{gx.h@{gx.h}!gx\_initialize\_texture@{gx\_initialize\_texture}}
+\index{gx\_initialize\_texture@{gx\_initialize\_texture}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_initialize\_texture()}{gx\_initialize\_texture()}}
+{\footnotesize\ttfamily \label{gx_8h_ae19dcaf8b4c23bd2e49ef6485d6bb524} 
+void gx\+\_\+initialize\+\_\+texture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structgx__texture__t}{gx\+\_\+texture\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{texture}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{gx\+\_\+texture\+\_\+format\+\_\+t}]{format}{, }\item[{int}]{width}{, }\item[{int}]{height}{, }\item[{gx\+\_\+texture\+\_\+wrap\+\_\+t}]{s\+\_\+wrap}{, }\item[{gx\+\_\+texture\+\_\+wrap\+\_\+t}]{t\+\_\+wrap}{, }\item[{bool}]{mipmap}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Initializes a texture object for use. 
+
+Initializes a texture object to be loaded whenever needed. This does not actually allocate or contain the image data. Make sure to keep that safe. No, it just holds the state of the registers needed in order to draw that texture.
+
+
+\begin{DoxyParams}{Parameters}
+{\em texture} & The texture object to setup \\
+\hline
+{\em data} & Image data of the format \\
+\hline
+{\em format} & Texture Format \\
+\hline
+{\em width} & Width of the texture \\
+\hline
+{\em height} & Height of the texture \\
+\hline
+{\em s\+\_\+wrap} & S Wrap (X values) \\
+\hline
+{\em t\+\_\+wrap} & T Wrap (Y values) \\
+\hline
+{\em mipmap} & Enabling Mipmapping \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx_8h_a89be21419da6d49b9a28ca14a6a82b74}\index{gx.h@{gx.h}!gx\_initialize\_video@{gx\_initialize\_video}}
+\index{gx\_initialize\_video@{gx\_initialize\_video}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_initialize\_video()}{gx\_initialize\_video()}}
+{\footnotesize\ttfamily \label{gx_8h_a89be21419da6d49b9a28ca14a6a82b74} 
+void gx\+\_\+initialize\+\_\+video (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structvideo__profile__t}{video\+\_\+profile\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{video\+\_\+profile}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Initializes all the video settings from a video profile. 
+
+This function, usually following gx\+\_\+initialize\+\_\+state, can take a video profile and configure all the EFB and XFB copy registers to match your video profile. \Hypertarget{gx_8h_ae1310ae483f2f3d4c5d00d479b06375f}\index{gx.h@{gx.h}!gx\_set\_clamp\_mode@{gx\_set\_clamp\_mode}}
+\index{gx\_set\_clamp\_mode@{gx\_set\_clamp\_mode}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_set\_clamp\_mode()}{gx\_set\_clamp\_mode()}}
+{\footnotesize\ttfamily \label{gx_8h_ae1310ae483f2f3d4c5d00d479b06375f} 
+void gx\+\_\+set\+\_\+clamp\+\_\+mode (\begin{DoxyParamCaption}\item[{gx\+\_\+clamp\+\_\+mode\+\_\+t}]{mode}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Set the clamp mode when copying from EFB to XFB. 
+
+Defaults to clamping the top and bottom of the framebuffer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx_8h_a5ff18e5c57174dfae838eb640bc8f909}\index{gx.h@{gx.h}!gx\_set\_clear\_color@{gx\_set\_clear\_color}}
+\index{gx\_set\_clear\_color@{gx\_set\_clear\_color}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_set\_clear\_color()}{gx\_set\_clear\_color()}}
+{\footnotesize\ttfamily \label{gx_8h_a5ff18e5c57174dfae838eb640bc8f909} 
+void gx\+\_\+set\+\_\+clear\+\_\+color (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{r}{, }\item[{uint8\+\_\+t}]{g}{, }\item[{uint8\+\_\+t}]{b}{, }\item[{uint8\+\_\+t}]{a}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the background color when copying framebuffers. 
+
+As the framebuffer is copied, it clears the EFB back with these colors and Z value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & Red Channel \\
+\hline
+{\em g} & Green Channel \\
+\hline
+{\em b} & Blue Channel \\
+\hline
+{\em a} & Alpha Channel \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx_8h_a80f3c17e2726b502455f31e299da1e6d}\index{gx.h@{gx.h}!gx\_set\_clear\_z@{gx\_set\_clear\_z}}
+\index{gx\_set\_clear\_z@{gx\_set\_clear\_z}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_set\_clear\_z()}{gx\_set\_clear\_z()}}
+{\footnotesize\ttfamily \label{gx_8h_a80f3c17e2726b502455f31e299da1e6d} 
+void gx\+\_\+set\+\_\+clear\+\_\+z (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{z}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the z value the frame buffer is cleared with. 
+
+As the frame buffer gets copied, it is cleared with this.
+
+
+\begin{DoxyParams}{Parameters}
+{\em z} & Z value, usually the max of 0x\+FFFFFF (24 bits) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx_8h_af920503fb82feabcf097a75bb757f116}\index{gx.h@{gx.h}!gx\_set\_color\_update@{gx\_set\_color\_update}}
+\index{gx\_set\_color\_update@{gx\_set\_color\_update}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_set\_color\_update()}{gx\_set\_color\_update()}}
+{\footnotesize\ttfamily \label{gx_8h_af920503fb82feabcf097a75bb757f116} 
+void gx\+\_\+set\+\_\+color\+\_\+update (\begin{DoxyParamCaption}\item[{bool}]{update\+\_\+color}{, }\item[{bool}]{update\+\_\+alpha}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Enables updating the color when rendering into the EFB. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em update\+\_\+color} & Update the color values \\
+\hline
+{\em update\+\_\+alpha} & Update the alpha values \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx_8h_ab173642a8a45b2973c3423919e27c75d}\index{gx.h@{gx.h}!gx\_set\_copy\_filter@{gx\_set\_copy\_filter}}
+\index{gx\_set\_copy\_filter@{gx\_set\_copy\_filter}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_set\_copy\_filter()}{gx\_set\_copy\_filter()}}
+{\footnotesize\ttfamily \label{gx_8h_ab173642a8a45b2973c3423919e27c75d} 
+void gx\+\_\+set\+\_\+copy\+\_\+filter (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t}]{pattern}{\mbox{[}12\mbox{]}\mbox{[}2\mbox{]}, }\item[{const uint8\+\_\+t}]{filter}{\mbox{[}7\mbox{]}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the interpolation filters used when copying the frame buffer into external frame buffers of differing resolutions. 
+
+This is a grid of values that determines how pixels are sampled when copying frame buffer.
+
+For normal video modes you dont need to touch this.
+
+For the X,Y pattern, Each one is between 0-\/12. The middle of the pixel is 6 (ish). These are for 3x MSAA generation.
+
+filter is the array of ceoffenents between 0 and 63. Thats a Q0\+:6 fixed point format. And they should sum to 1 to keep normal brightness
+
+The first 2 values are the top row. Then the next 3 are the middle row Last 2 are the bottom row.
+
+Standard deflikering pattern is 0.\+25, 0.\+5, 0.\+25. 
+\begin{DoxyParams}{Parameters}
+{\em pattern} & Pixel position for the filter. \\
+\hline
+{\em filter} & Ceoffenents for the filter. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx_8h_a0805a9a1afbe0681df01d40b9778d3a4}\index{gx.h@{gx.h}!gx\_set\_copy\_window@{gx\_set\_copy\_window}}
+\index{gx\_set\_copy\_window@{gx\_set\_copy\_window}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_set\_copy\_window()}{gx\_set\_copy\_window()}}
+{\footnotesize\ttfamily \label{gx_8h_a0805a9a1afbe0681df01d40b9778d3a4} 
+void gx\+\_\+set\+\_\+copy\+\_\+window (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{x}{, }\item[{uint32\+\_\+t}]{y}{, }\item[{uint32\+\_\+t}]{width}{, }\item[{uint32\+\_\+t}]{height}{, }\item[{uint32\+\_\+t}]{xfb\+\_\+width}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the window to of the EFB into the XFB. 
+
+Sets the window, or region, of the EFB to copy from.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Begining / Left of the EFB Window \\
+\hline
+{\em y} & Begining / Top of the EFB Window \\
+\hline
+{\em width} & Width of the window EFB \\
+\hline
+{\em height} & Height of the Window EGB \\
+\hline
+{\em xfb\+\_\+width} & Width of the XFB \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx_8h_ab5d06e239fd9c3abb604e46f613dea10}\index{gx.h@{gx.h}!gx\_set\_copy\_y\_scale@{gx\_set\_copy\_y\_scale}}
+\index{gx\_set\_copy\_y\_scale@{gx\_set\_copy\_y\_scale}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_set\_copy\_y\_scale()}{gx\_set\_copy\_y\_scale()}}
+{\footnotesize\ttfamily \label{gx_8h_ab5d06e239fd9c3abb604e46f613dea10} 
+void gx\+\_\+set\+\_\+copy\+\_\+y\+\_\+scale (\begin{DoxyParamCaption}\item[{float}]{y\+\_\+scale}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the scale of the EFB to the XFB\textquotesingle{}s Y. 
+
+Scales the image on the y axis to the size of the XFB
+
+
+\begin{DoxyParams}{Parameters}
+{\em scale} & Usually xfb height / efb height \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx_8h_a22f0920782c4dc85756c604703cc71ff}\index{gx.h@{gx.h}!gx\_set\_gamma@{gx\_set\_gamma}}
+\index{gx\_set\_gamma@{gx\_set\_gamma}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_set\_gamma()}{gx\_set\_gamma()}}
+{\footnotesize\ttfamily \label{gx_8h_a22f0920782c4dc85756c604703cc71ff} 
+void gx\+\_\+set\+\_\+gamma (\begin{DoxyParamCaption}\item[{gx\+\_\+gamma\+\_\+t}]{gamma}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the gamma value when copying from EFB to XFB. 
+
+Defaults to 1.\+0
+
+
+\begin{DoxyParams}{Parameters}
+{\em gamma} & The gamma value from the enum. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx_8h_a73e7ed3b56d4c11ac37cf83d390332e6}\index{gx.h@{gx.h}!gx\_set\_line\_mode@{gx\_set\_line\_mode}}
+\index{gx\_set\_line\_mode@{gx\_set\_line\_mode}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_set\_line\_mode()}{gx\_set\_line\_mode()}}
+{\footnotesize\ttfamily \label{gx_8h_a73e7ed3b56d4c11ac37cf83d390332e6} 
+void gx\+\_\+set\+\_\+line\+\_\+mode (\begin{DoxyParamCaption}\item[{gx\+\_\+line\+\_\+mode\+\_\+t}]{line\+\_\+mode}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the what lines are copied from EFB to XFB. 
+
+Used to determine if all lines, or if even and odd lines are copied from EFB to XFB.
+
+It defaults to progressive, aka, all lines. \Hypertarget{gx_8h_a30f574c877960778f77020faa006fe83}\index{gx.h@{gx.h}!gx\_set\_pixel\_format@{gx\_set\_pixel\_format}}
+\index{gx\_set\_pixel\_format@{gx\_set\_pixel\_format}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_set\_pixel\_format()}{gx\_set\_pixel\_format()}}
+{\footnotesize\ttfamily \label{gx_8h_a30f574c877960778f77020faa006fe83} 
+void gx\+\_\+set\+\_\+pixel\+\_\+format (\begin{DoxyParamCaption}\item[{gx\+\_\+pixel\+\_\+format\+\_\+t}]{pixels\+\_\+format}{, }\item[{gx\+\_\+z\+\_\+format\+\_\+t}]{z\+\_\+format}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the format of pixels in the EFB. 
+
+Sets the format of the pixels in the EFB.
+
+Also lets you control z compression and such.
+
+I will need to comment more on the effects of antialiasing since some modes use it, some dont. \Hypertarget{gx_8h_a1207625929b1f53b28c581a6e24681e8}\index{gx.h@{gx.h}!gx\_set\_render\_thread@{gx\_set\_render\_thread}}
+\index{gx\_set\_render\_thread@{gx\_set\_render\_thread}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_set\_render\_thread()}{gx\_set\_render\_thread()}}
+{\footnotesize\ttfamily \label{gx_8h_a1207625929b1f53b28c581a6e24681e8} 
+void gx\+\_\+set\+\_\+render\+\_\+thread (\begin{DoxyParamCaption}\item[{Task\+Handle\+\_\+t}]{task}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the current render thread for suspension. 
+
+When the GX FIFO is too full, it will suspend the graphics thread and resume it once it clears out a bit.
+
+gx\+\_\+initialize sets this to the current thread. If you plan to call GX functions outside the thread to called gx\+\_\+initialize. You may want to set it here.
+
+You can also set it to null and bypass this functionality.
+
+
+\begin{DoxyParams}{Parameters}
+{\em task} & Handle to the task. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx_8h_a6f93e707c815d237d1156705d2ae2caa}\index{gx.h@{gx.h}!gx\_set\_scissor\_offset@{gx\_set\_scissor\_offset}}
+\index{gx\_set\_scissor\_offset@{gx\_set\_scissor\_offset}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_set\_scissor\_offset()}{gx\_set\_scissor\_offset()}}
+{\footnotesize\ttfamily \label{gx_8h_a6f93e707c815d237d1156705d2ae2caa} 
+void gx\+\_\+set\+\_\+scissor\+\_\+offset (\begin{DoxyParamCaption}\item[{int32\+\_\+t}]{x}{, }\item[{int32\+\_\+t}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Offsets the scissor rectangle. 
+
+Allows the scissor rectangle to be moved around the screen.
+
+Values range from -\/342 to 382 and are even.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X offset of the window \\
+\hline
+{\em y} & Y offset of the window. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx_8h_a2171fa4101a1179a5cddbadc4a8483f4}\index{gx.h@{gx.h}!gx\_set\_scissor\_rectangle@{gx\_set\_scissor\_rectangle}}
+\index{gx\_set\_scissor\_rectangle@{gx\_set\_scissor\_rectangle}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_set\_scissor\_rectangle()}{gx\_set\_scissor\_rectangle()}}
+{\footnotesize\ttfamily \label{gx_8h_a2171fa4101a1179a5cddbadc4a8483f4} 
+void gx\+\_\+set\+\_\+scissor\+\_\+rectangle (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{x}{, }\item[{uint32\+\_\+t}]{y}{, }\item[{uint32\+\_\+t}]{width}{, }\item[{uint32\+\_\+t}]{height}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the scissor rectangle. 
+
+Defines the rectangle things will be culled in.
+
+Should be set to the viewport size by default.
+
+Values range from 0 to 2047 gx\+\_\+set\+\_\+scissor\+\_\+offset can be used to further expand this.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Begining / Left of the Window \\
+\hline
+{\em y} & Begining / Top of the Window \\
+\hline
+{\em width} & Width of thw window \\
+\hline
+{\em height} & Height of the Window \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx_8h_a52ebb3aeece811b48858338f304bed97}\index{gx.h@{gx.h}!gx\_set\_z\_mode@{gx\_set\_z\_mode}}
+\index{gx\_set\_z\_mode@{gx\_set\_z\_mode}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_set\_z\_mode()}{gx\_set\_z\_mode()}}
+{\footnotesize\ttfamily \label{gx_8h_a52ebb3aeece811b48858338f304bed97} 
+void gx\+\_\+set\+\_\+z\+\_\+mode (\begin{DoxyParamCaption}\item[{bool}]{enable\+\_\+compare}{, }\item[{gx\+\_\+compare\+\_\+t}]{compare}{, }\item[{bool}]{enable\+\_\+update}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Determins how Z values will be treated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em enable\+\_\+compare} & Compare Z values? Or just pass all values \\
+\hline
+{\em compare} & Function to compare them with \\
+\hline
+{\em enable\+\_\+update} & Update Z values of pixels? Or keep the previous. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx_8h_aae5769fef8c35d3e49471962b9c8a764}\index{gx.h@{gx.h}!gx\_vtxdesc\_clear@{gx\_vtxdesc\_clear}}
+\index{gx\_vtxdesc\_clear@{gx\_vtxdesc\_clear}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_vtxdesc\_clear()}{gx\_vtxdesc\_clear()}}
+{\footnotesize\ttfamily \label{gx_8h_aae5769fef8c35d3e49471962b9c8a764} 
+void gx\+\_\+vtxdesc\+\_\+clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Clears out all vertex descriptions. 
+
+Turns off all vertex description parts in the VCD.
+
+Enable them with gx\+\_\+vtxdesc\+\_\+set.
+
+Guarantees it will be flushed to a valid state on the next draw call.
+
+Called by \doxylink{gx_8h_ab7cf89d57623be7504ee1f7242d35b90}{gx\+\_\+initialize()} \Hypertarget{gx_8h_ac1ba1a11d89c7f1a581d95f5634464d3}\index{gx.h@{gx.h}!gx\_vtxdesc\_set@{gx\_vtxdesc\_set}}
+\index{gx\_vtxdesc\_set@{gx\_vtxdesc\_set}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_vtxdesc\_set()}{gx\_vtxdesc\_set()}}
+{\footnotesize\ttfamily \label{gx_8h_ac1ba1a11d89c7f1a581d95f5634464d3} 
+void gx\+\_\+vtxdesc\+\_\+set (\begin{DoxyParamCaption}\item[{gx\+\_\+vtxdesc\+\_\+t}]{desc}{, }\item[{gx\+\_\+vtxattr\+\_\+data\+\_\+t}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets a vertex description. 
+
+Sets the source of vertex data the attributes will use.
+
+Note, only positions, normals, colors, and texture coords support indexed types, the remaining will only be enabled or disabled.
+
+There can only be 1 vertex description, but 8 vertex attributes.
+
+Requires a vertex data cache flushed before use of new format.
+
+
+\begin{DoxyParams}{Parameters}
+{\em desc} & Vertex description to enable. \\
+\hline
+{\em type} & Type of vertex data for it. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx_8h_aa017c4b05620b3d2e539500da91eadaf}\index{gx.h@{gx.h}!gx\_vtxfmtattr\_clear@{gx\_vtxfmtattr\_clear}}
+\index{gx\_vtxfmtattr\_clear@{gx\_vtxfmtattr\_clear}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_vtxfmtattr\_clear()}{gx\_vtxfmtattr\_clear()}}
+{\footnotesize\ttfamily \label{gx_8h_aa017c4b05620b3d2e539500da91eadaf} 
+void gx\+\_\+vtxfmtattr\+\_\+clear (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{attribute\+\_\+index}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Clears out a vertex attribute format. 
+
+Clears out a vertex attribute format.
+
+Set with gx\+\_\+vtxfmtattr\+\_\+set.
+
+Called by \doxylink{gx_8h_ab7cf89d57623be7504ee1f7242d35b90}{gx\+\_\+initialize()}
+
+Guarantees it will be flushed to a valid state on the next draw call.
+
+
+\begin{DoxyParams}{Parameters}
+{\em attribute\+\_\+index} & The vertex attribute table to use, 0-\/7. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx_8h_a075fcfcf4a2e946f3cb762b4a3ff7c91}\index{gx.h@{gx.h}!gx\_vtxfmtattr\_set@{gx\_vtxfmtattr\_set}}
+\index{gx\_vtxfmtattr\_set@{gx\_vtxfmtattr\_set}!gx.h@{gx.h}}
+\doxysubsubsection{\texorpdfstring{gx\_vtxfmtattr\_set()}{gx\_vtxfmtattr\_set()}}
+{\footnotesize\ttfamily \label{gx_8h_a075fcfcf4a2e946f3cb762b4a3ff7c91} 
+void gx\+\_\+vtxfmtattr\+\_\+set (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{attribute\+\_\+index}{, }\item[{gx\+\_\+vtxdesc\+\_\+t}]{attribute}{, }\item[{gx\+\_\+vtxattr\+\_\+component\+\_\+t}]{component}{, }\item[{gx\+\_\+vtxattr\+\_\+component\+\_\+format\+\_\+t}]{fmt}{, }\item[{uint8\+\_\+t}]{fraction}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the format of a vertex attribute. 
+
+Sets the data format that vertex attributes are.
+
+This will get updated in the VAT table of the GPU.
+
+
+\begin{DoxyParams}{Parameters}
+{\em attribute} & The vertex attribute table to use, 0-\/7. Can switch between groups of vertex formats. \\
+\hline
+{\em component} & The component, like is it XY, or XYZ. RGB or RGBA \\
+\hline
+{\em fmt} & Format of the component, Is it RGBA8888, or like, U16 position data, or float \\
+\hline
+{\em fraction} & Number of fractional bits in fixed point values. That is, inititer formats like S16, will be divided by 2\texorpdfstring{$^\wedge$}{\string^}fraction. 0-\/31 \\
+\hline
+\end{DoxyParams}

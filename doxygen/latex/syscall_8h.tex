@@ -1,0 +1,143 @@
+\doxysection{powerblocks/core/system/syscall.h File Reference}
+\hypertarget{syscall_8h}{}\label{syscall_8h}\index{powerblocks/core/system/syscall.h@{powerblocks/core/system/syscall.h}}
+
+
+Handle syscall exceptions.  
+
+
+{\ttfamily \#include "{}powerblocks/core/system/exceptions.\+h"{}}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{syscall_8h_a471ef91adb5ff391357c92f6ba95553c}\label{syscall_8h_a471ef91adb5ff391357c92f6ba95553c} 
+\#define {\bfseries SYSCALL\+\_\+\+ID\+\_\+\+YIELD}~0
+\item 
+\Hypertarget{syscall_8h_a726450474f2801d650f10d939070a8b9}\label{syscall_8h_a726450474f2801d650f10d939070a8b9} 
+\#define {\bfseries SYSCALL\+\_\+\+ID\+\_\+\+ASSERT}~1
+\item 
+\Hypertarget{syscall_8h_aff2aa6178bd4b81e19b693500e84e5ea}\label{syscall_8h_aff2aa6178bd4b81e19b693500e84e5ea} 
+\#define {\bfseries SYSCALL\+\_\+\+ID\+\_\+\+OUT\+\_\+\+OF\+\_\+\+MEMORY}~2
+\item 
+\Hypertarget{syscall_8h_ace60a9fa1f56e9860ecbdb284c1a73e4}\label{syscall_8h_ace60a9fa1f56e9860ecbdb284c1a73e4} 
+\#define {\bfseries SYSCALL\+\_\+\+REGISTRY\+\_\+\+SIZE}~2
+\item 
+\#define \mbox{\hyperlink{syscall_8h_ae5d030333eb68b392b3c1e3438e129ab}{SYSCALL}}(num,  arg1,  arg2,  arg3)
+\begin{DoxyCompactList}\small\item\em Calls a Syscall with a linux like calling convention. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{syscall_8h_a2f093260853586002e2dfbe51f9c16ca}{SYSCALL\+\_\+\+YIELD}}()
+\begin{DoxyCompactList}\small\item\em Called for Free\+RTOS to task switch the current context. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{syscall_8h_a2891396d44f932baaa0d21b153b792c5}{SYSCALL\+\_\+\+ASSERT}}(error\+\_\+name,  line,  file)
+\begin{DoxyCompactList}\small\item\em Called for when an assert fails to report the information. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef uint32\+\_\+t(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{syscall_8h_a91ab47f1097922804681aca8137a4024}{syscall\+\_\+handler\+\_\+t}}) (\mbox{\hyperlink{structexception__context__t}{exception\+\_\+context\+\_\+t}} \texorpdfstring{$\ast$}{*}context, uint32\+\_\+t arg1, uint32\+\_\+t arg2, uint32\+\_\+t arg3)
+\begin{DoxyCompactList}\small\item\em Function pointer to handle syscalls. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{syscall_8h_a0418b66379052faf6a298327e007632f}\label{syscall_8h_a0418b66379052faf6a298327e007632f} 
+const \mbox{\hyperlink{syscall_8h_a91ab47f1097922804681aca8137a4024}{syscall\+\_\+handler\+\_\+t}} {\bfseries syscall\+\_\+registry} \mbox{[}SYSCALL\+\_\+\+REGISTRY\+\_\+\+SIZE\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Handle syscall exceptions. 
+
+Handle syscall exceptions, usually for task control and debugging.
+
+\begin{DoxyAuthor}{Author}
+Samuel Fitzsimons (rainbain) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 @license MIT (see LICENSE file) 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{syscall_8h_ae5d030333eb68b392b3c1e3438e129ab}\index{syscall.h@{syscall.h}!SYSCALL@{SYSCALL}}
+\index{SYSCALL@{SYSCALL}!syscall.h@{syscall.h}}
+\doxysubsubsection{\texorpdfstring{SYSCALL}{SYSCALL}}
+{\footnotesize\ttfamily \label{syscall_8h_ae5d030333eb68b392b3c1e3438e129ab} 
+\#define SYSCALL(\begin{DoxyParamCaption}\item[{}]{num}{, }\item[{}]{arg1}{, }\item[{}]{arg2}{, }\item[{}]{arg3}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(\{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{register}\ uint32\_t\ r0\ \_\_asm\_\_(\textcolor{stringliteral}{"{}r0"{}})\ =\ (num);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{register}\ uint32\_t\ r3\ \_\_asm\_\_(\textcolor{stringliteral}{"{}r3"{}})\ =\ (uint32\_t)(arg1);\ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{register}\ uint32\_t\ r4\ \_\_asm\_\_(\textcolor{stringliteral}{"{}r4"{}})\ =\ (uint32\_t)(arg2);\ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{register}\ uint32\_t\ r5\ \_\_asm\_\_(\textcolor{stringliteral}{"{}r5"{}})\ =\ (uint32\_t)(arg3);\ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \_\_asm\_\_\ \textcolor{keyword}{volatile}\ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}sc\(\backslash\)n\(\backslash\)t"{}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}+r"{}}\ (r3)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}r"{}}\ (r0),\ \textcolor{stringliteral}{"{}r"{}}\ (r4),\ \textcolor{stringliteral}{"{}r"{}}\ (r5)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ :\ \textcolor{stringliteral}{"{}cr0"{}},\ \textcolor{stringliteral}{"{}memory"{}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ );\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ r3;\ \textcolor{comment}{/*\ return\ value\ in\ r3\ */}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Calls a Syscall with a linux like calling convention. 
+
+Calls a Syscall with a linux like calling convention. \Hypertarget{syscall_8h_a2891396d44f932baaa0d21b153b792c5}\index{syscall.h@{syscall.h}!SYSCALL\_ASSERT@{SYSCALL\_ASSERT}}
+\index{SYSCALL\_ASSERT@{SYSCALL\_ASSERT}!syscall.h@{syscall.h}}
+\doxysubsubsection{\texorpdfstring{SYSCALL\_ASSERT}{SYSCALL\_ASSERT}}
+{\footnotesize\ttfamily \label{syscall_8h_a2891396d44f932baaa0d21b153b792c5} 
+\#define SYSCALL\+\_\+\+ASSERT(\begin{DoxyParamCaption}\item[{}]{error\+\_\+name}{, }\item[{}]{line}{, }\item[{}]{file}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{syscall_8h_ae5d030333eb68b392b3c1e3438e129ab}{SYSCALL}}(SYSCALL\_ID\_ASSERT,\ error\_name,\ line,\ file)}
+
+\end{DoxyCode}
+
+
+Called for when an assert fails to report the information. 
+
+Called for when an assert fails to report the information. \Hypertarget{syscall_8h_a2f093260853586002e2dfbe51f9c16ca}\index{syscall.h@{syscall.h}!SYSCALL\_YIELD@{SYSCALL\_YIELD}}
+\index{SYSCALL\_YIELD@{SYSCALL\_YIELD}!syscall.h@{syscall.h}}
+\doxysubsubsection{\texorpdfstring{SYSCALL\_YIELD}{SYSCALL\_YIELD}}
+{\footnotesize\ttfamily \label{syscall_8h_a2f093260853586002e2dfbe51f9c16ca} 
+\#define SYSCALL\+\_\+\+YIELD(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{syscall_8h_ae5d030333eb68b392b3c1e3438e129ab}{SYSCALL}}(SYSCALL\_ID\_YIELD,\ 0,\ 0,\ 0)}
+
+\end{DoxyCode}
+
+
+Called for Free\+RTOS to task switch the current context. 
+
+Called for Free\+RTOS to task switch the current context. Use task\+YIELD for most applications. 
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{syscall_8h_a91ab47f1097922804681aca8137a4024}\index{syscall.h@{syscall.h}!syscall\_handler\_t@{syscall\_handler\_t}}
+\index{syscall\_handler\_t@{syscall\_handler\_t}!syscall.h@{syscall.h}}
+\doxysubsubsection{\texorpdfstring{syscall\_handler\_t}{syscall\_handler\_t}}
+{\footnotesize\ttfamily \label{syscall_8h_a91ab47f1097922804681aca8137a4024} 
+typedef uint32\+\_\+t(\texorpdfstring{$\ast$}{*} syscall\+\_\+handler\+\_\+t) (\mbox{\hyperlink{structexception__context__t}{exception\+\_\+context\+\_\+t}} \texorpdfstring{$\ast$}{*}context, uint32\+\_\+t arg1, uint32\+\_\+t arg2, uint32\+\_\+t arg3)}
+
+
+
+Function pointer to handle syscalls. 
+
+Function pointer to handle syscalls.
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & Pointer to the stack frame of the saved context during interrupts. \\
+\hline
+{\em arg1} & First argument passed to syscall \\
+\hline
+{\em arg2} & Second argument passed to syscall \\
+\hline
+{\em arg3} & Third argument passed to syscall\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return value of syscall. 
+\end{DoxyReturn}

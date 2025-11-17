@@ -1,0 +1,890 @@
+\doxysection{powerblocks/core/graphics/gx\+\_\+immediate.h File Reference}
+\hypertarget{gx__immediate_8h}{}\label{gx__immediate_8h}\index{powerblocks/core/graphics/gx\_immediate.h@{powerblocks/core/graphics/gx\_immediate.h}}
+
+
+Extension of GX with the immediate draw calls.  
+
+
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a1892f2780b1aa0c681dc73eb6504adfa}{gx\+Vertex2f}}(x,  y)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a055c174a4ef06ceb126446589da25611}{gx\+Vertex3f}}(x,  y,  z)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_ae6ec1504cc52a15bdf51102bf712c132}{gx\+Vertex2ub}}(x,  y)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a7039aa56573065cb9e0c25f8b93267ac}{gx\+Vertex3ub}}(x,  y,  z)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a2cea3e45a93a4f067d3cf80a30849324}{gx\+Vertex2b}}(x,  y)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_ab77b8702c25fbb8b1aae744db3c57ce3}{gx\+Vertex3b}}(x,  y,  z)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_ad8379516995a404b230f7380b63ecfaa}{gx\+Vertex2us}}(x,  y)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a9b0411c9391fa0e07246217e9fec75db}{gx\+Vertex3us}}(x,  y,  z)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a8e382f96f74d27989511a3205f4785f0}{gx\+Vertex2s}}(x,  y)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_ae0ebe0b72b83218761a66a21700b399a}{gx\+Vertex3s}}(x,  y,  z)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a10e17048cd825c563c5487bba05bd2c7}{gx\+Vertex2ui}}(x,  y)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a660b7a76f99345dcc9131a3d5160a553}{gx\+Vertex3ui}}(x,  y,  z)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a37d92da5f0d0e05951236dcf237bc421}{gx\+Vertex2i}}(x,  y)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a5a629bf9346b7af05431cc2da426d87e}{gx\+Vertex3i}}(x,  y,  z)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a65de844b185eb7d4fb4d763de6ae69a3}{gx\+Vertex\+Idx1ub}}(i)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a45034b1f0b94d52b396e149e23a8afd4}{gx\+Vertex\+Idx1us}}(i)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a98db203e740e7e7bce2f139d3f3e79a5}{gx\+Normal3f}}(x,  y,  z)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a9392649149c2074acecccc774606328c}{gx\+Normal3b}}(x,  y,  z)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_acb163b9fe241685294bbdd912dcb6bc5}{gx\+Normal3s}}(x,  y,  z)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a790f910f7a79f4b8cf08fd55bb38d4f5}{gx\+Normal3i}}(x,  y,  z)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a73de3720a4c936762bf786f43393e1cc}{gx\+Normal\+Idx1ub}}(i)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_abe6fe77a43154bba8efda1d78155796c}{gx\+Normal\+Idx1us}}(i)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a0fed5be3eaca38ce4f0716cea2eaf343}{gx\+Color3f}}(r,  g,  b)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a5ad287a0dce090c7084f4f81743356e5}{gx\+Color4f}}(r,  g,  b,  a)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a765ef67f9f760b7d350d9b2c71020048}{gx\+Color1ub}}(v)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a58899cafce8e5a16264bf81ac3942781}{gx\+Color3ub}}(r,  g,  b)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a92c5b85ba07db3ee00058a0160cee747}{gx\+Color4ub}}(r,  g,  b,  a)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a6e9ee3baedbc286fc781543baa5171a8}{gx\+Color1b}}(v)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a17cc487266daa23e833ad1931b457957}{gx\+Color3b}}(r,  g,  b)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_afc320c9a51b9ea7c2b420c8a475ae9e9}{gx\+Color4b}}(r,  g,  b,  a)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a434e67ee572354cbc8171d71edf9fbca}{gx\+Color1us}}(v)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a88e84400750bc5e33341a02707fd0aa9}{gx\+Color3us}}(r,  g,  b)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a833428c7827d342f55dbdbcaeb0542dc}{gx\+Color4us}}(r,  g,  b,  a)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a64ffc3be8c1691f4b018f77ac50436fe}{gx\+Color1s}}(v)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_aa5521dfbfa59f282fd445ef120a1ef49}{gx\+Color3s}}(r,  g,  b)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a240f42e58a67affc6633bdc816236228}{gx\+Color4s}}(r,  g,  b,  a)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a4284c27c734d120fde22f80056c79e69}{gx\+Color1ui}}(v)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a2cfc1d6db931f86d6c1fa22dd9137f48}{gx\+Color3ui}}(r,  g,  b)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a3f71001607a9e1f12c8f0f15da3d25fc}{gx\+Color4ui}}(r,  g,  b,  a)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a269eca4de54bf2ab2df7dee56da808d7}{gx\+Color1i}}(v)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a843f3a2f52349ce9731ab99ab3c4a34c}{gx\+Color3i}}(r,  g,  b)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a265b2677c6a02858e3408c3edfe673d4}{gx\+Color4i}}(r,  g,  b,  a)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_ae987491607a541560e9c65111a16edda}{gx\+Color\+Idx1ub}}(i)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a0b75c39edb8a692c1f8b1015d9aee535}{gx\+Color\+Idx1us}}(i)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a2626ddd04d4b90e222c775d529847284}{gx\+Tex\+Coord1f}}(s)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_acb9453d7abcf5fe920df9a5fd676a69b}{gx\+Tex\+Coord2f}}(s,  t)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a3dd72e4aef26e023aa313cce39966997}{gx\+Tex\+Coord1ub}}(s)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_af978ba30371383b2bda65b76841ea6d6}{gx\+Tex\+Coord2ub}}(s,  t)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a7b294b924eae297d4ab10d6f630a947d}{gx\+Tex\+Coord1b}}(s)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_af2933e5a56d5aa63be39533d7a53d2aa}{gx\+Tex\+Coord2b}}(s,  t)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a21ee8b71acb9d0a50a3bce7f9d8bfc25}{gx\+Tex\+Coord1us}}(s)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_aa775a3c74dc8daad60c57f1f2150e397}{gx\+Tex\+Coord2us}}(s,  t)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a5a4f0001880a284f1bab0331166f45ca}{gx\+Tex\+Coord1s}}(s)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a66437b92982e76aa2ca1008ccf80d422}{gx\+Tex\+Coord2s}}(s,  t)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a57f1456a3c1768db09b8a4d2065a5e13}{gx\+Tex\+Coord1ui}}(s)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a30ead621517703133b46d7d72bcceb87}{gx\+Tex\+Coord2ui}}(s,  t)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_ad93424b987312bb186bd62c8692d9f0a}{gx\+Tex\+Coord1i}}(s)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_ab1e8243e41145c6151f22cf7d00649da}{gx\+Tex\+Coord2i}}(s,  t)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_ac3ca5ea7d4a9230f8ce23ea062a98e45}{gx\+Tex\+Coord\+Idx1ub}}(i)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_a8281c1b5bcbf90b7de993cacc51366f3}{gx\+Tex\+Coord\+Idx1us}}(i)
+\item 
+\#define \mbox{\hyperlink{gx__immediate_8h_af3b62dee894de3e78d2119e1049fa834}{gx\+Matrix\+Idx1ub}}(i)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Extension of GX with the immediate draw calls. 
+
+Implements things like gx\+Vertex3f and stuff.
+
+\begin{DoxyAuthor}{Author}
+Samuel Fitzsimons (rainbain) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 @license MIT (see LICENSE file) 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{gx__immediate_8h_a6e9ee3baedbc286fc781543baa5171a8}\index{gx\_immediate.h@{gx\_immediate.h}!gxColor1b@{gxColor1b}}
+\index{gxColor1b@{gxColor1b}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxColor1b}{gxColor1b}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a6e9ee3baedbc286fc781543baa5171a8} 
+\#define gx\+Color1b(\begin{DoxyParamCaption}\item[{}]{v}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{GX\_WPAR\_S8\ =\ v;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a269eca4de54bf2ab2df7dee56da808d7}\index{gx\_immediate.h@{gx\_immediate.h}!gxColor1i@{gxColor1i}}
+\index{gxColor1i@{gxColor1i}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxColor1i}{gxColor1i}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a269eca4de54bf2ab2df7dee56da808d7} 
+\#define gx\+Color1i(\begin{DoxyParamCaption}\item[{}]{v}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{GX\_WPAR\_U32\ =\ v;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a64ffc3be8c1691f4b018f77ac50436fe}\index{gx\_immediate.h@{gx\_immediate.h}!gxColor1s@{gxColor1s}}
+\index{gxColor1s@{gxColor1s}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxColor1s}{gxColor1s}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a64ffc3be8c1691f4b018f77ac50436fe} 
+\#define gx\+Color1s(\begin{DoxyParamCaption}\item[{}]{v}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{GX\_WPAR\_S16\ =\ v;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a765ef67f9f760b7d350d9b2c71020048}\index{gx\_immediate.h@{gx\_immediate.h}!gxColor1ub@{gxColor1ub}}
+\index{gxColor1ub@{gxColor1ub}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxColor1ub}{gxColor1ub}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a765ef67f9f760b7d350d9b2c71020048} 
+\#define gx\+Color1ub(\begin{DoxyParamCaption}\item[{}]{v}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{GX\_WPAR\_U8\ =\ v;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a4284c27c734d120fde22f80056c79e69}\index{gx\_immediate.h@{gx\_immediate.h}!gxColor1ui@{gxColor1ui}}
+\index{gxColor1ui@{gxColor1ui}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxColor1ui}{gxColor1ui}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a4284c27c734d120fde22f80056c79e69} 
+\#define gx\+Color1ui(\begin{DoxyParamCaption}\item[{}]{v}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{GX\_WPAR\_U32\ =\ v;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a434e67ee572354cbc8171d71edf9fbca}\index{gx\_immediate.h@{gx\_immediate.h}!gxColor1us@{gxColor1us}}
+\index{gxColor1us@{gxColor1us}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxColor1us}{gxColor1us}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a434e67ee572354cbc8171d71edf9fbca} 
+\#define gx\+Color1us(\begin{DoxyParamCaption}\item[{}]{v}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{GX\_WPAR\_U16\ =\ v;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a17cc487266daa23e833ad1931b457957}\index{gx\_immediate.h@{gx\_immediate.h}!gxColor3b@{gxColor3b}}
+\index{gxColor3b@{gxColor3b}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxColor3b}{gxColor3b}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a17cc487266daa23e833ad1931b457957} 
+\#define gx\+Color3b(\begin{DoxyParamCaption}\item[{}]{r}{, }\item[{}]{g}{, }\item[{}]{b}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S8\ =\ r;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S8\ =\ g;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S8\ =\ b;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a0fed5be3eaca38ce4f0716cea2eaf343}\index{gx\_immediate.h@{gx\_immediate.h}!gxColor3f@{gxColor3f}}
+\index{gxColor3f@{gxColor3f}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxColor3f}{gxColor3f}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a0fed5be3eaca38ce4f0716cea2eaf343} 
+\#define gx\+Color3f(\begin{DoxyParamCaption}\item[{}]{r}{, }\item[{}]{g}{, }\item[{}]{b}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_F32\ =\ r;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_F32\ =\ g;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_F32\ =\ b;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a843f3a2f52349ce9731ab99ab3c4a34c}\index{gx\_immediate.h@{gx\_immediate.h}!gxColor3i@{gxColor3i}}
+\index{gxColor3i@{gxColor3i}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxColor3i}{gxColor3i}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a843f3a2f52349ce9731ab99ab3c4a34c} 
+\#define gx\+Color3i(\begin{DoxyParamCaption}\item[{}]{r}{, }\item[{}]{g}{, }\item[{}]{b}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S32\ =\ r;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S32\ =\ g;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S32\ =\ b;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_aa5521dfbfa59f282fd445ef120a1ef49}\index{gx\_immediate.h@{gx\_immediate.h}!gxColor3s@{gxColor3s}}
+\index{gxColor3s@{gxColor3s}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxColor3s}{gxColor3s}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_aa5521dfbfa59f282fd445ef120a1ef49} 
+\#define gx\+Color3s(\begin{DoxyParamCaption}\item[{}]{r}{, }\item[{}]{g}{, }\item[{}]{b}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S16\ =\ r;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S16\ =\ g;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S16\ =\ b;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a58899cafce8e5a16264bf81ac3942781}\index{gx\_immediate.h@{gx\_immediate.h}!gxColor3ub@{gxColor3ub}}
+\index{gxColor3ub@{gxColor3ub}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxColor3ub}{gxColor3ub}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a58899cafce8e5a16264bf81ac3942781} 
+\#define gx\+Color3ub(\begin{DoxyParamCaption}\item[{}]{r}{, }\item[{}]{g}{, }\item[{}]{b}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U8\ =\ r;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U8\ =\ g;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U8\ =\ b;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a2cfc1d6db931f86d6c1fa22dd9137f48}\index{gx\_immediate.h@{gx\_immediate.h}!gxColor3ui@{gxColor3ui}}
+\index{gxColor3ui@{gxColor3ui}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxColor3ui}{gxColor3ui}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a2cfc1d6db931f86d6c1fa22dd9137f48} 
+\#define gx\+Color3ui(\begin{DoxyParamCaption}\item[{}]{r}{, }\item[{}]{g}{, }\item[{}]{b}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U32\ =\ r;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U32\ =\ g;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U32\ =\ b;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a88e84400750bc5e33341a02707fd0aa9}\index{gx\_immediate.h@{gx\_immediate.h}!gxColor3us@{gxColor3us}}
+\index{gxColor3us@{gxColor3us}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxColor3us}{gxColor3us}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a88e84400750bc5e33341a02707fd0aa9} 
+\#define gx\+Color3us(\begin{DoxyParamCaption}\item[{}]{r}{, }\item[{}]{g}{, }\item[{}]{b}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U16\ =\ r;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U16\ =\ g;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U16\ =\ b;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_afc320c9a51b9ea7c2b420c8a475ae9e9}\index{gx\_immediate.h@{gx\_immediate.h}!gxColor4b@{gxColor4b}}
+\index{gxColor4b@{gxColor4b}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxColor4b}{gxColor4b}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_afc320c9a51b9ea7c2b420c8a475ae9e9} 
+\#define gx\+Color4b(\begin{DoxyParamCaption}\item[{}]{r}{, }\item[{}]{g}{, }\item[{}]{b}{, }\item[{}]{a}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S8\ =\ r;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S8\ =\ g;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S8\ =\ b;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S8\ =\ a;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a5ad287a0dce090c7084f4f81743356e5}\index{gx\_immediate.h@{gx\_immediate.h}!gxColor4f@{gxColor4f}}
+\index{gxColor4f@{gxColor4f}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxColor4f}{gxColor4f}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a5ad287a0dce090c7084f4f81743356e5} 
+\#define gx\+Color4f(\begin{DoxyParamCaption}\item[{}]{r}{, }\item[{}]{g}{, }\item[{}]{b}{, }\item[{}]{a}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_F32\ =\ r;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_F32\ =\ g;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_F32\ =\ b;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_F32\ =\ a;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a265b2677c6a02858e3408c3edfe673d4}\index{gx\_immediate.h@{gx\_immediate.h}!gxColor4i@{gxColor4i}}
+\index{gxColor4i@{gxColor4i}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxColor4i}{gxColor4i}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a265b2677c6a02858e3408c3edfe673d4} 
+\#define gx\+Color4i(\begin{DoxyParamCaption}\item[{}]{r}{, }\item[{}]{g}{, }\item[{}]{b}{, }\item[{}]{a}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S32\ =\ r;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S32\ =\ g;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S32\ =\ b;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S32\ =\ a;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a240f42e58a67affc6633bdc816236228}\index{gx\_immediate.h@{gx\_immediate.h}!gxColor4s@{gxColor4s}}
+\index{gxColor4s@{gxColor4s}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxColor4s}{gxColor4s}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a240f42e58a67affc6633bdc816236228} 
+\#define gx\+Color4s(\begin{DoxyParamCaption}\item[{}]{r}{, }\item[{}]{g}{, }\item[{}]{b}{, }\item[{}]{a}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S16\ =\ r;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S16\ =\ g;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S16\ =\ b;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S16\ =\ a;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a92c5b85ba07db3ee00058a0160cee747}\index{gx\_immediate.h@{gx\_immediate.h}!gxColor4ub@{gxColor4ub}}
+\index{gxColor4ub@{gxColor4ub}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxColor4ub}{gxColor4ub}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a92c5b85ba07db3ee00058a0160cee747} 
+\#define gx\+Color4ub(\begin{DoxyParamCaption}\item[{}]{r}{, }\item[{}]{g}{, }\item[{}]{b}{, }\item[{}]{a}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U8\ =\ r;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U8\ =\ g;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U8\ =\ b;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U8\ =\ a;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a3f71001607a9e1f12c8f0f15da3d25fc}\index{gx\_immediate.h@{gx\_immediate.h}!gxColor4ui@{gxColor4ui}}
+\index{gxColor4ui@{gxColor4ui}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxColor4ui}{gxColor4ui}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a3f71001607a9e1f12c8f0f15da3d25fc} 
+\#define gx\+Color4ui(\begin{DoxyParamCaption}\item[{}]{r}{, }\item[{}]{g}{, }\item[{}]{b}{, }\item[{}]{a}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U32\ =\ r;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U32\ =\ g;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U32\ =\ b;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U32\ =\ a;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a833428c7827d342f55dbdbcaeb0542dc}\index{gx\_immediate.h@{gx\_immediate.h}!gxColor4us@{gxColor4us}}
+\index{gxColor4us@{gxColor4us}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxColor4us}{gxColor4us}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a833428c7827d342f55dbdbcaeb0542dc} 
+\#define gx\+Color4us(\begin{DoxyParamCaption}\item[{}]{r}{, }\item[{}]{g}{, }\item[{}]{b}{, }\item[{}]{a}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U16\ =\ r;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U16\ =\ g;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U16\ =\ b;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U16\ =\ a;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_ae987491607a541560e9c65111a16edda}\index{gx\_immediate.h@{gx\_immediate.h}!gxColorIdx1ub@{gxColorIdx1ub}}
+\index{gxColorIdx1ub@{gxColorIdx1ub}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxColorIdx1ub}{gxColorIdx1ub}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_ae987491607a541560e9c65111a16edda} 
+\#define gx\+Color\+Idx1ub(\begin{DoxyParamCaption}\item[{}]{i}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{GX\_WPAR\_U8\ =\ i;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a0b75c39edb8a692c1f8b1015d9aee535}\index{gx\_immediate.h@{gx\_immediate.h}!gxColorIdx1us@{gxColorIdx1us}}
+\index{gxColorIdx1us@{gxColorIdx1us}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxColorIdx1us}{gxColorIdx1us}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a0b75c39edb8a692c1f8b1015d9aee535} 
+\#define gx\+Color\+Idx1us(\begin{DoxyParamCaption}\item[{}]{i}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{GX\_WPAR\_U16\ =\ i;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_af3b62dee894de3e78d2119e1049fa834}\index{gx\_immediate.h@{gx\_immediate.h}!gxMatrixIdx1ub@{gxMatrixIdx1ub}}
+\index{gxMatrixIdx1ub@{gxMatrixIdx1ub}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxMatrixIdx1ub}{gxMatrixIdx1ub}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_af3b62dee894de3e78d2119e1049fa834} 
+\#define gx\+Matrix\+Idx1ub(\begin{DoxyParamCaption}\item[{}]{i}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{GX\_WPAR\_U8\ =\ i;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a9392649149c2074acecccc774606328c}\index{gx\_immediate.h@{gx\_immediate.h}!gxNormal3b@{gxNormal3b}}
+\index{gxNormal3b@{gxNormal3b}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxNormal3b}{gxNormal3b}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a9392649149c2074acecccc774606328c} 
+\#define gx\+Normal3b(\begin{DoxyParamCaption}\item[{}]{x}{, }\item[{}]{y}{, }\item[{}]{z}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S8\ =\ x;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S8\ =\ y;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S8\ =\ z;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a98db203e740e7e7bce2f139d3f3e79a5}\index{gx\_immediate.h@{gx\_immediate.h}!gxNormal3f@{gxNormal3f}}
+\index{gxNormal3f@{gxNormal3f}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxNormal3f}{gxNormal3f}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a98db203e740e7e7bce2f139d3f3e79a5} 
+\#define gx\+Normal3f(\begin{DoxyParamCaption}\item[{}]{x}{, }\item[{}]{y}{, }\item[{}]{z}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_F32\ =\ x;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_F32\ =\ y;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_F32\ =\ z;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a790f910f7a79f4b8cf08fd55bb38d4f5}\index{gx\_immediate.h@{gx\_immediate.h}!gxNormal3i@{gxNormal3i}}
+\index{gxNormal3i@{gxNormal3i}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxNormal3i}{gxNormal3i}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a790f910f7a79f4b8cf08fd55bb38d4f5} 
+\#define gx\+Normal3i(\begin{DoxyParamCaption}\item[{}]{x}{, }\item[{}]{y}{, }\item[{}]{z}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S32\ =\ x;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S32\ =\ y;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S32\ =\ z;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_acb163b9fe241685294bbdd912dcb6bc5}\index{gx\_immediate.h@{gx\_immediate.h}!gxNormal3s@{gxNormal3s}}
+\index{gxNormal3s@{gxNormal3s}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxNormal3s}{gxNormal3s}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_acb163b9fe241685294bbdd912dcb6bc5} 
+\#define gx\+Normal3s(\begin{DoxyParamCaption}\item[{}]{x}{, }\item[{}]{y}{, }\item[{}]{z}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S16\ =\ x;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S16\ =\ y;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S16\ =\ z;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a73de3720a4c936762bf786f43393e1cc}\index{gx\_immediate.h@{gx\_immediate.h}!gxNormalIdx1ub@{gxNormalIdx1ub}}
+\index{gxNormalIdx1ub@{gxNormalIdx1ub}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxNormalIdx1ub}{gxNormalIdx1ub}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a73de3720a4c936762bf786f43393e1cc} 
+\#define gx\+Normal\+Idx1ub(\begin{DoxyParamCaption}\item[{}]{i}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{GX\_WPAR\_U8\ =\ i;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_abe6fe77a43154bba8efda1d78155796c}\index{gx\_immediate.h@{gx\_immediate.h}!gxNormalIdx1us@{gxNormalIdx1us}}
+\index{gxNormalIdx1us@{gxNormalIdx1us}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxNormalIdx1us}{gxNormalIdx1us}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_abe6fe77a43154bba8efda1d78155796c} 
+\#define gx\+Normal\+Idx1us(\begin{DoxyParamCaption}\item[{}]{i}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{GX\_WPAR\_U16\ =\ i;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a7b294b924eae297d4ab10d6f630a947d}\index{gx\_immediate.h@{gx\_immediate.h}!gxTexCoord1b@{gxTexCoord1b}}
+\index{gxTexCoord1b@{gxTexCoord1b}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxTexCoord1b}{gxTexCoord1b}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a7b294b924eae297d4ab10d6f630a947d} 
+\#define gx\+Tex\+Coord1b(\begin{DoxyParamCaption}\item[{}]{s}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{GX\_WPAR\_S8\ =\ s;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a2626ddd04d4b90e222c775d529847284}\index{gx\_immediate.h@{gx\_immediate.h}!gxTexCoord1f@{gxTexCoord1f}}
+\index{gxTexCoord1f@{gxTexCoord1f}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxTexCoord1f}{gxTexCoord1f}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a2626ddd04d4b90e222c775d529847284} 
+\#define gx\+Tex\+Coord1f(\begin{DoxyParamCaption}\item[{}]{s}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{GX\_WPAR\_F32\ =\ s;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_ad93424b987312bb186bd62c8692d9f0a}\index{gx\_immediate.h@{gx\_immediate.h}!gxTexCoord1i@{gxTexCoord1i}}
+\index{gxTexCoord1i@{gxTexCoord1i}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxTexCoord1i}{gxTexCoord1i}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_ad93424b987312bb186bd62c8692d9f0a} 
+\#define gx\+Tex\+Coord1i(\begin{DoxyParamCaption}\item[{}]{s}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{GX\_WPAR\_S32\ =\ s;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a5a4f0001880a284f1bab0331166f45ca}\index{gx\_immediate.h@{gx\_immediate.h}!gxTexCoord1s@{gxTexCoord1s}}
+\index{gxTexCoord1s@{gxTexCoord1s}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxTexCoord1s}{gxTexCoord1s}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a5a4f0001880a284f1bab0331166f45ca} 
+\#define gx\+Tex\+Coord1s(\begin{DoxyParamCaption}\item[{}]{s}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{GX\_WPAR\_S16\ =\ s;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a3dd72e4aef26e023aa313cce39966997}\index{gx\_immediate.h@{gx\_immediate.h}!gxTexCoord1ub@{gxTexCoord1ub}}
+\index{gxTexCoord1ub@{gxTexCoord1ub}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxTexCoord1ub}{gxTexCoord1ub}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a3dd72e4aef26e023aa313cce39966997} 
+\#define gx\+Tex\+Coord1ub(\begin{DoxyParamCaption}\item[{}]{s}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{GX\_WPAR\_U8\ =\ s;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a57f1456a3c1768db09b8a4d2065a5e13}\index{gx\_immediate.h@{gx\_immediate.h}!gxTexCoord1ui@{gxTexCoord1ui}}
+\index{gxTexCoord1ui@{gxTexCoord1ui}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxTexCoord1ui}{gxTexCoord1ui}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a57f1456a3c1768db09b8a4d2065a5e13} 
+\#define gx\+Tex\+Coord1ui(\begin{DoxyParamCaption}\item[{}]{s}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{GX\_WPAR\_U32\ =\ s;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a21ee8b71acb9d0a50a3bce7f9d8bfc25}\index{gx\_immediate.h@{gx\_immediate.h}!gxTexCoord1us@{gxTexCoord1us}}
+\index{gxTexCoord1us@{gxTexCoord1us}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxTexCoord1us}{gxTexCoord1us}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a21ee8b71acb9d0a50a3bce7f9d8bfc25} 
+\#define gx\+Tex\+Coord1us(\begin{DoxyParamCaption}\item[{}]{s}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{GX\_WPAR\_U16\ =\ s;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_af2933e5a56d5aa63be39533d7a53d2aa}\index{gx\_immediate.h@{gx\_immediate.h}!gxTexCoord2b@{gxTexCoord2b}}
+\index{gxTexCoord2b@{gxTexCoord2b}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxTexCoord2b}{gxTexCoord2b}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_af2933e5a56d5aa63be39533d7a53d2aa} 
+\#define gx\+Tex\+Coord2b(\begin{DoxyParamCaption}\item[{}]{s}{, }\item[{}]{t}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S8\ =\ s;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S8\ =\ t;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_acb9453d7abcf5fe920df9a5fd676a69b}\index{gx\_immediate.h@{gx\_immediate.h}!gxTexCoord2f@{gxTexCoord2f}}
+\index{gxTexCoord2f@{gxTexCoord2f}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxTexCoord2f}{gxTexCoord2f}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_acb9453d7abcf5fe920df9a5fd676a69b} 
+\#define gx\+Tex\+Coord2f(\begin{DoxyParamCaption}\item[{}]{s}{, }\item[{}]{t}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_F32\ =\ s;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_F32\ =\ t;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_ab1e8243e41145c6151f22cf7d00649da}\index{gx\_immediate.h@{gx\_immediate.h}!gxTexCoord2i@{gxTexCoord2i}}
+\index{gxTexCoord2i@{gxTexCoord2i}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxTexCoord2i}{gxTexCoord2i}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_ab1e8243e41145c6151f22cf7d00649da} 
+\#define gx\+Tex\+Coord2i(\begin{DoxyParamCaption}\item[{}]{s}{, }\item[{}]{t}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S32\ =\ s;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S32\ =\ t;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a66437b92982e76aa2ca1008ccf80d422}\index{gx\_immediate.h@{gx\_immediate.h}!gxTexCoord2s@{gxTexCoord2s}}
+\index{gxTexCoord2s@{gxTexCoord2s}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxTexCoord2s}{gxTexCoord2s}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a66437b92982e76aa2ca1008ccf80d422} 
+\#define gx\+Tex\+Coord2s(\begin{DoxyParamCaption}\item[{}]{s}{, }\item[{}]{t}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S16\ =\ s;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S16\ =\ t;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_af978ba30371383b2bda65b76841ea6d6}\index{gx\_immediate.h@{gx\_immediate.h}!gxTexCoord2ub@{gxTexCoord2ub}}
+\index{gxTexCoord2ub@{gxTexCoord2ub}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxTexCoord2ub}{gxTexCoord2ub}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_af978ba30371383b2bda65b76841ea6d6} 
+\#define gx\+Tex\+Coord2ub(\begin{DoxyParamCaption}\item[{}]{s}{, }\item[{}]{t}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U8\ =\ s;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U8\ =\ t;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a30ead621517703133b46d7d72bcceb87}\index{gx\_immediate.h@{gx\_immediate.h}!gxTexCoord2ui@{gxTexCoord2ui}}
+\index{gxTexCoord2ui@{gxTexCoord2ui}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxTexCoord2ui}{gxTexCoord2ui}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a30ead621517703133b46d7d72bcceb87} 
+\#define gx\+Tex\+Coord2ui(\begin{DoxyParamCaption}\item[{}]{s}{, }\item[{}]{t}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U32\ =\ s;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U32\ =\ t;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_aa775a3c74dc8daad60c57f1f2150e397}\index{gx\_immediate.h@{gx\_immediate.h}!gxTexCoord2us@{gxTexCoord2us}}
+\index{gxTexCoord2us@{gxTexCoord2us}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxTexCoord2us}{gxTexCoord2us}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_aa775a3c74dc8daad60c57f1f2150e397} 
+\#define gx\+Tex\+Coord2us(\begin{DoxyParamCaption}\item[{}]{s}{, }\item[{}]{t}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U16\ =\ s;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U16\ =\ t;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_ac3ca5ea7d4a9230f8ce23ea062a98e45}\index{gx\_immediate.h@{gx\_immediate.h}!gxTexCoordIdx1ub@{gxTexCoordIdx1ub}}
+\index{gxTexCoordIdx1ub@{gxTexCoordIdx1ub}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxTexCoordIdx1ub}{gxTexCoordIdx1ub}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_ac3ca5ea7d4a9230f8ce23ea062a98e45} 
+\#define gx\+Tex\+Coord\+Idx1ub(\begin{DoxyParamCaption}\item[{}]{i}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{GX\_WPAR\_U8\ =\ i;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a8281c1b5bcbf90b7de993cacc51366f3}\index{gx\_immediate.h@{gx\_immediate.h}!gxTexCoordIdx1us@{gxTexCoordIdx1us}}
+\index{gxTexCoordIdx1us@{gxTexCoordIdx1us}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxTexCoordIdx1us}{gxTexCoordIdx1us}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a8281c1b5bcbf90b7de993cacc51366f3} 
+\#define gx\+Tex\+Coord\+Idx1us(\begin{DoxyParamCaption}\item[{}]{i}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{GX\_WPAR\_U16\ =\ i;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a2cea3e45a93a4f067d3cf80a30849324}\index{gx\_immediate.h@{gx\_immediate.h}!gxVertex2b@{gxVertex2b}}
+\index{gxVertex2b@{gxVertex2b}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxVertex2b}{gxVertex2b}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a2cea3e45a93a4f067d3cf80a30849324} 
+\#define gx\+Vertex2b(\begin{DoxyParamCaption}\item[{}]{x}{, }\item[{}]{y}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S8\ =\ x;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S8\ =\ y;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a1892f2780b1aa0c681dc73eb6504adfa}\index{gx\_immediate.h@{gx\_immediate.h}!gxVertex2f@{gxVertex2f}}
+\index{gxVertex2f@{gxVertex2f}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxVertex2f}{gxVertex2f}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a1892f2780b1aa0c681dc73eb6504adfa} 
+\#define gx\+Vertex2f(\begin{DoxyParamCaption}\item[{}]{x}{, }\item[{}]{y}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_F32\ =\ x;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_F32\ =\ y;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a37d92da5f0d0e05951236dcf237bc421}\index{gx\_immediate.h@{gx\_immediate.h}!gxVertex2i@{gxVertex2i}}
+\index{gxVertex2i@{gxVertex2i}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxVertex2i}{gxVertex2i}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a37d92da5f0d0e05951236dcf237bc421} 
+\#define gx\+Vertex2i(\begin{DoxyParamCaption}\item[{}]{x}{, }\item[{}]{y}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S32\ =\ x;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S32\ =\ y;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a8e382f96f74d27989511a3205f4785f0}\index{gx\_immediate.h@{gx\_immediate.h}!gxVertex2s@{gxVertex2s}}
+\index{gxVertex2s@{gxVertex2s}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxVertex2s}{gxVertex2s}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a8e382f96f74d27989511a3205f4785f0} 
+\#define gx\+Vertex2s(\begin{DoxyParamCaption}\item[{}]{x}{, }\item[{}]{y}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S16\ =\ x;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S16\ =\ y;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_ae6ec1504cc52a15bdf51102bf712c132}\index{gx\_immediate.h@{gx\_immediate.h}!gxVertex2ub@{gxVertex2ub}}
+\index{gxVertex2ub@{gxVertex2ub}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxVertex2ub}{gxVertex2ub}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_ae6ec1504cc52a15bdf51102bf712c132} 
+\#define gx\+Vertex2ub(\begin{DoxyParamCaption}\item[{}]{x}{, }\item[{}]{y}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U8\ =\ x;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U8\ =\ y;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a10e17048cd825c563c5487bba05bd2c7}\index{gx\_immediate.h@{gx\_immediate.h}!gxVertex2ui@{gxVertex2ui}}
+\index{gxVertex2ui@{gxVertex2ui}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxVertex2ui}{gxVertex2ui}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a10e17048cd825c563c5487bba05bd2c7} 
+\#define gx\+Vertex2ui(\begin{DoxyParamCaption}\item[{}]{x}{, }\item[{}]{y}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U32\ =\ x;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U32\ =\ y;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_ad8379516995a404b230f7380b63ecfaa}\index{gx\_immediate.h@{gx\_immediate.h}!gxVertex2us@{gxVertex2us}}
+\index{gxVertex2us@{gxVertex2us}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxVertex2us}{gxVertex2us}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_ad8379516995a404b230f7380b63ecfaa} 
+\#define gx\+Vertex2us(\begin{DoxyParamCaption}\item[{}]{x}{, }\item[{}]{y}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U16\ =\ x;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U16\ =\ y;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_ab77b8702c25fbb8b1aae744db3c57ce3}\index{gx\_immediate.h@{gx\_immediate.h}!gxVertex3b@{gxVertex3b}}
+\index{gxVertex3b@{gxVertex3b}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxVertex3b}{gxVertex3b}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_ab77b8702c25fbb8b1aae744db3c57ce3} 
+\#define gx\+Vertex3b(\begin{DoxyParamCaption}\item[{}]{x}{, }\item[{}]{y}{, }\item[{}]{z}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S8\ =\ x;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S8\ =\ y;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S8\ =\ z;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a055c174a4ef06ceb126446589da25611}\index{gx\_immediate.h@{gx\_immediate.h}!gxVertex3f@{gxVertex3f}}
+\index{gxVertex3f@{gxVertex3f}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxVertex3f}{gxVertex3f}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a055c174a4ef06ceb126446589da25611} 
+\#define gx\+Vertex3f(\begin{DoxyParamCaption}\item[{}]{x}{, }\item[{}]{y}{, }\item[{}]{z}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_F32\ =\ x;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_F32\ =\ y;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_F32\ =\ z;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a5a629bf9346b7af05431cc2da426d87e}\index{gx\_immediate.h@{gx\_immediate.h}!gxVertex3i@{gxVertex3i}}
+\index{gxVertex3i@{gxVertex3i}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxVertex3i}{gxVertex3i}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a5a629bf9346b7af05431cc2da426d87e} 
+\#define gx\+Vertex3i(\begin{DoxyParamCaption}\item[{}]{x}{, }\item[{}]{y}{, }\item[{}]{z}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S32\ =\ x;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S32\ =\ y;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S32\ =\ z;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_ae0ebe0b72b83218761a66a21700b399a}\index{gx\_immediate.h@{gx\_immediate.h}!gxVertex3s@{gxVertex3s}}
+\index{gxVertex3s@{gxVertex3s}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxVertex3s}{gxVertex3s}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_ae0ebe0b72b83218761a66a21700b399a} 
+\#define gx\+Vertex3s(\begin{DoxyParamCaption}\item[{}]{x}{, }\item[{}]{y}{, }\item[{}]{z}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S16\ =\ x;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S16\ =\ y;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S16\ =\ z;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a7039aa56573065cb9e0c25f8b93267ac}\index{gx\_immediate.h@{gx\_immediate.h}!gxVertex3ub@{gxVertex3ub}}
+\index{gxVertex3ub@{gxVertex3ub}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxVertex3ub}{gxVertex3ub}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a7039aa56573065cb9e0c25f8b93267ac} 
+\#define gx\+Vertex3ub(\begin{DoxyParamCaption}\item[{}]{x}{, }\item[{}]{y}{, }\item[{}]{z}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U8\ =\ x;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U8\ =\ y;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U8\ =\ z;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a660b7a76f99345dcc9131a3d5160a553}\index{gx\_immediate.h@{gx\_immediate.h}!gxVertex3ui@{gxVertex3ui}}
+\index{gxVertex3ui@{gxVertex3ui}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxVertex3ui}{gxVertex3ui}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a660b7a76f99345dcc9131a3d5160a553} 
+\#define gx\+Vertex3ui(\begin{DoxyParamCaption}\item[{}]{x}{, }\item[{}]{y}{, }\item[{}]{z}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U32\ =\ x;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U32\ =\ y;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U32\ =\ z;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a9b0411c9391fa0e07246217e9fec75db}\index{gx\_immediate.h@{gx\_immediate.h}!gxVertex3us@{gxVertex3us}}
+\index{gxVertex3us@{gxVertex3us}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxVertex3us}{gxVertex3us}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a9b0411c9391fa0e07246217e9fec75db} 
+\#define gx\+Vertex3us(\begin{DoxyParamCaption}\item[{}]{x}{, }\item[{}]{y}{, }\item[{}]{z}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U16\ =\ x;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U16\ =\ y;\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U16\ =\ z;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a65de844b185eb7d4fb4d763de6ae69a3}\index{gx\_immediate.h@{gx\_immediate.h}!gxVertexIdx1ub@{gxVertexIdx1ub}}
+\index{gxVertexIdx1ub@{gxVertexIdx1ub}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxVertexIdx1ub}{gxVertexIdx1ub}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a65de844b185eb7d4fb4d763de6ae69a3} 
+\#define gx\+Vertex\+Idx1ub(\begin{DoxyParamCaption}\item[{}]{i}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{GX\_WPAR\_U8\ =\ i;}
+
+\end{DoxyCode}
+\Hypertarget{gx__immediate_8h_a45034b1f0b94d52b396e149e23a8afd4}\index{gx\_immediate.h@{gx\_immediate.h}!gxVertexIdx1us@{gxVertexIdx1us}}
+\index{gxVertexIdx1us@{gxVertexIdx1us}!gx\_immediate.h@{gx\_immediate.h}}
+\doxysubsubsection{\texorpdfstring{gxVertexIdx1us}{gxVertexIdx1us}}
+{\footnotesize\ttfamily \label{gx__immediate_8h_a45034b1f0b94d52b396e149e23a8afd4} 
+\#define gx\+Vertex\+Idx1us(\begin{DoxyParamCaption}\item[{}]{i}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{GX\_WPAR\_U16\ =\ i;}
+
+\end{DoxyCode}

@@ -1,0 +1,145 @@
+\doxysection{powerblocks/core/utils/math/vec3.h File Reference}
+\hypertarget{vec3_8h}{}\label{vec3_8h}\index{powerblocks/core/utils/math/vec3.h@{powerblocks/core/utils/math/vec3.h}}
+
+
+Simple 3D vectors.  
+
+
+{\ttfamily \#include $<$math.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structvec3}{vec3}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{vec3_8h_a109dbc992c478fb6b5954e4a1184d947}{vec3\+\_\+new}}(x,  y,  z)
+\item 
+\#define \mbox{\hyperlink{vec3_8h_ab424a9655fc3d87f938adbfc39fbee36}{vec3\+\_\+add}}(a,  b)
+\item 
+\#define \mbox{\hyperlink{vec3_8h_a630ab62d2de8f1c51ab5f9ae45dcff32}{vec3\+\_\+sub}}(a,  b)
+\item 
+\#define \mbox{\hyperlink{vec3_8h_abcbd4f1e2230e660f148397cbe89b942}{vec3\+\_\+dot}}(a,  b)
+\item 
+\#define \mbox{\hyperlink{vec3_8h_a5681c31fa98a896a1620e5b445f6803b}{vec3\+\_\+magnitude\+\_\+sq}}(a)
+\item 
+\#define \mbox{\hyperlink{vec3_8h_a3f0d954c18e87aad87b9d253e053d5ee}{vec3\+\_\+magnitude}}(a)
+\item 
+\#define \mbox{\hyperlink{vec3_8h_a22f3bdfcccd1d85ae25dc226ae2cc08a}{vec3\+\_\+muls}}(a,  s)
+\item 
+\#define \mbox{\hyperlink{vec3_8h_a951cf8696fa2f72480f2c8260185ac69}{vec3\+\_\+divs}}(a,  s)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{vec3_8h_a4fcd643e6eed740639649d893937b60f}\label{vec3_8h_a4fcd643e6eed740639649d893937b60f} 
+void {\bfseries vec3\+\_\+normalize} (\mbox{\hyperlink{structvec3}{vec3}} \texorpdfstring{$\ast$}{*}v)
+\item 
+\Hypertarget{vec3_8h_ad6e54ca28c4a2200fc0de30ba233f11b}\label{vec3_8h_ad6e54ca28c4a2200fc0de30ba233f11b} 
+\mbox{\hyperlink{structvec3}{vec3}} {\bfseries vec3\+\_\+to} (\mbox{\hyperlink{structvec3}{vec3}} a, \mbox{\hyperlink{structvec3}{vec3}} b)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Simple 3D vectors. 
+
+Provides helper functions and data structures for 3D vectors.
+
+\begin{DoxyAuthor}{Author}
+Samuel Fitzsimons (rainbain) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 @license MIT (see LICENSE file) 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{vec3_8h_ab424a9655fc3d87f938adbfc39fbee36}\index{vec3.h@{vec3.h}!vec3\_add@{vec3\_add}}
+\index{vec3\_add@{vec3\_add}!vec3.h@{vec3.h}}
+\doxysubsubsection{\texorpdfstring{vec3\_add}{vec3\_add}}
+{\footnotesize\ttfamily \label{vec3_8h_ab424a9655fc3d87f938adbfc39fbee36} 
+\#define vec3\+\_\+add(\begin{DoxyParamCaption}\item[{}]{a}{, }\item[{}]{b}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((\mbox{\hyperlink{structvec3}{vec3}})\{(a).x+(b).x,\ (a).y+(b).y,\ (a).z+(b).z\})}
+
+\end{DoxyCode}
+\Hypertarget{vec3_8h_a951cf8696fa2f72480f2c8260185ac69}\index{vec3.h@{vec3.h}!vec3\_divs@{vec3\_divs}}
+\index{vec3\_divs@{vec3\_divs}!vec3.h@{vec3.h}}
+\doxysubsubsection{\texorpdfstring{vec3\_divs}{vec3\_divs}}
+{\footnotesize\ttfamily \label{vec3_8h_a951cf8696fa2f72480f2c8260185ac69} 
+\#define vec3\+\_\+divs(\begin{DoxyParamCaption}\item[{}]{a}{, }\item[{}]{s}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((\mbox{\hyperlink{structvec3}{vec3}})\{(a).x/(s),\ (a).y/(s),\ (a).z/(s)\})}
+
+\end{DoxyCode}
+\Hypertarget{vec3_8h_abcbd4f1e2230e660f148397cbe89b942}\index{vec3.h@{vec3.h}!vec3\_dot@{vec3\_dot}}
+\index{vec3\_dot@{vec3\_dot}!vec3.h@{vec3.h}}
+\doxysubsubsection{\texorpdfstring{vec3\_dot}{vec3\_dot}}
+{\footnotesize\ttfamily \label{vec3_8h_abcbd4f1e2230e660f148397cbe89b942} 
+\#define vec3\+\_\+dot(\begin{DoxyParamCaption}\item[{}]{a}{, }\item[{}]{b}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((a).x\ *\ (b).x\ +\ (a).y\ *\ (b).y\ +\ (a.z)\ *\ (b).z)}
+
+\end{DoxyCode}
+\Hypertarget{vec3_8h_a3f0d954c18e87aad87b9d253e053d5ee}\index{vec3.h@{vec3.h}!vec3\_magnitude@{vec3\_magnitude}}
+\index{vec3\_magnitude@{vec3\_magnitude}!vec3.h@{vec3.h}}
+\doxysubsubsection{\texorpdfstring{vec3\_magnitude}{vec3\_magnitude}}
+{\footnotesize\ttfamily \label{vec3_8h_a3f0d954c18e87aad87b9d253e053d5ee} 
+\#define vec3\+\_\+magnitude(\begin{DoxyParamCaption}\item[{}]{a}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(sqrtf(vec3\_magnitude\_sq(a)))}
+
+\end{DoxyCode}
+\Hypertarget{vec3_8h_a5681c31fa98a896a1620e5b445f6803b}\index{vec3.h@{vec3.h}!vec3\_magnitude\_sq@{vec3\_magnitude\_sq}}
+\index{vec3\_magnitude\_sq@{vec3\_magnitude\_sq}!vec3.h@{vec3.h}}
+\doxysubsubsection{\texorpdfstring{vec3\_magnitude\_sq}{vec3\_magnitude\_sq}}
+{\footnotesize\ttfamily \label{vec3_8h_a5681c31fa98a896a1620e5b445f6803b} 
+\#define vec3\+\_\+magnitude\+\_\+sq(\begin{DoxyParamCaption}\item[{}]{a}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{vec3\_dot(a,\ a)}
+
+\end{DoxyCode}
+\Hypertarget{vec3_8h_a22f3bdfcccd1d85ae25dc226ae2cc08a}\index{vec3.h@{vec3.h}!vec3\_muls@{vec3\_muls}}
+\index{vec3\_muls@{vec3\_muls}!vec3.h@{vec3.h}}
+\doxysubsubsection{\texorpdfstring{vec3\_muls}{vec3\_muls}}
+{\footnotesize\ttfamily \label{vec3_8h_a22f3bdfcccd1d85ae25dc226ae2cc08a} 
+\#define vec3\+\_\+muls(\begin{DoxyParamCaption}\item[{}]{a}{, }\item[{}]{s}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((\mbox{\hyperlink{structvec3}{vec3}})\{(a).x*(s),\ (a).y*(s),\ (a).z*(s)\})}
+
+\end{DoxyCode}
+\Hypertarget{vec3_8h_a109dbc992c478fb6b5954e4a1184d947}\index{vec3.h@{vec3.h}!vec3\_new@{vec3\_new}}
+\index{vec3\_new@{vec3\_new}!vec3.h@{vec3.h}}
+\doxysubsubsection{\texorpdfstring{vec3\_new}{vec3\_new}}
+{\footnotesize\ttfamily \label{vec3_8h_a109dbc992c478fb6b5954e4a1184d947} 
+\#define vec3\+\_\+new(\begin{DoxyParamCaption}\item[{}]{x}{, }\item[{}]{y}{, }\item[{}]{z}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((\mbox{\hyperlink{structvec3}{vec3}})\{x,\ y,\ z\})}
+
+\end{DoxyCode}
+\Hypertarget{vec3_8h_a630ab62d2de8f1c51ab5f9ae45dcff32}\index{vec3.h@{vec3.h}!vec3\_sub@{vec3\_sub}}
+\index{vec3\_sub@{vec3\_sub}!vec3.h@{vec3.h}}
+\doxysubsubsection{\texorpdfstring{vec3\_sub}{vec3\_sub}}
+{\footnotesize\ttfamily \label{vec3_8h_a630ab62d2de8f1c51ab5f9ae45dcff32} 
+\#define vec3\+\_\+sub(\begin{DoxyParamCaption}\item[{}]{a}{, }\item[{}]{b}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((\mbox{\hyperlink{structvec3}{vec3}})\{(a).x-\/(b).x,\ (a).y-\/(b).y,\ (a).z-\/(b).z\})}
+
+\end{DoxyCode}

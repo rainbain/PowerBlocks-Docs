@@ -1,0 +1,529 @@
+\doxysection{powerblocks/core/graphics/gx\+\_\+xf.h File Reference}
+\hypertarget{gx__xf_8h}{}\label{gx__xf_8h}\index{powerblocks/core/graphics/gx\_xf.h@{powerblocks/core/graphics/gx\_xf.h}}
+
+
+XF definitions and function of GX.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}powerblocks/core/utils/math/matrix3.\+h"{}}\newline
+{\ttfamily \#include "{}powerblocks/core/utils/math/matrix4.\+h"{}}\newline
+{\ttfamily \#include "{}powerblocks/core/utils/math/matrix34.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structgx__light__t}{gx\+\_\+light\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{gx__xf_8h_add852a47f0d13113c705c6cee99b1d23}{gx\+\_\+mtx\+\_\+id\+\_\+t}} \{ \newline
+{\bfseries GX\+\_\+\+MTX\+\_\+\+ID\+\_\+0} = (0\texorpdfstring{$\ast$}{*}3)
+, {\bfseries GX\+\_\+\+MTX\+\_\+\+ID\+\_\+1} = (1\texorpdfstring{$\ast$}{*}3)
+, {\bfseries GX\+\_\+\+MTX\+\_\+\+ID\+\_\+2} = (2\texorpdfstring{$\ast$}{*}3)
+, {\bfseries GX\+\_\+\+MTX\+\_\+\+ID\+\_\+3} = (3\texorpdfstring{$\ast$}{*}3)
+, \newline
+{\bfseries GX\+\_\+\+MTX\+\_\+\+ID\+\_\+4} = (4\texorpdfstring{$\ast$}{*}3)
+, {\bfseries GX\+\_\+\+MTX\+\_\+\+ID\+\_\+5} = (5\texorpdfstring{$\ast$}{*}3)
+, {\bfseries GX\+\_\+\+MTX\+\_\+\+ID\+\_\+6} = (6\texorpdfstring{$\ast$}{*}3)
+, {\bfseries GX\+\_\+\+MTX\+\_\+\+ID\+\_\+7} = (7\texorpdfstring{$\ast$}{*}3)
+, \newline
+{\bfseries GX\+\_\+\+MTX\+\_\+\+ID\+\_\+8} = (8\texorpdfstring{$\ast$}{*}3)
+, {\bfseries GX\+\_\+\+MTX\+\_\+\+ID\+\_\+9} = (9\texorpdfstring{$\ast$}{*}3)
+, {\bfseries GX\+\_\+\+MTX\+\_\+\+ID\+\_\+10} = (10\texorpdfstring{$\ast$}{*}3)
+, {\bfseries GX\+\_\+\+MTX\+\_\+\+ID\+\_\+11} = (11\texorpdfstring{$\ast$}{*}3)
+, \newline
+{\bfseries GX\+\_\+\+MTX\+\_\+\+ID\+\_\+12} = (12\texorpdfstring{$\ast$}{*}3)
+, {\bfseries GX\+\_\+\+MTX\+\_\+\+ID\+\_\+13} = (13\texorpdfstring{$\ast$}{*}3)
+, {\bfseries GX\+\_\+\+MTX\+\_\+\+ID\+\_\+14} = (14\texorpdfstring{$\ast$}{*}3)
+, {\bfseries GX\+\_\+\+MTX\+\_\+\+ID\+\_\+15} = (15\texorpdfstring{$\ast$}{*}3)
+, \newline
+{\bfseries GX\+\_\+\+MTX\+\_\+\+ID\+\_\+16} = (16\texorpdfstring{$\ast$}{*}3)
+, {\bfseries GX\+\_\+\+MTX\+\_\+\+ID\+\_\+17} = (17\texorpdfstring{$\ast$}{*}3)
+, {\bfseries GX\+\_\+\+MTX\+\_\+\+ID\+\_\+18} = (18\texorpdfstring{$\ast$}{*}3)
+, {\bfseries GX\+\_\+\+MTX\+\_\+\+ID\+\_\+19} = (19\texorpdfstring{$\ast$}{*}3)
+, \newline
+{\bfseries GX\+\_\+\+MTX\+\_\+\+ID\+\_\+20} = (20\texorpdfstring{$\ast$}{*}3)
+, {\bfseries GX\+\_\+\+MTX\+\_\+\+ID\+\_\+\+IDENTITY} = GX\+\_\+\+MTX\+\_\+\+ID\+\_\+20
+ \}
+\begin{DoxyCompactList}\small\item\em Universal matrix ids. \end{DoxyCompactList}\item 
+\Hypertarget{gx__xf_8h_a3a002c48d7c30cc4a6582b9c438d75f8}\label{gx__xf_8h_a3a002c48d7c30cc4a6582b9c438d75f8} 
+enum {\bfseries gx\+\_\+color\+\_\+channel\+\_\+t} \{ {\bfseries GX\+\_\+\+COLOR\+\_\+\+CHANNEL\+\_\+\+COLOR0} = 0
+, {\bfseries GX\+\_\+\+COLOR\+\_\+\+CHANNEL\+\_\+\+COLOR1} = 1
+, {\bfseries GX\+\_\+\+COLOR\+\_\+\+CHANNEL\+\_\+\+ALPHA0} = 2
+, {\bfseries GX\+\_\+\+COLOR\+\_\+\+CHANNEL\+\_\+\+ALPHA1} = 3
+ \}
+\item 
+\Hypertarget{gx__xf_8h_aceb51480ffb9ea6be64826d4a525913a}\label{gx__xf_8h_aceb51480ffb9ea6be64826d4a525913a} 
+enum {\bfseries gx\+\_\+light\+\_\+bit\+\_\+t} \{ \newline
+{\bfseries GX\+\_\+\+LIGHT\+\_\+\+BIT\+\_\+\+NONE}
+, {\bfseries GX\+\_\+\+LIGHT\+\_\+\+BIT\+\_\+0} = (1\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}2)
+, {\bfseries GX\+\_\+\+LIGHT\+\_\+\+BIT\+\_\+1} = (1\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}3)
+, {\bfseries GX\+\_\+\+LIGHT\+\_\+\+BIT\+\_\+2} = (1\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}4)
+, \newline
+{\bfseries GX\+\_\+\+LIGHT\+\_\+\+BIT\+\_\+3} = (1\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}5)
+, {\bfseries GX\+\_\+\+LIGHT\+\_\+\+BIT\+\_\+4} = (1\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}11)
+, {\bfseries GX\+\_\+\+LIGHT\+\_\+\+BIT\+\_\+5} = (1\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}12)
+, {\bfseries GX\+\_\+\+LIGHT\+\_\+\+BIT\+\_\+6} = (1\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}13)
+, \newline
+{\bfseries GX\+\_\+\+LIGHT\+\_\+\+BIT\+\_\+7} = (1\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}14)
+ \}
+\item 
+\Hypertarget{gx__xf_8h_a929bcacff6ce783ce1fd17a5e638ac79}\label{gx__xf_8h_a929bcacff6ce783ce1fd17a5e638ac79} 
+enum {\bfseries gx\+\_\+attenuation\+\_\+mode\+\_\+t} \{ {\bfseries GX\+\_\+\+ATTENUATION\+\_\+\+MODE\+\_\+\+NONE}
+, {\bfseries GX\+\_\+\+ATTENUATION\+\_\+\+MODE\+\_\+\+SPECULAR} = 1
+, {\bfseries GX\+\_\+\+ATTENUATION\+\_\+\+MODE\+\_\+\+SPOTLIGHT} = 3
+ \}
+\item 
+\Hypertarget{gx__xf_8h_a5612a6602b2bcddaf7caf294f46c4454}\label{gx__xf_8h_a5612a6602b2bcddaf7caf294f46c4454} 
+enum {\bfseries gx\+\_\+diffuse\+\_\+mode\+\_\+t} \{ {\bfseries GX\+\_\+\+DIFFUSE\+\_\+\+MODE\+\_\+\+NONE}
+, {\bfseries GX\+\_\+\+DIFFUSE\+\_\+\+SIGNED}
+, {\bfseries GX\+\_\+\+DIFFUSE\+\_\+\+CLAMPED}
+ \}
+\item 
+\Hypertarget{gx__xf_8h_aed42425e8a155acdd12cf6e0ae6ccfd6}\label{gx__xf_8h_aed42425e8a155acdd12cf6e0ae6ccfd6} 
+enum {\bfseries gx\+\_\+xf\+\_\+color\+\_\+t} \{ {\bfseries GX\+\_\+\+XF\+\_\+\+COLOR\+\_\+\+AMBIENT\+\_\+0} = 0x100A
+, {\bfseries GX\+\_\+\+XF\+\_\+\+COLOR\+\_\+\+AMBIENT\+\_\+1} = 0x100B
+, {\bfseries GX\+\_\+\+XF\+\_\+\+COLOR\+\_\+\+MATERIAL\+\_\+0} = 0x100C
+, {\bfseries GX\+\_\+\+XF\+\_\+\+COLOR\+\_\+\+MATERIAL\+\_\+1} = 0x100D
+ \}
+\item 
+\Hypertarget{gx__xf_8h_af7af70c4a4d8ffb051802a6ee893e890}\label{gx__xf_8h_af7af70c4a4d8ffb051802a6ee893e890} 
+enum {\bfseries gx\+\_\+light\+\_\+id\+\_\+t} \{ \newline
+{\bfseries GX\+\_\+\+LIGHT\+\_\+\+ID\+\_\+0}
+, {\bfseries GX\+\_\+\+LIGHT\+\_\+\+ID\+\_\+1}
+, {\bfseries GX\+\_\+\+LIGHT\+\_\+\+ID\+\_\+2}
+, {\bfseries GX\+\_\+\+LIGHT\+\_\+\+ID\+\_\+3}
+, \newline
+{\bfseries GX\+\_\+\+LIGHT\+\_\+\+ID\+\_\+4}
+, {\bfseries GX\+\_\+\+LIGHT\+\_\+\+ID\+\_\+5}
+, {\bfseries GX\+\_\+\+LIGHT\+\_\+\+ID\+\_\+6}
+, {\bfseries GX\+\_\+\+LIGHT\+\_\+\+ID\+\_\+7}
+ \}
+\item 
+\Hypertarget{gx__xf_8h_a4a0fa9b84d1cae39d6bbceba888e675b}\label{gx__xf_8h_a4a0fa9b84d1cae39d6bbceba888e675b} 
+enum {\bfseries gx\+\_\+texgen\+\_\+type\+\_\+t} \{ {\bfseries GX\+\_\+\+TEXGEN\+\_\+\+TYPE\+\_\+\+REGULAR}
+, {\bfseries GX\+\_\+\+TEXGEN\+\_\+\+TYPE\+\_\+\+EMBOSS}
+, {\bfseries GX\+\_\+\+TEXGEN\+\_\+\+TYPE\+\_\+\+COLOR\+\_\+0}
+, {\bfseries GX\+\_\+\+TEXGEN\+\_\+\+TYPE\+\_\+\+COLOR\+\_\+1}
+ \}
+\item 
+\Hypertarget{gx__xf_8h_a2ce780377de6b73dddbd5d996fe13abd}\label{gx__xf_8h_a2ce780377de6b73dddbd5d996fe13abd} 
+enum {\bfseries gx\+\_\+texgen\+\_\+source\+\_\+t} \{ \newline
+{\bfseries GX\+\_\+\+TEXGEN\+\_\+\+SOURCE\+\_\+\+POSITION}
+, {\bfseries GX\+\_\+\+TEXGEN\+\_\+\+SOURCE\+\_\+\+NORMAL}
+, {\bfseries GX\+\_\+\+TEXGEN\+\_\+\+SOURCE\+\_\+\+COLORS}
+, {\bfseries GX\+\_\+\+TEXGEN\+\_\+\+SOURCE\+\_\+\+BINORMAL\+\_\+T}
+, \newline
+{\bfseries GX\+\_\+\+TEXGEN\+\_\+\+SOURCE\+\_\+\+BINORMAL\+\_\+B}
+, {\bfseries GX\+\_\+\+TEXGEN\+\_\+\+SOURCE\+\_\+\+TEX0}
+, {\bfseries GX\+\_\+\+TEXGEN\+\_\+\+SOURCE\+\_\+\+TEX1}
+, {\bfseries GX\+\_\+\+TEXGEN\+\_\+\+SOURCE\+\_\+\+TEX2}
+, \newline
+{\bfseries GX\+\_\+\+TEXGEN\+\_\+\+SOURCE\+\_\+\+TEX3}
+, {\bfseries GX\+\_\+\+TEXGEN\+\_\+\+SOURCE\+\_\+\+TEX4}
+, {\bfseries GX\+\_\+\+TEXGEN\+\_\+\+SOURCE\+\_\+\+TEX5}
+, {\bfseries GX\+\_\+\+TEXGEN\+\_\+\+SOURCE\+\_\+\+TEX6}
+, \newline
+{\bfseries GX\+\_\+\+TEXGEN\+\_\+\+SOURCE\+\_\+\+TEX7}
+ \}
+\item 
+\Hypertarget{gx__xf_8h_a5f3f7424a78bb42ea5aa0ad16ac24ded}\label{gx__xf_8h_a5f3f7424a78bb42ea5aa0ad16ac24ded} 
+enum {\bfseries gx\+\_\+texture\+\_\+map\+\_\+t} \{ \newline
+{\bfseries GX\+\_\+\+TEXTURE\+\_\+\+MAP\+\_\+0}
+, {\bfseries GX\+\_\+\+TEXTURE\+\_\+\+MAP\+\_\+1}
+, {\bfseries GX\+\_\+\+TEXTURE\+\_\+\+MAP\+\_\+2}
+, {\bfseries GX\+\_\+\+TEXTURE\+\_\+\+MAP\+\_\+3}
+, \newline
+{\bfseries GX\+\_\+\+TEXTURE\+\_\+\+MAP\+\_\+4}
+, {\bfseries GX\+\_\+\+TEXTURE\+\_\+\+MAP\+\_\+5}
+, {\bfseries GX\+\_\+\+TEXTURE\+\_\+\+MAP\+\_\+6}
+, {\bfseries GX\+\_\+\+TEXTURE\+\_\+\+MAP\+\_\+7}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{gx__xf_8h_ad2ab68ad1e6014c310fad99f7095b3cf}{gx\+\_\+flash\+\_\+viewport}} (float x, float y, float width, float height, float near, float far, bool jitter)
+\begin{DoxyCompactList}\small\item\em Flashes the viewport onto the XF settings. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx__xf_8h_a3b41ae1a0ae73f10a68a546918db7f42}{gx\+\_\+flash\+\_\+projection}} (const matrix4 mtx, bool is\+\_\+perspective)
+\begin{DoxyCompactList}\small\item\em Flashes the projection matrix onto the XF settings. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx__xf_8h_a753b6dea2f1bcd031f9b4d4db0303c54}{gx\+\_\+flash\+\_\+matrix}} (const matrix34 mtx, \mbox{\hyperlink{gx__xf_8h_add852a47f0d13113c705c6cee99b1d23}{gx\+\_\+mtx\+\_\+id\+\_\+t}} index, bool type)
+\begin{DoxyCompactList}\small\item\em Fashes a matrix to the XF Stack. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx__xf_8h_abb8da4dddb6dd0410887818129c613fc}{gx\+\_\+flash\+\_\+nrm\+\_\+matrix}} (const matrix3 mtx, \mbox{\hyperlink{gx__xf_8h_add852a47f0d13113c705c6cee99b1d23}{gx\+\_\+mtx\+\_\+id\+\_\+t}} index)
+\begin{DoxyCompactList}\small\item\em Fashes a normal matrix into the XF matrix stack. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx__xf_8h_a43dcaf55471d3e242ba023fe81f73986}{gx\+\_\+set\+\_\+current\+\_\+psn\+\_\+matrix}} (\mbox{\hyperlink{gx__xf_8h_add852a47f0d13113c705c6cee99b1d23}{gx\+\_\+mtx\+\_\+id\+\_\+t}} index)
+\begin{DoxyCompactList}\small\item\em Sets the current pair of position and normal matrices. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx__xf_8h_ab939b8e36fcadd432f36868c22dc6dd1}{gx\+\_\+set\+\_\+color\+\_\+channels}} (uint32\+\_\+t count)
+\begin{DoxyCompactList}\small\item\em Sets a color channel count. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx__xf_8h_a166ba0a90defb8335c148172916da181}{gx\+\_\+configure\+\_\+color\+\_\+channel}} (gx\+\_\+color\+\_\+channel\+\_\+t channel, gx\+\_\+light\+\_\+bit\+\_\+t lights, bool lighting, bool ambient\+\_\+source, bool material\+\_\+source, gx\+\_\+diffuse\+\_\+mode\+\_\+t diffuse, gx\+\_\+attenuation\+\_\+mode\+\_\+t attenuation)
+\begin{DoxyCompactList}\small\item\em Configures 1 of the 2/4 color channels. \end{DoxyCompactList}\item 
+\Hypertarget{gx__xf_8h_a959634e26ea60714b16f8536fb1a1b66}\label{gx__xf_8h_a959634e26ea60714b16f8536fb1a1b66} 
+void {\bfseries gx\+\_\+flash\+\_\+xf\+\_\+color} (gx\+\_\+xf\+\_\+color\+\_\+t id, uint8\+\_\+t r, uint8\+\_\+t g, uint8\+\_\+t b, uint8\+\_\+t a)
+\begin{DoxyCompactList}\small\item\em Sets a XF Color Value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx__xf_8h_ac4924cb1e407a22bdb7c9ce7e1599fc7}{gx\+\_\+flash\+\_\+light}} (gx\+\_\+light\+\_\+id\+\_\+t id, const \mbox{\hyperlink{structgx__light__t}{gx\+\_\+light\+\_\+t}} \texorpdfstring{$\ast$}{*}light)
+\begin{DoxyCompactList}\small\item\em Flash one of the lights. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx__xf_8h_a69f6463c318b809e688869dfb9ed7a44}{gx\+\_\+set\+\_\+texcoord\+\_\+channels}} (uint32\+\_\+t count)
+\begin{DoxyCompactList}\small\item\em Set a texture coord count. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx__xf_8h_aa918cc7132884d7619cc4019cb6d3431}{gx\+\_\+configure\+\_\+texcoord\+\_\+channel}} (gx\+\_\+texture\+\_\+map\+\_\+t map, gx\+\_\+texgen\+\_\+source\+\_\+t source, gx\+\_\+texgen\+\_\+type\+\_\+t type, bool projection, bool three\+\_\+component, gx\+\_\+light\+\_\+id\+\_\+t embossing\+\_\+light)
+\begin{DoxyCompactList}\small\item\em Configures 1 of the 8 texcoord channels. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx__xf_8h_a0d14075de72ba65ae201857573c5c157}{gx\+\_\+configure\+\_\+dual\+\_\+texcoord}} (gx\+\_\+texture\+\_\+map\+\_\+t map, \mbox{\hyperlink{gx__xf_8h_add852a47f0d13113c705c6cee99b1d23}{gx\+\_\+mtx\+\_\+id\+\_\+t}} index, bool normalize)
+\begin{DoxyCompactList}\small\item\em Configure dual texcoords. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx__xf_8h_a2f194edca9b9d1fa69a90c5f5a3316d8}{gx\+\_\+flash\+\_\+dual\+\_\+texcoord\+\_\+matrix}} (matrix34 mtx, \mbox{\hyperlink{gx__xf_8h_add852a47f0d13113c705c6cee99b1d23}{gx\+\_\+mtx\+\_\+id\+\_\+t}} index, bool type)
+\begin{DoxyCompactList}\small\item\em Fashes a dual texcoord matrix in the XF matrix stack. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx__xf_8h_afb51d2a3906a40928512a35d51d309df}{gx\+\_\+set\+\_\+current\+\_\+texcoord\+\_\+matrix}} (gx\+\_\+texture\+\_\+map\+\_\+t map, \mbox{\hyperlink{gx__xf_8h_add852a47f0d13113c705c6cee99b1d23}{gx\+\_\+mtx\+\_\+id\+\_\+t}} index)
+\begin{DoxyCompactList}\small\item\em Sets the current texcoord matrix. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gx__xf_8h_a87c15fe956b54ba16cf0bc6f5e4f3af1}{gx\+\_\+flash\+\_\+enable\+\_\+dual\+\_\+texcoord}} (bool enable)
+\begin{DoxyCompactList}\small\item\em Sets the Dual Texture Coord Enable/\+Disable Register. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+XF definitions and function of GX. 
+
+XF definitions and function of GX.
+
+\begin{DoxyAuthor}{Author}
+Samuel Fitzsimons (rainbain) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 @license MIT (see LICENSE file) 
+\end{DoxyDate}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{gx__xf_8h_add852a47f0d13113c705c6cee99b1d23}\index{gx\_xf.h@{gx\_xf.h}!gx\_mtx\_id\_t@{gx\_mtx\_id\_t}}
+\index{gx\_mtx\_id\_t@{gx\_mtx\_id\_t}!gx\_xf.h@{gx\_xf.h}}
+\doxysubsubsection{\texorpdfstring{gx\_mtx\_id\_t}{gx\_mtx\_id\_t}}
+{\footnotesize\ttfamily \label{gx__xf_8h_add852a47f0d13113c705c6cee99b1d23} 
+enum \mbox{\hyperlink{gx__xf_8h_add852a47f0d13113c705c6cee99b1d23}{gx\+\_\+mtx\+\_\+id\+\_\+t}}}
+
+
+
+Universal matrix ids. 
+
+These are used for addressing geometry, normal, texcoord matrices and dual texcoord matrices.
+
+Depending on what of these its for, some or all of these may be valid.
+
+Geometry and texcoord share the same memory, and use GX\+\_\+\+MTX\+\_\+\+ID\+\_\+0 through GX\+\_\+\+MTX\+\_\+\+ID\+\_\+20. Where GX\+\_\+\+MTX\+\_\+\+ID\+\_\+20 by default is loaded as an idiniticy matrix for them to use.
+
+Normal matrices can only use GX\+\_\+\+MTX\+\_\+\+ID\+\_\+0 through GX\+\_\+\+MTX\+\_\+\+ID\+\_\+9.
+
+Dual texcoords have their own stack and can use GX\+\_\+\+MTX\+\_\+\+ID\+\_\+0, GX\+\_\+\+MTX\+\_\+\+ID\+\_\+20. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{gx__xf_8h_a166ba0a90defb8335c148172916da181}\index{gx\_xf.h@{gx\_xf.h}!gx\_configure\_color\_channel@{gx\_configure\_color\_channel}}
+\index{gx\_configure\_color\_channel@{gx\_configure\_color\_channel}!gx\_xf.h@{gx\_xf.h}}
+\doxysubsubsection{\texorpdfstring{gx\_configure\_color\_channel()}{gx\_configure\_color\_channel()}}
+{\footnotesize\ttfamily \label{gx__xf_8h_a166ba0a90defb8335c148172916da181} 
+void gx\+\_\+configure\+\_\+color\+\_\+channel (\begin{DoxyParamCaption}\item[{gx\+\_\+color\+\_\+channel\+\_\+t}]{channel}{, }\item[{gx\+\_\+light\+\_\+bit\+\_\+t}]{lights}{, }\item[{bool}]{lighting}{, }\item[{bool}]{ambient\+\_\+source}{, }\item[{bool}]{material\+\_\+source}{, }\item[{gx\+\_\+diffuse\+\_\+mode\+\_\+t}]{diffuse}{, }\item[{gx\+\_\+attenuation\+\_\+mode\+\_\+t}]{attenuation}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Configures 1 of the 2/4 color channels. 
+
+There are 2 color channels, like in {\ttfamily gx\+\_\+set\+\_\+color\+\_\+channels} Now each has settings for how its transformed for lighting.
+
+Unlike {\ttfamily gx\+\_\+set\+\_\+color\+\_\+channels} though this has its own 4 channels. 2 colors, 2 alphas.
+
+Default config just passes the vertex colors with no modifications.
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel} & Color channel to use \\
+\hline
+{\em lights} & Enable lights, like GX\+\_\+\+LIGHT\+\_\+\+ENABLE\+\_\+0 \texorpdfstring{$\vert$}{|} GX\+\_\+\+LIGHT\+\_\+\+ENABLE\+\_\+1 \\
+\hline
+{\em lighting} & Enable lighting in general, so you can have a dark scene with no lights if you wish \\
+\hline
+{\em ambient\+\_\+source} & True = use vertex color, otherwise use XF register \\
+\hline
+{\em material\+\_\+source} & True = use vertex color, otherwise use XF register. \\
+\hline
+{\em diffuse} & Diffuse Mode to use \\
+\hline
+{\em attenuation} & Attenuation Mode to use \\
+\hline
+\end{DoxyParams}
+TODO\+: Why did you not use defines to control some of these XF parameters.\Hypertarget{gx__xf_8h_a0d14075de72ba65ae201857573c5c157}\index{gx\_xf.h@{gx\_xf.h}!gx\_configure\_dual\_texcoord@{gx\_configure\_dual\_texcoord}}
+\index{gx\_configure\_dual\_texcoord@{gx\_configure\_dual\_texcoord}!gx\_xf.h@{gx\_xf.h}}
+\doxysubsubsection{\texorpdfstring{gx\_configure\_dual\_texcoord()}{gx\_configure\_dual\_texcoord()}}
+{\footnotesize\ttfamily \label{gx__xf_8h_a0d14075de72ba65ae201857573c5c157} 
+void gx\+\_\+configure\+\_\+dual\+\_\+texcoord (\begin{DoxyParamCaption}\item[{gx\+\_\+texture\+\_\+map\+\_\+t}]{map}{, }\item[{\mbox{\hyperlink{gx__xf_8h_add852a47f0d13113c705c6cee99b1d23}{gx\+\_\+mtx\+\_\+id\+\_\+t}}}]{index}{, }\item[{bool}]{normalize}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Configure dual texcoords. 
+
+
+\begin{DoxyItemize}
+\item You can only use these on GX\+\_\+\+TEXTURE\+\_\+\+MAP\+\_\+0 through GX\+\_\+\+TEXTURE\+\_\+\+MAP\+\_\+3
+\end{DoxyItemize}
+
+These allow to transform texcoords after the main transformation. This means the main transformation can be used for. i.\+e. putting geometry into a texture format, then you can use this to scroll around that texture.
+
+Its often that if your doing this, you may want to normalize the inputs as well before the first transformation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & Texture map to configure \\
+\hline
+{\em index} & Matrix index to transform texcoord after transformation \\
+\hline
+{\em normalize} & Normalize the inputs before transforming \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx__xf_8h_aa918cc7132884d7619cc4019cb6d3431}\index{gx\_xf.h@{gx\_xf.h}!gx\_configure\_texcoord\_channel@{gx\_configure\_texcoord\_channel}}
+\index{gx\_configure\_texcoord\_channel@{gx\_configure\_texcoord\_channel}!gx\_xf.h@{gx\_xf.h}}
+\doxysubsubsection{\texorpdfstring{gx\_configure\_texcoord\_channel()}{gx\_configure\_texcoord\_channel()}}
+{\footnotesize\ttfamily \label{gx__xf_8h_aa918cc7132884d7619cc4019cb6d3431} 
+void gx\+\_\+configure\+\_\+texcoord\+\_\+channel (\begin{DoxyParamCaption}\item[{gx\+\_\+texture\+\_\+map\+\_\+t}]{map}{, }\item[{gx\+\_\+texgen\+\_\+source\+\_\+t}]{source}{, }\item[{gx\+\_\+texgen\+\_\+type\+\_\+t}]{type}{, }\item[{bool}]{projection}{, }\item[{bool}]{three\+\_\+component}{, }\item[{gx\+\_\+light\+\_\+id\+\_\+t}]{embossing\+\_\+light}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Configures 1 of the 8 texcoord channels. 
+
+Sets up how a texture coordinate will be transformed from the XF.
+
+The source contains what XF input is used for this texture coordinate. This data is processed according to type, where you can change how colors are processed for example.
+
+You can only use sources GX\+\_\+\+TEXGEN\+\_\+\+SOURCE\+\_\+\+TEX0 through GX\+\_\+\+TEXGEN\+\_\+\+SOURCE\+\_\+\+TEX7 for embossing, since it calculates the embossing source to be the texgen source, but it can only use texcoords 0-\/7.
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & Texture map to configure \\
+\hline
+{\em gx\+\_\+texgen\+\_\+source\+\_\+t} & Sets where the data will be pulled from. \\
+\hline
+{\em gx\+\_\+texgen\+\_\+type} & Sets how inputs are processed. As eather normal values, emboss, or from color data \\
+\hline
+{\em projection} & If set 3x4 texture matrices are used instead. For 3D texcoords. \\
+\hline
+{\em three\+\_\+component} & Is set, (X, Y, Z, 1.\+0) is passed, otherwise its just (X, Y, 1.\+0, 1.\+0) \\
+\hline
+{\em embossing\+\_\+light} & Light used for embossing. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx__xf_8h_a2f194edca9b9d1fa69a90c5f5a3316d8}\index{gx\_xf.h@{gx\_xf.h}!gx\_flash\_dual\_texcoord\_matrix@{gx\_flash\_dual\_texcoord\_matrix}}
+\index{gx\_flash\_dual\_texcoord\_matrix@{gx\_flash\_dual\_texcoord\_matrix}!gx\_xf.h@{gx\_xf.h}}
+\doxysubsubsection{\texorpdfstring{gx\_flash\_dual\_texcoord\_matrix()}{gx\_flash\_dual\_texcoord\_matrix()}}
+{\footnotesize\ttfamily \label{gx__xf_8h_a2f194edca9b9d1fa69a90c5f5a3316d8} 
+void gx\+\_\+flash\+\_\+dual\+\_\+texcoord\+\_\+matrix (\begin{DoxyParamCaption}\item[{matrix34}]{mtx}{, }\item[{\mbox{\hyperlink{gx__xf_8h_add852a47f0d13113c705c6cee99b1d23}{gx\+\_\+mtx\+\_\+id\+\_\+t}}}]{index}{, }\item[{bool}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Fashes a dual texcoord matrix in the XF matrix stack. 
+
+GX\+\_\+\+MTX\+\_\+\+ID\+\_\+0 through GX\+\_\+\+MTX\+\_\+\+ID\+\_\+20 is valid for this.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mtx} & Matrix to flash \\
+\hline
+{\em index} & Matrix index to flash into. \\
+\hline
+{\em type} & If type is true, the full 3x4 will be loaded, otherwise 2x4 will be loaded \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx__xf_8h_a87c15fe956b54ba16cf0bc6f5e4f3af1}\index{gx\_xf.h@{gx\_xf.h}!gx\_flash\_enable\_dual\_texcoord@{gx\_flash\_enable\_dual\_texcoord}}
+\index{gx\_flash\_enable\_dual\_texcoord@{gx\_flash\_enable\_dual\_texcoord}!gx\_xf.h@{gx\_xf.h}}
+\doxysubsubsection{\texorpdfstring{gx\_flash\_enable\_dual\_texcoord()}{gx\_flash\_enable\_dual\_texcoord()}}
+{\footnotesize\ttfamily \label{gx__xf_8h_a87c15fe956b54ba16cf0bc6f5e4f3af1} 
+void gx\+\_\+flash\+\_\+enable\+\_\+dual\+\_\+texcoord (\begin{DoxyParamCaption}\item[{bool}]{enable}{}\end{DoxyParamCaption})}
+
+
+
+Sets the Dual Texture Coord Enable/\+Disable Register. 
+
+If disabled, as is by default, non will be transformed.
+
+If enabled, all dual tex coords will be transformed. \Hypertarget{gx__xf_8h_ac4924cb1e407a22bdb7c9ce7e1599fc7}\index{gx\_xf.h@{gx\_xf.h}!gx\_flash\_light@{gx\_flash\_light}}
+\index{gx\_flash\_light@{gx\_flash\_light}!gx\_xf.h@{gx\_xf.h}}
+\doxysubsubsection{\texorpdfstring{gx\_flash\_light()}{gx\_flash\_light()}}
+{\footnotesize\ttfamily \label{gx__xf_8h_ac4924cb1e407a22bdb7c9ce7e1599fc7} 
+void gx\+\_\+flash\+\_\+light (\begin{DoxyParamCaption}\item[{gx\+\_\+light\+\_\+id\+\_\+t}]{id}{, }\item[{const \mbox{\hyperlink{structgx__light__t}{gx\+\_\+light\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{light}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Flash one of the lights. 
+
+Copys the light data structure to XF memory of one of the 1-\/8 lights
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & ID of the light to use \\
+\hline
+{\em light} & Light data structure \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx__xf_8h_a753b6dea2f1bcd031f9b4d4db0303c54}\index{gx\_xf.h@{gx\_xf.h}!gx\_flash\_matrix@{gx\_flash\_matrix}}
+\index{gx\_flash\_matrix@{gx\_flash\_matrix}!gx\_xf.h@{gx\_xf.h}}
+\doxysubsubsection{\texorpdfstring{gx\_flash\_matrix()}{gx\_flash\_matrix()}}
+{\footnotesize\ttfamily \label{gx__xf_8h_a753b6dea2f1bcd031f9b4d4db0303c54} 
+void gx\+\_\+flash\+\_\+matrix (\begin{DoxyParamCaption}\item[{const matrix34}]{mtx}{, }\item[{\mbox{\hyperlink{gx__xf_8h_add852a47f0d13113c705c6cee99b1d23}{gx\+\_\+mtx\+\_\+id\+\_\+t}}}]{index}{, }\item[{bool}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Fashes a matrix to the XF Stack. 
+
+The same matrix memory is shared for geometry matrices and texcoord transformation matrices. GX\+\_\+\+MTX\+\_\+\+ID\+\_\+\+IDENTITY is automatically flashed with an identity matrices during initialization and is the default matrix in texcoord and geometry generations.
+
+The IDs themselves address 3x4 matrices, but hardware does support using 2x4 matrices. In this case, you can fit more matrices. Since having both 2x4 and 3x4 matrices in the same memory space without an allocator gets a bit messy, I will leave it up to you to use that if needed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mtx} & The matrix to load \\
+\hline
+{\em index} & The index of the matrix in the matrix stack. \\
+\hline
+{\em type} & If type is true, a full 3x4 matrices will be loaded, otherwise its just 2x4. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx__xf_8h_abb8da4dddb6dd0410887818129c613fc}\index{gx\_xf.h@{gx\_xf.h}!gx\_flash\_nrm\_matrix@{gx\_flash\_nrm\_matrix}}
+\index{gx\_flash\_nrm\_matrix@{gx\_flash\_nrm\_matrix}!gx\_xf.h@{gx\_xf.h}}
+\doxysubsubsection{\texorpdfstring{gx\_flash\_nrm\_matrix()}{gx\_flash\_nrm\_matrix()}}
+{\footnotesize\ttfamily \label{gx__xf_8h_abb8da4dddb6dd0410887818129c613fc} 
+void gx\+\_\+flash\+\_\+nrm\+\_\+matrix (\begin{DoxyParamCaption}\item[{const matrix3}]{mtx}{, }\item[{\mbox{\hyperlink{gx__xf_8h_add852a47f0d13113c705c6cee99b1d23}{gx\+\_\+mtx\+\_\+id\+\_\+t}}}]{index}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Fashes a normal matrix into the XF matrix stack. 
+
+Normal matrices have their own separate stack.
+
+Only the first 10 matrices, GX\+\_\+\+MTX\+\_\+\+ID\+\_\+0 through GX\+\_\+\+MTX\+\_\+\+ID\+\_\+9, exist in the normal matrix stack.
+
+You then can set this with gx\+\_\+set\+\_\+current\+\_\+psn\+\_\+matrix or with matrix indices in vertex attributes.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mtx} & The matrix to load \\
+\hline
+{\em index} & The index of the matrix in the matrix stack. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx__xf_8h_a3b41ae1a0ae73f10a68a546918db7f42}\index{gx\_xf.h@{gx\_xf.h}!gx\_flash\_projection@{gx\_flash\_projection}}
+\index{gx\_flash\_projection@{gx\_flash\_projection}!gx\_xf.h@{gx\_xf.h}}
+\doxysubsubsection{\texorpdfstring{gx\_flash\_projection()}{gx\_flash\_projection()}}
+{\footnotesize\ttfamily \label{gx__xf_8h_a3b41ae1a0ae73f10a68a546918db7f42} 
+void gx\+\_\+flash\+\_\+projection (\begin{DoxyParamCaption}\item[{const matrix4}]{mtx}{, }\item[{bool}]{is\+\_\+perspective}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Flashes the projection matrix onto the XF settings. 
+
+Sets the projection matrix in the XF registers that is used when transforming vertices.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mtx} & 4x4 Projection Matrix \\
+\hline
+{\em is\+\_\+perspective} & If the matrix is perspective, or orthographic. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx__xf_8h_ad2ab68ad1e6014c310fad99f7095b3cf}\index{gx\_xf.h@{gx\_xf.h}!gx\_flash\_viewport@{gx\_flash\_viewport}}
+\index{gx\_flash\_viewport@{gx\_flash\_viewport}!gx\_xf.h@{gx\_xf.h}}
+\doxysubsubsection{\texorpdfstring{gx\_flash\_viewport()}{gx\_flash\_viewport()}}
+{\footnotesize\ttfamily \label{gx__xf_8h_ad2ab68ad1e6014c310fad99f7095b3cf} 
+void gx\+\_\+flash\+\_\+viewport (\begin{DoxyParamCaption}\item[{float}]{x}{, }\item[{float}]{y}{, }\item[{float}]{width}{, }\item[{float}]{height}{, }\item[{float}]{near}{, }\item[{float}]{far}{, }\item[{bool}]{jitter}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Flashes the viewport onto the XF settings. 
+
+Set the viewport in the XF registers. This is needed to scale geometry to the screen. It also handles scaling Z buffer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Top Left of the Screen Position \\
+\hline
+{\em y} & Top Left of the Screen Position \\
+\hline
+{\em width} & Width of the Screen \\
+\hline
+{\em height} & Height of the Screen \\
+\hline
+{\em near} & Closest Z values to not be culled \\
+\hline
+{\em far} & Farthest Z values to not be culled \\
+\hline
+{\em jitter} & Will shift up the X a bit. Can reduce blur/flickering in interlaced mode. This is usually true. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx__xf_8h_ab939b8e36fcadd432f36868c22dc6dd1}\index{gx\_xf.h@{gx\_xf.h}!gx\_set\_color\_channels@{gx\_set\_color\_channels}}
+\index{gx\_set\_color\_channels@{gx\_set\_color\_channels}!gx\_xf.h@{gx\_xf.h}}
+\doxysubsubsection{\texorpdfstring{gx\_set\_color\_channels()}{gx\_set\_color\_channels()}}
+{\footnotesize\ttfamily \label{gx__xf_8h_ab939b8e36fcadd432f36868c22dc6dd1} 
+void gx\+\_\+set\+\_\+color\+\_\+channels (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{count}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets a color channel count. 
+
+The vertex descriptors contain how many colors are passed to the XF. This controls how many of those colors are passed to the BP/\+TEV from the XF.
+
+These colors will be rasterized and interpolated.
+
+Hardware supports 0-\/2 colors.
+
+
+\begin{DoxyParams}{Parameters}
+{\em count} & Number of color channels to supply the BP/\+TEV \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx__xf_8h_a43dcaf55471d3e242ba023fe81f73986}\index{gx\_xf.h@{gx\_xf.h}!gx\_set\_current\_psn\_matrix@{gx\_set\_current\_psn\_matrix}}
+\index{gx\_set\_current\_psn\_matrix@{gx\_set\_current\_psn\_matrix}!gx\_xf.h@{gx\_xf.h}}
+\doxysubsubsection{\texorpdfstring{gx\_set\_current\_psn\_matrix()}{gx\_set\_current\_psn\_matrix()}}
+{\footnotesize\ttfamily \label{gx__xf_8h_a43dcaf55471d3e242ba023fe81f73986} 
+void gx\+\_\+set\+\_\+current\+\_\+psn\+\_\+matrix (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gx__xf_8h_add852a47f0d13113c705c6cee99b1d23}{gx\+\_\+mtx\+\_\+id\+\_\+t}}}]{index}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Sets the current pair of position and normal matrices. 
+
+10 matrices can be set in the XF, set with functions like gx\+\_\+flash\+\_\+projection.
+
+This will set the current one to use, if matrix indices are not enabled in the vertex descriptor. If they are, this will be overriden.
+
+This value will be flushed on the next draw call.
+
+Cleared to GX\+\_\+\+MTX\+\_\+\+ID\+\_\+\+IDENTITY by gx\+\_\+initialize() \Hypertarget{gx__xf_8h_afb51d2a3906a40928512a35d51d309df}\index{gx\_xf.h@{gx\_xf.h}!gx\_set\_current\_texcoord\_matrix@{gx\_set\_current\_texcoord\_matrix}}
+\index{gx\_set\_current\_texcoord\_matrix@{gx\_set\_current\_texcoord\_matrix}!gx\_xf.h@{gx\_xf.h}}
+\doxysubsubsection{\texorpdfstring{gx\_set\_current\_texcoord\_matrix()}{gx\_set\_current\_texcoord\_matrix()}}
+{\footnotesize\ttfamily \label{gx__xf_8h_afb51d2a3906a40928512a35d51d309df} 
+void gx\+\_\+set\+\_\+current\+\_\+texcoord\+\_\+matrix (\begin{DoxyParamCaption}\item[{gx\+\_\+texture\+\_\+map\+\_\+t}]{map}{, }\item[{\mbox{\hyperlink{gx__xf_8h_add852a47f0d13113c705c6cee99b1d23}{gx\+\_\+mtx\+\_\+id\+\_\+t}}}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Sets the current texcoord matrix. 
+
+This is the current matrix used to transform the texcoord generation input.
+
+Set to GX\+\_\+\+MTX\+\_\+\+ID\+\_\+\+IDENTITY by default.
+
+Flushed in the next draw call
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & Texture map to set \\
+\hline
+{\em index} & Matrix index to set it to \\
+\hline
+\end{DoxyParams}
+\Hypertarget{gx__xf_8h_a69f6463c318b809e688869dfb9ed7a44}\index{gx\_xf.h@{gx\_xf.h}!gx\_set\_texcoord\_channels@{gx\_set\_texcoord\_channels}}
+\index{gx\_set\_texcoord\_channels@{gx\_set\_texcoord\_channels}!gx\_xf.h@{gx\_xf.h}}
+\doxysubsubsection{\texorpdfstring{gx\_set\_texcoord\_channels()}{gx\_set\_texcoord\_channels()}}
+{\footnotesize\ttfamily \label{gx__xf_8h_a69f6463c318b809e688869dfb9ed7a44} 
+void gx\+\_\+set\+\_\+texcoord\+\_\+channels (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{count}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Set a texture coord count. 
+
+Like gx\+\_\+set\+\_\+color\+\_\+channels, set the number of texcoords that should be generated.
+
+
+\begin{DoxyParams}{Parameters}
+{\em count} & Number of color channels to supply the BP/\+TEV \\
+\hline
+\end{DoxyParams}

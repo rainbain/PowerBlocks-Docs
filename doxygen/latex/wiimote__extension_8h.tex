@@ -1,0 +1,132 @@
+\doxysection{powerblocks/input/wiimote/wiimote\+\_\+extension.h File Reference}
+\hypertarget{wiimote__extension_8h}{}\label{wiimote__extension_8h}\index{powerblocks/input/wiimote/wiimote\_extension.h@{powerblocks/input/wiimote/wiimote\_extension.h}}
+
+
+Handles wiimote extensions.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include "{}powerblocks/core/utils/math/vec3.\+h"{}}\newline
+{\ttfamily \#include "{}powerblocks/core/utils/math/vec2.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structwiimote__buttons}{wiimote\+\_\+buttons}}
+\item 
+struct \mbox{\hyperlink{structwiimote__extension__data__t}{wiimote\+\_\+extension\+\_\+data\+\_\+t}}
+\item 
+struct \mbox{\hyperlink{structwiimote__extension__mapper__t}{wiimote\+\_\+extension\+\_\+mapper\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{wiimote__extension_8h_a02c686454c6b04252cca9747518e7a97}\label{wiimote__extension_8h_a02c686454c6b04252cca9747518e7a97} 
+\#define {\bfseries WIIMOTE\+\_\+\+EXTENSION\+\_\+\+NUNCHUCK\+\_\+\+BUTTONS\+\_\+Z}~(1$<$$<$0)
+\item 
+\Hypertarget{wiimote__extension_8h_ae16334ba1344e68f54387924e229999c}\label{wiimote__extension_8h_ae16334ba1344e68f54387924e229999c} 
+\#define {\bfseries WIIMOTE\+\_\+\+EXTENSION\+\_\+\+NUNCHUCK\+\_\+\+BUTTONS\+\_\+C}~(1$<$$<$1)
+\item 
+\Hypertarget{wiimote__extension_8h_a6bb3786ac7537ec871b8136b3d24c973}\label{wiimote__extension_8h_a6bb3786ac7537ec871b8136b3d24c973} 
+\#define {\bfseries WIIMOTE\+\_\+\+EXTENSION\+\_\+\+CLASSIC\+\_\+\+CONTROLLER\+\_\+\+DPAD\+\_\+\+UP}~(1$<$$<$0)
+\item 
+\Hypertarget{wiimote__extension_8h_ab4ff14d17a9047fefb486cd9fd7947ad}\label{wiimote__extension_8h_ab4ff14d17a9047fefb486cd9fd7947ad} 
+\#define {\bfseries WIIMOTE\+\_\+\+EXTENSION\+\_\+\+CLASSIC\+\_\+\+CONTROLLER\+\_\+\+DPAD\+\_\+\+LEFT}~(1$<$$<$1)
+\item 
+\Hypertarget{wiimote__extension_8h_ae16282af109f6014fdcf0de13cbe12f6}\label{wiimote__extension_8h_ae16282af109f6014fdcf0de13cbe12f6} 
+\#define {\bfseries WIIMOTE\+\_\+\+EXTENSION\+\_\+\+CLASSIC\+\_\+\+CONTROLLER\+\_\+\+Z\+\_\+\+RIGHT}~(1$<$$<$2)
+\item 
+\Hypertarget{wiimote__extension_8h_acca7de73179d8c959167874f0e6d7b82}\label{wiimote__extension_8h_acca7de73179d8c959167874f0e6d7b82} 
+\#define {\bfseries WIIMOTE\+\_\+\+EXTENSION\+\_\+\+CLASSIC\+\_\+\+CONTROLLER\+\_\+X}~(1$<$$<$3)
+\item 
+\Hypertarget{wiimote__extension_8h_aba15be1623314d851ec2ccbb816f7c15}\label{wiimote__extension_8h_aba15be1623314d851ec2ccbb816f7c15} 
+\#define {\bfseries WIIMOTE\+\_\+\+EXTENSION\+\_\+\+CLASSIC\+\_\+\+CONTROLLER\+\_\+A}~(1$<$$<$4)
+\item 
+\Hypertarget{wiimote__extension_8h_a0bbe9b711963aaa7bd75c507b2bbbc9e}\label{wiimote__extension_8h_a0bbe9b711963aaa7bd75c507b2bbbc9e} 
+\#define {\bfseries WIIMOTE\+\_\+\+EXTENSION\+\_\+\+CLASSIC\+\_\+\+CONTROLLER\+\_\+Y}~(1$<$$<$5)
+\item 
+\Hypertarget{wiimote__extension_8h_a4b3bdf4aa172fbc24f18572b5fe1948b}\label{wiimote__extension_8h_a4b3bdf4aa172fbc24f18572b5fe1948b} 
+\#define {\bfseries WIIMOTE\+\_\+\+EXTENSION\+\_\+\+CLASSIC\+\_\+\+CONTROLLER\+\_\+B}~(1$<$$<$6)
+\item 
+\Hypertarget{wiimote__extension_8h_a5ae3201958d97c49ca4a34c8af6c70c3}\label{wiimote__extension_8h_a5ae3201958d97c49ca4a34c8af6c70c3} 
+\#define {\bfseries WIIMOTE\+\_\+\+EXTENSION\+\_\+\+CLASSIC\+\_\+\+CONTROLLER\+\_\+\+Z\+\_\+\+LEFT}~(1$<$$<$7)
+\item 
+\Hypertarget{wiimote__extension_8h_ae353683aec7e3d061f39e8c4857a56b4}\label{wiimote__extension_8h_ae353683aec7e3d061f39e8c4857a56b4} 
+\#define {\bfseries WIIMOTE\+\_\+\+EXTENSION\+\_\+\+CLASSIC\+\_\+\+CONTROLLER\+\_\+\+RIGHT\+\_\+\+TRIGGER}~(1$<$$<$9)
+\item 
+\Hypertarget{wiimote__extension_8h_a1068e52cb6c27881f6a92957040a6927}\label{wiimote__extension_8h_a1068e52cb6c27881f6a92957040a6927} 
+\#define {\bfseries WIIMOTE\+\_\+\+EXTENSION\+\_\+\+CLASSIC\+\_\+\+CONTROLLER\+\_\+\+PLUS}~(1$<$$<$10)
+\item 
+\Hypertarget{wiimote__extension_8h_a08ae6354479cbf59c145cbac4e4ca6b1}\label{wiimote__extension_8h_a08ae6354479cbf59c145cbac4e4ca6b1} 
+\#define {\bfseries WIIMOTE\+\_\+\+EXTENSION\+\_\+\+CLASSIC\+\_\+\+CONTROLLER\+\_\+\+HOME}~(1$<$$<$11)
+\item 
+\Hypertarget{wiimote__extension_8h_a42f58aeeb7783a53d0c525265543c740}\label{wiimote__extension_8h_a42f58aeeb7783a53d0c525265543c740} 
+\#define {\bfseries WIIMOTE\+\_\+\+EXTENSION\+\_\+\+CLASSIC\+\_\+\+CONTROLLER\+\_\+\+MINUS}~(1$<$$<$12)
+\item 
+\Hypertarget{wiimote__extension_8h_a56a1586fa665cff5cd8f70042c33d248}\label{wiimote__extension_8h_a56a1586fa665cff5cd8f70042c33d248} 
+\#define {\bfseries WIIMOTE\+\_\+\+EXTENSION\+\_\+\+CLASSIC\+\_\+\+CONTROLLER\+\_\+\+LEFT\+\_\+\+TRIGGER}~(1$<$$<$13)
+\item 
+\Hypertarget{wiimote__extension_8h_a68d73fa0fe2f9a54ed0f96ba0fd6abc4}\label{wiimote__extension_8h_a68d73fa0fe2f9a54ed0f96ba0fd6abc4} 
+\#define {\bfseries WIIMOTE\+\_\+\+EXTENSION\+\_\+\+CLASSIC\+\_\+\+CONTROLLER\+\_\+\+DPAD\+\_\+\+DOWN}~(1$<$$<$14)
+\item 
+\Hypertarget{wiimote__extension_8h_aceab1a097fdde6eaa0dd64765d227e02}\label{wiimote__extension_8h_aceab1a097fdde6eaa0dd64765d227e02} 
+\#define {\bfseries WIIMOTE\+\_\+\+EXTENSION\+\_\+\+CLASSIC\+\_\+\+CONTROLLER\+\_\+\+DPAD\+\_\+\+RIGHT}~(1$<$$<$15)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{wiimote__extension_8h_ad2726069c7a3984d3fc455022d16aab7}\label{wiimote__extension_8h_ad2726069c7a3984d3fc455022d16aab7} 
+typedef int(\texorpdfstring{$\ast$}{*} {\bfseries wiimote\+\_\+extension\+\_\+handle\+\_\+phrase}) (\mbox{\hyperlink{structwiimote__extension__data__t}{wiimote\+\_\+extension\+\_\+data\+\_\+t}} \texorpdfstring{$\ast$}{*}out, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, size\+\_\+t len)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{wiimote__extension_8h_a49c24644fc93e92f51035761fa440070}\label{wiimote__extension_8h_a49c24644fc93e92f51035761fa440070} 
+enum {\bfseries wiimote\+\_\+extension\+\_\+t} \{ \newline
+{\bfseries WIIMOTE\+\_\+\+EXTENSION\+\_\+\+NONE} = 0
+, {\bfseries WIIMOTE\+\_\+\+EXTENSION\+\_\+\+NUNCHUK}
+, {\bfseries WIIMOTE\+\_\+\+EXTENSION\+\_\+\+CLASSIC\+\_\+\+CONTROLLER}
+, {\bfseries WIIMOTE\+\_\+\+EXTENSION\+\_\+\+CLASSIC\+\_\+\+CONTROLLER\+\_\+\+PRO}
+, \newline
+{\bfseries WIIMOTE\+\_\+\+EXTENSION\+\_\+\+DRAWSOME\+\_\+\+GRAPHICS\+\_\+\+TABLET}
+, {\bfseries WIIMOTE\+\_\+\+EXTENSION\+\_\+\+GH\+\_\+\+GUITAR}
+, {\bfseries WIIMOTE\+\_\+\+EXTENSION\+\_\+\+GH\+\_\+\+DRUMS}
+, {\bfseries WIIMOTE\+\_\+\+EXTENSION\+\_\+\+DJ\+\_\+\+HERO\+\_\+\+TURNTABLE}
+, \newline
+{\bfseries WIIMOTE\+\_\+\+EXTENSION\+\_\+\+TAIKO\+\_\+\+DRUMS}
+, {\bfseries WIIMOTE\+\_\+\+EXTENSION\+\_\+\+UDRAW\+\_\+\+GAME\+\_\+\+TABLET}
+, {\bfseries WIIMOTE\+\_\+\+EXTENSION\+\_\+\+SHINKANSEN\+\_\+\+CONTROLLER}
+, {\bfseries WIIMOTE\+\_\+\+EXTENSION\+\_\+\+BALANCE\+\_\+\+BOARD}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{wiimote__extension_8h_a1eed37a8552f983e754a50b353a9ee88}\label{wiimote__extension_8h_a1eed37a8552f983e754a50b353a9ee88} 
+void {\bfseries wiimote\+\_\+extension\+\_\+phrase\+\_\+data} (\mbox{\hyperlink{structwiimote__extension__data__t}{wiimote\+\_\+extension\+\_\+data\+\_\+t}} \texorpdfstring{$\ast$}{*}out, const \mbox{\hyperlink{structwiimote__extension__mapper__t}{wiimote\+\_\+extension\+\_\+mapper\+\_\+t}} \texorpdfstring{$\ast$}{*}mapper, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, size\+\_\+t size)
+\item 
+\Hypertarget{wiimote__extension_8h_a4a9e4e2297bfbbeed35e66046c9b2964}\label{wiimote__extension_8h_a4a9e4e2297bfbbeed35e66046c9b2964} 
+wiimote\+\_\+extension\+\_\+t {\bfseries wiimote\+\_\+extension\+\_\+get\+\_\+type} (const uint8\+\_\+t \texorpdfstring{$\ast$}{*}byte\+\_\+code)
+\item 
+\Hypertarget{wiimote__extension_8h_adbedf83b4c7bff2251a05b6c7febc17f}\label{wiimote__extension_8h_adbedf83b4c7bff2251a05b6c7febc17f} 
+const char \texorpdfstring{$\ast$}{*} {\bfseries wiimote\+\_\+extension\+\_\+get\+\_\+name} (wiimote\+\_\+extension\+\_\+t type)
+\item 
+\Hypertarget{wiimote__extension_8h_af0d38a0b3286f9e24b564cdb36624c2e}\label{wiimote__extension_8h_af0d38a0b3286f9e24b564cdb36624c2e} 
+const \mbox{\hyperlink{structwiimote__extension__mapper__t}{wiimote\+\_\+extension\+\_\+mapper\+\_\+t}} \texorpdfstring{$\ast$}{*} {\bfseries wiimote\+\_\+extension\+\_\+get\+\_\+mapper} (wiimote\+\_\+extension\+\_\+t type)
+\item 
+\Hypertarget{wiimote__extension_8h_a23fcb146d09fa4ab509370008e927c18}\label{wiimote__extension_8h_a23fcb146d09fa4ab509370008e927c18} 
+void {\bfseries wiimote\+\_\+set\+\_\+button\+\_\+helper} (\mbox{\hyperlink{structwiimote__buttons}{wiimote\+\_\+buttons}} \texorpdfstring{$\ast$}{*}buttons, uint16\+\_\+t next\+\_\+state)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Handles wiimote extensions. 
+
+Decodes the data of the various wiimote extensions for the user to use.
+
+\begin{DoxyAuthor}{Author}
+Samuel Fitzsimons (rainbain) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}

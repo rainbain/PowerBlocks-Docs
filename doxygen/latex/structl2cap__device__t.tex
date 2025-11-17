@@ -1,0 +1,43 @@
+\doxysection{l2cap\+\_\+device\+\_\+t Struct Reference}
+\hypertarget{structl2cap__device__t}{}\label{structl2cap__device__t}\index{l2cap\_device\_t@{l2cap\_device\_t}}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structl2cap__device__t_a9d0d894f608ce8e19d440db326a875ef}\label{structl2cap__device__t_a9d0d894f608ce8e19d440db326a875ef} 
+Semaphore\+Handle\+\_\+t {\bfseries lock}
+\item 
+\Hypertarget{structl2cap__device__t_a58e09f1b2e9f93e30b6d91c566c88f24}\label{structl2cap__device__t_a58e09f1b2e9f93e30b6d91c566c88f24} 
+uint16\+\_\+t {\bfseries handle}
+\item 
+\Hypertarget{structl2cap__device__t_a52f2ac5c01250a5833bf044f355b793d}\label{structl2cap__device__t_a52f2ac5c01250a5833bf044f355b793d} 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>\mbox{\hyperlink{structl2cap__channel__t}{l2cap\_channel\_t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} {\bfseries array}\\
+\>size\_t {\bfseries length}\\
+\} {\bfseries open\_channels}\\
+
+\end{tabbing}\item 
+\Hypertarget{structl2cap__device__t_a56ba0c07e86a5732301f95e87a6526ea}\label{structl2cap__device__t_a56ba0c07e86a5732301f95e87a6526ea} 
+\mbox{\hyperlink{structl2cap__channel__t}{l2cap\+\_\+channel\+\_\+t}} {\bfseries signal\+\_\+channel}
+\item 
+\Hypertarget{structl2cap__device__t_ac07d62f581f45d38bb99f30eb8898dd4}\label{structl2cap__device__t_ac07d62f581f45d38bb99f30eb8898dd4} 
+uint8\+\_\+t {\bfseries signal\+\_\+channel\+\_\+buffer} \mbox{[}L2\+CAP\+\_\+\+SIGNAL\+\_\+\+CHANNEL\+\_\+\+BUFFER\+\_\+\+SIZE\mbox{]}
+\item 
+\Hypertarget{structl2cap__device__t_a77b385ee9cffcb712d04a268dd223bb8}\label{structl2cap__device__t_a77b385ee9cffcb712d04a268dd223bb8} 
+\mbox{\hyperlink{structl2cap__channel__t}{l2cap\+\_\+channel\+\_\+t}} \texorpdfstring{$\ast$}{*} {\bfseries reading\+\_\+channel}
+\item 
+\Hypertarget{structl2cap__device__t_a2bb5d737d8a3820e2581949b6a1bd345}\label{structl2cap__device__t_a2bb5d737d8a3820e2581949b6a1bd345} 
+uint16\+\_\+t {\bfseries reading\+\_\+remaining}
+\item 
+\Hypertarget{structl2cap__device__t_a765161c6bc450e089eae5798baac1d7f}\label{structl2cap__device__t_a765161c6bc450e089eae5798baac1d7f} 
+uint8\+\_\+t {\bfseries mac\+\_\+address} \mbox{[}6\mbox{]}
+\item 
+\Hypertarget{structl2cap__device__t_acecd539af3d68fc07871e20924c4dfb0}\label{structl2cap__device__t_acecd539af3d68fc07871e20924c4dfb0} 
+Static\+Semaphore\+\_\+t {\bfseries semaphore\+\_\+data}
+\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+powerblocks/core/bluetooth/\mbox{\hyperlink{l2cap_8h}{l2cap.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,185 @@
+\doxysection{gx\+\_\+immediate.\+h}
+\hypertarget{gx__immediate_8h_source}{}\label{gx__immediate_8h_source}\index{powerblocks/core/graphics/gx\_immediate.h@{powerblocks/core/graphics/gx\_immediate.h}}
+\mbox{\hyperlink{gx__immediate_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ This\ header\ is\ not\ supposed\ to\ be\ included\ directly.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ Instead\ include\ gx.h}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ These\ functions\ are\ implemented\ in\ the\ order}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ They\ should\ be\ described\ to\ hardware.}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ That\ is\ gxVertex,\ gxNormal,\ gxColor,\ gxTexCoord}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/VERTEX-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ gxVertex2f(x,\ y)\ GX\_WPAR\_F32\ =\ x;\ \(\backslash\)}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_F32\ =\ y;}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ gxVertex3f(x,\ y,\ z)\ GX\_WPAR\_F32\ =\ x;\ \(\backslash\)}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_F32\ =\ y;\ \(\backslash\)}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_F32\ =\ z;}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ gxVertex2ub(x,\ y)\ GX\_WPAR\_U8\ =\ x;\ \(\backslash\)}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U8\ =\ y;}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ gxVertex3ub(x,\ y,\ z)\ GX\_WPAR\_U8\ =\ x;\ \(\backslash\)}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U8\ =\ y;\ \(\backslash\)}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U8\ =\ z;}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ gxVertex2b(x,\ y)\ GX\_WPAR\_S8\ =\ x;\ \(\backslash\)}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S8\ =\ y;}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ gxVertex3b(x,\ y,\ z)\ GX\_WPAR\_S8\ =\ x;\ \(\backslash\)}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S8\ =\ y;\ \(\backslash\)}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S8\ =\ z;}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ gxVertex2us(x,\ y)\ GX\_WPAR\_U16\ =\ x;\ \(\backslash\)}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U16\ =\ y;}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ gxVertex3us(x,\ y,\ z)\ GX\_WPAR\_U16\ =\ x;\ \(\backslash\)}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U16\ =\ y;\ \(\backslash\)}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U16\ =\ z;}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ gxVertex2s(x,\ y)\ GX\_WPAR\_S16\ =\ x;\ \(\backslash\)}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S16\ =\ y;}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ gxVertex3s(x,\ y,\ z)\ GX\_WPAR\_S16\ =\ x;\ \(\backslash\)}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S16\ =\ y;\ \(\backslash\)}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S16\ =\ z;}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ gxVertex2ui(x,\ y)\ GX\_WPAR\_U32\ =\ x;\ \(\backslash\)}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U32\ =\ y;}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ gxVertex3ui(x,\ y,\ z)\ GX\_WPAR\_U32\ =\ x;\ \(\backslash\)}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U32\ =\ y;\ \(\backslash\)}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U32\ =\ z;}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#define\ gxVertex2i(x,\ y)\ GX\_WPAR\_S32\ =\ x;\ \(\backslash\)}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S32\ =\ y;}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ gxVertex3i(x,\ y,\ z)\ GX\_WPAR\_S32\ =\ x;\ \(\backslash\)}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S32\ =\ y;\ \(\backslash\)}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S32\ =\ z;}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#define\ gxVertexIdx1ub(i)\ GX\_WPAR\_U8\ =\ i;}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#define\ gxVertexIdx1us(i)\ GX\_WPAR\_U16\ =\ i;}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/NORMALS-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#define\ gxNormal3f(x,\ y,\ z)\ GX\_WPAR\_F32\ =\ x;\ \(\backslash\)}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_F32\ =\ y;\ \(\backslash\)}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_F32\ =\ z;}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#define\ gxNormal3b(x,\ y,\ z)\ GX\_WPAR\_S8\ =\ x;\ \(\backslash\)}}
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S8\ =\ y;\ \(\backslash\)}}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S8\ =\ z;}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#define\ gxNormal3s(x,\ y,\ z)\ GX\_WPAR\_S16\ =\ x;\ \(\backslash\)}}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S16\ =\ y;\ \(\backslash\)}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S16\ =\ z;}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#define\ gxNormal3i(x,\ y,\ z)\ GX\_WPAR\_S32\ =\ x;\ \(\backslash\)}}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S32\ =\ y;\ \(\backslash\)}}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S32\ =\ z;}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#define\ gxNormalIdx1ub(i)\ GX\_WPAR\_U8\ =\ i;}}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#define\ gxNormalIdx1us(i)\ GX\_WPAR\_U16\ =\ i;}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/COLORS-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#define\ gxColor3f(r,\ g,\ b)\ GX\_WPAR\_F32\ =\ r;\ \(\backslash\)}}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_F32\ =\ g;\ \(\backslash\)}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_F32\ =\ b;}}
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#define\ gxColor4f(r,\ g,\ b,\ a)\ GX\_WPAR\_F32\ =\ r;\ \(\backslash\)}}
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_F32\ =\ g;\ \(\backslash\)}}
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_F32\ =\ b;\ \(\backslash\)}}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_F32\ =\ a;}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#define\ gxColor1ub(v)\ GX\_WPAR\_U8\ =\ v;}}
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#define\ gxColor3ub(r,\ g,\ b)\ GX\_WPAR\_U8\ =\ r;\ \(\backslash\)}}
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U8\ =\ g;\ \(\backslash\)}}
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U8\ =\ b;}}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#define\ gxColor4ub(r,\ g,\ b,\ a)\ GX\_WPAR\_U8\ =\ r;\ \(\backslash\)}}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U8\ =\ g;\ \(\backslash\)}}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U8\ =\ b;\ \(\backslash\)}}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U8\ =\ a;}}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#define\ gxColor1b(v)\ GX\_WPAR\_S8\ =\ v;}}
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#define\ gxColor3b(r,\ g,\ b)\ GX\_WPAR\_S8\ =\ r;\ \(\backslash\)}}
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S8\ =\ g;\ \(\backslash\)}}
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S8\ =\ b;}}
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#define\ gxColor4b(r,\ g,\ b,\ a)\ GX\_WPAR\_S8\ =\ r;\ \(\backslash\)}}
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S8\ =\ g;\ \(\backslash\)}}
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S8\ =\ b;\ \(\backslash\)}}
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S8\ =\ a;}}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\#define\ gxColor1us(v)\ GX\_WPAR\_U16\ =\ v;}}
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#define\ gxColor3us(r,\ g,\ b)\ GX\_WPAR\_U16\ =\ r;\ \(\backslash\)}}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U16\ =\ g;\ \(\backslash\)}}
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U16\ =\ b;}}
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#define\ gxColor4us(r,\ g,\ b,\ a)\ GX\_WPAR\_U16\ =\ r;\ \(\backslash\)}}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U16\ =\ g;\ \(\backslash\)}}
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U16\ =\ b;\ \(\backslash\)}}
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U16\ =\ a;}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \textcolor{preprocessor}{\#define\ gxColor1s(v)\ GX\_WPAR\_S16\ =\ v;}}
+\DoxyCodeLine{00125\ \textcolor{preprocessor}{\#define\ gxColor3s(r,\ g,\ b)\ GX\_WPAR\_S16\ =\ r;\ \(\backslash\)}}
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S16\ =\ g;\ \(\backslash\)}}
+\DoxyCodeLine{00127\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S16\ =\ b;}}
+\DoxyCodeLine{00128\ \textcolor{preprocessor}{\#define\ gxColor4s(r,\ g,\ b,\ a)\ GX\_WPAR\_S16\ =\ r;\ \(\backslash\)}}
+\DoxyCodeLine{00129\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S16\ =\ g;\ \(\backslash\)}}
+\DoxyCodeLine{00130\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S16\ =\ b;\ \(\backslash\)}}
+\DoxyCodeLine{00131\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S16\ =\ a;}}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\#define\ gxColor1ui(v)\ GX\_WPAR\_U32\ =\ v;}}
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\#define\ gxColor3ui(r,\ g,\ b)\ GX\_WPAR\_U32\ =\ r;\ \(\backslash\)}}
+\DoxyCodeLine{00135\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U32\ =\ g;\ \(\backslash\)}}
+\DoxyCodeLine{00136\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U32\ =\ b;}}
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#define\ gxColor4ui(r,\ g,\ b,\ a)\ GX\_WPAR\_U32\ =\ r;\ \(\backslash\)}}
+\DoxyCodeLine{00138\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U32\ =\ g;\ \(\backslash\)}}
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U32\ =\ b;\ \(\backslash\)}}
+\DoxyCodeLine{00140\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U32\ =\ a;}}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\#define\ gxColor1i(v)\ GX\_WPAR\_U32\ =\ v;}}
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\#define\ gxColor3i(r,\ g,\ b)\ GX\_WPAR\_S32\ =\ r;\ \(\backslash\)}}
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S32\ =\ g;\ \(\backslash\)}}
+\DoxyCodeLine{00145\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S32\ =\ b;}}
+\DoxyCodeLine{00146\ \textcolor{preprocessor}{\#define\ gxColor4i(r,\ g,\ b,\ a)\ GX\_WPAR\_S32\ =\ r;\ \(\backslash\)}}
+\DoxyCodeLine{00147\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S32\ =\ g;\ \(\backslash\)}}
+\DoxyCodeLine{00148\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S32\ =\ b;\ \(\backslash\)}}
+\DoxyCodeLine{00149\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S32\ =\ a;}}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \textcolor{preprocessor}{\#define\ gxColorIdx1ub(i)\ GX\_WPAR\_U8\ =\ i;}}
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\#define\ gxColorIdx1us(i)\ GX\_WPAR\_U16\ =\ i;}}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/TEXTURE\ COORDINATES-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \textcolor{preprocessor}{\#define\ gxTexCoord1f(s)\ GX\_WPAR\_F32\ =\ s;}}
+\DoxyCodeLine{00157\ \textcolor{preprocessor}{\#define\ gxTexCoord2f(s,\ t)\ GX\_WPAR\_F32\ =\ s;\ \(\backslash\)}}
+\DoxyCodeLine{00158\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_F32\ =\ t;}}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \textcolor{preprocessor}{\#define\ gxTexCoord1ub(s)\ GX\_WPAR\_U8\ =\ s;}}
+\DoxyCodeLine{00161\ \textcolor{preprocessor}{\#define\ gxTexCoord2ub(s,\ t)\ GX\_WPAR\_U8\ =\ s;\ \(\backslash\)}}
+\DoxyCodeLine{00162\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U8\ =\ t;}}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \textcolor{preprocessor}{\#define\ gxTexCoord1b(s)\ GX\_WPAR\_S8\ =\ s;}}
+\DoxyCodeLine{00165\ \textcolor{preprocessor}{\#define\ gxTexCoord2b(s,\ t)\ GX\_WPAR\_S8\ =\ s;\ \(\backslash\)}}
+\DoxyCodeLine{00166\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S8\ =\ t;}}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \textcolor{preprocessor}{\#define\ gxTexCoord1us(s)\ GX\_WPAR\_U16\ =\ s;}}
+\DoxyCodeLine{00169\ \textcolor{preprocessor}{\#define\ gxTexCoord2us(s,\ t)\ GX\_WPAR\_U16\ =\ s;\ \(\backslash\)}}
+\DoxyCodeLine{00170\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U16\ =\ t;}}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \textcolor{preprocessor}{\#define\ gxTexCoord1s(s)\ GX\_WPAR\_S16\ =\ s;}}
+\DoxyCodeLine{00173\ \textcolor{preprocessor}{\#define\ gxTexCoord2s(s,\ t)\ GX\_WPAR\_S16\ =\ s;\ \(\backslash\)}}
+\DoxyCodeLine{00174\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S16\ =\ t;}}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00176\ \textcolor{preprocessor}{\#define\ gxTexCoord1ui(s)\ GX\_WPAR\_U32\ =\ s;}}
+\DoxyCodeLine{00177\ \textcolor{preprocessor}{\#define\ gxTexCoord2ui(s,\ t)\ GX\_WPAR\_U32\ =\ s;\ \(\backslash\)}}
+\DoxyCodeLine{00178\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_U32\ =\ t;}}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ \textcolor{preprocessor}{\#define\ gxTexCoord1i(s)\ GX\_WPAR\_S32\ =\ s;}}
+\DoxyCodeLine{00181\ \textcolor{preprocessor}{\#define\ gxTexCoord2i(s,\ t)\ GX\_WPAR\_S32\ =\ s;\ \(\backslash\)}}
+\DoxyCodeLine{00182\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GX\_WPAR\_S32\ =\ t;}}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \textcolor{preprocessor}{\#define\ gxTexCoordIdx1ub(i)\ GX\_WPAR\_U8\ =\ i;}}
+\DoxyCodeLine{00185\ \textcolor{preprocessor}{\#define\ gxTexCoordIdx1us(i)\ GX\_WPAR\_U16\ =\ i;}}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00187\ \textcolor{comment}{/*\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/MATRIX\ INDEX-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ */}}
+\DoxyCodeLine{00188\ \textcolor{preprocessor}{\#define\ gxMatrixIdx1ub(i)\ GX\_WPAR\_U8\ =\ i;}}
+
+\end{DoxyCode}

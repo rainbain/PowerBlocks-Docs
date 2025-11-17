@@ -1,0 +1,73 @@
+\doxysection{ipc.\+h}
+\hypertarget{ipc_8h_source}{}\label{ipc_8h_source}\index{powerblocks/core/system/ipc.h@{powerblocks/core/system/ipc.h}}
+\mbox{\hyperlink{ipc_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{typedef}\ void\ (*ipc\_async\_handler\_t)(\textcolor{keywordtype}{void}*\ param,\ \textcolor{keywordtype}{int}\ return\_value);}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ command;}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ returned;}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ file\_handle;}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{union}}
+\DoxyCodeLine{00025\ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ path;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ mode;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \}\ open;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ address;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ size;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \}\ read;}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ address;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ size;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \}\ write;}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ where;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ whence;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \}\ seek;}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ioctl;}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ address\_in;}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ size\_in;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ address\_io;}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ size\_io;}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \}\ ioctl;}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ioctl;}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ argcin;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ argcio;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ pairs;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \}\ ioctlv;}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ uint32\_t\ args[5];}
+\DoxyCodeLine{00064\ \ \ \ \ \};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{comment}{//\ Used\ to\ prevent\ spurious\ responses,\ since\ this\ is\ cleared\ after\ the\ response\ is\ used.}}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{comment}{//\ Since\ not\ doing\ this\ could\ lead\ to\ stale\ stack\ usage.}}
+\DoxyCodeLine{00068\ \ \ \ \ uint32\_t\ magic;}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ ipc\_async\_handler\_t\ response\_handler;}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}*\ params;}
+\DoxyCodeLine{00072\ \ \ \ \ }
+\DoxyCodeLine{00073\ \}\ \mbox{\hyperlink{structipc__message}{ipc\_message}};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00085\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{ipc_8h_a1990848fdee907712ae616cbee77300e}{ipc\_initialize}}();}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00098\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{ipc_8h_ae8e083bfe7208c3a646e69b9af93474e}{ipc\_request}}(\mbox{\hyperlink{structipc__message}{ipc\_message}}*\ message,\ ipc\_async\_handler\_t\ handler,\ \textcolor{keywordtype}{void}*\ params);}
+
+\end{DoxyCode}

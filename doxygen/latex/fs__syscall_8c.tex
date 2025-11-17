@@ -1,0 +1,69 @@
+\doxysection{powerblocks/filesystem/fs\+\_\+syscall.c File Reference}
+\hypertarget{fs__syscall_8c}{}\label{fs__syscall_8c}\index{powerblocks/filesystem/fs\_syscall.c@{powerblocks/filesystem/fs\_syscall.c}}
+
+
+Implements libc\textquotesingle{}s filesystem syscalls.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include $<$sys/stat.\+h$>$}\newline
+{\ttfamily \#include $<$sys/unistd.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include "{}ff.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structfile__descriptor__t}{file\+\_\+descriptor\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{fs__syscall_8c_ad586f56cb2d7d849a4cb20dbd792b543}{open}} (const char \texorpdfstring{$\ast$}{*}path, int flags,...)
+\item 
+\Hypertarget{fs__syscall_8c_af32a16ad2dd9e48482f8f790db7dbbd2}\label{fs__syscall_8c_af32a16ad2dd9e48482f8f790db7dbbd2} 
+ssize\+\_\+t {\bfseries read} (int fd, void \texorpdfstring{$\ast$}{*}buf, size\+\_\+t count)
+\item 
+\Hypertarget{fs__syscall_8c_abb39b21888372e95ad3e5c59b166f5c8}\label{fs__syscall_8c_abb39b21888372e95ad3e5c59b166f5c8} 
+ssize\+\_\+t {\bfseries write} (int fd, const void \texorpdfstring{$\ast$}{*}buf, size\+\_\+t count)
+\item 
+\Hypertarget{fs__syscall_8c_a8bd74caed008a66808d92d57fa74d9f6}\label{fs__syscall_8c_a8bd74caed008a66808d92d57fa74d9f6} 
+off\+\_\+t {\bfseries lseek} (int fd, off\+\_\+t offset, int whence)
+\item 
+\Hypertarget{fs__syscall_8c_aafbcde67669a1b96577e735ddebd8634}\label{fs__syscall_8c_aafbcde67669a1b96577e735ddebd8634} 
+int {\bfseries close} (int fd)
+\item 
+\Hypertarget{fs__syscall_8c_a80e0f71541e61041bc707bae8dfb7554}\label{fs__syscall_8c_a80e0f71541e61041bc707bae8dfb7554} 
+int {\bfseries fstat} (int fd, struct stat \texorpdfstring{$\ast$}{*}st)
+\item 
+\Hypertarget{fs__syscall_8c_a49bb0c485f30ab14364721c9ce433bab}\label{fs__syscall_8c_a49bb0c485f30ab14364721c9ce433bab} 
+int {\bfseries isatty} (int fd)
+\item 
+\Hypertarget{fs__syscall_8c_a03af571dfb595681bfa203c83385c07b}\label{fs__syscall_8c_a03af571dfb595681bfa203c83385c07b} 
+int {\bfseries chdir} (const char \texorpdfstring{$\ast$}{*}path)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implements libc\textquotesingle{}s filesystem syscalls. 
+
+Implements libc\textquotesingle{}s filesystem syscalls
+
+\begin{DoxyAuthor}{Author}
+Samuel Fitzsimons (rainbain) 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 @license MIT (see LICENSE file) 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{fs__syscall_8c_ad586f56cb2d7d849a4cb20dbd792b543}\index{fs\_syscall.c@{fs\_syscall.c}!open@{open}}
+\index{open@{open}!fs\_syscall.c@{fs\_syscall.c}}
+\doxysubsubsection{\texorpdfstring{open()}{open()}}
+{\footnotesize\ttfamily \label{fs__syscall_8c_ad586f56cb2d7d849a4cb20dbd792b543} 
+int open (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path}{, }\item[{int}]{flags}{, }\item[{}]{...}{}\end{DoxyParamCaption})}
+
+BUG FIX\+: Avoid passing flags of zero

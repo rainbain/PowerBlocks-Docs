@@ -1,0 +1,105 @@
+\doxysection{l2cap.\+h}
+\hypertarget{l2cap_8h_source}{}\label{l2cap_8h_source}\index{powerblocks/core/bluetooth/l2cap.h@{powerblocks/core/bluetooth/l2cap.h}}
+\mbox{\hyperlink{l2cap_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}FreeRTOS.h"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}semphr.h"{}}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ Every\ L2CAP\ device\ comes\ with\ 1\ channel\ open}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ That\ L2CAP\ uses\ for\ opening\ other\ channels\ and\ such}}
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ So\ every\ device\ comes\ with\ the\ buffer\ for\ this.}}
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ Must\ be\ a\ power\ of\ 2.}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ L2CAP\_SIGNAL\_CHANNEL\_BUFFER\_SIZE\ 256}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ L2CAP\_CHANNEL\_SIGNALS\ 0x0001}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ L2CAP\_DEFAULT\_MTU\ \ \ \ \ \ \ \ \ \ \ 185}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ L2CAP\_DEFAULT\_FLUSH\_TIMEOUT\ 0xFFFF}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{typedef}\ void\ (*l2cap\_channel\_event\_t)(\textcolor{keywordtype}{void}*\ channel,\ \textcolor{keywordtype}{void}*\ user);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{comment}{//\ Used\ internally\ by\ L2CAP\ when\ handling\ the\ signal\ channel.}}
+\DoxyCodeLine{00037\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00038\ \ \ \ \ uint8\_t\ code;\ \textcolor{comment}{//\ Command\ Code}}
+\DoxyCodeLine{00039\ \ \ \ \ uint8\_t\ id;\ \textcolor{comment}{//\ Unique\ id\ for\ the\ request}}
+\DoxyCodeLine{00040\ \ \ \ \ uint16\_t\ length;}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ uint8\_t\ data[16];\ \textcolor{comment}{//\ Arbitrary\ max\ size}}
+\DoxyCodeLine{00043\ \}\ \mbox{\hyperlink{structl2cap__signal__t}{l2cap\_signal\_t}};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}*\ device;\ \textcolor{comment}{//\ l2cap\_device\_t}}
+\DoxyCodeLine{00047\ \ \ \ \ uint16\_t\ sid;\ \textcolor{comment}{//\ Source\ ID,\ ID\ the\ endpoint\ will\ use\ when\ talking\ to\ us.}}
+\DoxyCodeLine{00048\ \ \ \ \ uint16\_t\ did;\ \textcolor{comment}{//\ Destination\ ID,\ ID\ we\ use\ when\ talking\ to\ the\ endpoint}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ SemaphoreHandle\_t\ on\_complete\_packet;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{//\ Stores\ multiple\ packets,\ each\ starting\ with\ a\ 16\ byte\ size,\ then\ data.}}
+\DoxyCodeLine{00053\ \ \ \ \ uint8\_t*\ buffer;}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{int}\ buffer\_length;}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{int}\ fifo\_write\_head;}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{int}\ fifo\_write\_head\_packet;\ \textcolor{comment}{//\ Up\ to\ the\ last\ packet.}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{int}\ fifo\_read\_head;}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//\ Track\ incoming\ signals}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{volatile}\ \mbox{\hyperlink{structl2cap__signal__t}{l2cap\_signal\_t}}*\ incoming\_signal;}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{volatile}\ uint8\_t\ incoming\_id;}
+\DoxyCodeLine{00062\ \ \ \ \ SemaphoreHandle\_t\ signal\_waiter;}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{comment}{//\ Event\ for\ when\ a\ new\ received\ packet\ is\ made\ available.}}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ l2cap\_channel\_event\_t\ event;}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ data;}
+\DoxyCodeLine{00068\ \ \ \ \ \}\ event\_packet\_available;}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ StaticSemaphore\_t\ semaphore\_data[2];}
+\DoxyCodeLine{00071\ \}\ \mbox{\hyperlink{structl2cap__channel__t}{l2cap\_channel\_t}};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00074\ \ \ \ \ SemaphoreHandle\_t\ lock;}
+\DoxyCodeLine{00075\ \ \ \ \ uint16\_t\ handle;}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structl2cap__channel__t}{l2cap\_channel\_t}}**\ array;}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ length;}
+\DoxyCodeLine{00079\ \ \ \ \ \}\ open\_channels;}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{comment}{//\ Default\ open\ channel\ L2CAP\ must\ use}}
+\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{structl2cap__channel__t}{l2cap\_channel\_t}}\ signal\_channel;}
+\DoxyCodeLine{00083\ \ \ \ \ uint8\_t\ signal\_channel\_buffer[L2CAP\_SIGNAL\_CHANNEL\_BUFFER\_SIZE];}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{comment}{//\ L2CAP\ Reading\ into\ Handle\ State}}
+\DoxyCodeLine{00086\ \ \ \ \ \mbox{\hyperlink{structl2cap__channel__t}{l2cap\_channel\_t}}*\ reading\_channel;}
+\DoxyCodeLine{00087\ \ \ \ \ uint16\_t\ reading\_remaining;}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ uint8\_t\ mac\_address[6];}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ StaticSemaphore\_t\ semaphore\_data;}
+\DoxyCodeLine{00092\ \}\ \mbox{\hyperlink{structl2cap__device__t}{l2cap\_device\_t}};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00105\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{l2cap_8h_a52ee42d4666663b934669a00485c1360}{l2cap\_initialize}}();}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00114\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{l2cap_8h_a8a81a732f492fd7f73db9c3e28cb1b38}{l2cap\_signal\_close}}();}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00122\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{l2cap_8h_a3c8cff668e194b72f1bf772fdd26895d}{l2cap\_close}}();}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00137\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{l2cap_8h_a0a485db9568ba82e42f1adffe8d37bab}{l2cap\_open\_device}}(\mbox{\hyperlink{structl2cap__device__t}{l2cap\_device\_t}}*\ device\_handle,\ uint16\_t\ hci\_device\_handle,\ \textcolor{keyword}{const}\ uint8\_t*\ mac\_address);}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00146\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{l2cap_8h_ad4c40ef4c55b21acb04949a4c6c062dd}{l2cap\_close\_device}}(\mbox{\hyperlink{structl2cap__device__t}{l2cap\_device\_t}}*\ device\_handle);}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00164\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{l2cap_8h_ad1afe37de6799a07366fe423faeab045}{l2cap\_open\_channel}}(\mbox{\hyperlink{structl2cap__device__t}{l2cap\_device\_t}}*\ device\_handle,\ \mbox{\hyperlink{structl2cap__channel__t}{l2cap\_channel\_t}}*\ channel,\ uint16\_t\ protocol\_id,\ uint8\_t*\ rx\_buffer,\ \textcolor{keywordtype}{int}\ rx\_buffer\_size);}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00176\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{l2cap_8h_a6f48dd9f6644b829f23cae02cefad73d}{l2cap\_close\_channel}}(\mbox{\hyperlink{structl2cap__channel__t}{l2cap\_channel\_t}}*\ channel);}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00192\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{l2cap_8h_a5bf23efd5d1b3891cebdadf972f89bb7}{l2cap\_send\_channel}}(\mbox{\hyperlink{structl2cap__channel__t}{l2cap\_channel\_t}}*\ channel,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ data,\ uint16\_t\ size);}
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00216\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{l2cap_8h_a8d95274e8365de6adde2b5e305feb540}{l2cap\_receive\_channel}}(\mbox{\hyperlink{structl2cap__channel__t}{l2cap\_channel\_t}}*\ channel,\ \textcolor{keywordtype}{void}*\ data,\ uint16\_t\ size);}
+\DoxyCodeLine{00217\ }
+\DoxyCodeLine{00228\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{l2cap_8h_a4a876ed132e8c5ffc77f02842e405eeb}{l2cap\_set\_channel\_receive\_event}}(\mbox{\hyperlink{structl2cap__channel__t}{l2cap\_channel\_t}}*\ channel,\ l2cap\_channel\_event\_t\ event,\ \textcolor{keywordtype}{void}*\ param);}
+
+\end{DoxyCode}

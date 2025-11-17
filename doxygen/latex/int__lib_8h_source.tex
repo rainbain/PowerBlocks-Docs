@@ -1,0 +1,177 @@
+\doxysection{int\+\_\+lib.\+h}
+\hypertarget{int__lib_8h_source}{}\label{int__lib_8h_source}\index{powerblocks/core/utils/math/int\_lib.h@{powerblocks/core/utils/math/int\_lib.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/\ int\_lib.h\ -\/\ configuration\ header\ for\ compiler-\/rt\ \ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Part\ of\ the\ LLVM\ Project,\ under\ the\ Apache\ License\ v2.0\ with\ LLVM\ Exceptions.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ See\ https://llvm.org/LICENSE.txt\ for\ license\ information.}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ SPDX-\/License-\/Identifier:\ Apache-\/2.0\ WITH\ LLVM-\/exception}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ This\ file\ is\ a\ configuration\ header\ for\ compiler-\/rt.}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ This\ file\ is\ not\ part\ of\ the\ interface\ of\ this\ library.}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#ifndef\ INT\_LIB\_H}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ INT\_LIB\_H}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ Assumption:\ Signed\ integral\ is\ 2's\ complement.}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ Assumption:\ Right\ shift\ of\ signed\ negative\ is\ arithmetic\ shift.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ Assumption:\ Endianness\ is\ little\ or\ big\ (not\ mixed).}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ ABI\ macro\ definitions}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#if\ \_\_ARM\_EABI\_\_}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#ifdef\ COMPILER\_RT\_ARMHF\_TARGET}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ COMPILER\_RT\_ABI}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ COMPILER\_RT\_ABI\ \_\_attribute\_\_((\_\_pcs\_\_("{}aapcs"{})))}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ COMPILER\_RT\_ABI}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ AEABI\_RTABI\ \_\_attribute\_\_((\_\_pcs\_\_("{}aapcs"{})))}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#if\ defined(\_MSC\_VER)\ \&\&\ !defined(\_\_clang\_\_)}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ ALWAYS\_INLINE\ \_\_forceinline}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ NOINLINE\ \_\_declspec(noinline)}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ NORETURN\ \_\_declspec(noreturn)}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ UNUSED}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ ALWAYS\_INLINE\ \_\_attribute\_\_((always\_inline))}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ NOINLINE\ \_\_attribute\_\_((noinline))}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ NORETURN\ \_\_attribute\_\_((noreturn))}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ UNUSED\ \_\_attribute\_\_((unused))}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ STR(a)\ \#a}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ XSTR(a)\ STR(a)}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ SYMBOL\_NAME(name)\ XSTR(\_\_USER\_LABEL\_PREFIX\_\_)\ \#name}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#if\ defined(\_\_ELF\_\_)\ ||\ defined(\_\_MINGW32\_\_)\ ||\ defined(\_\_wasm\_\_)\ ||\ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\ \ \ \ defined(\_AIX)\ ||\ defined(\_\_CYGWIN\_\_)}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ COMPILER\_RT\_ALIAS(name,\ aliasname)\ \(\backslash\)}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\ \ COMPILER\_RT\_ABI\ \_\_typeof(name)\ aliasname\ \_\_attribute\_\_((\_\_alias\_\_(\#name)));}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#elif\ defined(\_\_APPLE\_\_)}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#if\ defined(VISIBILITY\_HIDDEN)}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#define\ COMPILER\_RT\_ALIAS\_VISIBILITY(name)\ \(\backslash\)}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\ \ \_\_asm\_\_("{}.private\_extern\ "{}\ SYMBOL\_NAME(name));}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#define\ COMPILER\_RT\_ALIAS\_VISIBILITY(name)}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#define\ COMPILER\_RT\_ALIAS(name,\ aliasname)\ \(\backslash\)}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\ \ \_\_asm\_\_("{}.globl\ "{}\ SYMBOL\_NAME(aliasname));\ \(\backslash\)}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\ \ COMPILER\_RT\_ALIAS\_VISIBILITY(aliasname)\ \(\backslash\)}}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\ \ \_\_asm\_\_(SYMBOL\_NAME(aliasname)\ "{}\ =\ "{}\ SYMBOL\_NAME(name));\ \(\backslash\)}}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\ \ COMPILER\_RT\_ABI\ \_\_typeof(name)\ aliasname;}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#elif\ defined(\_WIN32)\ ||\ defined(\_\_UEFI\_\_)}}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#define\ COMPILER\_RT\_ALIAS(name,\ aliasname)}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#error\ Unsupported\ target}}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#if\ (defined(\_\_FreeBSD\_\_)\ ||\ defined(\_\_NetBSD\_\_))\ \&\&\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\ \ \ \ (defined(\_KERNEL)\ ||\ defined(\_STANDALONE))}}
+\DoxyCodeLine{00075\ \textcolor{comment}{//}}
+\DoxyCodeLine{00076\ \textcolor{comment}{//\ Kernel\ and\ boot\ environment\ can't\ use\ normal\ headers,}}
+\DoxyCodeLine{00077\ \textcolor{comment}{//\ so\ use\ the\ equivalent\ system\ headers.}}
+\DoxyCodeLine{00078\ \textcolor{comment}{//\ NB:\ FreeBSD\ (and\ OpenBSD)\ deprecate\ machine/limits.h\ in}}
+\DoxyCodeLine{00079\ \textcolor{comment}{//\ favour\ of\ sys/limits.h,\ so\ prefer\ the\ former,\ but\ fall}}
+\DoxyCodeLine{00080\ \textcolor{comment}{//\ back\ on\ the\ latter\ if\ not\ available\ since\ NetBSD\ only\ has}}
+\DoxyCodeLine{00081\ \textcolor{comment}{//\ the\ latter.}}
+\DoxyCodeLine{00082\ \textcolor{comment}{//}}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#if\ defined(\_\_has\_include)\ \&\&\ \_\_has\_include(<sys/limits.h>)}}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#include\ <sys/limits.h>}}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#include\ <machine/limits.h>}}
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#include\ <sys/stdint.h>}}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#include\ <sys/types.h>}}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00091\ \textcolor{comment}{//\ Include\ the\ standard\ compiler\ builtin\ headers\ we\ use\ functionality\ from.}}
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#include\ <float.h>}}
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#include\ <limits.h>}}
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \textcolor{comment}{//\ Include\ the\ commonly\ used\ internal\ type\ definitions.}}
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\#include\ "{}int\_types.h"{}}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \textcolor{comment}{//\ Include\ internal\ utility\ function\ declarations.}}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#include\ "{}int\_util.h"{}}}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ COMPILER\_RT\_ABI\ \textcolor{keywordtype}{int}\ \_\_paritysi2(si\_int\ a);}
+\DoxyCodeLine{00105\ COMPILER\_RT\_ABI\ \textcolor{keywordtype}{int}\ \_\_paritydi2(di\_int\ a);}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ COMPILER\_RT\_ABI\ di\_int\ \_\_divdi3(di\_int\ a,\ di\_int\ b);}
+\DoxyCodeLine{00108\ COMPILER\_RT\_ABI\ si\_int\ \_\_divsi3(si\_int\ a,\ si\_int\ b);}
+\DoxyCodeLine{00109\ COMPILER\_RT\_ABI\ su\_int\ \_\_udivsi3(su\_int\ n,\ su\_int\ d);}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ COMPILER\_RT\_ABI\ su\_int\ \_\_udivmodsi4(su\_int\ a,\ su\_int\ b,\ su\_int\ *rem);}
+\DoxyCodeLine{00112\ COMPILER\_RT\_ABI\ du\_int\ \_\_udivmoddi4(du\_int\ a,\ du\_int\ b,\ du\_int\ *rem);}
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#ifdef\ CRT\_HAS\_128BIT}}
+\DoxyCodeLine{00114\ COMPILER\_RT\_ABI\ \textcolor{keywordtype}{int}\ \_\_clzti2(ti\_int\ a);}
+\DoxyCodeLine{00115\ COMPILER\_RT\_ABI\ tu\_int\ \_\_udivmodti4(tu\_int\ a,\ tu\_int\ b,\ tu\_int\ *rem);}
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \textcolor{comment}{//\ Definitions\ for\ builtins\ unavailable\ on\ MSVC}}
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#if\ defined(\_MSC\_VER)\ \&\&\ !defined(\_\_clang\_\_)}}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#include\ <intrin.h>}}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \_\_inline\ \_\_builtin\_ctz(uint32\_t\ value)\ \{}
+\DoxyCodeLine{00123\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ trailing\_zero\ =\ 0;}
+\DoxyCodeLine{00124\ \ \ \textcolor{keywordflow}{if}\ (\_BitScanForward(\&trailing\_zero,\ value))}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordflow}{return}\ trailing\_zero;}
+\DoxyCodeLine{00126\ \ \ \textcolor{keywordflow}{return}\ 32;}
+\DoxyCodeLine{00127\ \}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \_\_inline\ \_\_builtin\_clz(uint32\_t\ value)\ \{}
+\DoxyCodeLine{00130\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ leading\_zero\ =\ 0;}
+\DoxyCodeLine{00131\ \ \ \textcolor{keywordflow}{if}\ (\_BitScanReverse(\&leading\_zero,\ value))}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordflow}{return}\ 31\ -\/\ leading\_zero;}
+\DoxyCodeLine{00133\ \ \ \textcolor{keywordflow}{return}\ 32;}
+\DoxyCodeLine{00134\ \}}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \textcolor{preprocessor}{\#if\ defined(\_M\_ARM)\ ||\ defined(\_M\_X64)}}
+\DoxyCodeLine{00137\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \_\_inline\ \_\_builtin\_clzll(uint64\_t\ value)\ \{}
+\DoxyCodeLine{00138\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ leading\_zero\ =\ 0;}
+\DoxyCodeLine{00139\ \ \ \textcolor{keywordflow}{if}\ (\_BitScanReverse64(\&leading\_zero,\ value))}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordflow}{return}\ 63\ -\/\ leading\_zero;}
+\DoxyCodeLine{00141\ \ \ \textcolor{keywordflow}{return}\ 64;}
+\DoxyCodeLine{00142\ \}}
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00144\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \_\_inline\ \_\_builtin\_clzll(uint64\_t\ value)\ \{}
+\DoxyCodeLine{00145\ \ \ \textcolor{keywordflow}{if}\ (value\ ==\ 0)}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordflow}{return}\ 64;}
+\DoxyCodeLine{00147\ \ \ uint32\_t\ msh\ =\ (uint32\_t)(value\ >>\ 32);}
+\DoxyCodeLine{00148\ \ \ uint32\_t\ lsh\ =\ (uint32\_t)(value\ \&\ 0xFFFFFFFF);}
+\DoxyCodeLine{00149\ \ \ \textcolor{keywordflow}{if}\ (msh\ !=\ 0)}
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keywordflow}{return}\ \_\_builtin\_clz(msh);}
+\DoxyCodeLine{00151\ \ \ \textcolor{keywordflow}{return}\ 32\ +\ \_\_builtin\_clz(lsh);}
+\DoxyCodeLine{00152\ \}}
+\DoxyCodeLine{00153\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \textcolor{preprocessor}{\#define\ \_\_builtin\_clzl\ \_\_builtin\_clzll}}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \_\_inline\ \_\_builtin\_sadd\_overflow(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ *result)\ \{}
+\DoxyCodeLine{00158\ \ \ \textcolor{keywordflow}{if}\ ((x\ <\ 0)\ !=\ (y\ <\ 0))\ \{}
+\DoxyCodeLine{00159\ \ \ \ \ *result\ =\ x\ +\ y;}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00161\ \ \ \}}
+\DoxyCodeLine{00162\ \ \ \textcolor{keywordtype}{int}\ tmp\ =\ (\textcolor{keywordtype}{unsigned}\ int)x\ +\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int})y;}
+\DoxyCodeLine{00163\ \ \ \textcolor{keywordflow}{if}\ ((tmp\ <\ 0)\ !=\ (x\ <\ 0))}
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00165\ \ \ *result\ =\ tmp;}
+\DoxyCodeLine{00166\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00167\ \}}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ defined(\_MSC\_VER)\ \&\&\ !defined(\_\_clang\_\_)}}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ INT\_LIB\_H}}
+
+\end{DoxyCode}

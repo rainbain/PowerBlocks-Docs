@@ -1,0 +1,282 @@
+\doxysection{int\+\_\+types.\+h}
+\hypertarget{int__types_8h_source}{}\label{int__types_8h_source}\index{powerblocks/core/utils/math/int\_types.h@{powerblocks/core/utils/math/int\_types.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===-\/-\/\ int\_lib.h\ -\/\ configuration\ header\ for\ compiler-\/rt\ \ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Part\ of\ the\ LLVM\ Project,\ under\ the\ Apache\ License\ v2.0\ with\ LLVM\ Exceptions.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ See\ https://llvm.org/LICENSE.txt\ for\ license\ information.}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ SPDX-\/License-\/Identifier:\ Apache-\/2.0\ WITH\ LLVM-\/exception}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ This\ file\ is\ not\ part\ of\ the\ interface\ of\ this\ library.}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ This\ file\ defines\ various\ standard\ types,\ most\ importantly\ a\ number\ of\ unions}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ used\ to\ access\ parts\ of\ larger\ types.}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//===-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/===//}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#ifndef\ INT\_TYPES\_H}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ INT\_TYPES\_H}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}int\_endianness.h"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ si\_int\ is\ defined\ in\ Linux\ sysroot's\ asm-\/generic/siginfo.h}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#ifdef\ si\_int}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#undef\ si\_int}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00025\ \textcolor{keyword}{typedef}\ int32\_t\ si\_int;}
+\DoxyCodeLine{00026\ \textcolor{keyword}{typedef}\ uint32\_t\ su\_int;}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#if\ UINT\_MAX\ ==\ 0xFFFFFFFF}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ clzsi\ \_\_builtin\_clz}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ ctzsi\ \_\_builtin\_ctz}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#elif\ ULONG\_MAX\ ==\ 0xFFFFFFFF}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ clzsi\ \_\_builtin\_clzl}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ ctzsi\ \_\_builtin\_ctzl}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#error\ could\ not\ determine\ appropriate\ clzsi\ macro\ for\ this\ system}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{typedef}\ int64\_t\ di\_int;}
+\DoxyCodeLine{00038\ \textcolor{keyword}{typedef}\ uint64\_t\ du\_int;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{union\ }\{}
+\DoxyCodeLine{00041\ \ \ di\_int\ all;}
+\DoxyCodeLine{00042\ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#if\ \_YUGA\_LITTLE\_ENDIAN}}
+\DoxyCodeLine{00044\ \ \ \ \ su\_int\ low;}
+\DoxyCodeLine{00045\ \ \ \ \ si\_int\ high;}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00047\ \ \ \ \ si\_int\ high;}
+\DoxyCodeLine{00048\ \ \ \ \ su\_int\ low;}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_YUGA\_LITTLE\_ENDIAN}}
+\DoxyCodeLine{00050\ \ \ \}\ s;}
+\DoxyCodeLine{00051\ \}\ \mbox{\hyperlink{uniondwords}{dwords}};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{union\ }\{}
+\DoxyCodeLine{00054\ \ \ du\_int\ all;}
+\DoxyCodeLine{00055\ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#if\ \_YUGA\_LITTLE\_ENDIAN}}
+\DoxyCodeLine{00057\ \ \ \ \ su\_int\ low;}
+\DoxyCodeLine{00058\ \ \ \ \ su\_int\ high;}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00060\ \ \ \ \ su\_int\ high;}
+\DoxyCodeLine{00061\ \ \ \ \ su\_int\ low;}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_YUGA\_LITTLE\_ENDIAN}}
+\DoxyCodeLine{00063\ \ \ \}\ s;}
+\DoxyCodeLine{00064\ \}\ \mbox{\hyperlink{unionudwords}{udwords}};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#if\ defined(\_\_LP64\_\_)\ ||\ defined(\_\_wasm\_\_)\ ||\ defined(\_\_mips64)\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\ \ \ \ defined(\_\_SIZEOF\_INT128\_\_)\ ||\ defined(\_WIN64)}}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#define\ CRT\_HAS\_128BIT}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{comment}{//\ MSVC\ doesn't\ have\ a\ working\ 128bit\ integer\ type.\ Users\ should\ really\ compile}}
+\DoxyCodeLine{00072\ \textcolor{comment}{//\ compiler-\/rt\ with\ clang,\ but\ if\ they\ happen\ to\ be\ doing\ a\ standalone\ build\ for}}
+\DoxyCodeLine{00073\ \textcolor{comment}{//\ asan\ or\ something\ else,\ disable\ the\ 128\ bit\ parts\ so\ things\ sort\ of\ work.}}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#if\ defined(\_MSC\_VER)\ \&\&\ !defined(\_\_clang\_\_)}}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#undef\ CRT\_HAS\_128BIT}}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#ifdef\ CRT\_HAS\_128BIT}}
+\DoxyCodeLine{00079\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{int}\ ti\_int\ \_\_attribute\_\_((mode(TI)));}
+\DoxyCodeLine{00080\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ tu\_int\ \_\_attribute\_\_((mode(TI)));}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{union\ }\{}
+\DoxyCodeLine{00083\ \ \ ti\_int\ all;}
+\DoxyCodeLine{00084\ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#if\ \_YUGA\_LITTLE\_ENDIAN}}
+\DoxyCodeLine{00086\ \ \ \ \ du\_int\ low;}
+\DoxyCodeLine{00087\ \ \ \ \ di\_int\ high;}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00089\ \ \ \ \ di\_int\ high;}
+\DoxyCodeLine{00090\ \ \ \ \ du\_int\ low;}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_YUGA\_LITTLE\_ENDIAN}}
+\DoxyCodeLine{00092\ \ \ \}\ s;}
+\DoxyCodeLine{00093\ \}\ twords;}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{union\ }\{}
+\DoxyCodeLine{00096\ \ \ tu\_int\ all;}
+\DoxyCodeLine{00097\ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#if\ \_YUGA\_LITTLE\_ENDIAN}}
+\DoxyCodeLine{00099\ \ \ \ \ du\_int\ low;}
+\DoxyCodeLine{00100\ \ \ \ \ du\_int\ high;}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00102\ \ \ \ \ du\_int\ high;}
+\DoxyCodeLine{00103\ \ \ \ \ du\_int\ low;}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_YUGA\_LITTLE\_ENDIAN}}
+\DoxyCodeLine{00105\ \ \ \}\ s;}
+\DoxyCodeLine{00106\ \}\ utwords;}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \textcolor{keyword}{static}\ \_\_inline\ ti\_int\ make\_ti(di\_int\ h,\ di\_int\ l)\ \{}
+\DoxyCodeLine{00109\ \ \ twords\ r;}
+\DoxyCodeLine{00110\ \ \ r.s.high\ =\ (du\_int)h;}
+\DoxyCodeLine{00111\ \ \ r.s.low\ =\ (du\_int)l;}
+\DoxyCodeLine{00112\ \ \ \textcolor{keywordflow}{return}\ r.all;}
+\DoxyCodeLine{00113\ \}}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \textcolor{keyword}{static}\ \_\_inline\ tu\_int\ make\_tu(du\_int\ h,\ du\_int\ l)\ \{}
+\DoxyCodeLine{00116\ \ \ utwords\ r;}
+\DoxyCodeLine{00117\ \ \ r.s.high\ =\ h;}
+\DoxyCodeLine{00118\ \ \ r.s.low\ =\ l;}
+\DoxyCodeLine{00119\ \ \ \textcolor{keywordflow}{return}\ r.all;}
+\DoxyCodeLine{00120\ \}}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CRT\_HAS\_128BIT}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \textcolor{comment}{//\ FreeBSD's\ boot\ environment\ does\ not\ support\ using\ floating-\/point\ and\ poisons}}
+\DoxyCodeLine{00125\ \textcolor{comment}{//\ the\ float\ and\ double\ keywords.}}
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\#if\ defined(\_\_FreeBSD\_\_)\ \&\&\ defined(\_STANDALONE)}}
+\DoxyCodeLine{00127\ \textcolor{preprocessor}{\#define\ CRT\_HAS\_FLOATING\_POINT\ 0}}
+\DoxyCodeLine{00128\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00129\ \textcolor{preprocessor}{\#define\ CRT\_HAS\_FLOATING\_POINT\ 1}}
+\DoxyCodeLine{00130\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \textcolor{preprocessor}{\#if\ CRT\_HAS\_FLOATING\_POINT}}
+\DoxyCodeLine{00133\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{union\ }\{}
+\DoxyCodeLine{00134\ \ \ su\_int\ u;}
+\DoxyCodeLine{00135\ \ \ \textcolor{keywordtype}{float}\ f;}
+\DoxyCodeLine{00136\ \}\ \mbox{\hyperlink{unionfloat__bits}{float\_bits}};}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{union\ }\{}
+\DoxyCodeLine{00139\ \ \ \mbox{\hyperlink{unionudwords}{udwords}}\ u;}
+\DoxyCodeLine{00140\ \ \ \textcolor{keywordtype}{double}\ f;}
+\DoxyCodeLine{00141\ \}\ \mbox{\hyperlink{uniondouble__bits}{double\_bits}};}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\#if\ \_YUGA\_LITTLE\_ENDIAN}}
+\DoxyCodeLine{00145\ \ \ \mbox{\hyperlink{unionudwords}{udwords}}\ low;}
+\DoxyCodeLine{00146\ \ \ \mbox{\hyperlink{unionudwords}{udwords}}\ high;}
+\DoxyCodeLine{00147\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00148\ \ \ \mbox{\hyperlink{unionudwords}{udwords}}\ high;}
+\DoxyCodeLine{00149\ \ \ \mbox{\hyperlink{unionudwords}{udwords}}\ low;}
+\DoxyCodeLine{00150\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_YUGA\_LITTLE\_ENDIAN}}
+\DoxyCodeLine{00151\ \}\ \mbox{\hyperlink{structuqwords}{uqwords}};}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \textcolor{comment}{//\ Check\ if\ the\ target\ supports\ 80\ bit\ extended\ precision\ long\ doubles.}}
+\DoxyCodeLine{00154\ \textcolor{comment}{//\ Notably,\ on\ x86\ Windows,\ MSVC\ only\ provides\ a\ 64-\/bit\ long\ double,\ but\ GCC}}
+\DoxyCodeLine{00155\ \textcolor{comment}{//\ still\ makes\ it\ 80\ bits.\ Clang\ will\ match\ whatever\ compiler\ it\ is\ trying\ to}}
+\DoxyCodeLine{00156\ \textcolor{comment}{//\ be\ compatible\ with.\ On\ 32-\/bit\ x86\ Android,\ long\ double\ is\ 64\ bits,\ while\ on}}
+\DoxyCodeLine{00157\ \textcolor{comment}{//\ x86\_64\ Android,\ long\ double\ is\ 128\ bits.}}
+\DoxyCodeLine{00158\ \textcolor{preprocessor}{\#if\ (defined(\_\_i386\_\_)\ ||\ defined(\_\_x86\_64\_\_))\ \&\&\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00159\ \textcolor{preprocessor}{\ \ \ \ !(defined(\_MSC\_VER)\ ||\ defined(\_\_ANDROID\_\_))}}
+\DoxyCodeLine{00160\ \textcolor{preprocessor}{\#define\ HAS\_80\_BIT\_LONG\_DOUBLE\ 1}}
+\DoxyCodeLine{00161\ \textcolor{preprocessor}{\#elif\ defined(\_\_m68k\_\_)\ ||\ defined(\_\_ia64\_\_)}}
+\DoxyCodeLine{00162\ \textcolor{preprocessor}{\#define\ HAS\_80\_BIT\_LONG\_DOUBLE\ 1}}
+\DoxyCodeLine{00163\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00164\ \textcolor{preprocessor}{\#define\ HAS\_80\_BIT\_LONG\_DOUBLE\ 0}}
+\DoxyCodeLine{00165\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \textcolor{preprocessor}{\#if\ HAS\_80\_BIT\_LONG\_DOUBLE}}
+\DoxyCodeLine{00168\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{double}\ xf\_float;}
+\DoxyCodeLine{00169\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{union\ }\{}
+\DoxyCodeLine{00170\ \ \ \mbox{\hyperlink{structuqwords}{uqwords}}\ u;}
+\DoxyCodeLine{00171\ \ \ xf\_float\ f;}
+\DoxyCodeLine{00172\ \}\ xf\_bits;}
+\DoxyCodeLine{00173\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \textcolor{preprocessor}{\#ifdef\ \_\_powerpc64\_\_}}
+\DoxyCodeLine{00176\ \textcolor{comment}{//\ From\ https://gcc.gnu.org/wiki/Ieee128PowerPC:}}
+\DoxyCodeLine{00177\ \textcolor{comment}{//\ PowerPC64\ uses\ the\ following\ suffixes:}}
+\DoxyCodeLine{00178\ \textcolor{comment}{//\ IFmode:\ IBM\ extended\ double}}
+\DoxyCodeLine{00179\ \textcolor{comment}{//\ KFmode:\ IEEE\ 128-\/bit\ floating\ point}}
+\DoxyCodeLine{00180\ \textcolor{comment}{//\ TFmode:\ Matches\ the\ default\ for\ long\ double.\ With\ -\/mabi=ieeelongdouble,}}
+\DoxyCodeLine{00181\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ it\ is\ IEEE\ 128-\/bit,\ with\ -\/mabi=ibmlongdouble\ IBM\ extended\ double}}
+\DoxyCodeLine{00182\ \textcolor{comment}{//\ Since\ compiler-\/rt\ only\ implements\ the\ tf\ set\ of\ libcalls,\ we\ use\ long\ double}}
+\DoxyCodeLine{00183\ \textcolor{comment}{//\ for\ the\ tf\_float\ typedef.}}
+\DoxyCodeLine{00184\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{double}\ tf\_float;}
+\DoxyCodeLine{00185\ \textcolor{preprocessor}{\#define\ CRT\_LDBL\_128BIT}}
+\DoxyCodeLine{00186\ \textcolor{preprocessor}{\#define\ CRT\_HAS\_F128}}
+\DoxyCodeLine{00187\ \textcolor{preprocessor}{\#if\ \_\_LDBL\_MANT\_DIG\_\_\ ==\ 113\ \&\&\ !defined(\_\_LONG\_DOUBLE\_IBM128\_\_)}}
+\DoxyCodeLine{00188\ \textcolor{preprocessor}{\#define\ CRT\_HAS\_IEEE\_TF}}
+\DoxyCodeLine{00189\ \textcolor{preprocessor}{\#define\ CRT\_LDBL\_IEEE\_F128}}
+\DoxyCodeLine{00190\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00191\ \textcolor{preprocessor}{\#define\ TF\_C(x)\ x\#\#L}}
+\DoxyCodeLine{00192\ \textcolor{preprocessor}{\#elif\ \_\_LDBL\_MANT\_DIG\_\_\ ==\ 113\ ||\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00193\ \textcolor{preprocessor}{\ \ \ \ (\_\_FLT\_RADIX\_\_\ ==\ 16\ \&\&\ \_\_LDBL\_MANT\_DIG\_\_\ ==\ 28)}}
+\DoxyCodeLine{00194\ \textcolor{comment}{//\ Use\ long\ double\ instead\ of\ \_\_float128\ if\ it\ matches\ the\ IEEE\ 128-\/bit\ format}}
+\DoxyCodeLine{00195\ \textcolor{comment}{//\ or\ the\ IBM\ hexadecimal\ format.}}
+\DoxyCodeLine{00196\ \textcolor{preprocessor}{\#define\ CRT\_LDBL\_128BIT}}
+\DoxyCodeLine{00197\ \textcolor{preprocessor}{\#define\ CRT\_HAS\_F128}}
+\DoxyCodeLine{00198\ \textcolor{preprocessor}{\#if\ \_\_LDBL\_MANT\_DIG\_\_\ ==\ 113}}
+\DoxyCodeLine{00199\ \textcolor{preprocessor}{\#define\ CRT\_HAS\_IEEE\_TF}}
+\DoxyCodeLine{00200\ \textcolor{preprocessor}{\#define\ CRT\_LDBL\_IEEE\_F128}}
+\DoxyCodeLine{00201\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00202\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{double}\ tf\_float;}
+\DoxyCodeLine{00203\ \textcolor{preprocessor}{\#define\ TF\_C(x)\ x\#\#L}}
+\DoxyCodeLine{00204\ \textcolor{preprocessor}{\#elif\ defined(\_\_FLOAT128\_\_)\ ||\ defined(\_\_SIZEOF\_FLOAT128\_\_)}}
+\DoxyCodeLine{00205\ \textcolor{preprocessor}{\#define\ CRT\_HAS\_\_\_FLOAT128\_KEYWORD}}
+\DoxyCodeLine{00206\ \textcolor{preprocessor}{\#define\ CRT\_HAS\_F128}}
+\DoxyCodeLine{00207\ \textcolor{comment}{//\ NB:\ we\ assume\ the\ \_\_float128\ type\ uses\ IEEE\ representation.}}
+\DoxyCodeLine{00208\ \textcolor{preprocessor}{\#define\ CRT\_HAS\_IEEE\_TF}}
+\DoxyCodeLine{00209\ \textcolor{keyword}{typedef}\ \_\_float128\ tf\_float;}
+\DoxyCodeLine{00210\ \textcolor{preprocessor}{\#define\ TF\_C(x)\ x\#\#Q}}
+\DoxyCodeLine{00211\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00213\ \textcolor{preprocessor}{\#ifdef\ CRT\_HAS\_F128}}
+\DoxyCodeLine{00214\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{union\ }\{}
+\DoxyCodeLine{00215\ \ \ \mbox{\hyperlink{structuqwords}{uqwords}}\ u;}
+\DoxyCodeLine{00216\ \ \ tf\_float\ f;}
+\DoxyCodeLine{00217\ \}\ tf\_bits;}
+\DoxyCodeLine{00218\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00220\ \textcolor{comment}{//\ \_\_(u)int128\_t\ is\ currently\ needed\ to\ compile\ the\ *tf\ builtins\ as\ we\ would}}
+\DoxyCodeLine{00221\ \textcolor{comment}{//\ otherwise\ need\ to\ manually\ expand\ the\ bit\ manipulation\ on\ two\ 64-\/bit\ value.}}
+\DoxyCodeLine{00222\ \textcolor{preprocessor}{\#if\ defined(CRT\_HAS\_128BIT)\ \&\&\ defined(CRT\_HAS\_F128)}}
+\DoxyCodeLine{00223\ \textcolor{preprocessor}{\#define\ CRT\_HAS\_TF\_MODE}}
+\DoxyCodeLine{00224\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00226\ \textcolor{preprocessor}{\#if\ \_\_STDC\_VERSION\_\_\ >=\ 199901L\ \&\&\ !defined(\_MSC\_VER)}}
+\DoxyCodeLine{00227\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{float}\ \_Complex\ \mbox{\hyperlink{struct_fcomplex}{Fcomplex}};}
+\DoxyCodeLine{00228\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{double}\ \_Complex\ \mbox{\hyperlink{struct_dcomplex}{Dcomplex}};}
+\DoxyCodeLine{00229\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{double}\ \_Complex\ \mbox{\hyperlink{struct_lcomplex}{Lcomplex}};}
+\DoxyCodeLine{00230\ \textcolor{preprocessor}{\#if\ defined(CRT\_LDBL\_128BIT)}}
+\DoxyCodeLine{00231\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{struct_lcomplex}{Lcomplex}}\ Qcomplex;}
+\DoxyCodeLine{00232\ \textcolor{preprocessor}{\#define\ CRT\_HAS\_NATIVE\_COMPLEX\_F128}}
+\DoxyCodeLine{00233\ \textcolor{preprocessor}{\#elif\ defined(CRT\_HAS\_\_\_FLOAT128\_KEYWORD)}}
+\DoxyCodeLine{00234\ \textcolor{preprocessor}{\#if\ defined(\_\_clang\_major\_\_)\ \&\&\ \_\_clang\_major\_\_\ >\ 10}}
+\DoxyCodeLine{00235\ \textcolor{comment}{//\ Clang\ prior\ to\ 11\ did\ not\ support\ \_\_float128\ \_Complex.}}
+\DoxyCodeLine{00236\ \textcolor{keyword}{typedef}\ \_\_float128\ \_Complex\ Qcomplex;}
+\DoxyCodeLine{00237\ \textcolor{preprocessor}{\#define\ CRT\_HAS\_NATIVE\_COMPLEX\_F128}}
+\DoxyCodeLine{00238\ \textcolor{preprocessor}{\#elif\ defined(\_\_GNUC\_\_)\ \&\&\ \_\_GNUC\_\_\ >=\ 7}}
+\DoxyCodeLine{00239\ \textcolor{comment}{//\ GCC\ does\ not\ allow\ \_\_float128\ \_Complex,\ but\ accepts\ \_Float128\ \_Complex.}}
+\DoxyCodeLine{00240\ \textcolor{keyword}{typedef}\ \_Float128\ \_Complex\ Qcomplex;}
+\DoxyCodeLine{00241\ \textcolor{preprocessor}{\#define\ CRT\_HAS\_NATIVE\_COMPLEX\_F128}}
+\DoxyCodeLine{00242\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00243\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00244\ }
+\DoxyCodeLine{00245\ \textcolor{preprocessor}{\#define\ COMPLEX\_REAL(x)\ \_\_real\_\_(x)}}
+\DoxyCodeLine{00246\ \textcolor{preprocessor}{\#define\ COMPLEX\_IMAGINARY(x)\ \_\_imag\_\_(x)}}
+\DoxyCodeLine{00247\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00248\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00249\ \ \ \textcolor{keywordtype}{float}\ real,\ imaginary;}
+\DoxyCodeLine{00250\ \}\ \mbox{\hyperlink{struct_fcomplex}{Fcomplex}};}
+\DoxyCodeLine{00251\ }
+\DoxyCodeLine{00252\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00253\ \ \ \textcolor{keywordtype}{double}\ real,\ imaginary;}
+\DoxyCodeLine{00254\ \}\ \mbox{\hyperlink{struct_dcomplex}{Dcomplex}};}
+\DoxyCodeLine{00255\ }
+\DoxyCodeLine{00256\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00257\ \ \ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{double}\ real,\ imaginary;}
+\DoxyCodeLine{00258\ \}\ \mbox{\hyperlink{struct_lcomplex}{Lcomplex}};}
+\DoxyCodeLine{00259\ }
+\DoxyCodeLine{00260\ \textcolor{preprocessor}{\#define\ COMPLEX\_REAL(x)\ (x).real}}
+\DoxyCodeLine{00261\ \textcolor{preprocessor}{\#define\ COMPLEX\_IMAGINARY(x)\ (x).imaginary}}
+\DoxyCodeLine{00262\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00263\ }
+\DoxyCodeLine{00264\ \textcolor{preprocessor}{\#ifdef\ CRT\_HAS\_NATIVE\_COMPLEX\_F128}}
+\DoxyCodeLine{00265\ \textcolor{preprocessor}{\#define\ COMPLEXTF\_REAL(x)\ \_\_real\_\_(x)}}
+\DoxyCodeLine{00266\ \textcolor{preprocessor}{\#define\ COMPLEXTF\_IMAGINARY(x)\ \_\_imag\_\_(x)}}
+\DoxyCodeLine{00267\ \textcolor{preprocessor}{\#elif\ defined(CRT\_HAS\_F128)}}
+\DoxyCodeLine{00268\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00269\ \ \ tf\_float\ real,\ imaginary;}
+\DoxyCodeLine{00270\ \}\ Qcomplex;}
+\DoxyCodeLine{00271\ \textcolor{preprocessor}{\#define\ COMPLEXTF\_REAL(x)\ (x).real}}
+\DoxyCodeLine{00272\ \textcolor{preprocessor}{\#define\ COMPLEXTF\_IMAGINARY(x)\ (x).imaginary}}
+\DoxyCodeLine{00273\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00274\ }
+\DoxyCodeLine{00275\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CRT\_HAS\_FLOATING\_POINT}}
+\DoxyCodeLine{00276\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ INT\_TYPES\_H}}
+
+\end{DoxyCode}

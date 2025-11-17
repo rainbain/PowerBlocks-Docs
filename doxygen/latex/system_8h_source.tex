@@ -1,0 +1,145 @@
+\doxysection{system.\+h}
+\hypertarget{system_8h_source}{}\label{system_8h_source}\index{powerblocks/core/system/system.h@{powerblocks/core/system/system.h}}
+\mbox{\hyperlink{system_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{syscall_8h}{powerblocks/core/system/syscall.h}}"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ SYSTEM\_BUS\_CLOCK\_HZ\ 243000000}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ SYSTEM\_CORE\_CLOCK\_HZ\ 729000000}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\ \#define\ SYSTEM\_TB\_CLOCK\_HZ\ (SYSTEM\_BUS\_CLOCK\_HZ\ /\ 4)}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ SYSTEM\_US\_TO\_TICKS(us)\ (SYSTEM\_TB\_CLOCK\_HZ\ /\ 1000000\ *\ (us))}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ SYSTEM\_MS\_TO\_TICKS(ms)\ (SYSTEM\_TB\_CLOCK\_HZ\ /\ 1000\ *\ (ms))}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#define\ SYSTEM\_S\_TO\_TICKS(s)\ (SYSTEM\_TB\_CLOCK\_HZ\ *\ (s))}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#define\ SYSTEM\_MEM\_UNCACHED(address)\ (((uint32\_t)(address)\ \&\ 0x1FFFFFFF)\ |\ 0xC0000000)}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#define\ SYSTEM\_MEM\_CACHED(address)\ (((uint32\_t)(address)\ \&\ 0x1FFFFFFF)\ |\ 0x80000000)}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#define\ SYSTEM\_MEM\_PHYSICAL(address)\ ((uint32\_t)(address)\ \&\ 0x1FFFFFFF)}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00089\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{int}\ magic;\ \textcolor{comment}{//\ Supposed\ to\ be\ 0x5f617267,\ checked\ by\ system\ init}}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ command\_line;}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{int}\ command\_line\_length;}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{int}\ argc;}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{char}\ **argv;}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{char}\ **end\_argv;}
+\DoxyCodeLine{00096\ \}\ \mbox{\hyperlink{structsystem__argv__t}{system\_argv\_t}};}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structsystem__argv__t}{system\_argv\_t}}\ system\_argv;}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\#define\ PACKED\ \_\_attribute\_\_((packed))}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#define\ MEM2\ \_\_attribute\_\_((section("{}.mem2"{})))}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#define\ SYSTEM\_MAIN\_STACK\_SIZE\ (1024*1024*4)\ }\textcolor{comment}{//\ 4\ MB}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00128\ \textcolor{preprocessor}{\#define\ SYSTEM\_GET\_MSR(msr)\ \(\backslash\)}}
+\DoxyCodeLine{00129\ \textcolor{preprocessor}{\ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(\ \(\backslash\)}}
+\DoxyCodeLine{00130\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ "{}mfmsr\ \%0"{}\ :\ "{}=r"{}(msr)\ \(\backslash\)}}
+\DoxyCodeLine{00131\ \textcolor{preprocessor}{\ \ \ \ );}}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00138\ \textcolor{preprocessor}{\#define\ SYSTEM\_SET\_MSR(msr)\ \(\backslash\)}}
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(\ \(\backslash\)}}
+\DoxyCodeLine{00140\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ "{}mtmsr\ \%0"{}\ :\ :\ "{}r"{}(msr)\ \(\backslash\)}}
+\DoxyCodeLine{00141\ \textcolor{preprocessor}{\ \ \ \ );}}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00149\ \textcolor{preprocessor}{\#define\ SYSTEM\_GET\_DEC(msr)\ \(\backslash\)}}
+\DoxyCodeLine{00150\ \textcolor{preprocessor}{\ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(\ \(\backslash\)}}
+\DoxyCodeLine{00151\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ "{}mfdec\ \%0"{}\ :\ "{}=r"{}(msr)\ \(\backslash\)}}
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\ \ \ \ );}}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00160\ \textcolor{preprocessor}{\#define\ SYSTEM\_SET\_DEC(msr)\ \(\backslash\)}}
+\DoxyCodeLine{00161\ \textcolor{preprocessor}{\ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(\ \(\backslash\)}}
+\DoxyCodeLine{00162\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ "{}mtdec\ \%0"{}\ :\ :\ "{}r"{}(msr)\ \(\backslash\)}}
+\DoxyCodeLine{00163\ \textcolor{preprocessor}{\ \ \ \ );}}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00170\ \textcolor{preprocessor}{\#define\ SYSTEM\_DISABLE\_ISR(ee\_enabled)\ \(\backslash\)}}
+\DoxyCodeLine{00171\ \textcolor{preprocessor}{\ \ \ \ do\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00172\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ uint32\_t\ msr;\ \(\backslash\)}}
+\DoxyCodeLine{00173\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ SYSTEM\_GET\_MSR(msr);\ \(\backslash\)}}
+\DoxyCodeLine{00174\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ ee\_enabled\ =\ (msr\ >>\ 15)\ \&\ 1;\ \(\backslash\)}}
+\DoxyCodeLine{00175\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ msr\ \&=\ \string~(0x8000);\ \(\backslash\)}}
+\DoxyCodeLine{00176\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ SYSTEM\_SET\_MSR(msr);\ \(\backslash\)}}
+\DoxyCodeLine{00177\ \textcolor{preprocessor}{\ \ \ \ \}\ while(0)}}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00186\ \textcolor{preprocessor}{\#define\ SYSTEM\_ENABLE\_ISR(ee\_enabled)\ \(\backslash\)}}
+\DoxyCodeLine{00187\ \textcolor{preprocessor}{\ \ \ \ if(ee\_enabled)\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00188\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ uint32\_t\ msr;\ \(\backslash\)}}
+\DoxyCodeLine{00189\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ SYSTEM\_GET\_MSR(msr);\ \(\backslash\)}}
+\DoxyCodeLine{00190\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ msr\ |=\ 0x8000;\ \(\backslash\)}}
+\DoxyCodeLine{00191\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ SYSTEM\_SET\_MSR(msr);\ \(\backslash\)}}
+\DoxyCodeLine{00192\ \textcolor{preprocessor}{\ \ \ \ \}}}
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00199\ \textcolor{preprocessor}{\#define\ SYSTEM\_SYNC()\ \(\backslash\)}}
+\DoxyCodeLine{00200\ \textcolor{preprocessor}{\ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(\ \(\backslash\)}}
+\DoxyCodeLine{00201\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ "{}sync"{}\ \(\backslash\)}}
+\DoxyCodeLine{00202\ \textcolor{preprocessor}{\ \ \ \ );}}
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00209\ \textcolor{preprocessor}{\#define\ SYSTEM\_ISYNC()\ \(\backslash\)}}
+\DoxyCodeLine{00210\ \textcolor{preprocessor}{\ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_(\ \(\backslash\)}}
+\DoxyCodeLine{00211\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ "{}isync"{}\ \(\backslash\)}}
+\DoxyCodeLine{00212\ \textcolor{preprocessor}{\ \ \ \ );}}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00219\ \textcolor{preprocessor}{\#define\ ASSERT(x)\ \(\backslash\)}}
+\DoxyCodeLine{00220\ \textcolor{preprocessor}{\ \ \ \ if((x)\ ==\ 0)\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00221\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ SYSCALL\_ASSERT("{}ASSERTION\ FAILED"{},\ \_\_LINE\_\_,\ \_\_FILE\_\_);\ \(\backslash\)}}
+\DoxyCodeLine{00222\ \textcolor{preprocessor}{\ \ \ \ \}}}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00233\ \textcolor{preprocessor}{\#define\ ASSERT\_OUT\_OF\_MEMORY(x)\ \(\backslash\)}}
+\DoxyCodeLine{00234\ \textcolor{preprocessor}{\ \ \ \ if((x)\ ==\ 0)\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00235\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ SYSCALL\_ASSERT("{}OUT\ OF\ MEMORY"{},\ \_\_LINE\_\_,\ \_\_FILE\_\_);\ \(\backslash\)}}
+\DoxyCodeLine{00236\ \textcolor{preprocessor}{\ \ \ \ \}}}
+\DoxyCodeLine{00237\ }
+\DoxyCodeLine{00243\ \textcolor{preprocessor}{\#define\ ALIGN(x)\ \_\_attribute\_\_((aligned(x)))}}
+\DoxyCodeLine{00244\ }
+\DoxyCodeLine{00251\ \textcolor{preprocessor}{\#define\ SYSTEM\_SWITCH\_SP(x)\ \(\backslash\)}}
+\DoxyCodeLine{00252\ \textcolor{preprocessor}{\ \ \ \ \ \_\_asm\_\_\ \_\_volatile\_\_\ (\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00253\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ "{}lis\ \ \ \ r3,\ pxCurrentTCB@ha\(\backslash\)n\(\backslash\)t"{}\ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00254\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ "{}lwz\ \ \ \ r4,\ pxCurrentTCB@l(r3)\(\backslash\)n\(\backslash\)t"{}\ \ \ \ \ }\textcolor{comment}{/*\ r4\ =\ pxCurrentTCB\ */}\textcolor{preprocessor}{\ \(\backslash\)}}
+\DoxyCodeLine{00255\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ "{}mr\ \ \ \ \ r5,\ r1\(\backslash\)n\(\backslash\)t"{}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ r5\ =\ current\ SP\ */}\textcolor{preprocessor}{\ \(\backslash\)}}
+\DoxyCodeLine{00256\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ "{}stw\ \ \ \ r5,\ 0(r4)\(\backslash\)n\(\backslash\)t"{}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ pxCurrentTCB-\/>pxTopOfStack\ =\ SP\ */}\textcolor{preprocessor}{\ \(\backslash\)}}
+\DoxyCodeLine{00257\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00258\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ Call\ vTaskSwitchContext()\ */}\textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00259\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ "{}bl\ \ \ \ \ vTaskSwitchContext\(\backslash\)n\(\backslash\)t"{}\ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00260\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00261\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ "{}lis\ \ \ \ r3,\ pxCurrentTCB@ha\(\backslash\)n\(\backslash\)t"{}\ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00262\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ "{}lwz\ \ \ \ r4,\ pxCurrentTCB@l(r3)\(\backslash\)n\(\backslash\)t"{}\ \ \ \ \ }\textcolor{comment}{/*\ r4\ =\ pxCurrentTCB\ */}\textcolor{preprocessor}{\ \(\backslash\)}}
+\DoxyCodeLine{00263\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ "{}lwz\ \ \ \ r1,\ 0(r4)\(\backslash\)n\(\backslash\)t"{}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ SP\ =\ pxCurrentTCB-\/>pxTopOfStack\ */}\textcolor{preprocessor}{\ \(\backslash\)}}
+\DoxyCodeLine{00264\ \textcolor{preprocessor}{\ \ \ \ )}}
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00276\ \textcolor{keyword}{extern}\ uint64\_t\ \mbox{\hyperlink{system_8h_a5d2d66460da56496cafedc46ee77b0e0}{system\_get\_time\_base\_int}}();}
+\DoxyCodeLine{00277\ }
+\DoxyCodeLine{00289\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{system_8h_ae25ed0d22d925d0b45ad6143ea9a75fd}{system\_delay\_int}}(uint64\_t\ ticks);}
+\DoxyCodeLine{00290\ }
+\DoxyCodeLine{00300\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{system_8h_affe880ad4a8e5b17651d806747fdc906}{system\_flush\_dcache}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ data,\ uint32\_t\ size);}
+\DoxyCodeLine{00301\ }
+\DoxyCodeLine{00308\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{system_8h_ad848eb53c91a2faa645227889eff19ec}{system\_invalidate\_dcache}}(\textcolor{keywordtype}{void}*\ data,\ uint32\_t\ size);}
+\DoxyCodeLine{00309\ }
+\DoxyCodeLine{00319\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{system_8h_a50a5e1a0d6ecb7730e80e304729abe86}{system\_invalidate\_icache}}(\textcolor{keywordtype}{void}*\ data,\ uint32\_t\ size);}
+\DoxyCodeLine{00320\ }
+\DoxyCodeLine{00332\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{system_8h_a7c5e9e16601a437cad52677f15cc49f6}{system\_aligned\_malloc}}(uint32\_t\ bytes,\ uint32\_t\ alignment);}
+\DoxyCodeLine{00333\ }
+\DoxyCodeLine{00339\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{system_8h_a9c68883bc316dd322bbda387d0321c4b}{system\_aligned\_free}}(\textcolor{keywordtype}{void}*\ ptr);}
+\DoxyCodeLine{00340\ }
+\DoxyCodeLine{00347\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{system_8h_a2e1b0877a1df13187c6aadf8f554d877}{system\_initialize}}();}
+\DoxyCodeLine{00348\ }
+\DoxyCodeLine{00365\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{system_8h_ad4df50c1cd712e41557442f42c42563f}{system\_get\_boot\_path}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ device,\ \textcolor{keywordtype}{char}*\ buffer,\ \textcolor{keywordtype}{size\_t}\ length);}
+\DoxyCodeLine{00366\ }
+\DoxyCodeLine{00367\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+
+\end{DoxyCode}
