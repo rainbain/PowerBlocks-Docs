@@ -25,8 +25,6 @@
 var NAVTREE =
 [
   [ "PowerBlocks SDK", "index.html", [
-    [ "Introduction", "index.html#autotoc_md71", null ],
-    [ "Contributing", "index.html#autotoc_md72", null ],
     [ "Contributing", "contributing.html", "contributing" ],
     [ "Getting Started", "getting_started_index.html", "getting_started_index" ],
     [ "Known Issues", "known_issues.html", [
@@ -74,8 +72,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_free_r_t_o_s_config_8h.html",
-"gx__xf_8h.html#add852a47f0d13113c705c6cee99b1d23ab365bfc4a670f722ccf077b5d5aeec46",
-"structl2cap__device__t.html"
+"gx__xf_8h.html#add852a47f0d13113c705c6cee99b1d23ad2bcbd1dbf324c074663789736d71cc4",
+"structuqwords.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';
