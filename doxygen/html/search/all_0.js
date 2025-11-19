@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['align_0',['ALIGN',['../system_8h.html#abe7f8cd9a0ce69b71567a3870415be66',1,'system.h']]],
-  ['arith64_5fword_1',['arith64_word',['../unionarith64__word.html',1,'']]],
-  ['assert_2',['ASSERT',['../system_8h.html#aca68c0d4ac8df0838e209fb5300f7be3',1,'system.h']]],
-  ['assert_5fout_5fof_5fmemory_3',['ASSERT_OUT_OF_MEMORY',['../system_8h.html#afbec57bfd91c7f80ce83af10b66b3578',1,'system.h']]]
+  ['750cl_20simd_20support_0',['PowerPC 750CL SIMD Support',['../known_issues.html#autotoc_md75',1,'']]]
 ];

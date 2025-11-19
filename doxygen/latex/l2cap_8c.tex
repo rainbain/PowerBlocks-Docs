@@ -34,12 +34,14 @@ Bluetooth L2\+CAP Layer.
 \Hypertarget{l2cap_8c_a7c22a706a3705d5c6deae3af97c911f7}\label{l2cap_8c_a7c22a706a3705d5c6deae3af97c911f7} 
 \#define {\bfseries L2\+CAP\+\_\+\+INFO\+\_\+\+LOGGING}
 \item 
+\Hypertarget{l2cap_8c_a5636cbed23313a9d7025f387b4e0c2b3}\label{l2cap_8c_a5636cbed23313a9d7025f387b4e0c2b3} 
+\#define {\bfseries L2\+CAP\+\_\+\+DEBUG\+\_\+\+LOGGING}
+\item 
 \#define \mbox{\hyperlink{l2cap_8c_aef0e61a97c1cab1052a4887defee1067}{L2\+CAP\+\_\+\+LOG\+\_\+\+ERROR}}(fmt, ...)
 \item 
 \#define \mbox{\hyperlink{l2cap_8c_aeda8a5b2e096dcd9e7ea850bfa2000c8}{L2\+CAP\+\_\+\+LOG\+\_\+\+INFO}}(fmt, ...)
 \item 
-\Hypertarget{l2cap_8c_a76c11c49b688108e739555f6c7f9021f}\label{l2cap_8c_a76c11c49b688108e739555f6c7f9021f} 
-\#define {\bfseries L2\+CAP\+\_\+\+LOG\+\_\+\+DEBUG}(fmt, ...)
+\#define \mbox{\hyperlink{l2cap_8c_a76c11c49b688108e739555f6c7f9021f}{L2\+CAP\+\_\+\+LOG\+\_\+\+DEBUG}}(fmt, ...)
 \item 
 \Hypertarget{l2cap_8c_ace4d507e88b03bc793e59e3717aa3659}\label{l2cap_8c_ace4d507e88b03bc793e59e3717aa3659} 
 \#define {\bfseries L2\+CAP\+\_\+\+SIGNAL\+\_\+\+CODE\+\_\+\+REJECT}~0x01
@@ -124,6 +126,17 @@ Samuel Fitzsimons (rainbain)
 
 
 \doxysubsection{Macro Definition Documentation}
+\Hypertarget{l2cap_8c_a76c11c49b688108e739555f6c7f9021f}\index{l2cap.c@{l2cap.c}!L2CAP\_LOG\_DEBUG@{L2CAP\_LOG\_DEBUG}}
+\index{L2CAP\_LOG\_DEBUG@{L2CAP\_LOG\_DEBUG}!l2cap.c@{l2cap.c}}
+\doxysubsubsection{\texorpdfstring{L2CAP\_LOG\_DEBUG}{L2CAP\_LOG\_DEBUG}}
+{\footnotesize\ttfamily \label{l2cap_8c_a76c11c49b688108e739555f6c7f9021f} 
+\#define L2\+CAP\+\_\+\+LOG\+\_\+\+DEBUG(\begin{DoxyParamCaption}\item[{}]{fmt}{, }\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{LOG\_DEBUG(TAG,\ fmt,\ \#\#\_\_VA\_ARGS\_\_)}
+
+\end{DoxyCode}
 \Hypertarget{l2cap_8c_aef0e61a97c1cab1052a4887defee1067}\index{l2cap.c@{l2cap.c}!L2CAP\_LOG\_ERROR@{L2CAP\_LOG\_ERROR}}
 \index{L2CAP\_LOG\_ERROR@{L2CAP\_LOG\_ERROR}!l2cap.c@{l2cap.c}}
 \doxysubsubsection{\texorpdfstring{L2CAP\_LOG\_ERROR}{L2CAP\_LOG\_ERROR}}

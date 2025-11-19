@@ -1,0 +1,165 @@
+\doxysection{Build From Source}
+\hypertarget{building}{}\label{building}\index{Build From Source@{Build From Source}}
+This page covers how to build Power\+Blocks SDK from source on {\bfseries{Linux}} and {\bfseries{Windows}}.
+
+These steps must be followed on a {\bfseries{Linux}} host machine.
+
+Building Power\+Blocks has the following steps.
+\begin{DoxyEnumerate}
+\item Download \& Export Environment
+\item Build LLVM \& Clang
+\item Build Picolibc
+\end{DoxyEnumerate}
+
+\DoxyHorRuler{0}
+ \hypertarget{building_autotoc_md11}{}\doxysubsection{\texorpdfstring{Download \& Export Environment}{Download \& Export Environment}}\label{building_autotoc_md11}
+Clone the source code to your workspace. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mkdir\ \string~/Workspace}
+\DoxyCodeLine{cd\ \string~/Workspace}
+\DoxyCodeLine{git\ clone\ https://github.com/rainbain/PowerBlocks.git}
+
+\end{DoxyCode}
+
+
+And export the build environment to the path. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{.\ ./PowerBlocks/export\_build.sh}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+ \hypertarget{building_autotoc_md13}{}\doxysubsection{\texorpdfstring{Build LLVM \& Clang}{Build LLVM \& Clang}}\label{building_autotoc_md13}
+Clone the latest version of LLVM and set up build folder. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ clone\ https://github.com/llvm/llvm-\/project.git}
+\DoxyCodeLine{cd\ llvm-\/project}
+\DoxyCodeLine{mkdir\ build}
+\DoxyCodeLine{cd\ build}
+
+\end{DoxyCode}
+
+
+Configure LLVM. You can configure it to generate binaries for Windows or Linux.\hypertarget{building_autotoc_md14}{}\doxysubsubsection{\texorpdfstring{Linux}{Linux}}\label{building_autotoc_md14}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ -\/G\ Ninja\ ../llvm\ \(\backslash\)}
+\DoxyCodeLine{ \ -\/DCMAKE\_BUILD\_TYPE=Release\ \(\backslash\)}
+\DoxyCodeLine{ \ -\/DCMAKE\_INSTALL\_PREFIX=\$\{SDK\_HOME\}/toolchain\ \(\backslash\)}
+\DoxyCodeLine{ \ -\/DLLVM\_TARGETS\_TO\_BUILD="{}PowerPC"{}\ \(\backslash\)}
+\DoxyCodeLine{ \ -\/DLLVM\_ENABLE\_PROJECTS="{}clang;lld"{}\ \(\backslash\)}
+\DoxyCodeLine{ \ -\/DLLVM\_ENABLE\_LLD=ON\ \(\backslash\)}
+\DoxyCodeLine{ \ -\/DLLVM\_ENABLE\_ASSERTIONS=OFF\ \(\backslash\)}
+\DoxyCodeLine{ \ -\/DLLVM\_INCLUDE\_EXAMPLES=OFF\ \(\backslash\)}
+\DoxyCodeLine{ \ -\/DLLVM\_INCLUDE\_TESTS=OFF\ \(\backslash\)}
+\DoxyCodeLine{ \ -\/DLLVM\_INCLUDE\_DOCS=OFF\ \(\backslash\)}
+\DoxyCodeLine{ \ -\/DCLANG\_INCLUDE\_TESTS=OFF\ \(\backslash\)}
+\DoxyCodeLine{ \ -\/DCLANG\_INCLUDE\_DOCS=OFF\ \(\backslash\)}
+\DoxyCodeLine{ \ -\/DLLVM\_ENABLE\_BACKTRACES=OFF}
+
+\end{DoxyCode}
+\hypertarget{building_autotoc_md15}{}\doxysubsubsection{\texorpdfstring{Windows}{Windows}}\label{building_autotoc_md15}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ -\/G\ Ninja\ ../llvm\ \(\backslash\)}
+\DoxyCodeLine{ \ -\/DCMAKE\_BUILD\_TYPE=Release\ \(\backslash\)}
+\DoxyCodeLine{ \ -\/DCMAKE\_TOOLCHAIN\_FILE=\$\{SDK\_HOME\}/toolchain/mingw-\/toolchain.cmake\ \(\backslash\)}
+\DoxyCodeLine{ \ -\/DCMAKE\_INSTALL\_PREFIX=\$\{SDK\_HOME\}/toolchain\ \(\backslash\)}
+\DoxyCodeLine{ \ -\/DLLVM\_TARGETS\_TO\_BUILD="{}PowerPC"{}\ \(\backslash\)}
+\DoxyCodeLine{ \ -\/DLLVM\_ENABLE\_PROJECTS="{}clang;lld"{}\ \(\backslash\)}
+\DoxyCodeLine{ \ -\/DLLVM\_ENABLE\_LLD=ON\ \(\backslash\)}
+\DoxyCodeLine{ \ -\/DLLVM\_ENABLE\_ASSERTIONS=OFF\ \(\backslash\)}
+\DoxyCodeLine{ \ -\/DLLVM\_INCLUDE\_EXAMPLES=OFF\ \(\backslash\)}
+\DoxyCodeLine{ \ -\/DLLVM\_INCLUDE\_TESTS=OFF\ \(\backslash\)}
+\DoxyCodeLine{ \ -\/DLLVM\_INCLUDE\_DOCS=OFF\ \(\backslash\)}
+\DoxyCodeLine{ \ -\/DCLANG\_INCLUDE\_TESTS=OFF\ \(\backslash\)}
+\DoxyCodeLine{ \ -\/DCLANG\_INCLUDE\_DOCS=OFF\ \(\backslash\)}
+\DoxyCodeLine{ \ -\/DLLVM\_ENABLE\_BACKTRACES=OFF}
+
+\end{DoxyCode}
+\hypertarget{building_autotoc_md16}{}\doxysubsubsection{\texorpdfstring{Now Build \& Install}{Now Build \& Install}}\label{building_autotoc_md16}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ninja}
+\DoxyCodeLine{ninja\ install-\/clang\ install-\/lld\ install-\/llvm-\/ar\ install-\/llvm-\/ranlib\ install-\/llvm-\/objcopy\ install-\/llvm-\/strip\ install-\/llvm-\/objdump\ install-\/clang-\/resource-\/headers}
+
+\end{DoxyCode}
+\hypertarget{building_autotoc_md17}{}\doxysubsubsection{\texorpdfstring{Windows Setup}{Windows Setup}}\label{building_autotoc_md17}
+\hypertarget{building_autotoc_md18}{}\doxysubsubsubsection{\texorpdfstring{Fix Symbolic Links}{Fix Symbolic Links}}\label{building_autotoc_md18}
+In order to run on Windows, symbolic links must be fixed. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ \$\{SDK\_HOME\}/toolchain/}
+\DoxyCodeLine{python3\ fix\_symlink.py}
+
+\end{DoxyCode}
+\hypertarget{building_autotoc_md19}{}\doxysubsubsubsection{\texorpdfstring{Copy DLL Files}{Copy DLL Files}}\label{building_autotoc_md19}
+Windows will need the Min\+GW runtime DLL files. The exact path may depend on your Min\+GW version. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cp\ /usr/lib/gcc/x86\_64-\/w64-\/mingw32/14-\/win32/libgcc\_s\_seh-\/1.dll\ \$\{SDK\_HOME\}/toolchain/bin/}
+\DoxyCodeLine{cp\ /usr/lib/gcc/x86\_64-\/w64-\/mingw32/14-\/win32/libstdc++-\/6.dll\ \$\{SDK\_HOME\}/toolchain/bin/}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+ \hypertarget{building_autotoc_md21}{}\doxysubsection{\texorpdfstring{Building Picolibc}{Building Picolibc}}\label{building_autotoc_md21}
+Now we want to build executables for the {\ttfamily Wii}, not the SDK target host machine. So we will use the compilers we just made. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ \string~/Workspace}
+\DoxyCodeLine{.\ ./PowerBlocks/export.sh}
+
+\end{DoxyCode}
+
+
+Clone Picolibc and setup build folder. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ clone\ https://github.com/picolibc/picolibc.git}
+\DoxyCodeLine{cd\ picolibc}
+\DoxyCodeLine{mkdir\ build}
+\DoxyCodeLine{cd\ build}
+
+\end{DoxyCode}
+
+
+Copy the patched {\ttfamily setjmp.\+S} file for Power\+PC 750. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cp\ \$\{SDK\_HOME\}/picolibc/setjmp.S\ ../newlib/libc/machine/powerpc/setjmp.S}
+
+\end{DoxyCode}
+
+
+Enforce using {\bfseries{Makefiles}} for picolibc\textquotesingle{}s build system. The build commands have been known to be too long for ninja. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{export\ CMAKE\_GENERATOR="{}Unix\ Makefiles"{}}
+
+\end{DoxyCode}
+
+
+Configure it\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ ..\ -\/DCMAKE\_INSTALL\_PREFIX=\$\{SDK\_HOME\}/picolibc\ -\/DEXTRA\_C\_FLAGS="{}-\/I\$\{SDK\_HOME\}/picolibc/"{}}
+
+\end{DoxyCode}
+
+
+Build and Install\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make\ -\/j\$(nproc)}
+\DoxyCodeLine{make\ install}
+
+\end{DoxyCode}
+
+
+Lastly, copy over the license file for picolibc\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cp\ ../COPYING.picolibc\ \$\{SDK\_HOME\}/picolibc/COPYING.picolibc}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+ \hypertarget{building_autotoc_md23}{}\doxysubsection{\texorpdfstring{Conclusion}{Conclusion}}\label{building_autotoc_md23}
+The Power\+Blocks SDK that we cloned earlier should now have the compilers and c runtime installed.
+
+It is ready to be used like the builds on the \href{https://github.com/rainbain/PowerBlocks/releases}{\texttt{ Power\+Blocks Releases Page}}. 

@@ -1,0 +1,56 @@
+\chapter{TODOs}
+\hypertarget{md_docs_2_t_o_d_o_s}{}\label{md_docs_2_t_o_d_o_s}\index{TODOs@{TODOs}}
+\label{md_docs_2_t_o_d_o_s_autotoc_md39}%
+\Hypertarget{md_docs_2_t_o_d_o_s_autotoc_md39}%
+
+
+This is a more in-\/depth version of the TODOs from what is in the README.\+md.
+
+This one is for parts that have some progress, but are missing features. This is to track those missing features.
+
+Feel free to add them as they are discovered.\hypertarget{md_docs_2_t_o_d_o_s_autotoc_md40}{}\doxysection{\texorpdfstring{Compiler / Tool\+Chain}{Compiler / Tool\+Chain}}\label{md_docs_2_t_o_d_o_s_autotoc_md40}
+
+\begin{DoxyEnumerate}
+\item Assembler Support for SIMD
+\item Auto Vectorization of SIMD
+\end{DoxyEnumerate}\hypertarget{md_docs_2_t_o_d_o_s_autotoc_md41}{}\doxysection{\texorpdfstring{Video Interface}{Video Interface}}\label{md_docs_2_t_o_d_o_s_autotoc_md41}
+
+\begin{DoxyEnumerate}
+\item Fix the unclean startup. (Black Out Screen)
+\item Are more video modes really needed?
+\end{DoxyEnumerate}\hypertarget{md_docs_2_t_o_d_o_s_autotoc_md42}{}\doxysection{\texorpdfstring{GX}{GX}}\label{md_docs_2_t_o_d_o_s_autotoc_md42}
+
+\begin{DoxyEnumerate}
+\item Add Display List
+\item Add TEV color swapping.
+\item Add Indirect Texturing
+\item Add Texture LODs
+\end{DoxyEnumerate}\hypertarget{md_docs_2_t_o_d_o_s_autotoc_md43}{}\doxysection{\texorpdfstring{Wiimotes}{Wiimotes}}\label{md_docs_2_t_o_d_o_s_autotoc_md43}
+
+\begin{DoxyEnumerate}
+\item Add support for the missing extensions.
+\item Add support for motion plus.
+\end{DoxyEnumerate}\hypertarget{md_docs_2_t_o_d_o_s_autotoc_md44}{}\doxysubsection{\texorpdfstring{Known Missing Extensions}{Known Missing Extensions}}\label{md_docs_2_t_o_d_o_s_autotoc_md44}
+
+\begin{DoxyItemize}
+\item Classic Controller Pro
+\item Drawsome Graphics Tablet
+\item Guitar Hero Guitar
+\item Guitar Hero Drums
+\item DJ Hero Turntable
+\item Taiko no Tatsujin Ta\+Ta\+Con Drum controller
+\item UDraw Game Tablet
+\item Densha de GO! Shinkansen Controller
+\item Wii Balance Board
+\end{DoxyItemize}\hypertarget{md_docs_2_t_o_d_o_s_autotoc_md45}{}\doxysection{\texorpdfstring{File\+System}{File\+System}}\label{md_docs_2_t_o_d_o_s_autotoc_md45}
+
+\begin{DoxyEnumerate}
+\item SD card mounting/unmounting may not be pretty. Ive not tried it
+\item Add the posix filesystem functions.
+\end{DoxyEnumerate}\hypertarget{md_docs_2_t_o_d_o_s_autotoc_md46}{}\doxysection{\texorpdfstring{Bugs}{Bugs}}\label{md_docs_2_t_o_d_o_s_autotoc_md46}
+
+\begin{DoxyEnumerate}
+\item Fix rand() function.
+\item Fix framebuffer fill function. When drawing 5x5 red rects for example it fails up update UV values correctly and makes colors.
+\item Uninitialized memory in wiimote example? The wiimote example sometimes just fails with a black screen. Seems to fix if you reboot the system, so its likely uninitialized memory 
+\end{DoxyEnumerate}

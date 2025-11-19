@@ -1,0 +1,93 @@
+\chapter{Contributing}
+\hypertarget{contributing}{}\label{contributing}\index{Contributing@{Contributing}}
+First I want to say thank you for contributing!
+
+This page provides information to help you contribute to Power\+Blocks.
+
+Our goal is to make Power\+Blocks a robust and flexible SDK for Wii development, and contributions are always welcome.\hypertarget{contributing_autotoc_md2}{}\doxysubsection{\texorpdfstring{Code of Conduct}{Code of Conduct}}\label{contributing_autotoc_md2}
+All contributors fall under the \doxylink{code_of_conduct}{Code of Conduct}. ~\newline
+ Please make sure to read it before contributing.\hypertarget{contributing_autotoc_md3}{}\doxysubsection{\texorpdfstring{How can I contribute?}{How can I contribute?}}\label{contributing_autotoc_md3}
+Contributions can be as simple as fixing a bug, improving an API, or adding a new block.
+
+Fork the repository, make your changes, and submit a pull request. ~\newline
+ I will review it, provide feedback if necessary, and merge it when ready.
+
+Testing is also much appreciated. Just letting me know what works on hardware and what does not is very helpful to provide a clean experience to users and developers.
+
+Again, thank you for contributing!\hypertarget{contributing_autotoc_md4}{}\doxysection{\texorpdfstring{Project Structure}{Project Structure}}\label{contributing_autotoc_md4}
+Power\+Blocks is organized into blocks.
+
+The core block contains everything required for the SDK to function. ~\newline
+ It includes hardware abstraction layers and fundamental systems used by other blocks.
+
+Additional blocks provide optional features such as Wii Remote support, filesystem libraries, and more. ~\newline
+ These help developers without forcing a single implementation style.
+
+Documentation is generated with Doxygen from the \href{https://github.com/rainbain/PowerBlocks/tree/main/docs}{\texttt{ docs folder}}. Improvements to existing documentation and contributions covering Wii hardware or SDK components are greatly appreciated.\hypertarget{contributing_autotoc_md5}{}\doxysection{\texorpdfstring{Style Guide}{Style Guide}}\label{contributing_autotoc_md5}
+\hypertarget{contributing_autotoc_md6}{}\doxysubsubsection{\texorpdfstring{Header Files}{Header Files}}\label{contributing_autotoc_md6}
+Each header file has a Doxygen compatible comment block. This is expected on the core block, as well as additional blocks.
+
+Headers should be expected to have doxygen documentation. If a header is a core component of an API or block, it should also have its own API documentation.\hypertarget{contributing_autotoc_md7}{}\doxysubsubsection{\texorpdfstring{Naming Convention}{Naming Convention}}\label{contributing_autotoc_md7}
+Any names within header files first start with the name of the header. This provides namespacing to prevent names from getting mixed up.
+
+Acronyms or abbreviations are avoided unless its a generally well understood shortened name like {\ttfamily cmd}, or is a standardized name, like {\ttfamily l2cap}.
+
+The hope is for naming to be direct and consistent across Power\+Blocks to make the code base easy to search through and manage.
+
+Functions and exported variables follow {\ttfamily snake\+\_\+case}, where all letters are lowercase and words are separated by underscores
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ powerblocks/core/bluetooth/hci.h}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{extern}\ \mbox{\hyperlink{structhci__acl__packet__t}{hci\_acl\_packet\_t}}\ hci\_acl\_packet\_out\ \mbox{\hyperlink{system_8h_abe7f8cd9a0ce69b71567a3870415be66}{ALIGN}}(32)\ MEM2;}
+\DoxyCodeLine{}
+\DoxyCodeLine{...}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{hci_8c_a0237e9b843f7a2506862f0cd31f48133}{hci\_send\_acl}}(uint16\_t\ handle,\ hci\_acl\_packet\_boundary\_flag\_t\ pb,\ hci\_acl\_packet\_broadcast\_flag\_t\ bc,\ uint16\_t\ length);}
+
+\end{DoxyCode}
+
+
+Definitions and constants are named with {\ttfamily ALL\+\_\+\+CAPS\+\_\+\+WITH\+\_\+\+UNDERSCORES}\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ powerblocks/core/bluetooth/l2cap.c}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ L2CAP\_TASK\_STACK\_SIZE\  8192}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ L2CAP\_TASK\_PRIORITY\  \  (configMAX\_PRIORITIES\ /\ 4\ *\ 3)}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ TAG\ =\ \textcolor{stringliteral}{"{}L2CAP"{}};}
+
+\end{DoxyCode}
+
+
+Using underscores at the beginning of names should be avoided for clarity. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Do\ not\ do\ this:}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ \_\_\_MY\_DEFINITION\_\_\ 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \_cool\_static\_function(\textcolor{keywordtype}{int}\ ibxpr)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ ...}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ \hypertarget{contributing_autotoc_md8}{}\doxysubsubsection{\texorpdfstring{Formatting}{Formatting}}\label{contributing_autotoc_md8}
+
+\begin{DoxyItemize}
+\item 4 spaces (not tabs.)
+\item Opening braces on the same line.
+\item Keep lines under \texorpdfstring{$\sim$}{\string~}100 characters.
+\item At least 1 blank line between functions.
+\end{DoxyItemize}\hypertarget{contributing_autotoc_md9}{}\doxysection{\texorpdfstring{Testing}{Testing}}\label{contributing_autotoc_md9}
+Please make sure to provide testing of your contribution.
+
+Emulator testing is good during development, but please work to provide testing on hardware. The Wii\textquotesingle{}s hardware usually behaves differently from emulator, so hardware testing is essential.
+
+It is also fine to request that I or another contributor test specific features. I myself do not own many of the peripherals and expansions for the Wii. It is fine if these features are hardened with time as they are used as well.
+
+Always be careful about making sure to not brick the Wii during testing. It is generally a good idea to have a solid Wii homebrew setup to avoid this.
+
+Refer to \href{https://wii.hacks.guide/}{\texttt{ Wii Hacks Guide}} to help set up a Wii for homebrew development.
+
+\doxylink{code_of_conduct}{Code of Conduct} \input{code_of_conduct}

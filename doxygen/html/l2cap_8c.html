@@ -6,6 +6,7 @@
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>PowerBlocks SDK: powerblocks/core/bluetooth/l2cap.c File Reference</title>
+<link rel="icon" href="powerblocks_logo_icon.png" type="image/x-icon" />
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -24,6 +25,7 @@
 /* @license-end */
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -31,7 +33,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="powerblocks_logo_dark.svg"/></td>
+  <td id="projectlogo"><img alt="Logo" src="powerblocks_logo_light.svg"/></td>
   <td id="projectalign">
    <div id="projectname">PowerBlocks SDK
    </div>
@@ -142,12 +144,14 @@ Macros</h2></td></tr>
 <tr class="memitem:a7c22a706a3705d5c6deae3af97c911f7" id="r_a7c22a706a3705d5c6deae3af97c911f7"><td class="memItemLeft" align="right" valign="top"><a id="a7c22a706a3705d5c6deae3af97c911f7" name="a7c22a706a3705d5c6deae3af97c911f7"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>L2CAP_INFO_LOGGING</b></td></tr>
 <tr class="separator:a7c22a706a3705d5c6deae3af97c911f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5636cbed23313a9d7025f387b4e0c2b3" id="r_a5636cbed23313a9d7025f387b4e0c2b3"><td class="memItemLeft" align="right" valign="top"><a id="a5636cbed23313a9d7025f387b4e0c2b3" name="a5636cbed23313a9d7025f387b4e0c2b3"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>L2CAP_DEBUG_LOGGING</b></td></tr>
+<tr class="separator:a5636cbed23313a9d7025f387b4e0c2b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef0e61a97c1cab1052a4887defee1067" id="r_aef0e61a97c1cab1052a4887defee1067"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aef0e61a97c1cab1052a4887defee1067">L2CAP_LOG_ERROR</a>(fmt, ...)</td></tr>
 <tr class="separator:aef0e61a97c1cab1052a4887defee1067"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeda8a5b2e096dcd9e7ea850bfa2000c8" id="r_aeda8a5b2e096dcd9e7ea850bfa2000c8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeda8a5b2e096dcd9e7ea850bfa2000c8">L2CAP_LOG_INFO</a>(fmt, ...)</td></tr>
 <tr class="separator:aeda8a5b2e096dcd9e7ea850bfa2000c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76c11c49b688108e739555f6c7f9021f" id="r_a76c11c49b688108e739555f6c7f9021f"><td class="memItemLeft" align="right" valign="top"><a id="a76c11c49b688108e739555f6c7f9021f" name="a76c11c49b688108e739555f6c7f9021f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>L2CAP_LOG_DEBUG</b>(fmt, ...)</td></tr>
+<tr class="memitem:a76c11c49b688108e739555f6c7f9021f" id="r_a76c11c49b688108e739555f6c7f9021f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76c11c49b688108e739555f6c7f9021f">L2CAP_LOG_DEBUG</a>(fmt, ...)</td></tr>
 <tr class="separator:a76c11c49b688108e739555f6c7f9021f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace4d507e88b03bc793e59e3717aa3659" id="r_ace4d507e88b03bc793e59e3717aa3659"><td class="memItemLeft" align="right" valign="top"><a id="ace4d507e88b03bc793e59e3717aa3659" name="ace4d507e88b03bc793e59e3717aa3659"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>L2CAP_SIGNAL_CODE_REJECT</b>&#160;&#160;&#160;0x01</td></tr>
@@ -232,6 +236,28 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>round</b> = 0</td></tr
 <dl class="section author"><dt>Author</dt><dd>Samuel Fitzsimons (rainbain) </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a76c11c49b688108e739555f6c7f9021f" name="a76c11c49b688108e739555f6c7f9021f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76c11c49b688108e739555f6c7f9021f">&#9670;&#160;</a></span>L2CAP_LOG_DEBUG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define L2CAP_LOG_DEBUG</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>fmt</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em></em></span>...&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">LOG_DEBUG(TAG, fmt, ##__VA_ARGS__)</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="aef0e61a97c1cab1052a4887defee1067" name="aef0e61a97c1cab1052a4887defee1067"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aef0e61a97c1cab1052a4887defee1067">&#9670;&#160;</a></span>L2CAP_LOG_ERROR</h2>
 

@@ -1,0 +1,50 @@
+\chapter{Contributing}
+\hypertarget{md_docs_2_c_o_n_t_r_i_b_u_t_i_n_g}{}\label{md_docs_2_c_o_n_t_r_i_b_u_t_i_n_g}\index{Contributing@{Contributing}}
+\label{md_docs_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md6}%
+\Hypertarget{md_docs_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md6}%
+
+
+First I want to say thank you for contributing!
+
+This document outlines how to contribute to Power\+Blocks.
+
+The general hope is to make Power\+Blocks a strong and powerful SDK for the Wii, so contributions are much welcome.\hypertarget{md_docs_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md7}{}\doxysection{\texorpdfstring{Code of Conduct}{Code of Conduct}}\label{md_docs_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md7}
+All contributes follow under the code of conduct. Its nothing too crazy but do check it out in the {\ttfamily CODE\+\_\+\+OF\+\_\+\+CONDUCT.\+md} file.\hypertarget{md_docs_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md8}{}\doxysection{\texorpdfstring{How can I contribute?}{How can I contribute?}}\label{md_docs_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md8}
+Contributes can be as simple as fixing bug request, making a feature more extendable, or even adding your own block!
+
+Just fork it, make your changes, and submit a PR. I will do my best to review it, provide relevant feedback, and hopefully merge it.
+
+Testing is also much appreciated, just letting me know what works on hardware and does not.
+
+Again think you for your contribution!\hypertarget{md_docs_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md9}{}\doxysection{\texorpdfstring{Project Structure}{Project Structure}}\label{md_docs_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md9}
+Power\+Blocks is organized into blocks.
+
+The core block is everything the SDK needs to operate as a SDK. This includes hardware access and some coverage of all hardware multi media on the system like video and audio.
+
+Blocks add features every users will need, but are tools that should be implemented within the SDK. Like libraries, interfacing with obscure hardware addons, and more.\hypertarget{md_docs_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md10}{}\doxysection{\texorpdfstring{Style Guide}{Style Guide}}\label{md_docs_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md10}
+\hypertarget{md_docs_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md11}{}\doxysubsection{\texorpdfstring{Header Files}{Header Files}}\label{md_docs_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md11}
+Each header file has a Doxygen compatible comment block. This is expected on the core block, as well as additional blocks.
+
+Most functions and any other relevant parts to using the header should also have the same documentation.\hypertarget{md_docs_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md12}{}\doxysubsection{\texorpdfstring{Naming Convention}{Naming Convention}}\label{md_docs_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md12}
+Functions are named like {\ttfamily module\+\_\+action\+\_\+description} and {\ttfamily ios\+\_\+settings\+\_\+initialize.}
+
+Definitions and constants are named with {\ttfamily ALL\+\_\+\+CAPS\+\_\+\+WITH\+\_\+\+UNDERSCORES}. like\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ NAME\ =\ \textcolor{stringliteral}{"{}VALUE"{}};}
+
+\end{DoxyCode}
+\hypertarget{md_docs_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md13}{}\doxysubsection{\texorpdfstring{Formatting}{Formatting}}\label{md_docs_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md13}
+
+\begin{DoxyItemize}
+\item 4 spaces (not tabs.)
+\item Opening braces on the same line.
+\item Keep lines under \texorpdfstring{$\sim$}{\string~}100 characters.
+\item At least 1 blank line between functions.
+\end{DoxyItemize}\hypertarget{md_docs_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md14}{}\doxysection{\texorpdfstring{Testing}{Testing}}\label{md_docs_2_c_o_n_t_r_i_b_u_t_i_n_g_autotoc_md14}
+Make sure to include the test of your contributions when it changes the behavior of something.
+
+This preferably needs to be on actual hardware, and if you can, for a long period of time.
+
+The hardware tends to be very weird and emulator is almost never enough.
+
+I can test it too. Just don\textquotesingle{}t brink my Wii lol. 

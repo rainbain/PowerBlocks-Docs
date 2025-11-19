@@ -25,6 +25,34 @@
 var NAVTREE =
 [
   [ "PowerBlocks SDK", "index.html", [
+    [ "Introduction", "index.html#autotoc_md71", null ],
+    [ "Contributing", "index.html#autotoc_md72", null ],
+    [ "Contributing", "contributing.html", "contributing" ],
+    [ "Getting Started", "getting_started_index.html", "getting_started_index" ],
+    [ "Known Issues", "known_issues.html", [
+      [ "Toolchain & Compiler", "known_issues.html#autotoc_md74", [
+        [ "PowerPC 750CL SIMD Support", "known_issues.html#autotoc_md75", null ]
+      ] ],
+      [ "Video Interface (VI)", "known_issues.html#autotoc_md77", [
+        [ "Confirm Video Modes", "known_issues.html#autotoc_md78", null ],
+        [ "Video Blackout During Initialization", "known_issues.html#autotoc_md79", null ]
+      ] ],
+      [ "GX", "known_issues.html#autotoc_md81", [
+        [ "Missing Features", "known_issues.html#autotoc_md82", null ]
+      ] ],
+      [ "Wii Remotes (Wiimotes)", "known_issues.html#autotoc_md84", [
+        [ "Missing Extensions", "known_issues.html#autotoc_md85", null ]
+      ] ],
+      [ "File System", "known_issues.html#autotoc_md87", [
+        [ "SD Card Hot-Swapping", "known_issues.html#autotoc_md88", null ],
+        [ "Missing POSIX Functions", "known_issues.html#autotoc_md89", null ]
+      ] ],
+      [ "Bugs", "known_issues.html#autotoc_md91", [
+        [ "rand() Crash", "known_issues.html#autotoc_md92", null ],
+        [ "framebuffer_fill_rgba() Incorrect Fill Colors", "known_issues.html#autotoc_md93", null ],
+        [ "Wiimote Example Crash on Startup", "known_issues.html#autotoc_md94", null ]
+      ] ]
+    ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ]
@@ -46,8 +74,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_free_r_t_o_s_config_8h.html",
-"ios_8c.html#a8d6dfc73a3bdcf276da8e5d72c439435",
-"video_8c.html#a40efe144f286abf18f2b6b53deef2252"
+"gx__xf_8h.html#add852a47f0d13113c705c6cee99b1d23ab365bfc4a670f722ccf077b5d5aeec46",
+"structl2cap__device__t.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';
