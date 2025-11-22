@@ -1,5 +1,7 @@
 var NAVTREEINDEX1 =
 {
+"gx__xf_8h.html#add852a47f0d13113c705c6cee99b1d23ab45da5868d58ea6adb60e9e898577fe2":[4,0,0,0,2,5,1,15],
+"gx__xf_8h.html#add852a47f0d13113c705c6cee99b1d23ac3d6b9ce78ff4d45f0d272a692b492b2":[4,0,0,0,2,5,1,17],
 "gx__xf_8h.html#add852a47f0d13113c705c6cee99b1d23ad2bcbd1dbf324c074663789736d71cc4":[4,0,0,0,2,5,1,21],
 "gx__xf_8h.html#add852a47f0d13113c705c6cee99b1d23ad35301c9a8714bd27abdb3b29a62e73d":[4,0,0,0,2,5,1,9],
 "gx__xf_8h.html#add852a47f0d13113c705c6cee99b1d23adebf26fa6e7b650c5beeb6beb6eb0f00":[4,0,0,0,2,5,1,11],
@@ -86,13 +88,13 @@ var NAVTREEINDEX1 =
 "ios__settings_8h.html#ab7a6a5ac1deaec8f0df0d4c09a7c97e0":[4,0,0,0,3,3,0],
 "ios__settings_8h.html#ade92ddd2d5d93109564ffa0213a048d5":[4,0,0,0,3,3,4],
 "ios__settings_8h_source.html":[4,0,0,0,3,3],
-"ipc_8c.html":[4,0,0,0,4,4],
-"ipc_8c.html#a1990848fdee907712ae616cbee77300e":[4,0,0,0,4,4,0],
-"ipc_8c.html#ae8e083bfe7208c3a646e69b9af93474e":[4,0,0,0,4,4,1],
-"ipc_8h.html":[4,0,0,0,4,5],
-"ipc_8h.html#a1990848fdee907712ae616cbee77300e":[4,0,0,0,4,5,1],
-"ipc_8h.html#ae8e083bfe7208c3a646e69b9af93474e":[4,0,0,0,4,5,2],
-"ipc_8h_source.html":[4,0,0,0,4,5],
+"ipc_8c.html":[4,0,0,0,4,5],
+"ipc_8c.html#a1990848fdee907712ae616cbee77300e":[4,0,0,0,4,5,0],
+"ipc_8c.html#ae8e083bfe7208c3a646e69b9af93474e":[4,0,0,0,4,5,1],
+"ipc_8h.html":[4,0,0,0,4,6],
+"ipc_8h.html#a1990848fdee907712ae616cbee77300e":[4,0,0,0,4,6,1],
+"ipc_8h.html#ae8e083bfe7208c3a646e69b9af93474e":[4,0,0,0,4,6,2],
+"ipc_8h_source.html":[4,0,0,0,4,6],
 "known_issues.html":[2],
 "known_issues.html#autotoc_md74":[2,0],
 "known_issues.html#autotoc_md75":[2,0,0],
@@ -133,7 +135,7 @@ var NAVTREEINDEX1 =
 "l2cap_8h.html#ad1afe37de6799a07366fe423faeab045":[4,0,0,0,0,5,7],
 "l2cap_8h.html#ad4c40ef4c55b21acb04949a4c6c062dd":[4,0,0,0,0,5,5],
 "l2cap_8h_source.html":[4,0,0,0,0,5],
-"libcio_8c.html":[4,0,0,0,4,6],
+"libcio_8c.html":[4,0,0,0,4,7],
 "linux.html":[1,5],
 "linux.html#autotoc_md58":[1,5,0],
 "linux.html#autotoc_md60":[1,5,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX1 =
 "structios__waiter__alert__args.html":[3,0,26],
 "structipc__message.html":[3,0,27],
 "structl2cap__channel__t.html":[3,0,28],
-"structl2cap__device__t.html":[3,0,29],
-"structl2cap__signal__t.html":[3,0,30],
-"structsystem__argv__t.html":[3,0,32]
+"structl2cap__device__t.html":[3,0,29]
 };

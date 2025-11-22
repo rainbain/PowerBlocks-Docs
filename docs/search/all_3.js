@@ -24,12 +24,13 @@ var searchData=
   ['contributing_21',['Contributing',['../contributing.html',1,'Contributing'],['../index.html#autotoc_md72',1,'Contributing']]],
   ['convention_22',['Naming Convention',['../contributing.html#autotoc_md7',1,'']]],
   ['copy_20dll_20files_23',['Copy DLL Files',['../building.html#autotoc_md19',1,'']]],
-  ['crash_24',['rand() Crash',['../known_issues.html#autotoc_md92',1,'']]],
-  ['crash_20on_20startup_25',['Wiimote Example Crash on Startup',['../known_issues.html#autotoc_md94',1,'']]],
-  ['crash_5fhandler_2eh_26',['crash_handler.h',['../crash__handler_8h.html',1,'']]],
-  ['crash_5fhandler_5fbug_5fcheck_27',['crash_handler_bug_check',['../crash__handler_8h.html#aa19d5200886f461c949a00351cf1bfa0',1,'crash_handler.c']]],
-  ['crash_5fhandler_5fset_28',['crash_handler_set',['../crash__handler_8h.html#a1a476f34262bdda48b3c4c7109810bc3',1,'crash_handler.c']]],
-  ['crash_5fhandler_5ft_29',['crash_handler_t',['../crash__handler_8h.html#ab267b256a30d805769e52b2c9a0101f7',1,'crash_handler.h']]],
-  ['create_20project_30',['Create Project',['../docker.html#autotoc_md35',1,'']]],
-  ['create_20project_20folder_31',['Create Project Folder',['../docker.html#autotoc_md30',1,'']]]
+  ['cpu_2eh_24',['cpu.h',['../cpu_8h.html',1,'']]],
+  ['crash_25',['rand() Crash',['../known_issues.html#autotoc_md92',1,'']]],
+  ['crash_20on_20startup_26',['Wiimote Example Crash on Startup',['../known_issues.html#autotoc_md94',1,'']]],
+  ['crash_5fhandler_2eh_27',['crash_handler.h',['../crash__handler_8h.html',1,'']]],
+  ['crash_5fhandler_5fbug_5fcheck_28',['crash_handler_bug_check',['../crash__handler_8h.html#aa19d5200886f461c949a00351cf1bfa0',1,'crash_handler.c']]],
+  ['crash_5fhandler_5fset_29',['crash_handler_set',['../crash__handler_8h.html#a1a476f34262bdda48b3c4c7109810bc3',1,'crash_handler.c']]],
+  ['crash_5fhandler_5ft_30',['crash_handler_t',['../crash__handler_8h.html#ab267b256a30d805769e52b2c9a0101f7',1,'crash_handler.h']]],
+  ['create_20project_31',['Create Project',['../docker.html#autotoc_md35',1,'']]],
+  ['create_20project_20folder_32',['Create Project Folder',['../docker.html#autotoc_md30',1,'']]]
 ];

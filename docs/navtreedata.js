@@ -72,8 +72,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_free_r_t_o_s_config_8h.html",
-"gx__xf_8h.html#add852a47f0d13113c705c6cee99b1d23ad2bcbd1dbf324c074663789736d71cc4",
-"structuqwords.html"
+"gx__xf_8h.html#add852a47f0d13113c705c6cee99b1d23ab45da5868d58ea6adb60e9e898577fe2",
+"structl2cap__signal__t.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';
